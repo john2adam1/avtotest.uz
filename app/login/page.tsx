@@ -40,6 +40,7 @@ function LoginForm() {
       const deviceId = crypto.randomUUID()
       if (typeof window !== "undefined") {
         window.localStorage.setItem("deviceId", deviceId)
+        document.cookie = `device_id=${deviceId}; path=/; max-age=31536000; SameSite=Lax`
       }
 
       if (data.user) {
@@ -108,6 +109,11 @@ function LoginForm() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
+                <div className="text-right">
+                  <a href="https://t.me/ADMIN_USERNAME" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary hover:underline">
+                    Parolni unutdingizmi?
+                  </a>
+                </div>
               </div>
 
               <Button type="submit" className="w-full" disabled={loading}>

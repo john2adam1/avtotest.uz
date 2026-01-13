@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Label } from "@/components/ui/label"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
-import { CheckCircle2, XCircle, Volume2, Lightbulb, BookOpen } from "lucide-react"
+import { CheckCircle2, XCircle, Volume2, Lightbulb, BookOpen, ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import type { Test, UserSettings } from "@/lib/types"
 import { useTranslation } from "react-i18next"
@@ -303,6 +303,10 @@ export function EnhancedTestInterface({
   return (
     <main className="container mx-auto px-4 py-6 md:py-10">
       <div className="max-w-7xl mx-auto">
+        <Button variant="ghost" className="mb-6 pl-0 hover:pl-2 transition-all" onClick={() => router.back()}>
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Orqaga
+        </Button>
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
           <div>
             <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600 mb-2">
@@ -310,10 +314,7 @@ export function EnhancedTestInterface({
             </h1>
             <div className="flex items-center gap-3">
               <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                {t("test.question")} <span className="font-bold">{currentIndex + 1}</span> / {tests.length}
-              </div>
-              <div className="h-2 w-32 bg-secondary rounded-full overflow-hidden">
-                <div className="h-full bg-primary transition-all duration-300" style={{ width: `${((currentIndex + 1) / tests.length) * 100}%` }} />
+                {currentIndex + 1} / {tests.length}
               </div>
             </div>
           </div>
@@ -352,39 +353,71 @@ export function EnhancedTestInterface({
 
                 {/* Right side: Answers & Controls */}
                 <div className="p-6 md:p-8 flex flex-col h-full justify-between gap-6 bg-background/40">
+
+                  {/* Navigation Bar (Number Strip) - Hidden for random tests */}
+                  {testType !== "random" && (
+                    <div className="mb-6 overflow-x-auto pb-2 scrollbar-hide">
+                      <div className="flex gap-2 min-w-max">
+                        {tests.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentIndex(idx)}
+                            className={`
+                                          h-10 w-10 rounded-lg flex items-center justify-center text-sm font-bold transition-all
+                                          ${currentIndex === idx
+                                ? "bg-primary text-primary-foreground shadow-lg scale-110"
+                                : answeredQuestions[idx]
+                                  ? "bg-primary/20 text-primary hover:bg-primary/30"
+                                  : "bg-muted text-muted-foreground hover:bg-muted/80"
+                              }
+                                      `}
+                          >
+                            {idx + 1}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
                   <RadioGroup
                     key={currentIndex}
                     value={selectedAnswer?.toString()}
                     onValueChange={(value) => handleAnswerSelect(Number.parseInt(value))}
-                    className="space-y-3"
+                    className="space-y-4"
                   >
                     {currentTest.answers.map((answer, index) => {
                       const isSelected = selectedAnswer === index
                       const isCorrect = index === currentTest.correct_answer
                       const showFeedback = isAnswered
 
-                      let containerClass = "border-transparent bg-card/60 hover:bg-card/80 shadow-sm"
-                      let icon = <div className="h-5 w-5 rounded-full border-2 border-muted-foreground/30" />
+                      let containerClass = "border-transparent bg-secondary/30 hover:bg-secondary/50"
+                      let labelClass = "text-foreground"
+                      let circleClass = "border-muted-foreground/30 bg-transparent"
+                      let circleInner = null
 
                       if (isSelected) {
-                        containerClass = "border-primary bg-primary/5 shadow-md ring-1 ring-primary"
-                        icon = <div className="h-5 w-5 rounded-full border-[5px] border-primary bg-background" />
+                        containerClass = "border-primary bg-primary/10 shadow-md ring-1 ring-primary transition-all scale-[1.01]"
+                        circleClass = "border-primary bg-primary"
+                        circleInner = <div className="h-2.5 w-2.5 rounded-full bg-background" />
                       }
 
                       if (showFeedback) {
                         if (isSelected) {
                           if (!isCorrect) {
-                            containerClass = "border-red-500 bg-red-500/10 shadow-md"
-                            icon = <XCircle className="h-5 w-5 text-red-500" />
+                            containerClass = "border-red-500 bg-red-500/10 shadow-md ring-1 ring-red-500"
+                            circleClass = "border-red-500 bg-red-500"
+                            circleInner = <XCircle className="h-4 w-4 text-white" />
                           } else {
-                            containerClass = "border-green-500 bg-green-500/10 shadow-md"
-                            icon = <CheckCircle2 className="h-5 w-5 text-green-500" />
+                            containerClass = "border-green-500 bg-green-500/10 shadow-md ring-1 ring-green-500"
+                            circleClass = "border-green-500 bg-green-500"
+                            circleInner = <CheckCircle2 className="h-4 w-4 text-white" />
                           }
                         } else if (isCorrect) {
-                          containerClass = "border-green-500 bg-green-500/10 shadow-md ring-1 ring-green-500"
-                          icon = <CheckCircle2 className="h-5 w-5 text-green-500" />
+                          containerClass = "border-green-500/50 bg-green-500/5 shadow-sm ring-1 ring-green-500/50"
+                          circleClass = "border-green-500 bg-green-500"
+                          circleInner = <CheckCircle2 className="h-4 w-4 text-white" />
                         } else {
-                          containerClass = "opacity-60 bg-muted/30"
+                          containerClass = "opacity-50 grayscale"
                         }
                       }
 
@@ -392,20 +425,30 @@ export function EnhancedTestInterface({
                         <div
                           key={index}
                           onClick={() => !isAnswered && handleAnswerSelect(index)}
-                          className={`relative flex items-center gap-4 rounded-xl border p-4 transition-all duration-200 cursor-pointer ${containerClass}`}
+                          className={`
+                             group relative flex items-center gap-4 rounded-xl border p-4 transition-all duration-200 cursor-pointer
+                             ${containerClass}
+                          `}
                         >
                           <RadioGroupItem
                             value={index.toString()}
                             id={`answer-${index}`}
                             disabled={isAnswered}
-                            className="absolute opacity-0"
+                            className="absolute opacity-0 w-0 h-0 overflow-hidden"
                           />
-                          <div className="flex-shrink-0">
-                            {icon}
+
+                          {/* Visual Radio Circle */}
+                          <div className={`
+                             flex-shrink-0 h-6 w-6 rounded-full border-2 flex items-center justify-center transition-all
+                             ${circleClass}
+                             group-hover:border-primary
+                          `}>
+                            {circleInner}
                           </div>
+
                           <Label
                             htmlFor={`answer-${index}`}
-                            className="flex-1 cursor-pointer font-medium leading-normal"
+                            className={`flex-1 cursor-pointer font-medium leading-normal ${labelClass}`}
                             style={{ fontSize: `${answerFontSize}px` }}
                           >
                             {answer}
@@ -416,7 +459,7 @@ export function EnhancedTestInterface({
                   </RadioGroup>
                   <div className="space-y-4">
                     {/* Audio and Explanation Tools */}
-                    <div className="flex gap-3 justify-end">
+                    <div className="flex gap-3 justify-end pt-2">
                       {currentTest.audio_url && (
                         <Button
                           variant={playingAudio[currentIndex] ? "default" : "secondary"}
@@ -455,15 +498,16 @@ export function EnhancedTestInterface({
                     {/* Navigation */}
                     <div className="flex gap-3 pt-2">
                       <Button variant="outline" onClick={() => setCurrentIndex(currentIndex - 1)} disabled={currentIndex === 0} className="flex-1 h-12 text-base rounded-xl border-primary/20 hover:bg-primary/5 hover:border-primary/50">
-                        {t("test.previous")}
+                        Avvalgi
                       </Button>
                       {currentIndex < tests.length - 1 ? (
                         <Button
                           onClick={() => setCurrentIndex(currentIndex + 1)}
                           className="flex-1 h-12 text-base rounded-xl bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
                         >
-                          {t("test.next")}
+                          Keyingi
                         </Button>
+
                       ) : (
                         <Button onClick={handleFinish} disabled={selectedAnswer === undefined} className="flex-1 h-12 text-base rounded-xl bg-green-600 hover:bg-green-700 shadow-lg shadow-green-600/20 text-white">
                           {t("test.finish")}
@@ -476,7 +520,7 @@ export function EnhancedTestInterface({
             </CardContent>
           </QuizProtection>
         </Card>
-      </div>
-    </main>
+      </div >
+    </main >
   )
 }

@@ -30,21 +30,32 @@ export function LanguageSwitcher() {
         { code: "ru", label: "Русский" },
     ]
 
+    const getFlag = (langCode: string) => {
+        if (!langCode) return "🇺🇿" // Default
+        if (langCode.startsWith("uz")) return "🇺🇿"
+        if (langCode === "ru") return "🇷🇺"
+        return "🇺🇿"
+    }
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="w-9 px-0">
-                    <Languages className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
-                    <span className="sr-only">Toggle language</span>
+                <Button variant="ghost" size="icon" className="w-10 px-0 rounded-full hover:bg-white/5">
+                    <span className="text-xl" role="img" aria-label="Current language">
+                        {getFlag(i18n.language)}
+                    </span>
+                    <span className="sr-only">Change language</span>
                 </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" className="bg-zinc-950 border-white/10 text-white">
                 {languages.map((lang) => (
                     <DropdownMenuItem
                         key={lang.code}
                         onClick={() => i18n.changeLanguage(lang.code)}
-                        className={i18n.language === lang.code ? "bg-accent" : ""}
+                        className={`focus:bg-white/5 focus:text-white cursor-pointer gap-3 text-base font-medium py-2 ${i18n.language === lang.code ? "bg-white/10" : ""
+                            }`}
                     >
+                        <span className="text-xl">{getFlag(lang.code)}</span>
                         {lang.label}
                     </DropdownMenuItem>
                 ))}

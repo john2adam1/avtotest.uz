@@ -19,19 +19,26 @@ async function TopicTestContent({ params }: { params: Promise<{ topicId: string 
   const [
     { data: userData },
     { data: topic },
-    { data: tests },
     { data: userSettings },
     { data: contactData }
   ] = await Promise.all([
     supabase.from("users").select("*").eq("id", user.id).single(),
     supabase.from("topics").select("*").eq("id", topicId).single(),
-    supabase.from("tests").select("*").eq("topic_id", topicId).order("created_at"),
     supabase.from("user_settings").select("*").eq("user_id", user.id).single(),
     supabase.from("site_content").select("content").eq("type", "contact").maybeSingle()
   ])
 
   if (!userData) redirect("/dashboard")
-  if (!topic || !tests?.length) redirect("/dashboard")
+  if (!topic) redirect("/dashboard")
+
+  // Fetch tests where category matches topic title
+  const { data: tests } = await supabase
+    .from("tests")
+    .select("*")
+    .eq("category", topic.title)
+    .order("created_at")
+
+  if (!tests?.length) redirect("/dashboard")
 
   const isPremiumRequired = !topic.is_public
   const hasPremium = hasActiveAccess(userData)
@@ -58,6 +65,17 @@ async function TopicTestContent({ params }: { params: Promise<{ topicId: string 
       </div>
     </>
   )
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ topicId: string }> }) {
+  const { topicId } = await params
+  const supabase = await getSupabaseServerClient()
+  const { data: topic } = await supabase.from("topics").select("title").eq("id", topicId).single()
+
+  return {
+    title: topic ? `${topic.title} | Tezkor Avtotest` : "Mavzu Testi",
+    description: topic ? `${topic.title} bo'yicha testlarni yeching va bilimingizni mustahkamlang.` : "Mavzu bo'yicha testlar",
+  }
 }
 
 export default async function TopicTestPage({ params }: { params: Promise<{ topicId: string }> }) {

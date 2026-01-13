@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { Toaster } from "@/components/ui/toaster"
 import "./global.css"
@@ -12,10 +12,49 @@ const inter = Inter({
   display: "swap",
 })
 
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-heading",
+  display: "swap",
+})
+
 export const metadata: Metadata = {
-  title: "Sarvar Avtotest - Avtotestlar orqali bilimingizni oshirishga yordam beradi",
-  description: "Avtotestlar orqali bilimingizni oshirishga yordam beradi",
-  generator: "v0.app",
+  title: {
+    default: "Tezkor Avtotest - O'zbekiston Yo'l Harakati Qoidalari Testlari",
+    template: "%s | Tezkor Avtotest",
+  },
+  description: "Avtotestlar orqali bilimingizni oshiring. YHQ (PDD) testlari, imtihon biletlari va mavzulashtirilgan testlar.",
+  keywords: ["avtotest", "yhq", "pdd", "uzbekistan", "prava", "imtihon", "test", "yo'l harakati qoidalari"],
+  authors: [{ name: "Tezkor Avtotest Team" }],
+  creator: "Tezkor Avtotest",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://tezkoravtotest.uz"),
+  openGraph: {
+    type: "website",
+    locale: "uz_UZ",
+    url: "https://tezkoravtotest.uz",
+    siteName: "Tezkor Avtotest",
+    title: "Tezkor Avtotest - O'zbekiston YHQ Testlari",
+    description: "Avtotestlar orqali bilimingizni oshiring. YHQ (PDD) testlari va imtihonga tayyorgarlik.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Tezkor Avtotest Preview",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   icons: {
     icon: [
       {
@@ -41,8 +80,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="en" className="dark">
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
         <I18nProvider>
           {children}
           <Toaster />

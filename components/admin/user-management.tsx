@@ -9,10 +9,29 @@ import { useToast } from "@/hooks/use-toast"
 import { CheckCircle2, XCircle } from "lucide-react"
 import type { User } from "@/lib/types"
 
+import { adminUpdateUserPassword } from "@/app/admin/actions"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { KeyRound } from "lucide-react"
+
 export function UsersManagement() {
   const [users, setUsers] = useState<User[]>([])
   const [userStats, setUserStats] = useState<Record<string, { examAvg: number, ticketAvg: number, topicAvg: number }>>({})
   const [loading, setLoading] = useState(true)
+  const [resetPasswordOpen, setResetPasswordOpen] = useState(false)
+  const [selectedUser, setSelectedUser] = useState<User | null>(null)
+  const [newPassword, setNewPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
+  const [updatingPassword, setUpdatingPassword] = useState(false)
   const { toast } = useToast()
   const supabase = getSupabaseBrowserClient()
 
@@ -100,6 +119,50 @@ export function UsersManagement() {
     }
   }
 
+  const handlePasswordReset = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!selectedUser) return
+
+    if (newPassword !== confirmPassword) {
+      toast({
+        title: "Error",
+        description: "Parollar mos kelmadi",
+        variant: "destructive",
+      })
+      return
+    }
+
+    if (newPassword.length < 6) {
+      toast({
+        title: "Error",
+        description: "Parol kamida 6 ta belgidan iborat bo'lishi kerak",
+        variant: "destructive",
+      })
+      return
+    }
+
+    setUpdatingPassword(true)
+    const result = await adminUpdateUserPassword(selectedUser.id, newPassword)
+    setUpdatingPassword(false)
+
+    if (result.error) {
+      toast({
+        title: "Error",
+        description: result.error,
+        variant: "destructive",
+      })
+    } else {
+      toast({
+        title: "Success",
+        description: "Parol muvaffaqiyatli yangilandi",
+      })
+      setResetPasswordOpen(false)
+      setNewPassword("")
+      setConfirmPassword("")
+      setSelectedUser(null)
+    }
+  }
+
   const hasActiveSubscription = (user: User) => {
     if (!user.subscription_end) return false
     return new Date(user.subscription_end) > new Date()
@@ -142,6 +205,18 @@ export function UsersManagement() {
                 </div>
               </div>
               <div className="flex items-center gap-2 sm:ml-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    setSelectedUser(user)
+                    setResetPasswordOpen(true)
+                  }}
+                >
+                  <KeyRound className="mr-1 h-3 w-3" />
+                  Parol
+                </Button>
+
                 {hasActiveSubscription(user) ? (
                   <>
                     <Badge variant="default" className="bg-success text-success-foreground">
@@ -167,6 +242,46 @@ export function UsersManagement() {
             </div>
           ))}
         </div>
+
+        <Dialog open={resetPasswordOpen} onOpenChange={setResetPasswordOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Parolni o'zgartirish</DialogTitle>
+              <DialogDescription>
+                Foydalanuvchi: {selectedUser?.email}
+              </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handlePasswordReset} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="new-password">Yangi parol</Label>
+                <Input
+                  id="new-password"
+                  type="password"
+                  value={newPassword}
+                  onChange={(e) => setNewPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="confirm-password">Parolni tasdiqlash</Label>
+                <Input
+                  id="confirm-password"
+                  type="password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <DialogFooter>
+                <Button type="button" variant="outline" onClick={() => setResetPasswordOpen(false)}>Bekor qilish</Button>
+                <Button type="submit" disabled={updatingPassword}>
+                  {updatingPassword ? "Yangilanmoqda..." : "Saqlash"}
+                </Button>
+              </DialogFooter>
+            </form>
+          </DialogContent>
+        </Dialog>
+
       </CardContent>
     </Card>
   )

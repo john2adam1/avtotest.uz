@@ -47,15 +47,15 @@ module.exports = mod;
 __turbopack_context__.s([
     "config",
     ()=>config,
-    "middleware",
-    ()=>middleware
+    "default",
+    ()=>proxy
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$avtotest$2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$index$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/Desktop/avtotest/node_modules/@supabase/ssr/dist/module/index.js [middleware] (ecmascript) <locals>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$avtotest$2f$node_modules$2f40$supabase$2f$ssr$2f$dist$2f$module$2f$createServerClient$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/avtotest/node_modules/@supabase/ssr/dist/module/createServerClient.js [middleware] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$avtotest$2f$node_modules$2f$next$2f$server$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/Desktop/avtotest/node_modules/next/server.js [middleware] (ecmascript)");
 ;
 ;
-async function middleware(request) {
+async function proxy(request) {
     console.log("Middleware hitting path:", request.nextUrl.pathname);
     // Create response early
     let response = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$avtotest$2f$node_modules$2f$next$2f$server$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].next({
@@ -86,9 +86,8 @@ async function middleware(request) {
                 }
             }
         });
-        // Get user session - this is the slow part, let's optimize it
-        const { data: { session } } = await supabase.auth.getSession();
-        const user = session?.user || null;
+        // Get user from Supabase Auth server for security
+        const { data: { user } } = await supabase.auth.getUser();
         const pathname = request.nextUrl.pathname;
         // Public routes - no auth needed
         const publicRoutes = [
@@ -116,6 +115,22 @@ async function middleware(request) {
             // Redirect to login if not authenticated
             if (!user) {
                 return __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$avtotest$2f$node_modules$2f$next$2f$server$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].redirect(new URL("/login", request.url));
+            }
+            // Single Device Login Check
+            const deviceId = request.cookies.get("device_id")?.value;
+            // We need to fetch the user's active_device_id from DB
+            // We can use the existing session object but it doesn't have active_device_id usually unless we update the type or query again
+            // To be safe and secure, we query the user table.
+            const { data: userData } = await supabase.from("users").select("active_device_id").eq("id", user.id).single();
+            if (userData?.active_device_id) {
+                if (!deviceId || deviceId !== userData.active_device_id) {
+                    // Session conflict or old session
+                    // Create response to clear cookies and redirect
+                    const response = __TURBOPACK__imported__module__$5b$project$5d2f$Desktop$2f$avtotest$2f$node_modules$2f$next$2f$server$2e$js__$5b$middleware$5d$__$28$ecmascript$29$__["NextResponse"].redirect(new URL("/login?session=conflict", request.url));
+                    // Optionally sign out from supabase
+                    await supabase.auth.signOut();
+                    return response;
+                }
             }
             // Admin route protection - only check if accessing admin routes
             if (pathname.startsWith("/admin")) {

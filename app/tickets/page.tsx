@@ -7,7 +7,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Lock } from "lucide-react"
+import { Lock, ArrowLeft } from "lucide-react"
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -48,6 +48,14 @@ export default async function TicketsPage() {
       <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
 
       <main className="container mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto mb-8">
+          <Button variant="ghost" asChild className="pl-0 hover:pl-2 transition-all">
+            <Link href="/dashboard" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
+              <ArrowLeft className="h-4 w-4" />
+              Orqaga
+            </Link>
+          </Button>
+        </div>
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold mb-2">Biletlar bo'yicha testlar</h1>
           <p className="text-muted-foreground">Biletni tanlang va testni boshlang</p>

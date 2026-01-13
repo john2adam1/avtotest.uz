@@ -13,20 +13,17 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/hooks/use-toast"
 import { Trash2, Edit2 } from "lucide-react"
-import type { Topic, Test, Ticket } from "@/lib/types"
+import type { Test, Ticket } from "@/lib/types"
 
 interface TestWithRelation extends Test {
-  topic_title?: string
   ticket_title?: string
 }
 
 export function TestsManagement() {
-  const [topics, setTopics] = useState<Topic[]>([])
   const [tickets, setTickets] = useState<Ticket[]>([])
   const [tests, setTests] = useState<TestWithRelation[]>([])
-  const [selectedTopic, setSelectedTopic] = useState("")
   const [selectedTicket, setSelectedTicket] = useState("")
-  const [testType, setTestType] = useState<"topic" | "ticket">("topic")
+  const [category, setCategory] = useState("")
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [audioFile, setAudioFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState("")
@@ -47,15 +44,9 @@ export function TestsManagement() {
   const supabase = getSupabaseBrowserClient()
 
   useEffect(() => {
-    fetchTopics()
     fetchTickets()
     fetchTests()
   }, [])
-
-  const fetchTopics = async () => {
-    const { data } = await supabase.from("topics").select("*").order("title")
-    if (data) setTopics(data)
-  }
 
   const fetchTickets = async () => {
     const { data } = await supabase.from("tickets").select("*").order("title")
@@ -66,28 +57,18 @@ export function TestsManagement() {
     setLoading(true)
     const { data } = await supabase
       .from("tests")
-      .select(`
-        *,
-        topics (
-          title
-        )
-      `)
+      .select(`*`)
       .order("created_at", { ascending: false })
 
     if (data) {
-      const testsWithRelation = data.map((test: any) => ({
-        ...test,
-        topic_title: test.topics?.title || "Unknown",
-      }))
-      setTests(testsWithRelation)
+      setTests(data)
     }
     setLoading(false)
   }
 
   const resetForm = () => {
-    setSelectedTopic("")
     setSelectedTicket("")
-    setTestType("topic")
+    setCategory("")
     setImageFile(null)
     setAudioFile(null)
     setImageUrl("")
@@ -209,19 +190,19 @@ export function TestsManagement() {
     e.preventDefault()
 
     // Validation
-    if (testType === "topic" && !selectedTopic) {
+    if (!selectedTicket && !editingTest) {
       toast({
         title: "Error",
-        description: "Mavzuni tanlang",
+        description: "Biletni tanlang",
         variant: "destructive",
       })
       return
     }
 
-    if (testType === "ticket" && !selectedTicket) {
+    if (!category) {
       toast({
         title: "Error",
-        description: "Biletni tanlang",
+        description: "Kategoriyani kiriting",
         variant: "destructive",
       })
       return
@@ -262,7 +243,6 @@ export function TestsManagement() {
     }
 
     const testData = {
-      topic_id: testType === "topic" ? selectedTopic : null,
       image_url: finalImageUrl,
       audio_url: finalAudioUrl || null,
       question,
@@ -271,6 +251,8 @@ export function TestsManagement() {
       time_limit: parseInt(timeLimit),
       explanation_title: explanationTitle.trim() || null,
       explanation_text: explanationText.trim() || null,
+      category: category.trim(),
+      topic_id: null // Ensure topic_id is null as we use category
     }
 
     if (editingTest) {
@@ -302,7 +284,7 @@ export function TestsManagement() {
           description: "Testni yaratishda xatolik yuz berdi",
           variant: "destructive",
         })
-      } else if (newTest && testType === "ticket" && selectedTicket) {
+      } else if (newTest && selectedTicket) {
         // Add test to ticket
         const { data: ticketTests } = await supabase
           .from("ticket_tests")
@@ -313,18 +295,26 @@ export function TestsManagement() {
 
         const nextOrder = ticketTests && ticketTests.length > 0 ? ticketTests[0].order_index + 1 : 0
 
-        await supabase.from("ticket_tests").insert({
+        const { error: linkError } = await supabase.from("ticket_tests").insert({
           ticket_id: selectedTicket,
           test_id: newTest.id,
           order_index: nextOrder,
         })
 
-        toast({
-          title: "Success",
-          description: "Test muvaffaqiyatli yaratildi va biletga qo'shildi",
-        })
-        resetForm()
-        fetchTests()
+        if (linkError) {
+          toast({
+            title: "Warning",
+            description: "Test yaratildi, lekin biletga qo'shishda xatolik: " + linkError.message,
+            variant: "destructive",
+          })
+        } else {
+          toast({
+            title: "Success",
+            description: "Test muvaffaqiyatli yaratildi va biletga qo'shildi",
+          })
+          resetForm()
+          fetchTests()
+        }
       } else {
         toast({
           title: "Success",
@@ -338,7 +328,9 @@ export function TestsManagement() {
 
   const handleEdit = (test: TestWithRelation) => {
     setEditingTest(test)
-    setSelectedTopic(test.topic_id || "")
+    // For editing, we don't necessarily change the ticket unless we implement that logic
+    // But we should set the Category
+    setCategory(test.category || "")
     setImageUrl(test.image_url)
     setImagePreview(test.image_url)
     setAudioUrl(test.audio_url || "")
@@ -373,12 +365,12 @@ export function TestsManagement() {
     }
   }
 
-  const testsByTopic = tests.reduce((acc, test) => {
-    const topicTitle = test.topic_title || "Unknown"
-    if (!acc[topicTitle]) {
-      acc[topicTitle] = []
+  const testsByCategory = tests.reduce((acc, test) => {
+    const cat = test.category || "Uncategorized"
+    if (!acc[cat]) {
+      acc[cat] = []
     }
-    acc[topicTitle].push(test)
+    acc[cat].push(test)
     return acc
   }, {} as Record<string, TestWithRelation[]>)
 
@@ -394,43 +386,15 @@ export function TestsManagement() {
           <CardHeader>
             <CardTitle>{editingTest ? "Testni tahrirlash" : "Test yaratish"}</CardTitle>
             <CardDescription>
-              {editingTest ? "Test haqida ma'lumotlarni yangilash" : "Yangi test yaratish"}
+              {editingTest ? "Test haqida ma'lumotlarni yangilash" : "Yangi test yaratish - Barcha testlar biletga biriktiriladi"}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label>Test turi</Label>
-                <Select value={testType} onValueChange={(v) => setTestType(v as "topic" | "ticket")}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="topic">Mavzu uchun</SelectItem>
-                    <SelectItem value="ticket">Bilet uchun</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
 
-              {testType === "topic" ? (
+              {!editingTest && (
                 <div className="space-y-2">
-                  <Label htmlFor="topic">Mavzu</Label>
-                  <Select value={selectedTopic} onValueChange={setSelectedTopic}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Mavzuni tanlang" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {topics.map((topic) => (
-                        <SelectItem key={topic.id} value={topic.id}>
-                          {topic.title}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  <Label htmlFor="ticket">Bilet</Label>
+                  <Label htmlFor="ticket">Bilet (Majburiy)</Label>
                   <Select value={selectedTicket} onValueChange={setSelectedTicket}>
                     <SelectTrigger>
                       <SelectValue placeholder="Biletni tanlang" />
@@ -445,6 +409,17 @@ export function TestsManagement() {
                   </Select>
                 </div>
               )}
+
+              <div className="space-y-2">
+                <Label htmlFor="category">Kategoriya (Mavzu)</Label>
+                <Input
+                  id="category"
+                  placeholder="Kategoriya nomini kiriting (masalan: Yo'l belgilari)"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  required
+                />
+              </div>
 
               <div className="space-y-2">
                 <Label htmlFor="image">Rasm</Label>
@@ -576,7 +551,7 @@ export function TestsManagement() {
       <TabsContent value="view">
         {loading ? (
           <div className="text-center py-8">Testlar yuklanmoqda...</div>
-        ) : Object.keys(testsByTopic).length === 0 ? (
+        ) : Object.keys(testsByCategory).length === 0 ? (
           <Card>
             <CardContent className="py-8">
               <p className="text-center text-muted-foreground">Hozircha testlar mavjud emas</p>
@@ -584,15 +559,15 @@ export function TestsManagement() {
           </Card>
         ) : (
           <div className="space-y-6">
-            {Object.entries(testsByTopic).map(([topicTitle, topicTests]) => (
-              <Card key={topicTitle}>
+            {Object.entries(testsByCategory).map(([catTitle, catTests]) => (
+              <Card key={catTitle}>
                 <CardHeader>
-                  <CardTitle>{topicTitle}</CardTitle>
-                  <CardDescription>{topicTests.length} test(lar)</CardDescription>
+                  <CardTitle>{catTitle}</CardTitle>
+                  <CardDescription>{catTests.length} test(lar)</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {topicTests.map((test) => (
+                    {catTests.map((test) => (
                       <div key={test.id} className="rounded-lg border p-4 space-y-3">
                         <div className="flex items-start justify-between">
                           <div className="flex-1 space-y-2">

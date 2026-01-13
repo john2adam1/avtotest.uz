@@ -140,16 +140,17 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/40 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 border-b border-border/10 bg-background/5 backdrop-blur-xl supports-[backdrop-filter]:bg-background/5">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/dashboard" className="flex items-center gap-2">
+          {/* Use primary color (yellow) for icon */}
           <BookOpen className="h-6 w-6 text-primary" />
-          <span className="text-xl font-semibold">Sarvar Avtotest</span>
+          <span className="text-xl font-bold font-heading tracking-tight text-white">SARVAR AVTOTEST</span>
         </Link>
 
         <div className="flex items-center gap-4">
           {isAdmin && (
-            <Button asChild variant="ghost">
+            <Button asChild variant="ghost" className="text-muted-foreground hover:text-primary">
               <Link href="/admin">
                 <Settings className="mr-2 h-4 w-4" />
                 Admin Panel
@@ -162,38 +163,38 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
               <LanguageSwitcher />
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="rounded-full">
-                    <Avatar className="h-8 w-8">
-                      <AvatarFallback>{userEmail?.charAt(0).toUpperCase() || "U"}</AvatarFallback>
+                  <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary/10">
+                    <Avatar className="h-8 w-8 border border-white/10">
+                      <AvatarFallback className="bg-zinc-900 text-white font-bold">{userEmail?.charAt(0).toUpperCase() || "U"}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuContent align="end" className="w-56 bg-zinc-950 border-white/10 text-white">
                   <div className="px-2 py-1.5 text-sm">
-                    <div className="font-medium">
+                    <div className="font-medium text-white">
                       {(userProfile?.firstName || userProfile?.lastName)
                         ? `${userProfile.firstName || ""} ${userProfile.lastName || ""}`.trim()
                         : "Foydalanuvchi"}
                     </div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-xs text-zinc-400">
                       {userProfile?.phone || userEmail}
                     </div>
                   </div>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuSeparator className="bg-white/10" />
+                  <DropdownMenuItem asChild className="focus:bg-white/5 focus:text-white cursor-pointer">
                     <Link href="/dashboard">
                       <LayoutDashboard className="mr-2 h-4 w-4" />
                       Dashboard
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
+                  <DropdownMenuItem asChild className="focus:bg-white/5 focus:text-white cursor-pointer">
                     <Link href="/settings">
                       <Settings className="mr-2 h-4 w-4" />
                       Settings
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleLogout} className="text-destructive">
+                  <DropdownMenuSeparator className="bg-white/10" />
+                  <DropdownMenuItem onClick={handleLogout} className="text-red-400 focus:bg-red-500/10 focus:text-red-400 cursor-pointer">
                     <LogOut className="mr-2 h-4 w-4" />
                     Logout
                   </DropdownMenuItem>

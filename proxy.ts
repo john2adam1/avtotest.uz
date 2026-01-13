@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
 
-export async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   console.log("Middleware hitting path:", request.nextUrl.pathname)
   // Create response early
   let response = NextResponse.next({
@@ -47,9 +47,8 @@ export async function middleware(request: NextRequest) {
       }
     )
 
-    // Get user session - this is the slow part, let's optimize it
-    const { data: { session } } = await supabase.auth.getSession()
-    const user = session?.user || null
+    // Get user from Supabase Auth server for security
+    const { data: { user } } = await supabase.auth.getUser()
 
     const pathname = request.nextUrl.pathname
 
@@ -71,6 +70,28 @@ export async function middleware(request: NextRequest) {
       // Redirect to login if not authenticated
       if (!user) {
         return NextResponse.redirect(new URL("/login", request.url))
+      }
+
+      // Single Device Login Check
+      const deviceId = request.cookies.get("device_id")?.value
+      // We need to fetch the user's active_device_id from DB
+      // We can use the existing session object but it doesn't have active_device_id usually unless we update the type or query again
+      // To be safe and secure, we query the user table.
+      const { data: userData } = await supabase
+        .from("users")
+        .select("active_device_id")
+        .eq("id", user.id)
+        .single()
+
+      if (userData?.active_device_id) {
+        if (!deviceId || deviceId !== userData.active_device_id) {
+          // Session conflict or old session
+          // Create response to clear cookies and redirect
+          const response = NextResponse.redirect(new URL("/login?session=conflict", request.url))
+          // Optionally sign out from supabase
+          await supabase.auth.signOut()
+          return response
+        }
       }
 
       // Admin route protection - only check if accessing admin routes
