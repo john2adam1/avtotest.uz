@@ -56,7 +56,10 @@ export default async function proxy(request: NextRequest) {
     const publicRoutes = ['/', '/login', '/register']
     if (publicRoutes.includes(pathname)) {
       // Redirect authenticated users away from login/register
-      if (user && (pathname === '/login' || pathname === '/register')) {
+      // But allow them to stay on login if there's a session conflict/logout reason
+      const hasSessionReason = request.nextUrl.searchParams.has('session') || request.nextUrl.searchParams.has('reason')
+
+      if (user && (pathname === '/login' || pathname === '/register') && !hasSessionReason) {
         return NextResponse.redirect(new URL("/dashboard", request.url))
       }
       return response
@@ -86,11 +89,18 @@ export default async function proxy(request: NextRequest) {
       if (userData?.active_device_id) {
         if (!deviceId || deviceId !== userData.active_device_id) {
           // Session conflict or old session
-          // Create response to clear cookies and redirect
-          const response = NextResponse.redirect(new URL("/login?session=conflict", request.url))
-          // Optionally sign out from supabase
+          // 1. Sign out from Supabase to clear server-side session
           await supabase.auth.signOut()
-          return response
+
+          // 2. Create redirect response
+          const redirectResponse = NextResponse.redirect(new URL("/login?session=conflict", request.url))
+
+          // 3. Transfer any cookies set by signOut (from the 'response' object updated in setAll)
+          response.cookies.getAll().forEach(cookie => {
+            redirectResponse.cookies.set(cookie)
+          })
+
+          return redirectResponse
         }
       }
 

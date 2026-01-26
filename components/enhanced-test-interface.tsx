@@ -338,7 +338,7 @@ export function EnhancedTestInterface({
   const getFLabel = (index: number) => `F${index + 1}`
 
   return (
-    <main className="min-h-screen bg-[#f0f9ff] py-6 md:py-10">
+    <main className="min-h-screen bg-[#e0f2fe] py-6 md:py-10">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
           <div className="flex items-center gap-4">
@@ -390,11 +390,18 @@ export function EnhancedTestInterface({
 
         <Card className="bg-white border-zinc-200 shadow-sm overflow-hidden rounded-2xl">
           <QuizProtection>
-            <CardContent className="p-0">
-              <div className="flex flex-col lg:flex-row min-h-[500px]">
-                {/* Left side: Question Image */}
-                <div className="lg:w-1/2 p-6 flex flex-col justify-center items-center bg-gray-50/50 border-b lg:border-b-0 lg:border-r border-zinc-100">
-                  <div className="relative w-full aspect-video max-w-[600px] overflow-hidden rounded-lg bg-white flex items-center justify-center">
+            <CardContent className="p-6 md:p-8">
+              {/* Question Header - Now at the Top */}
+              <div className="mb-6 border-b border-gray-100 pb-6 text-center">
+                <h2 className="font-bold leading-snug text-gray-800 break-words" style={{ fontSize: `${questionFontSize}px` }}>
+                  {displayQuestion}
+                </h2>
+              </div>
+
+              <div className="flex flex-col lg:flex-row gap-8">
+                {/* Left Side: Question Image */}
+                <div className="lg:w-5/12 flex items-center justify-center">
+                  <div className="relative w-full aspect-video md:aspect-[4/3] max-w-[500px] overflow-hidden rounded-xl bg-gray-50 border border-zinc-100 flex items-center justify-center shadow-inner">
                     {currentTest.image_url ? (
                       <Image
                         src={currentTest.image_url}
@@ -405,54 +412,50 @@ export function EnhancedTestInterface({
                       />
                     ) : (
                       <div className="flex flex-col items-center gap-4 text-gray-300">
-                        <BookOpen className="h-20 w-20" />
+                        <BookOpen className="h-16 w-16" />
                         <span className="text-sm">Rasm yo'q</span>
                       </div>
                     )}
                   </div>
                 </div>
 
-                {/* Right side: Question Text & Answers */}
-                <div className="lg:w-1/2 p-6 md:p-8 flex flex-col justify-between space-y-8">
-                  <div className="space-y-6">
-                    <h2 className="font-bold leading-snug text-gray-800" style={{ fontSize: `${questionFontSize}px` }}>
-                      {displayQuestion}
-                    </h2>
-
+                {/* Right Side: Answers & Navigation */}
+                <div className="lg:w-7/12 flex flex-col justify-between space-y-8">
+                  <div className="space-y-4">
                     <RadioGroup
                       key={currentIndex}
                       value={selectedAnswer?.toString()}
                       onValueChange={(value) => handleAnswerSelect(Number.parseInt(value))}
-                      className="space-y-2"
+                      className="space-y-3"
                     >
                       {displayAnswers.map((answer, index) => {
                         const isSelected = selectedAnswer === index
                         const isCorrect = index === currentTest.correct_answer
                         const showFeedback = isAnswered
 
-                        let containerClass = "bg-gray-100/50 border-transparent"
+                        let containerClass = "bg-gray-50/50 border-gray-200"
                         let labelBg = "bg-gray-400"
                         let labelText = "text-white"
 
                         if (isSelected) {
-                          containerClass = "bg-blue-50 border-blue-500"
+                          containerClass = "bg-blue-50 border-blue-500 shadow-sm"
                           labelBg = "bg-blue-600"
                         }
 
                         if (showFeedback) {
                           if (isSelected) {
                             if (!isCorrect) {
-                              containerClass = "bg-red-50 border-red-500"
+                              containerClass = "bg-red-50 border-red-500 shadow-sm"
                               labelBg = "bg-red-600"
                             } else {
-                              containerClass = "bg-green-50 border-green-500"
+                              containerClass = "bg-green-50 border-green-500 shadow-sm"
                               labelBg = "bg-green-600"
                             }
                           } else if (isCorrect) {
                             containerClass = "bg-green-50 border-green-500/50"
                             labelBg = "bg-green-600"
                           } else {
-                            containerClass = "opacity-50"
+                            containerClass = "opacity-50 grayscale"
                           }
                         }
 
@@ -461,7 +464,7 @@ export function EnhancedTestInterface({
                             key={index}
                             onClick={() => !isAnswered && handleAnswerSelect(index)}
                             className={`
-                              flex items-center gap-0 rounded-lg border cursor-pointer overflow-hidden
+                              flex items-center gap-0 rounded-xl border-2 cursor-pointer overflow-hidden transition-all duration-200
                               ${containerClass}
                             `}
                           >
@@ -473,7 +476,7 @@ export function EnhancedTestInterface({
                             />
                             {/* F Label Box */}
                             <div className={`
-                              flex-shrink-0 w-12 h-full py-3 flex items-center justify-center font-bold text-sm
+                              flex-shrink-0 w-12 h-full py-4 flex items-center justify-center font-bold text-sm
                               ${labelBg} ${labelText}
                             `}>
                               {getFLabel(index)}
@@ -481,7 +484,7 @@ export function EnhancedTestInterface({
                             {/* Answer Text */}
                             <Label
                               htmlFor={`answer-${index}`}
-                              className="flex-1 cursor-pointer font-medium px-4 py-3 leading-tight text-gray-700"
+                              className="flex-1 cursor-pointer font-medium px-5 py-4 leading-tight text-gray-700"
                               style={{ fontSize: `${answerFontSize}px` }}
                             >
                               {answer}
@@ -492,26 +495,24 @@ export function EnhancedTestInterface({
                     </RadioGroup>
                   </div>
 
-                  <div className="space-y-4">
-                    {/* Navigation Buttons */}
-                    <div className="flex gap-3 pt-4 border-t border-gray-100">
-                      <Button
-                        variant="ghost"
-                        onClick={() => setCurrentIndex(currentIndex - 1)}
-                        disabled={currentIndex === 0}
-                        className="flex-1 h-10 text-sm rounded-lg hover:bg-gray-100"
-                      >
-                        Avvalgi
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        onClick={() => setCurrentIndex(currentIndex + 1)}
-                        disabled={currentIndex === tests.length - 1}
-                        className="flex-1 h-10 text-sm rounded-lg hover:bg-gray-100"
-                      >
-                        Keyingi
-                      </Button>
-                    </div>
+                  {/* Navigation Buttons */}
+                  <div className="flex gap-4 pt-6 mt-auto">
+                    <Button
+                      variant="outline"
+                      onClick={() => setCurrentIndex(currentIndex - 1)}
+                      disabled={currentIndex === 0}
+                      className="flex-1 h-12 text-sm rounded-xl font-semibold border-zinc-200 hover:bg-zinc-50"
+                    >
+                      Avvalgi
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => setCurrentIndex(currentIndex + 1)}
+                      disabled={currentIndex === tests.length - 1}
+                      className="flex-1 h-12 text-sm rounded-xl font-semibold border-zinc-200 hover:bg-zinc-50"
+                    >
+                      Keyingi
+                    </Button>
                   </div>
                 </div>
               </div>

@@ -9,6 +9,7 @@ import { SubscriptionBanner } from "@/components/subscription-banner"
 import { hasActiveAccess } from "@/lib/access-control"
 import { useTranslation } from "react-i18next"
 import type { User } from "@/lib/types"
+import { useState, useEffect } from "react"
 
 interface DashboardClientProps {
     user: User
@@ -31,6 +32,15 @@ export function DashboardClient({
 }: DashboardClientProps) {
     const { t } = useTranslation()
     const hasAccess = hasActiveAccess(user)
+    const [isMounted, setIsMounted] = useState(false)
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
+
+    if (!isMounted) {
+        return <div className="min-h-screen bg-transparent" />
+    }
 
     return (
         <>

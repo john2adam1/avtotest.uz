@@ -20,9 +20,7 @@ interface TestWithRelation extends Test {
 }
 
 export function TestsManagement() {
-  const [tickets, setTickets] = useState<Ticket[]>([])
   const [tests, setTests] = useState<TestWithRelation[]>([])
-  const [selectedTicket, setSelectedTicket] = useState("")
   const [category, setCategory] = useState("")
   const [imageFile, setImageFile] = useState<File | null>(null)
   const [audioFile, setAudioFile] = useState<File | null>(null)
@@ -51,14 +49,9 @@ export function TestsManagement() {
   const supabase = getSupabaseBrowserClient()
 
   useEffect(() => {
-    fetchTickets()
     fetchTests()
   }, [])
 
-  const fetchTickets = async () => {
-    const { data } = await supabase.from("tickets").select("*").order("title")
-    if (data) setTickets(data)
-  }
 
   const fetchTests = async () => {
     setLoading(true)
@@ -74,7 +67,6 @@ export function TestsManagement() {
   }
 
   const resetForm = () => {
-    setSelectedTicket("")
     setCategory("")
     setImageFile(null)
     setAudioFile(null)
@@ -253,14 +245,7 @@ export function TestsManagement() {
     e.preventDefault()
 
     // Validation
-    if (!selectedTicket && !editingTest) {
-      toast({
-        title: "Error",
-        description: "Biletni tanlang",
-        variant: "destructive",
-      })
-      return
-    }
+
 
     if (!category) {
       toast({
@@ -363,37 +348,6 @@ export function TestsManagement() {
           description: "Testni yaratishda xatolik yuz berdi",
           variant: "destructive",
         })
-      } else if (newTest && selectedTicket) {
-        // Add test to ticket
-        const { data: ticketTests } = await supabase
-          .from("ticket_tests")
-          .select("order_index")
-          .eq("ticket_id", selectedTicket)
-          .order("order_index", { ascending: false })
-          .limit(1)
-
-        const nextOrder = ticketTests && ticketTests.length > 0 ? ticketTests[0].order_index + 1 : 0
-
-        const { error: linkError } = await supabase.from("ticket_tests").insert({
-          ticket_id: selectedTicket,
-          test_id: newTest.id,
-          order_index: nextOrder,
-        })
-
-        if (linkError) {
-          toast({
-            title: "Warning",
-            description: "Test yaratildi, lekin biletga qo'shishda xatolik: " + linkError.message,
-            variant: "destructive",
-          })
-        } else {
-          toast({
-            title: "Success",
-            description: "Test muvaffaqiyatli yaratildi va biletga qo'shildi",
-          })
-          resetForm()
-          fetchTests()
-        }
       } else {
         toast({
           title: "Success",
@@ -471,27 +425,15 @@ export function TestsManagement() {
           <CardHeader>
             <CardTitle>{editingTest ? "Testni tahrirlash" : "Test yaratish"}</CardTitle>
             <CardDescription>
-              {editingTest ? "Test haqida ma'lumotlarni yangilash" : "Yangi test yaratish - Barcha testlar biletga biriktiriladi"}
+              {editingTest ? "Test haqida ma'lumotlarni yangilash" : "Yangi test yaratish - Barcha testlar avtomatik ravishda biletlarga bo'linadi (20 tadan)"}
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-4">
 
               {!editingTest && (
-                <div className="space-y-2">
-                  <Label htmlFor="ticket">Bilet (Majburiy)</Label>
-                  <Select value={selectedTicket} onValueChange={setSelectedTicket}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Biletni tanlang" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {tickets.map((ticket) => (
-                        <SelectItem key={ticket.id} value={ticket.id}>
-                          {ticket.title}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 text-sm text-primary">
+                  <p>Yangi test {Math.floor(tests.length / 20) + 1}-biletga qo'shiladi.</p>
                 </div>
               )}
 

@@ -1,198 +1,112 @@
-[00:00:05.348] Server  LOG      ✓ Ready in 3.6s
-[00:00:07.630] Server  LOG     Middleware hitting path: "/"
-[00:00:09.065] Server  ERROR   C:\Users\user\Desktop\avtotest\.next\dev\server\chunks\90da8_@supabase_auth-js_dist_module_b4fd3e53._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:00:09.093] Server  ERROR   AuthApiError: Invalid Refresh Token: Refresh Token Not Found
-[00:00:09.097] Server  ERROR   C:\Users\user\Desktop\avtotest\.next\dev\server\chunks\90da8_@supabase_auth-js_dist_module_b4fd3e53._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
-[00:00:09.101] Server  ERROR   AuthApiError: Invalid Refresh Token: Refresh Token Not Found
-[00:00:12.159] Server  LOG      ○ Compiling / ...
-[00:00:20.067] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:21.145] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:21.146] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:00:21.146] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769415579049}
-[00:00:30.032] Server  LOG     Middleware hitting path: "/register"
-[00:00:31.456] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769415589364}
-[00:00:32.819] Server  LOG     Middleware hitting path: "/login"
-[00:00:34.172] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769415592080}
-[00:00:41.089] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:44.856] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769415602759}
-[00:00:49.910] Server  LOG     Middleware hitting path: "/tickets"
-[00:00:54.804] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769415612676}
-[00:09:48.224] Server  LOG      ✓ Compiled in 2.2s
-[00:10:36.448] Server  LOG      ✓ Compiled in 563ms
-[00:10:37.565] Browser ERROR   ./Desktop/avtotest/components/dashboard-client.tsx:189:19
-Parsing ecmascript source code failed
-  187 |                         </Link>
-  188 |                     </div>
-> 189 |             </div>
-      |                   ^
-> 190 |         </>
-      | ^^^^^^^^^
-  191 |     )
-  192 | }
-  193 |
-
-Expected '</', got 'jsx text (
-        )'
-
-Import trace:
-  Server Component:
-    ./Desktop/avtotest/components/dashboard-client.tsx
-    ./Desktop/avtotest/app/dashboard/page.tsx
-[00:10:47.290] Server  LOG      ✓ Compiled in 142ms
-[00:10:47.445] Server  LOG     Middleware hitting path: "/tickets"
-[00:11:05.618] Server  LOG     Middleware hitting path: "/tickets"
-[00:11:05.934] Server  LOG      ✓ Compiled in 720ms
-[00:11:05.936] Server  WARN     ⚠ Fast Refresh had to perform a full reload when ./Desktop/avtotest/node_modules/next/dist/client/image-component.js changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
-[00:11:05.983] Server  LOG     Middleware hitting path: "/tickets"
-[00:11:06.018] Server  LOG     Middleware hitting path: "/tickets"
-[00:11:07.851] Server  LOG     Middleware hitting path: "/tickets"
-[00:11:08.994] Server  LOG     Middleware hitting path: "/tickets"
-[00:11:10.250] Server  LOG     Middleware hitting path: "/tickets"
-[00:11:10.329] Server  LOG     Middleware hitting path: "/tickets"
-[00:11:10.940] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:11:11.559] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:11:11.559] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/tickets","route":"/tickets"}
-[00:11:11.559] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416229303}
-[00:12:35.382] Server  LOG      ✓ Compiled in 154ms
-[00:13:41.557] Server  LOG     Middleware hitting path: "/dashboard"
-[00:13:44.089] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416381989}
-[00:14:20.204] Server  LOG     Middleware hitting path: "/tickets"
-[00:14:23.603] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416421500}
-[00:14:24.894] Server  LOG     Middleware hitting path: "/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189"
-[00:14:28.602] Server  LOG      ○ Compiling /test/ticket/[ticketId] ...
-[00:14:30.236] Server  LOG     Ticket page hit with ID: "6484a189-d5f8-4e1b-8ce8-8bbf46d2b189"
-[00:14:30.395] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416428300}
-[00:14:32.393] Server  LOG     Ticket Debug: User: true
-[00:14:32.394] Server  LOG     Ticket Debug: Ticket: true
-[00:14:32.395] Server  LOG     Ticket Debug: TicketTests: 4
-[00:14:32.395] Server  LOG     Ticket Debug: Tests count: 4
-[00:14:33.543] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768296718385-31b6yd.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:14:42.030] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768297473123-3t29ih.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:14:43.957] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768314192385-oi6zfi.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:14:44.876] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768314277640-gun88r.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:14:59.025] Server  LOG     Middleware hitting path: "/dashboard"
-[00:15:00.543] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416458442}
-[00:15:04.389] Server  LOG     Middleware hitting path: "/admin"
-[00:15:08.549] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416465912}
-[00:17:36.782] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/carousel/carousel-1768306436063-i05tl.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:17:38.941] Server  LOG     Middleware hitting path: "/dashboard"
-[00:17:40.474] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416618385}
-[00:17:43.737] Server  LOG     Middleware hitting path: "/tickets"
-[00:17:46.479] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416624377}
-[00:17:47.453] Server  LOG     Middleware hitting path: "/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189"
-[00:17:48.551] Server  LOG     Ticket page hit with ID: "6484a189-d5f8-4e1b-8ce8-8bbf46d2b189"
-[00:17:48.723] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416626628}
-[00:17:50.521] Server  LOG     Ticket Debug: User: true
-[00:17:50.522] Server  LOG     Ticket Debug: Ticket: true
-[00:17:50.522] Server  LOG     Ticket Debug: TicketTests: 4
-[00:17:50.523] Server  LOG     Ticket Debug: Tests count: 4
-[00:18:37.649] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416675542}
-[00:18:38.763] Server  LOG     Middleware hitting path: "/dashboard"
-[00:18:40.272] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416678179}
-[00:18:43.663] Server  LOG     Middleware hitting path: "/answers"
-[00:18:47.791] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/answers color: rgb(120, 120, 120) color: inherit {"dp":"/answers","o":"http://localhost:3000/answers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416685694}
-[00:18:48.121] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768297430507-v2fr8c.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:18:48.121] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768306382330-ojy8yo.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:18:52.383] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
-[00:20:18.223] Server  LOG     Middleware hitting path: "/answers"
-[00:20:19.571] Server  LOG     Middleware hitting path: "/login"
-[00:20:20.204] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
-[00:20:21.242] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:20:21.242] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
-[00:20:21.242] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769416779132}
-[00:25:23.516] Server  LOG      ✓ Compiled in 1377ms
-[00:25:29.268] Server  LOG     Middleware hitting path: "/login"
-[00:25:30.015] Server  LOG     Middleware hitting path: "/login"
-[00:25:30.102] Server  LOG     Middleware hitting path: "/login"
-[00:25:30.162] Server  LOG     Middleware hitting path: "/login"
-[00:25:30.218] Server  LOG     Middleware hitting path: "/login"
-[00:25:30.314] Server  LOG     Middleware hitting path: "/login"
-[00:25:30.443] Server  LOG     Middleware hitting path: "/login"
-[00:25:30.609] Server  LOG     Middleware hitting path: "/login"
-[00:25:30.707] Server  LOG     Middleware hitting path: "/login"
-[00:25:54.224] Server  LOG      ✓ Compiled in 278ms
-[00:27:09.201] Server  LOG      ✓ Compiled in 184ms
-[00:27:29.934] Server  LOG      ✓ Compiled in 231ms
-[00:27:41.565] Server  LOG      ✓ Compiled in 172ms
-[00:29:31.319] Server  LOG     Middleware hitting path: "/login"
-[00:29:33.134] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
-[00:29:34.415] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:29:34.416] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
-[00:29:34.416] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417332322}
-[00:29:51.527] Server  LOG     Middleware hitting path: "/dashboard"
-[00:29:55.128] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417353023}
-[00:31:49.136] Server  LOG     Middleware hitting path: "/answers"
-[00:31:50.751] Server  LOG     Middleware hitting path: "/login"
-[00:31:50.824] Server  LOG     Middleware hitting path: "/login"
-[00:31:50.884] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/answers color: rgb(120, 120, 120) color: inherit {"dp":"/answers","o":"http://localhost:3000/answers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417468740}
-[00:31:51.026] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417468931}
-[00:31:59.592] Server  LOG     Middleware hitting path: "/dashboard"
-[00:32:00.949] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417478847}
-[00:32:05.850] Server  LOG     Middleware hitting path: "/answers"
-[00:32:08.242] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/answers color: rgb(120, 120, 120) color: inherit {"dp":"/answers","o":"http://localhost:3000/answers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417486146}
-[00:32:30.713] Server  LOG     Middleware hitting path: "/dashboard"
-[00:32:32.508] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417510411}
-[00:32:39.549] Server  LOG     Middleware hitting path: "/tickets"
-[00:32:43.333] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417521231}
-[00:32:56.888] Server  LOG     Middleware hitting path: "/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189"
-[00:32:59.083] Server  LOG     Ticket page hit with ID: "6484a189-d5f8-4e1b-8ce8-8bbf46d2b189"
-[00:32:59.350] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417537255}
-[00:33:00.946] Server  LOG     Ticket Debug: User: true
-[00:33:00.947] Server  LOG     Ticket Debug: Ticket: true
-[00:33:00.948] Server  LOG     Ticket Debug: TicketTests: 4
-[00:33:00.949] Server  LOG     Ticket Debug: Tests count: 4
-[00:33:16.622] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768297473123-3t29ih.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:33:20.026] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768314192385-oi6zfi.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:33:20.516] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768314277640-gun88r.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:33:36.044] Server  LOG     Middleware hitting path: "/dashboard"
-[00:33:37.713] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417575620}
-[00:33:58.998] Server  LOG     Middleware hitting path: "/admin"
-[00:34:02.271] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417600163}
-[00:35:34.295] Server  LOG     Middleware hitting path: "/dashboard"
-[00:35:36.547] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417693912}
-[00:36:50.293] Server  LOG     Middleware hitting path: "/tickets"
-[00:36:51.729] Server  LOG     Middleware hitting path: "/tickets"
-[00:36:54.521] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417772424}
-[00:36:55.401] Server  LOG     Middleware hitting path: "/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189"
-[00:36:57.397] Server  LOG     Ticket page hit with ID: "6484a189-d5f8-4e1b-8ce8-8bbf46d2b189"
-[00:36:57.884] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/6484a189-d5f8-4e1b-8ce8-8bbf46d2b189","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417775785}
-[00:37:08.179] Server  LOG     Ticket Debug: User: false
-[00:37:08.181] Server  LOG     Ticket Debug: Ticket: true
-[00:37:08.181] Server  LOG     Ticket Debug: TicketTests: undefined
-[00:37:08.182] Server  LOG     Ticket Debug: Redirecting - No User Data
-[00:37:08.234] Server  LOG     Middleware hitting path: "/dashboard"
-[00:37:09.124] Server  LOG     Middleware hitting path: "/dashboard"
-[00:37:10.359] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417788248}
-[00:37:16.014] Server  LOG     Middleware hitting path: "/topics"
-[00:37:21.880] Server  LOG      ○ Compiling /topics ...
-[00:37:30.477] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417808362}
-[00:37:32.680] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:37:38.117] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417816023}
-[00:37:39.776] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768296718385-31b6yd.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:39:31.253] Server  LOG      ✓ Compiled in 2.1s
-[00:39:31.325] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.609] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.650] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.662] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.677] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.703] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.710] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.713] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.757] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.775] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.793] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.810] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.910] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:31.929] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:36.712] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:36.720] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:39:37.070] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:39:37.624] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:39:37.624] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","route":"/test/topic/[topicId]"}
-[00:39:37.624] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769417935256}
-[00:40:20.675] Server  LOG      ✓ Compiled in 215ms
-[00:40:33.013] Server  LOG      ✓ Compiled in 347ms
-[00:40:57.130] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+[00:00:04.807] Server  LOG      ✓ Ready in 3.3s
+[00:00:05.273] Server  LOG     Middleware hitting path: "/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0"
+[00:00:09.469] Server  LOG      ○ Compiling /test/ticket/[ticketId] ...
+[00:00:16.220] Server  LOG     Ticket page hit with ID: "77cecfdb-5ae7-4aa0-b348-5147bd7b76e0"
+[00:00:17.943] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:18.383] Server  LOG     Ticket Debug: User: true
+[00:00:18.384] Server  LOG     Ticket Debug: Ticket: true
+[00:00:18.385] Server  LOG     Ticket Debug: TicketTests: 20
+[00:00:18.386] Server  LOG     Ticket Debug: Tests count: 20
+[00:00:19.531] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:19.531] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0","route":"/test/ticket/[ticketId]"}
+[00:00:19.531] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450273586}
+[00:00:39.407] Browser WARN    Image with src "https://ptest.uz/images/41ebbee9-c51c-47f8-875d-9eaf16458d3a.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:44.200] Browser WARN    Image with src "https://ptest.uz/images/ab1188bb-3caf-49b9-9398-14209c56da25.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:48.064] Browser WARN    Image with src "https://ptest.uz/images/7f8e5e60-18ad-46d8-9927-85ba106331c8.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:51.269] Browser WARN    Image with src "https://ptest.uz/images/14bdb389-59ce-45b8-943b-5725968571e0.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:54.411] Browser WARN    Image with src "https://ptest.uz/images/046f48a9-c5f4-4b7a-9a3a-214dfdfa93b1.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:00:59.627] Server  ERROR   TimeoutError: The operation was aborted due to timeout
+[00:01:01.517] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://ptest.uz/images/empty_placeholder.webp" "received" null
+[00:01:07.400] Browser WARN    Image with src "https://ptest.uz/images/f130801f-fbb7-4dbe-a22c-94ca987fad8c.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:01:14.640] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://ptest.uz/images/empty_placeholder.webp" "received" null
+[00:01:19.793] Browser WARN    Image with src "https://ptest.uz/images/50bb879b-2325-489f-8318-8bbb06e9cde9.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:04:05.936] Server  LOG      ✓ Compiled in 745ms
+[00:04:21.698] Server  LOG     Middleware hitting path: "/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0"
+[00:04:24.802] Server  LOG     Ticket page hit with ID: "77cecfdb-5ae7-4aa0-b348-5147bd7b76e0"
+[00:04:26.059] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:26.237] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:26.237] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0","route":"/test/ticket/[ticketId]"}
+[00:04:26.237] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450521637}
+[00:04:26.713] Server  LOG     Ticket Debug: User: true
+[00:04:26.714] Server  LOG     Ticket Debug: Ticket: true
+[00:04:26.714] Server  LOG     Ticket Debug: TicketTests: 20
+[00:04:26.715] Server  LOG     Ticket Debug: Tests count: 20
+[00:04:27.236] Browser WARN    Image with src "https://ptest.uz/images/41ebbee9-c51c-47f8-875d-9eaf16458d3a.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:04:34.836] Server  LOG     Middleware hitting path: "/tickets"
+[00:04:41.870] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450537257}
+[00:04:43.503] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:46.148] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450541545}
+[00:04:51.688] Server  LOG     Middleware hitting path: "/topics"
+[00:04:55.547] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450550940}
+[00:04:57.980] Server  LOG     Middleware hitting path: "/test/topic/fbc4d706-21da-4e9f-a672-3f7c89ab7481"
+[00:05:00.407] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/topic/fbc4d706-21da-4e9f-a672-3f7c89ab7481 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/fbc4d706-21da-4e9f-a672-3f7c89ab7481","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450555803}
+[00:05:01.906] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:02.763] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:04.132] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450559521}
+[00:05:26.255] Server  LOG     Middleware hitting path: "/tickets"
+[00:05:34.929] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450590324}
+[00:05:36.117] Server  LOG     Middleware hitting path: "/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0"
+[00:05:37.858] Server  LOG     Ticket page hit with ID: "77cecfdb-5ae7-4aa0-b348-5147bd7b76e0"
+[00:05:38.028] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450593425}
+[00:05:39.361] Server  LOG     Ticket Debug: User: true
+[00:05:39.362] Server  LOG     Ticket Debug: Ticket: true
+[00:05:39.362] Server  LOG     Ticket Debug: TicketTests: 20
+[00:05:39.363] Server  LOG     Ticket Debug: Tests count: 20
+[00:05:42.172] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:09:42.925] Server  LOG      ✓ Compiled in 958ms
+[00:10:23.717] Server  LOG     Middleware hitting path: "/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0"
+[00:10:26.508] Server  LOG     Ticket page hit with ID: "77cecfdb-5ae7-4aa0-b348-5147bd7b76e0"
+[00:10:27.518] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:10:27.967] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:10:28.206] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:10:28.207] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0","route":"/test/ticket/[ticketId]"}
+[00:10:28.207] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/77cecfdb-5ae7-4aa0-b348-5147bd7b76e0","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450883600}
+[00:10:28.702] Server  LOG     Ticket Debug: User: true
+[00:10:28.703] Server  LOG     Ticket Debug: Ticket: true
+[00:10:28.703] Server  LOG     Ticket Debug: TicketTests: 20
+[00:10:28.704] Server  LOG     Ticket Debug: Tests count: 20
+[00:10:29.366] Browser WARN    Image with src "https://ptest.uz/images/41ebbee9-c51c-47f8-875d-9eaf16458d3a.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:10:55.262] Server  LOG     Middleware hitting path: "/tickets"
+[00:10:58.760] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450914159}
+[00:10:59.612] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:00.591] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450915991}
+[00:11:04.555] Server  LOG     Middleware hitting path: "/answers"
+[00:11:10.206] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/answers color: rgb(120, 120, 120) color: inherit {"dp":"/answers","o":"http://localhost:3000/answers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769450925083}
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/046f48a9-c5f4-4b7a-9a3a-214dfdfa93b1.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/ab1188bb-3caf-49b9-9398-14209c56da25.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/7f8e5e60-18ad-46d8-9927-85ba106331c8.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/1a3b1e1f-2279-4c9c-a2cd-b4dfe6c0d2eb.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/14bdb389-59ce-45b8-943b-5725968571e0.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/39a57172-587a-45c2-939c-9f08205cb544.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/3a4ecc31-d56f-425d-b362-9b09fb58c2cf.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/21539512-5ed8-4f58-a5a7-c62dc47bbb92.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/d9b171b3-94d9-40dc-b0bf-cb4cc33da5a5.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/4e5e3eff-0007-46be-ace0-4f461544cd40.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/f130801f-fbb7-4dbe-a22c-94ca987fad8c.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/b5629abb-d171-408f-a08c-58ed3ff442d0.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/f7aef5cd-cab6-4dcd-a82c-ca5588769c16.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/0fad6563-2520-4a9f-ad81-238d74446a58.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.206] Browser WARN    Image with src "https://ptest.uz/images/50bb879b-2325-489f-8318-8bbb06e9cde9.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:11:10.492] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://ptest.uz/images/empty_placeholder.webp" "received" null
+[00:11:14.595] Browser WARN    Image with src "https://ptest.uz/images/c6887865-9975-42d2-ac01-c4836f2bbe59.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:34:19.364] Server  LOG     Middleware hitting path: "/dashboard"
+[00:34:22.113] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452317513}
+[00:34:28.729] Server  LOG     Middleware hitting path: "/admin"
+[00:34:33.082] Server  LOG      ○ Compiling /admin ...
+[00:34:34.950] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452330314}
+[00:34:47.783] Server  LOG     Middleware hitting path: "/"
+[00:34:48.654] Server  LOG     Middleware hitting path: "/ds"
+[00:34:51.194] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:51.816] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:34:51.816] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/ds","route":"/ds"}
+[00:34:51.816] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ds color: rgb(120, 120, 120) color: inherit {"dp":"/ds","o":"http://localhost:3000/ds","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452346749}
+[00:34:51.967] Server  LOG     Middleware hitting path: "/"
+[00:34:52.361] Server  LOG     Middleware hitting path: "/dashboard"
+[00:34:54.185] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:54.369] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:34:54.369] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:34:54.369] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452349758}
+[00:34:55.334] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
 
 - A server/client branch `if (typeof window !== 'undefined')`.
 - Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
@@ -205,120 +119,65 @@ It can also happen if the client has a browser extension installed which messes 
 https://react.dev/link/hydration-mismatch
 
   ...
-    <LoadingBoundary name="4e4a04db-5..." loading={null}>
-      <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
-        <RedirectBoundary>
-          <RedirectErrorBoundary router={{...}}>
-            <InnerLayoutRouter url="/test/topi..." tree={[...]} params={{topicId:"4..."}} ...>
-              <SegmentViewNode type="page" pagePath="/Desktop/a...">
-                <SegmentTrieNode>
-                <TopicTestPage>
-                  <Suspense fallback={<div>}>
-                    <PremiumAccessGuard>
-                    <TopicTestContent>
+    <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
+      <LoadingBoundary name="dashboard/" loading={[...]}>
+        <Suspense name="dashboard/" fallback={<Fragment>}>
+          <HTTPAccessFallbackBoundary notFound={undefined} forbidden={undefined} unauthorized={undefined}>
+            <RedirectBoundary>
+              <RedirectErrorBoundary router={{...}}>
+                <InnerLayoutRouter url="/dashboard" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} ...>
+                  <SegmentViewNode type="page" pagePath="/Desktop/a...">
+                    <SegmentTrieNode>
+                    <DashboardPage>
                       <div className="min-h-scre...">
                         <Navbar>
-                        <EnhancedTestInterface title="Svetofor" tests={[...]} userId="ac585ba6-f..." testType="topic" ...>
-                          <main className="min-h-scre...">
-                            <div className="container ...">
-                              <div className="flex flex-...">
-                                <div>
-+                               <div className="flex items-center gap-3">
--                               <button
--                                 data-slot="button"
--                                 data-variant="outline"
--                                 data-size="default"
--                                 className={"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded..."}
--                               >
-                              ...
-              ...
-            ...
-
-[00:40:57.130] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768296718385-31b6yd.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:41:00.039] Server  LOG     Middleware hitting path: "/dashboard"
-[00:41:03.150] Server  LOG     Middleware hitting path: "/topics"
-[00:41:07.293] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418025172}
-[00:41:08.676] Server  LOG     Middleware hitting path: "/dashboard"
-[00:41:10.015] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418027925}
-[00:41:38.348] Server  LOG     Middleware hitting path: "/topics"
-[00:41:41.216] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418059113}
-[00:41:43.483] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:41:45.227] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418063135}
-[00:46:10.251] Server  LOG      ✓ Compiled in 1854ms
-[00:46:12.077] Server  LOG      ✓ Compiled in 788ms
-[00:46:12.203] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:46:18.928] Server  LOG      ✓ Compiled in 1619ms
-[00:46:55.647] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:47:00.037] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:47:00.193] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:47:00.193] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","route":"/test/topic/[topicId]"}
-[00:47:00.193] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418378099}
-[00:47:01.748] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
-
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
-
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
-
-https://react.dev/link/hydration-mismatch
-
-  ...
-    <RedirectBoundary>
-      <RedirectErrorBoundary router={{...}}>
-        <InnerLayoutRouter url="/test/topi..." tree={[...]} params={{topicId:"4..."}} cacheNode={{lazyData:null, ...}} ...>
-          <SegmentViewNode type="page" pagePath="/Desktop/a...">
-            <SegmentTrieNode>
-            <TopicTestPage>
-              <Suspense fallback={<div>}>
-                <PremiumAccessGuard>
-                <TopicTestContent>
-                  <div className="min-h-scre...">
-                    <Navbar>
-                    <EnhancedTestInterface title="Svetofor" tests={[...]} userId="ac585ba6-f..." testType="topic" ...>
-                      <main className="min-h-scre...">
-                        <div className="container ...">
-                          <div className="flex flex-...">
+                        <main className="container ...">
+                          <DashboardClient user={{id:"9bcb7b...", ...}} topics={[...]} tickets={[...]} ...>
                             <div>
-                            <div className="flex items...">
-                              <LanguageSwitcher>
-                              <Button variant="outline" onClick={function handleFinish} className="bg-white/5...">
-                                <button
-                                  data-slot="button"
-                                  data-variant="outline"
-                                  data-size="default"
-                                  className={"inline-flex items-center justify-center gap-2 whitespace-nowrap rounded..."}
-                                  onClick={function handleFinish}
-                                >
-+                                 Тестни якунлаш
--                                 Testni yakunlash
-                          ...
-          ...
-        ...
+                            <div className="mb-12 text...">
+                              <div>
+                              <h1 className="text-4xl md:text-5xl font-extrabold mb-4 tracking-tight text-primary">
++                               Хуш келибсиз!
+-                               Xush kelibsiz!
+                              ...
+                            ...
+                  ...
+                ...
 
-[00:47:01.861] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768296718385-31b6yd.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:48:55.965] Server  LOG      ✓ Compiled in 636ms
-[00:48:56.549] Browser ERROR   uncaughtError: ReferenceError: audioRefs is not defined
-[00:49:05.295] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:49:05.312] Server  LOG      ✓ Compiled in 232ms
-[00:49:05.360] Server  LOG     Middleware hitting path: "/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77"
-[00:49:07.730] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418503367}
-[00:49:08.578] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:49:09.545] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:49:09.546] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","route":"/test/topic/[topicId]"}
-[00:49:09.546] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/4e4a04db-5207-45fa-8709-898d69a0cb77","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418506686}
-[00:50:45.640] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768296718385-31b6yd.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:50:48.881] Server  LOG     Middleware hitting path: "/topics"
-[00:50:53.210] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418611092}
-[00:52:03.922] Server  LOG     Middleware hitting path: "/dashboard"
-[00:52:05.909] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418683811}
-[00:52:11.027] Server  LOG     Middleware hitting path: "/topics"
-[00:52:13.715] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418691613}
-[00:52:15.866] Server  LOG     Middleware hitting path: "/test/topic/d2bac16a-6f19-41c3-a7fa-db85be321f20"
-[00:52:17.469] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/topic/d2bac16a-6f19-41c3-a7fa-db85be321f20 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/d2bac16a-6f19-41c3-a7fa-db85be321f20","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418695372}
-[00:52:19.364] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/test-images/1768297430507-v2fr8c.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:52:26.734] Server  LOG     Middleware hitting path: "/dashboard"
-[00:52:27.905] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769418705810}
-[00:52:31.462] Server  LOG     Middleware hitting path: "/dashboard"
+[00:35:17.339] Server  LOG     Middleware hitting path: "/test/random"
+[00:35:20.726] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/random color: rgb(120, 120, 120) color: inherit {"dp":"/test/random","o":"http://localhost:3000/test/random","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452376123}
+[00:35:20.899] Browser WARN    Image with src "https://ptest.uz/images/4e5e3eff-0007-46be-ace0-4f461544cd40.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:35:24.559] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452379948}
+[00:35:27.807] Server  LOG     Middleware hitting path: "/test/random"
+[00:35:28.865] Server  LOG     Middleware hitting path: "/test/random"
+[00:35:31.436] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/random color: rgb(120, 120, 120) color: inherit {"dp":"/test/random","o":"http://localhost:3000/test/random","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452386807}
+[00:35:41.801] Server  LOG     Middleware hitting path: "/test/random"
+[00:35:41.817] Server  LOG      ✓ Compiled in 860ms
+[00:35:43.612] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452398994}
+[00:35:43.907] Server  ERROR    ⨯ "The requested resource isn't a valid image for" "https://ptest.uz/images/empty_placeholder.webp" "received" null
+[00:35:46.764] Server  LOG     Middleware hitting path: "/topics"
+[00:35:49.300] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452404692}
+[00:35:49.859] Server  LOG     Middleware hitting path: "/topics"
+[00:35:49.875] Server  LOG      ✓ Compiled in 242ms
+[00:35:50.744] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452406132}
+[00:35:51.775] Server  LOG     Middleware hitting path: "/exams"
+[00:35:55.982] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/exams color: rgb(120, 120, 120) color: inherit {"dp":"/exams","o":"http://localhost:3000/exams","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452411373}
+[00:36:02.916] Server  LOG     Middleware hitting path: "/test/exam/20"
+[00:36:07.495] Server  LOG     Exam page hit with Type: "20"
+[00:36:08.597] Server  LOG     Exam Debug: allTests count: 20, required: 20
+[00:36:09.093] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/exam/20 color: rgb(120, 120, 120) color: inherit {"dp":"/test/exam/[examType]","o":"http://localhost:3000/test/exam/20","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452424492}
+[00:36:09.281] Browser WARN    Image with src "https://ptest.uz/images/7f8e5e60-18ad-46d8-9927-85ba106331c8.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:36:12.273] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/exams color: rgb(120, 120, 120) color: inherit {"dp":"/exams","o":"http://localhost:3000/exams","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452427665}
+[00:36:12.920] Server  LOG     Middleware hitting path: "/test/exam/50"
+[00:36:13.637] Server  LOG     Exam page hit with Type: "50"
+[00:36:14.734] Server  LOG     Exam Debug: allTests count: 20, required: 50
+[00:36:15.091] Server  LOG     Exam Debug: Redirecting to dashboard - Not enough tests
+[00:36:15.161] Server  LOG     Middleware hitting path: "/dashboard"
+[00:36:15.247] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/exam/50 color: rgb(120, 120, 120) color: inherit {"dp":"/test/exam/[examType]","o":"http://localhost:3000/test/exam/50","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452430646}
+[00:36:15.953] Server  LOG     Middleware hitting path: "/dashboard"
+[00:36:17.196] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452432596}
+[00:36:35.232] Server  LOG     Middleware hitting path: "/test/random"
+[00:36:38.189] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/random color: rgb(120, 120, 120) color: inherit {"dp":"/test/random","o":"http://localhost:3000/test/random","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769452453553}
+[00:36:38.308] Browser WARN    Image with src "https://ptest.uz/images/d9b171b3-94d9-40dc-b0bf-cb4cc33da5a5.webp" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
+[00:45:36.540] Server  LOG      ✓ Compiled in 1277ms
+[00:46:47.464] Server  LOG      ✓ Compiled in 135ms

@@ -28,6 +28,11 @@ const nextConfig = {
         hostname: '**.supabase.in',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'ptest.uz',
+        pathname: '/**',
+      },
     ],
     // Optimize image loading
     formats: ['image/avif', 'image/webp'],

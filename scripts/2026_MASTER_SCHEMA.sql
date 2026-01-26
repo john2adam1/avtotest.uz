@@ -230,44 +230,66 @@ CREATE POLICY "Users manage own settings" ON user_settings FOR ALL USING (auth.u
 -- 5. BULK TOOLS (AUTOMATION)
 -- ============================================
 
--- Function to divide all unassigned tests into tickets of X questions
-CREATE OR REPLACE FUNCTION divide_tests_into_tickets(p_tests_per_ticket INTEGER DEFAULT 20)
-RETURNS TEXT AS $$
+-- Function to reorganize all tests into tickets of 20 questions
+CREATE OR REPLACE FUNCTION reorganize_tickets()
+RETURNS TRIGGER AS $$
 DECLARE
     v_test_record RECORD;
     v_ticket_id UUID;
     v_ticket_counter INTEGER := 0;
     v_test_in_ticket_counter INTEGER := 0;
-    v_ticket_title TEXT;
+    v_total_tests INTEGER;
+    v_target_tickets INTEGER;
 BEGIN
-    -- This loops through all tests that are NOT currently assigned to any ticket
+    -- 1. Calculate how many tickets we need
+    SELECT count(*) INTO v_total_tests FROM tests;
+    v_target_tickets := ceil(v_total_tests::float / 20);
+
+    -- 2. Create or sync tickets count
+    -- Delete excess tickets
+    DELETE FROM tickets 
+    WHERE id NOT IN (
+        SELECT id FROM tickets 
+        ORDER BY created_at ASC 
+        LIMIT v_target_tickets
+    );
+
+    -- Add missing tickets
+    WHILE (SELECT count(*) FROM tickets) < v_target_tickets LOOP
+        INSERT INTO tickets (title, is_public)
+        VALUES ('Bilet ' || ((SELECT count(*) FROM tickets) + 1), true);
+    END LOOP;
+
+    -- 3. Clear all assignments (re-shuffle)
+    DELETE FROM ticket_tests;
+
+    -- 4. Re-assign tests sequentially
     FOR v_test_record IN (
-        SELECT id FROM tests t
-        WHERE NOT EXISTS (SELECT 1 FROM ticket_tests tt WHERE tt.test_id = t.id)
-        ORDER BY created_at ASC
+        SELECT id FROM tests ORDER BY created_at ASC
     ) LOOP
-        -- Every time we hit the limit, start a new ticket
-        IF v_test_in_ticket_counter % p_tests_per_ticket = 0 THEN
+        -- Every 20 tests, move to next ticket
+        IF v_test_in_ticket_counter % 20 = 0 THEN
             v_ticket_counter := v_ticket_counter + 1;
-            v_ticket_title := 'Bilet ' || v_ticket_counter;
-            
-            INSERT INTO tickets (title, is_public)
-            VALUES (v_ticket_title, true)
-            RETURNING id INTO v_ticket_id;
-            
-            v_test_in_ticket_counter := 0;
+            SELECT id INTO v_ticket_id FROM tickets ORDER BY created_at ASC OFFSET (v_ticket_counter - 1) LIMIT 1;
         END IF;
         
         -- Assign test to the current ticket
         INSERT INTO ticket_tests (ticket_id, test_id, order_index)
-        VALUES (v_ticket_id, v_test_record.id, v_test_in_ticket_counter);
+        VALUES (v_ticket_id, v_test_record.id, v_test_in_ticket_counter % 20);
         
         v_test_in_ticket_counter := v_test_in_ticket_counter + 1;
     END LOOP;
     
-    RETURN 'Processed and created ' || v_ticket_counter || ' new tickets.';
+    RETURN NULL;
 END;
 $$ LANGUAGE plpgsql;
+
+-- 5. Triggers for automatic reorganization
+DROP TRIGGER IF EXISTS trigger_reorganize_tickets ON tests;
+CREATE TRIGGER trigger_reorganize_tickets
+AFTER INSERT OR DELETE ON tests
+FOR EACH STATEMENT
+EXECUTE FUNCTION reorganize_tickets();
 
 -- To run this: SELECT divide_tests_into_tickets(20);
 

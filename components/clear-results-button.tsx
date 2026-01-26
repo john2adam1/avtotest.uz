@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Trash2 } from "lucide-react"
 import {
@@ -22,6 +22,13 @@ export function ClearResultsButton() {
     const { t } = useTranslation()
     const [loading, setLoading] = useState(false)
     const { toast } = useToast()
+    const [mounted, setMounted] = useState(false)
+
+    useEffect(() => {
+        setMounted(true)
+    }, [])
+
+    if (!mounted) return null
 
     const handleClear = async () => {
         setLoading(true)

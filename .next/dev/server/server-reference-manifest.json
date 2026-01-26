@@ -1,20 +1,5 @@
 {
   "node": {
-    "604bfe8b8a6bc3ddc77bfc89e732f48517ff468aca": {
-      "workers": {
-        "app/register/page": {
-          "moduleId": "[project]/Desktop/avtotest/.next-internal/server/app/register/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/avtotest/app/auth/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "registerUserWithPhone",
-          "filename": "Desktop/avtotest/app/auth/actions.ts"
-        }
-      },
-      "layer": {
-        "app/register/page": "action-browser"
-      },
-      "filename": "Desktop/avtotest/app/auth/actions.ts",
-      "exportedName": "registerUserWithPhone"
-    },
     "00beeeb5781905c99f4d545c1588b2b9bdbfdab5a9": {
       "workers": {
         "app/dashboard/page": {
