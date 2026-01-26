@@ -25,41 +25,31 @@ export function LanguageSwitcher() {
     if (!mounted) return null
 
     const languages = [
-        { code: "uz", label: "O'zbek (Lotin)" },
-        { code: "uz_cyrl", label: "Ўзбек (Кирилл)" },
-        { code: "ru", label: "Русский" },
+        { code: "uz", label: "O'zbekcha" },
+        { code: "uz_cyrl", label: "Ўзбекча" },
     ]
 
-    const getFlag = (langCode: string) => {
-        if (!langCode) return "🇺🇿" // Default
-        if (langCode.startsWith("uz")) return "🇺🇿"
-        if (langCode === "ru") return "🇷🇺"
-        return "🇺🇿"
-    }
-
     return (
-        <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="icon" className="w-10 px-0 rounded-full hover:bg-white/5">
-                    <span className="text-xl" role="img" aria-label="Current language">
-                        {getFlag(i18n.language)}
-                    </span>
-                    <span className="sr-only">Change language</span>
-                </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-zinc-950 border-white/10 text-white">
-                {languages.map((lang) => (
-                    <DropdownMenuItem
+        <div className="flex items-center gap-2">
+            {languages.map((lang) => {
+                const isActive = i18n.language === lang.code
+                return (
+                    <button
                         key={lang.code}
                         onClick={() => i18n.changeLanguage(lang.code)}
-                        className={`focus:bg-white/5 focus:text-white cursor-pointer gap-3 text-base font-medium py-2 ${i18n.language === lang.code ? "bg-white/10" : ""
-                            }`}
+                        className={`
+                            h-8 px-3 rounded text-sm font-medium transition-all flex items-center gap-2
+                            border border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800
+                            ${isActive ? "text-white" : "text-zinc-400"}
+                        `}
                     >
-                        <span className="text-xl">{getFlag(lang.code)}</span>
+                        {isActive && (
+                            <div className="w-1 h-3 bg-[#4ade80] rounded-full" />
+                        )}
                         {lang.label}
-                    </DropdownMenuItem>
-                ))}
-            </DropdownMenuContent>
-        </DropdownMenu>
+                    </button>
+                )
+            })}
+        </div>
     )
 }

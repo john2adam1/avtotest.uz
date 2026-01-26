@@ -34,7 +34,7 @@ export function QuizProtection({ children, className = "" }: QuizProtectionProps
 
     return (
         <div
-            className={`quiz-protect ${className}`}
+            className={`quiz-protect select-none ${className}`}
             onContextMenu={(e) => e.preventDefault()}
         >
             {children}

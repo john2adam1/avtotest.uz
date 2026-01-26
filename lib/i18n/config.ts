@@ -8,13 +8,11 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 // This avoids backend calls and works with static export
 import uz from './locales/uz.json';
 import uz_cyrl from './locales/uz_cyrl.json';
-import ru from './locales/ru.json';
 
 // Define resources
 export const resources = {
     uz: { translation: uz },
     uz_cyrl: { translation: uz_cyrl },
-    ru: { translation: ru },
 } as const;
 
 i18n
@@ -23,7 +21,7 @@ i18n
     .init({
         resources,
         fallbackLng: 'uz', // Default language if detection fails
-        supportedLngs: ['uz', 'uz_cyrl', 'ru'], // Safe list of languages
+        supportedLngs: ['uz', 'uz_cyrl'], // Safe list of languages
 
         interpolation: {
             escapeValue: false, // React already escapes XSS

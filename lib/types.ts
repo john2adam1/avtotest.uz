@@ -26,13 +26,21 @@ export interface Test {
   id: string
   topic_id: string
   image_url: string
-  audio_url: string | null
+  // Latin
   question: string
   answers: string[]
-  correct_answer: number
-  time_limit: number
   explanation_title: string | null
   explanation_text: string | null
+  audio_url: string | null
+  // Cyrillic
+  question_cyrl: string | null
+  answers_cyrl: string[] | null
+  explanation_title_cyrl: string | null
+  explanation_text_cyrl: string | null
+  audio_url_cyrl: string | null
+
+  correct_answer: number
+  time_limit: number
   category: string // Added category field
   created_at: string
 }

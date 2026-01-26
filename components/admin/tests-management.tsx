@@ -12,7 +12,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/hooks/use-toast"
-import { Trash2, Edit2 } from "lucide-react"
+import { Trash2, Edit2, Plus, X } from "lucide-react"
 import type { Test, Ticket } from "@/lib/types"
 
 interface TestWithRelation extends Test {
@@ -33,11 +33,18 @@ export function TestsManagement() {
   const [uploadingImage, setUploadingImage] = useState(false)
   const [uploadingAudio, setUploadingAudio] = useState(false)
   const [question, setQuestion] = useState("")
-  const [answers, setAnswers] = useState(["", "", "", ""])
+  const [questionCyrl, setQuestionCyrl] = useState("")
+  const [answers, setAnswers] = useState(["", ""])
+  const [answersCyrl, setAnswersCyrl] = useState(["", ""])
   const [correctAnswer, setCorrectAnswer] = useState("0")
   const [timeLimit, setTimeLimit] = useState("300")
   const [explanationTitle, setExplanationTitle] = useState("")
+  const [explanationTitleCyrl, setExplanationTitleCyrl] = useState("")
   const [explanationText, setExplanationText] = useState("")
+  const [explanationTextCyrl, setExplanationTextCyrl] = useState("")
+  const [audioFileCyrl, setAudioFileCyrl] = useState<File | null>(null)
+  const [audioUrlCyrl, setAudioUrlCyrl] = useState("")
+  const [audioPreviewCyrl, setAudioPreviewCyrl] = useState<string | null>(null)
   const [editingTest, setEditingTest] = useState<Test | null>(null)
   const [loading, setLoading] = useState(true)
   const { toast } = useToast()
@@ -76,11 +83,18 @@ export function TestsManagement() {
     setImagePreview(null)
     setAudioPreview(null)
     setQuestion("")
-    setAnswers(["", "", "", ""])
+    setQuestionCyrl("")
+    setAnswers(["", ""])
+    setAnswersCyrl(["", ""])
     setCorrectAnswer("0")
     setTimeLimit("300")
     setExplanationTitle("")
+    setExplanationTitleCyrl("")
     setExplanationText("")
+    setExplanationTextCyrl("")
+    setAudioFileCyrl(null)
+    setAudioUrlCyrl("")
+    setAudioPreviewCyrl(null)
     setEditingTest(null)
   }
 
@@ -117,6 +131,22 @@ export function TestsManagement() {
       }
       setAudioFile(file)
       setAudioPreview(URL.createObjectURL(file))
+    }
+  }
+
+  const handleAudioCyrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      if (!file.type.startsWith("audio/")) {
+        toast({
+          title: "Error",
+          description: "Audio faylini tanlang",
+          variant: "destructive",
+        })
+        return
+      }
+      setAudioFileCyrl(file)
+      setAudioPreviewCyrl(URL.createObjectURL(file))
     }
   }
 
@@ -186,6 +216,39 @@ export function TestsManagement() {
     }
   }
 
+  const uploadAudioCyrl = async (): Promise<string | null> => {
+    if (!audioFileCyrl) return audioUrlCyrl || null
+
+    setUploadingAudio(true)
+    try {
+      const fileExt = audioFileCyrl.name.split(".").pop()
+      const fileName = `${Date.now()}-cyrl-${Math.random().toString(36).substring(7)}.${fileExt}`
+      const filePath = `test-audio/${fileName}`
+
+      const { error: uploadError } = await supabase.storage.from("test-audio").upload(filePath, audioFileCyrl, {
+        cacheControl: "3600",
+        upsert: false,
+      })
+
+      if (uploadError) throw uploadError
+
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from("test-audio").getPublicUrl(filePath)
+
+      setUploadingAudio(false)
+      return publicUrl
+    } catch (error: any) {
+      setUploadingAudio(false)
+      toast({
+        title: "Error",
+        description: error.message || "Audio faylini (Kirill) yuklashda xatolik yuz berdi",
+        variant: "destructive",
+      })
+      return null
+    }
+  }
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
@@ -220,7 +283,7 @@ export function TestsManagement() {
     if (answers.some((a) => !a.trim())) {
       toast({
         title: "Error",
-        description: "Barcha 4 javoblarni kiriting",
+        description: `Barcha ${answers.length} javoblarni kiriting`,
         variant: "destructive",
       })
       return
@@ -228,6 +291,7 @@ export function TestsManagement() {
 
     let finalImageUrl = imageUrl
     let finalAudioUrl = audioUrl
+    let finalAudioUrlCyrl = audioUrlCyrl
 
     if (imageFile) {
       const uploadedImageUrl = await uploadImage()
@@ -242,15 +306,30 @@ export function TestsManagement() {
       }
     }
 
+    if (audioFileCyrl) {
+      const uploadedAudioUrlCyrl = await uploadAudioCyrl()
+      if (uploadedAudioUrlCyrl) {
+        finalAudioUrlCyrl = uploadedAudioUrlCyrl
+      }
+    }
+
     const testData = {
       image_url: finalImageUrl,
-      audio_url: finalAudioUrl || null,
+      // Latin
       question,
       answers,
-      correct_answer: parseInt(correctAnswer),
-      time_limit: parseInt(timeLimit),
       explanation_title: explanationTitle.trim() || null,
       explanation_text: explanationText.trim() || null,
+      audio_url: finalAudioUrl || null,
+      // Cyrillic
+      question_cyrl: questionCyrl.trim() || null,
+      answers_cyrl: answersCyrl.length === answers.length ? answersCyrl : null,
+      explanation_title_cyrl: explanationTitleCyrl.trim() || null,
+      explanation_text_cyrl: explanationTextCyrl.trim() || null,
+      audio_url_cyrl: finalAudioUrlCyrl || null,
+
+      correct_answer: parseInt(correctAnswer),
+      time_limit: parseInt(timeLimit),
       category: category.trim(),
       topic_id: null // Ensure topic_id is null as we use category
     }
@@ -338,11 +417,17 @@ export function TestsManagement() {
     setImageFile(null)
     setAudioFile(null)
     setQuestion(test.question)
+    setQuestionCyrl(test.question_cyrl || "")
     setAnswers(test.answers)
+    setAnswersCyrl(test.answers_cyrl || Array(test.answers.length).fill(""))
     setCorrectAnswer(test.correct_answer.toString())
     setTimeLimit(test.time_limit.toString())
     setExplanationTitle(test.explanation_title || "")
+    setExplanationTitleCyrl(test.explanation_title_cyrl || "")
     setExplanationText(test.explanation_text || "")
+    setExplanationTextCyrl(test.explanation_text_cyrl || "")
+    setAudioUrlCyrl(test.audio_url_cyrl || "")
+    setAudioPreviewCyrl(test.audio_url_cyrl || null)
   }
 
   const handleDelete = async (id: string) => {
@@ -452,32 +537,178 @@ export function TestsManagement() {
                 )}
               </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="question">Savol</Label>
-                <Textarea
-                  id="question"
-                  placeholder="Savolni kiriting..."
-                  value={question}
-                  onChange={(e) => setQuestion(e.target.value)}
-                  required
-                />
+              <div className="space-y-4 border p-4 rounded-lg bg-zinc-50/50">
+                <Tabs defaultValue="latin" className="w-full">
+                  <TabsList className="grid w-full grid-cols-2">
+                    <TabsTrigger value="latin">Lotin (O'zbekcha)</TabsTrigger>
+                    <TabsTrigger value="cyrillic">Kirill (Ўзбекcha)</TabsTrigger>
+                  </TabsList>
+
+                  <TabsContent value="latin" className="space-y-4 mt-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="question">Savol (Lotin)</Label>
+                      <Textarea
+                        id="question"
+                        placeholder="Savolni kiriting..."
+                        value={question}
+                        onChange={(e) => setQuestion(e.target.value)}
+                        required
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="audio">Audio (Lotin, Optional)</Label>
+                      <Input
+                        id="audio"
+                        type="file"
+                        accept="audio/*"
+                        onChange={handleAudioChange}
+                      />
+                      {audioPreview && (
+                        <div className="mt-2">
+                          <audio controls src={audioPreview} className="w-full" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="explanation-title">Tushuntirish sarlavhasi (Lotin, Optional)</Label>
+                      <Input
+                        id="explanation-title"
+                        placeholder="Tushuntirish sarlavhasi..."
+                        value={explanationTitle}
+                        onChange={(e) => setExplanationTitle(e.target.value)}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="explanation-text">Tushuntirish matni (Lotin, Optional)</Label>
+                      <Textarea
+                        id="explanation-text"
+                        placeholder="Tushuntirish matni..."
+                        value={explanationText}
+                        onChange={(e) => setExplanationText(e.target.value)}
+                      />
+                    </div>
+                  </TabsContent>
+
+                  <TabsContent value="cyrillic" className="space-y-4 mt-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="question-cyrl">Savol (Kirill)</Label>
+                      <Textarea
+                        id="question-cyrl"
+                        placeholder="Саволни киритинг..."
+                        value={questionCyrl}
+                        onChange={(e) => setQuestionCyrl(e.target.value)}
+                        required={!!question} // If one is present, both should be? User might want to start with one.
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="audio-cyrl">Audio (Kirill, Optional)</Label>
+                      <Input
+                        id="audio-cyrl"
+                        type="file"
+                        accept="audio/*"
+                        onChange={handleAudioCyrlChange}
+                      />
+                      {audioPreviewCyrl && (
+                        <div className="mt-2">
+                          <audio controls src={audioPreviewCyrl} className="w-full" />
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="explanation-title-cyrl">Tushuntirish sarlavhasi (Kirill, Optional)</Label>
+                      <Input
+                        id="explanation-title-cyrl"
+                        placeholder="Тушунтириш сарлавҳаси..."
+                        value={explanationTitleCyrl}
+                        onChange={(e) => setExplanationTitleCyrl(e.target.value)}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="explanation-text-cyrl">Tushuntirish matni (Kirill, Optional)</Label>
+                      <Textarea
+                        id="explanation-text-cyrl"
+                        placeholder="Тушунтириш матни..."
+                        value={explanationTextCyrl}
+                        onChange={(e) => setExplanationTextCyrl(e.target.value)}
+                      />
+                    </div>
+                  </TabsContent>
+                </Tabs>
               </div>
 
-              <div className="space-y-2">
-                <Label>Javoblar</Label>
-                {answers.map((answer, index) => (
-                  <Input
-                    key={index}
-                    placeholder={`Javob ${index + 1}`}
-                    value={answer}
-                    onChange={(e) => {
-                      const newAnswers = [...answers]
-                      newAnswers[index] = e.target.value
-                      setAnswers(newAnswers)
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <Label>Javoblar (Kamida 2 ta)</Label>
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="sm"
+                    onClick={() => {
+                      setAnswers([...answers, ""])
+                      setAnswersCyrl([...answersCyrl, ""])
                     }}
-                    required
-                  />
-                ))}
+                    className="h-8 gap-1"
+                  >
+                    <Plus className="h-4 w-4" />
+                    Javob qo'shish
+                  </Button>
+                </div>
+                <div className="space-y-4">
+                  {answers.map((_, index) => (
+                    <Card key={index} className="p-4 bg-zinc-50/30">
+                      <div className="flex justify-between items-center mb-2">
+                        <Label className="text-xs font-bold uppercase text-zinc-500">Javob {index + 1}</Label>
+                        {answers.length > 2 && (
+                          <Button
+                            type="button"
+                            variant="ghost"
+                            size="icon"
+                            className="h-6 w-6"
+                            onClick={() => {
+                              const newAnswers = answers.filter((_, i) => i !== index)
+                              const newAnswersCyrl = answersCyrl.filter((_, i) => i !== index)
+                              setAnswers(newAnswers)
+                              setAnswersCyrl(newAnswersCyrl)
+                              if (parseInt(correctAnswer) >= newAnswers.length) {
+                                setCorrectAnswer((newAnswers.length - 1).toString())
+                              }
+                            }}
+                          >
+                            <X className="h-4 w-4 text-destructive" />
+                          </Button>
+                        )}
+                      </div>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        <div className="space-y-1">
+                          <Label className="text-[10px]">Lotin</Label>
+                          <Input
+                            placeholder={`Javob ${index + 1} (Lotin)`}
+                            value={answers[index]}
+                            onChange={(e) => {
+                              const newAnswers = [...answers]
+                              newAnswers[index] = e.target.value
+                              setAnswers(newAnswers)
+                            }}
+                            required
+                          />
+                        </div>
+                        <div className="space-y-1">
+                          <Label className="text-[10px]">Kirill</Label>
+                          <Input
+                            placeholder={`Жавоб ${index + 1} (Кирилл)`}
+                            value={answersCyrl[index] || ""}
+                            onChange={(e) => {
+                              const newAnswersCyrl = [...answersCyrl]
+                              newAnswersCyrl[index] = e.target.value
+                              setAnswersCyrl(newAnswersCyrl)
+                            }}
+                            required={!!answers[index]}
+                          />
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -488,10 +719,11 @@ export function TestsManagement() {
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="0">Javob 1</SelectItem>
-                      <SelectItem value="1">Javob 2</SelectItem>
-                      <SelectItem value="2">Javob 3</SelectItem>
-                      <SelectItem value="3">Javob 4</SelectItem>
+                      {answers.map((_, idx) => (
+                        <SelectItem key={idx} value={idx.toString()}>
+                          Javob {idx + 1}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 </div>
@@ -507,26 +739,6 @@ export function TestsManagement() {
                     required
                   />
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="explanation-title">Tushuntirish sarlavhasi (Optional)</Label>
-                <Input
-                  id="explanation-title"
-                  placeholder="Tushuntirish sarlavhasi..."
-                  value={explanationTitle}
-                  onChange={(e) => setExplanationTitle(e.target.value)}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="explanation-text">Tushuntirish matni (Optional)</Label>
-                <Textarea
-                  id="explanation-text"
-                  placeholder="Tushuntirish matni..."
-                  value={explanationText}
-                  onChange={(e) => setExplanationText(e.target.value)}
-                />
               </div>
 
               <div className="flex gap-2">

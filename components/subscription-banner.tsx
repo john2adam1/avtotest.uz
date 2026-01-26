@@ -62,7 +62,7 @@ export function SubscriptionBanner({ user, telegramLink = "https://t.me/youruser
 
   if (hasAccess) {
     return (
-      <Card className="bg-gradient-to-r from-green-500/10 to-emerald-500/10 border-green-500/20">
+      <Card className="bg-green-50 border-green-200">
         <CardContent className="p-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -89,7 +89,7 @@ export function SubscriptionBanner({ user, telegramLink = "https://t.me/youruser
   }
 
   return (
-    <Card className="bg-gradient-to-r from-primary/10 to-purple-500/10 border-primary/20">
+    <Card className="bg-blue-50 border-blue-200">
       <CardContent className="p-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -103,7 +103,7 @@ export function SubscriptionBanner({ user, telegramLink = "https://t.me/youruser
               </p>
             </div>
           </div>
-          <Button asChild className="bg-primary hover:bg-primary/90">
+          <Button asChild className="bg-primary hover:bg-primary/90 text-white shadow-sm transition-none">
             <a href={telegramLink} target="_blank" rel="noopener noreferrer">
               <Crown className="h-4 w-4 mr-2" />
               {t("subscription.buySubscription")}

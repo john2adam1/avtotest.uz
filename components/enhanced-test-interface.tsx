@@ -12,6 +12,7 @@ import Image from "next/image"
 import type { Test, UserSettings } from "@/lib/types"
 import { useTranslation } from "react-i18next"
 import { QuizProtection } from "@/components/quiz-protection"
+import { LanguageSwitcher } from "@/components/language-switcher"
 
 interface EnhancedTestInterfaceProps {
   title: string
@@ -30,7 +31,7 @@ export function EnhancedTestInterface({
   testTypeId,
   userSettings,
 }: EnhancedTestInterfaceProps) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({})
   const [answeredQuestions, setAnsweredQuestions] = useState<Record<number, boolean>>({})
@@ -38,6 +39,7 @@ export function EnhancedTestInterface({
   const [results, setResults] = useState<{ correct: number; wrong: number; unanswered: number; score: number } | null>(null)
   const [showExplanation, setShowExplanation] = useState<Record<number, boolean>>({})
   const [playingAudio, setPlayingAudio] = useState<Record<number, boolean>>({})
+  const [isMounted, setIsMounted] = useState(false)
   const audioRefs = useRef<Record<number, HTMLAudioElement>>({})
   const router = useRouter()
   const supabase = getSupabaseBrowserClient()
@@ -46,6 +48,10 @@ export function EnhancedTestInterface({
   // The userSettings language should ideally ideally match i18n.language, but i18next is the source of truth for UI.
   const questionFontSize = userSettings?.question_font_size || 16
   const answerFontSize = userSettings?.answer_font_size || 14
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   // Reset audio when question changes
   useEffect(() => {
@@ -61,6 +67,8 @@ export function EnhancedTestInterface({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [currentIndex]);
 
+  const autoNextTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+
   useEffect(() => {
     const handleKeyPress = (e: KeyboardEvent) => {
       if (isFinished) return
@@ -74,15 +82,29 @@ export function EnhancedTestInterface({
     }
 
     window.addEventListener("keydown", handleKeyPress)
-    return () => window.removeEventListener("keydown", handleKeyPress)
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress)
+      if (autoNextTimeoutRef.current) clearTimeout(autoNextTimeoutRef.current)
+    }
   }, [currentIndex, tests.length, isFinished])
 
   const handleAnswerSelect = (answerIndex: number) => {
+    if (answeredQuestions[currentIndex]) return
+
     setSelectedAnswers({ ...selectedAnswers, [currentIndex]: answerIndex })
     setAnsweredQuestions({ ...answeredQuestions, [currentIndex]: true })
+
+    // Auto-advance logic
+    if (currentIndex < tests.length - 1) {
+      if (autoNextTimeoutRef.current) clearTimeout(autoNextTimeoutRef.current)
+      autoNextTimeoutRef.current = setTimeout(() => {
+        setCurrentIndex(prev => prev + 1)
+      }, 1500)
+    }
   }
 
   const handleFinish = async () => {
+    if (autoNextTimeoutRef.current) clearTimeout(autoNextTimeoutRef.current)
     setIsFinished(true)
 
     let correct = 0
@@ -296,223 +318,199 @@ export function EnhancedTestInterface({
     )
   }
 
+  if (!isMounted) {
+    return <main className="min-h-screen bg-[#e0f2fe]" />
+  }
+
   const currentTest = tests[currentIndex]
+  const isCyrillic = i18n.language === 'uz_cyrl'
+
+  // Dynamic content based on language
+  const displayQuestion = (isCyrillic && currentTest.question_cyrl) ? currentTest.question_cyrl : currentTest.question
+  const displayAnswers = (isCyrillic && currentTest.answers_cyrl) ? currentTest.answers_cyrl : currentTest.answers
+  const displayExplanationTitle = (isCyrillic && currentTest.explanation_title_cyrl) ? currentTest.explanation_title_cyrl : currentTest.explanation_title
+  const displayExplanationText = (isCyrillic && currentTest.explanation_text_cyrl) ? currentTest.explanation_text_cyrl : currentTest.explanation_text
+  const displayAudioUrl = (isCyrillic && currentTest.audio_url_cyrl) ? currentTest.audio_url_cyrl : currentTest.audio_url
+
   const selectedAnswer = selectedAnswers[currentIndex]
   const isAnswered = answeredQuestions[currentIndex]
 
+  const getFLabel = (index: number) => `F${index + 1}`
+
   return (
-    <main className="container mx-auto px-4 py-6 md:py-10">
-      <div className="max-w-7xl mx-auto">
-        <Button variant="ghost" className="mb-6 pl-0 hover:pl-2 transition-all" onClick={() => router.back()}>
-          <ArrowLeft className="h-4 w-4 mr-2" />
-          Orqaga
-        </Button>
-        <div className="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
-          <div>
-            <h1 className="text-3xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600 mb-2">
+    <main className="min-h-screen bg-[#f0f9ff] py-6 md:py-10">
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" className="hover:bg-white/50 text-[#0369a1]" onClick={() => router.back()}>
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Orqaga
+            </Button>
+            <h1 className="text-2xl font-bold text-[#0369a1]">
               {title}
             </h1>
-            <div className="flex items-center gap-3">
-              <div className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium">
-                {currentIndex + 1} / {tests.length}
-              </div>
-            </div>
           </div>
-          <Button variant="outline" onClick={handleFinish} className="border-destructive/50 text-destructive hover:bg-destructive/10 hover:text-destructive">
-            {t("test.finish")}
-          </Button>
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher />
+            <Button variant="outline" onClick={handleFinish} className="bg-white/50 hover:bg-white border-red-200 text-red-600">
+              {t("test.finish")}
+            </Button>
+          </div>
         </div>
 
-        <Card className="bg-background/60 backdrop-blur-xl border-white/10 shadow-2xl overflow-hidden rounded-3xl">
+        {/* Top Navigation Strip (Test Numbers) */}
+        <div className="mb-6 bg-white border border-zinc-200 p-4 rounded-xl shadow-sm overflow-x-auto">
+          <div className="flex flex-wrap justify-center gap-2 min-w-max">
+            {tests.map((_, idx) => {
+              const ansIdx = selectedAnswers[idx]
+              const isAns = answeredQuestions[idx]
+              const correct = ansIdx === tests[idx].correct_answer
+
+              let btnClass = "bg-gray-200 text-gray-600"
+              if (currentIndex === idx) btnClass = "ring-2 ring-primary ring-offset-2 bg-primary text-white"
+              else if (isAns) {
+                btnClass = correct ? "bg-green-600 text-white" : "bg-red-600 text-white"
+              }
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`
+                    h-8 w-10 md:h-9 md:w-12 rounded flex items-center justify-center text-xs md:text-sm font-bold
+                    ${btnClass}
+                  `}
+                >
+                  {idx + 1}
+                </button>
+              )
+            })}
+          </div>
+        </div>
+
+        <Card className="bg-white border-zinc-200 shadow-sm overflow-hidden rounded-2xl">
           <QuizProtection>
             <CardContent className="p-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2">
-                {/* Left side: Question Image & Text */}
-                <div className="p-6 md:p-8 bg-muted/20 border-b lg:border-b-0 lg:border-r border-white/5 space-y-6">
-                  <div className="relative aspect-video w-full overflow-hidden rounded-2xl bg-black/5 shadow-inner flex items-center justify-center group">
+              <div className="flex flex-col lg:flex-row min-h-[500px]">
+                {/* Left side: Question Image */}
+                <div className="lg:w-1/2 p-6 flex flex-col justify-center items-center bg-gray-50/50 border-b lg:border-b-0 lg:border-r border-zinc-100">
+                  <div className="relative w-full aspect-video max-w-[600px] overflow-hidden rounded-lg bg-white flex items-center justify-center">
                     {currentTest.image_url ? (
                       <Image
                         src={currentTest.image_url}
-                        alt="Question image"
+                        alt="Question"
                         fill
-                        className="object-contain transition-transform duration-500 group-hover:scale-105"
+                        className="object-contain"
+                        priority
                       />
                     ) : (
-                      <div className="flex flex-col items-center gap-4 text-muted-foreground/50">
-                        <BookOpen className="h-24 w-24" />
+                      <div className="flex flex-col items-center gap-4 text-gray-300">
+                        <BookOpen className="h-20 w-20" />
                         <span className="text-sm">Rasm yo'q</span>
                       </div>
                     )}
                   </div>
-                  <div>
-                    <h2 className="font-bold leading-relaxed text-foreground" style={{ fontSize: `${questionFontSize}px` }}>
-                      {currentTest.question}
-                    </h2>
-                  </div>
                 </div>
 
-                {/* Right side: Answers & Controls */}
-                <div className="p-6 md:p-8 flex flex-col h-full justify-between gap-6 bg-background/40">
+                {/* Right side: Question Text & Answers */}
+                <div className="lg:w-1/2 p-6 md:p-8 flex flex-col justify-between space-y-8">
+                  <div className="space-y-6">
+                    <h2 className="font-bold leading-snug text-gray-800" style={{ fontSize: `${questionFontSize}px` }}>
+                      {displayQuestion}
+                    </h2>
 
-                  {/* Navigation Bar (Number Strip) - Hidden for random tests */}
-                  {testType !== "random" && (
-                    <div className="mb-6 overflow-x-auto pb-2 scrollbar-hide">
-                      <div className="flex gap-2 min-w-max">
-                        {tests.map((_, idx) => (
-                          <button
-                            key={idx}
-                            onClick={() => setCurrentIndex(idx)}
-                            className={`
-                                          h-10 w-10 rounded-lg flex items-center justify-center text-sm font-bold transition-all
-                                          ${currentIndex === idx
-                                ? "bg-primary text-primary-foreground shadow-lg scale-110"
-                                : answeredQuestions[idx]
-                                  ? "bg-primary/20 text-primary hover:bg-primary/30"
-                                  : "bg-muted text-muted-foreground hover:bg-muted/80"
-                              }
-                                      `}
-                          >
-                            {idx + 1}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                    <RadioGroup
+                      key={currentIndex}
+                      value={selectedAnswer?.toString()}
+                      onValueChange={(value) => handleAnswerSelect(Number.parseInt(value))}
+                      className="space-y-2"
+                    >
+                      {displayAnswers.map((answer, index) => {
+                        const isSelected = selectedAnswer === index
+                        const isCorrect = index === currentTest.correct_answer
+                        const showFeedback = isAnswered
 
-                  <RadioGroup
-                    key={currentIndex}
-                    value={selectedAnswer?.toString()}
-                    onValueChange={(value) => handleAnswerSelect(Number.parseInt(value))}
-                    className="space-y-4"
-                  >
-                    {currentTest.answers.map((answer, index) => {
-                      const isSelected = selectedAnswer === index
-                      const isCorrect = index === currentTest.correct_answer
-                      const showFeedback = isAnswered
+                        let containerClass = "bg-gray-100/50 border-transparent"
+                        let labelBg = "bg-gray-400"
+                        let labelText = "text-white"
 
-                      let containerClass = "border-transparent bg-secondary/30 hover:bg-secondary/50"
-                      let labelClass = "text-foreground"
-                      let circleClass = "border-muted-foreground/30 bg-transparent"
-                      let circleInner = null
-
-                      if (isSelected) {
-                        containerClass = "border-primary bg-primary/10 shadow-md ring-1 ring-primary transition-all scale-[1.01]"
-                        circleClass = "border-primary bg-primary"
-                        circleInner = <div className="h-2.5 w-2.5 rounded-full bg-background" />
-                      }
-
-                      if (showFeedback) {
                         if (isSelected) {
-                          if (!isCorrect) {
-                            containerClass = "border-red-500 bg-red-500/10 shadow-md ring-1 ring-red-500"
-                            circleClass = "border-red-500 bg-red-500"
-                            circleInner = <XCircle className="h-4 w-4 text-white" />
-                          } else {
-                            containerClass = "border-green-500 bg-green-500/10 shadow-md ring-1 ring-green-500"
-                            circleClass = "border-green-500 bg-green-500"
-                            circleInner = <CheckCircle2 className="h-4 w-4 text-white" />
-                          }
-                        } else if (isCorrect) {
-                          containerClass = "border-green-500/50 bg-green-500/5 shadow-sm ring-1 ring-green-500/50"
-                          circleClass = "border-green-500 bg-green-500"
-                          circleInner = <CheckCircle2 className="h-4 w-4 text-white" />
-                        } else {
-                          containerClass = "opacity-50 grayscale"
+                          containerClass = "bg-blue-50 border-blue-500"
+                          labelBg = "bg-blue-600"
                         }
-                      }
 
-                      return (
-                        <div
-                          key={index}
-                          onClick={() => !isAnswered && handleAnswerSelect(index)}
-                          className={`
-                             group relative flex items-center gap-4 rounded-xl border p-4 transition-all duration-200 cursor-pointer
-                             ${containerClass}
-                          `}
-                        >
-                          <RadioGroupItem
-                            value={index.toString()}
-                            id={`answer-${index}`}
-                            disabled={isAnswered}
-                            className="absolute opacity-0 w-0 h-0 overflow-hidden"
-                          />
+                        if (showFeedback) {
+                          if (isSelected) {
+                            if (!isCorrect) {
+                              containerClass = "bg-red-50 border-red-500"
+                              labelBg = "bg-red-600"
+                            } else {
+                              containerClass = "bg-green-50 border-green-500"
+                              labelBg = "bg-green-600"
+                            }
+                          } else if (isCorrect) {
+                            containerClass = "bg-green-50 border-green-500/50"
+                            labelBg = "bg-green-600"
+                          } else {
+                            containerClass = "opacity-50"
+                          }
+                        }
 
-                          {/* Visual Radio Circle */}
-                          <div className={`
-                             flex-shrink-0 h-6 w-6 rounded-full border-2 flex items-center justify-center transition-all
-                             ${circleClass}
-                             group-hover:border-primary
-                          `}>
-                            {circleInner}
-                          </div>
-
-                          <Label
-                            htmlFor={`answer-${index}`}
-                            className={`flex-1 cursor-pointer font-medium leading-normal ${labelClass}`}
-                            style={{ fontSize: `${answerFontSize}px` }}
+                        return (
+                          <div
+                            key={index}
+                            onClick={() => !isAnswered && handleAnswerSelect(index)}
+                            className={`
+                              flex items-center gap-0 rounded-lg border cursor-pointer overflow-hidden
+                              ${containerClass}
+                            `}
                           >
-                            {answer}
-                          </Label>
-                        </div>
-                      )
-                    })}
-                  </RadioGroup>
+                            <RadioGroupItem
+                              value={index.toString()}
+                              id={`answer-${index}`}
+                              disabled={isAnswered}
+                              className="sr-only"
+                            />
+                            {/* F Label Box */}
+                            <div className={`
+                              flex-shrink-0 w-12 h-full py-3 flex items-center justify-center font-bold text-sm
+                              ${labelBg} ${labelText}
+                            `}>
+                              {getFLabel(index)}
+                            </div>
+                            {/* Answer Text */}
+                            <Label
+                              htmlFor={`answer-${index}`}
+                              className="flex-1 cursor-pointer font-medium px-4 py-3 leading-tight text-gray-700"
+                              style={{ fontSize: `${answerFontSize}px` }}
+                            >
+                              {answer}
+                            </Label>
+                          </div>
+                        )
+                      })}
+                    </RadioGroup>
+                  </div>
+
                   <div className="space-y-4">
-                    {/* Audio and Explanation Tools */}
-                    <div className="flex gap-3 justify-end pt-2">
-                      {currentTest.audio_url && (
-                        <Button
-                          variant={playingAudio[currentIndex] ? "default" : "secondary"}
-                          size="icon"
-                          className="rounded-full h-10 w-10 shadow-sm"
-                          onClick={() => toggleAudio(currentIndex)}
-                        >
-                          <Volume2 className="h-5 w-5" />
-                        </Button>
-                      )}
-                      {currentTest.explanation_text && (
-                        <Button
-                          variant={showExplanation[currentIndex] ? "default" : "secondary"}
-                          size="icon"
-                          className="rounded-full h-10 w-10 shadow-sm"
-                          onClick={() => toggleExplanation(currentIndex)}
-                        >
-                          <Lightbulb className="h-5 w-5" />
-                        </Button>
-                      )}
-                    </div>
-
-                    {/* Explanation display */}
-                    {showExplanation[currentIndex] && currentTest.explanation_text && (
-                      <div className="rounded-xl border border-blue-200 bg-blue-50/50 dark:bg-blue-900/10 p-5 space-y-2 animate-in fade-in slide-in-from-top-2">
-                        {currentTest.explanation_title && (
-                          <h3 className="font-semibold text-blue-700 dark:text-blue-300 flex items-center gap-2">
-                            <Lightbulb className="h-4 w-4" />
-                            {currentTest.explanation_title}
-                          </h3>
-                        )}
-                        <p className="text-sm text-foreground/80 leading-relaxed">{currentTest.explanation_text}</p>
-                      </div>
-                    )}
-
-                    {/* Navigation */}
-                    <div className="flex gap-3 pt-2">
-                      <Button variant="outline" onClick={() => setCurrentIndex(currentIndex - 1)} disabled={currentIndex === 0} className="flex-1 h-12 text-base rounded-xl border-primary/20 hover:bg-primary/5 hover:border-primary/50">
+                    {/* Navigation Buttons */}
+                    <div className="flex gap-3 pt-4 border-t border-gray-100">
+                      <Button
+                        variant="ghost"
+                        onClick={() => setCurrentIndex(currentIndex - 1)}
+                        disabled={currentIndex === 0}
+                        className="flex-1 h-10 text-sm rounded-lg hover:bg-gray-100"
+                      >
                         Avvalgi
                       </Button>
-                      {currentIndex < tests.length - 1 ? (
-                        <Button
-                          onClick={() => setCurrentIndex(currentIndex + 1)}
-                          className="flex-1 h-12 text-base rounded-xl bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20"
-                        >
-                          Keyingi
-                        </Button>
-
-                      ) : (
-                        <Button onClick={handleFinish} disabled={selectedAnswer === undefined} className="flex-1 h-12 text-base rounded-xl bg-green-600 hover:bg-green-700 shadow-lg shadow-green-600/20 text-white">
-                          {t("test.finish")}
-                        </Button>
-                      )}
+                      <Button
+                        variant="ghost"
+                        onClick={() => setCurrentIndex(currentIndex + 1)}
+                        disabled={currentIndex === tests.length - 1}
+                        className="flex-1 h-10 text-sm rounded-lg hover:bg-gray-100"
+                      >
+                        Keyingi
+                      </Button>
                     </div>
                   </div>
                 </div>
@@ -520,7 +518,7 @@ export function EnhancedTestInterface({
             </CardContent>
           </QuizProtection>
         </Card>
-      </div >
-    </main >
+      </div>
+    </main>
   )
 }
