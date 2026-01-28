@@ -33,6 +33,16 @@ const nextConfig = {
         hostname: 'ptest.uz',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'i.postimg.cc',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '**.postimg.cc',
+        pathname: '/**',
+      },
     ],
     // Optimize image loading
     formats: ['image/avif', 'image/webp'],

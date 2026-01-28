@@ -1,0 +1,2180 @@
+
+
+
+
+
+
+21-bilet
+Haydovchi qanday holda bu belgining talablarini to'g'ri bajaradi?
+* F1
+Kesishadigan yo'l bo'ylab harakat qilayotgan mexanik transport vositalariga yo'l beradi
+* F2  +
+Kesishadigan yo'l bo'ylab harakat qilayotgan transport vositalariga yo'l beradi
+https://ptest.uz/images/3732ba1f-208b-4336-86ac-b5bfcd6ad3f8.webp
+
+
+Avtopoezdni shu vaziyatda, agar u 40 km/s, dan kam tezlik bilan harakat qilayotgan bo'lsa, quvib o'tishga ruxsat etiladimi?
+* F1  +
+Taqiqlanadi
+* F2
+Ruxsat etiladi
+https://ptest.uz/images/00541196-4363-44a2-b90f-63656072bd46.webp
+
+
+Ikki tomonlama harakatli yo'lda uchta bo'lak bor, siz o'ngga burilishingiz zarur. Siz ushbu manyovrni qaysi bo'lakdan amalga oshirasiz?
+* F1   +
+O'ng bo'lakdan
+* F2
+O'rta bo'lakdan
+* F3
+O'ng yoki o'rta bo'lakdan
+* F4
+O'rta bo'lakdan, lekin faqat o'ng bo'lak band bo'lgan vaqtda
+
+
+Qaysi transport vositasining haydovchisi yo'l berishi kerak?
+* F1   +
+Ko'k avtomobilning haydovchisi
+* F2
+Qizil avtomobilning haydovchisi
+https://ptest.uz/images/18cc427e-716e-4e0f-a6f4-9f20c907890e.webp
+
+
+Jarohatdan behushlanganda birinchi tibbiy yordamni qanday ko'rsatish kerak?
+* F1
+Kiyim-boshni echish yoki bo'shatish, toza havo kelishini taminlash. Nashatir spirti hidlatish. Yuzga sovuq suv sepish. Peshonaga va gardanga iliq malhamlar qo'yish
+* F2   +
+Mutloq tinch qo'yish. Boshni tushirish, oyoqlarni ko'tarish, badanni isitish. Qaynoq ichimlik (choy va shu kabilar) berish. Bog'langan jgutni shifokorsiz echmaslik va bo'shatmaslik
+
+
+Oq chiziq bilan belgilangan orolchaga kirishga ruxsat etiladimi?
+* F1
+Faqat to'xtash uchun ruxsat etiladi
+* F2
+Orqa bilan harakat qilganda ruxsat etiladi
+* F3   +
+Taqiqlanadi
+https://ptest.uz/images/a7d04f41-709f-46ca-8fc4-b7e8211dd9ad.webp
+
+
+Relssiz transport vositalarining harakatlanishi uchun bo'laklar soni qanday aniqlanadi?
+* F1
+Yo'l yotiq chizig'i bilan
+* F2
+Bo'laklar bo'yicha harakatlanish yo'nalishi yoki "????? ?????? ???????????? ????????" yo'l belgilari bilan
+* F3
+Haydovchining o'zi tomonidan qatnov qismining kengligini, transport vositalarining o'lchamlarini va ular o'rtasidagi zarur yonlama oraliq masofani hisobga olib
+* F4   +
+Barcha sanab o'tilgan usullar bilan
+
+
+
+Harakatlanish kimga ruxsat etilgan?
+* F1   +
+Yuk avtomobili va motosiklga
+* F2
+Barcha transport vositalariga
+* F3
+Tramvayga va engil avtomobilga
+* F4
+Engil va yuk avtomobiliga, motosiklga
+
+
+
+Haydovchi qaysi rasmda qoidalar talablarini buzmay turib manyovr qildi?
+* F1   +
+1
+* F2
+2
+* F3
+3
+https://ptest.uz/images/a544d057-16cd-4b5e-9a90-55c073aecee6.webp
+
+
+Kunning qorong'i vaqtida va etarlicha ko'rinmaydigan sharoitlarda yo'lda qoldirilgan yo'l mashinalari, qurilish materiallari, qurilmalar va hokazolar belgilanishi kerak:
+* F1
+Tegishli yo'l belgilari bilan
+* F2
+Yo'naltiruvchi va tevaragini o'rovchi moslamalar bilan
+* F3
+Qizil yoki sariq yoritkich chiroqlari bilan
+* F4    +
+Barcha sanab o'tilgan hollar bajarilishi kerak
+
+
+
+Transport vositalari chorrahani quyidagi tartibda kesib o'tadilar:
+* F1   +
+Tramvay, avtomobil va avtobus bir vaqtda
+* F2
+Tramvay, avtobus, avtomobil
+* F3
+Avtobus, tramvay, avtomobil
+https://ptest.uz/images/cdcab0dd-3192-4088-ab4a-22513f9bce82.webp
+
+
+Qaysi transport vositasining haydovchisi qayrilishni to'g'ri bajaradi?
+* F1
+Ko'k avtomobilning haydovchisi
+* F2
+Qizil avtomobilning haydovchisi
+* F3   +
+Har ikki haydovchi
+https://ptest.uz/images/440c5991-c4e3-40ec-bcd9-7113ba8170f6.webp
+
+
+
+Ko'rsatilgan belgilardan qay biri avtopoezdni bildirish uchun o'rnatiladi?
+* F1
+Chap belgi
+* F2
+O'ng belgi
+* F3    +
+Har ikki belgi
+https://ptest.uz/images/b71c7f62-519f-43fd-a4fb-6a9b8243b9bb.webp
+
+
+
+Qaysi avtomobil to'xtash qoidasini buzdi?
+* F1
+Yashil avtomobil
+* F2    +
+Har ikkisi buzdi
+* F3
+Har ikkisi ham buzmadi
+https://ptest.uz/images/ed398a24-6d2a-4c72-b81c-7000c45b8500.webp
+
+
+Agar yo'l bo'lagi sidirg'a chiziq bilan ajratilib, belgi bilan belgilangan bo'lsa, avtobus haydovchisining bo'lak bo'ylab harakatlanishiga ruxsat etiladimi?
+* F1
+Ruxsat etiladi
+* F2
+Taqiqlanadi
+* F3   +
+Agar avtobus belgilangan yo'nalish bo'yicha harakatlansa, ruxsat etiladi
+https://ptest.uz/images/4e5773b0-e84f-49c2-b066-790d85bba0dc.webp
+
+
+Ko'krak qafasi shikastlangan yaradorni kerakli joyga qanday eltish kerak?
+* F1   +
+Yaralangan yoni bilan yotgan yoki yarim o'tirgan holda
+* F2
+Sog' yoni bilan yotgan yoki o'tirgan holda
+* F3
+Orqasi bilan yoki qorni bilan yotgan holda
+
+
+
+* 
+O'zbekcha
+* ???????
+Ko'rsatilgan belgilardan qay biri ilgari kiritilgan barcha cheklashlarni bekor qiladi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4   +
+4
+* F5
+5
+https://ptest.uz/images/cfa6ddfb-e0d4-47f0-a00e-7ebe3baa4f37.webp
+
+
+Avtomobil haydovchisi uni boshqa transport vositalari quvib o'tayotganda qanday harakat qilishi kerak?
+* F1
+Harakat bo'lagini o'zgartirmay, o'ng burilish ishorasini berishi
+* F2    +
+Harakat tezligini oshirish yoki boshqa xatti-harakatlar bilan quvib o'tishga to'sqinlik qilmasligi
+* F3
+Harakat tezligini kamaytirishi, tovush ishora berishi
+
+
+
+Qo'l bilan beriladigan ogohlantiruvchi ishora qoidalarga muvofiq qachon tugallanishi mumkin?
+* F1   +
+Manyovrni bevosita bajarishdan oldin
+* F2
+Manyovr tugagandan so'ng zudlik bilan
+* F3
+Manyovr bajarayotgan vaqtda
+
+
+Qish vaqtida orqa etakchi ko'prikli avtomobilda chuqur bo'lib qolgan g'ildirak izidan qanday chiqish mumkin?
+* F1   +
+Uncha katta bo'lmagan tezliqda chiqish, birinchi galda boshqaruv chambaragini chiqish tomonning ro'parasiga, keyin esa chiqish tomoniga shiddat bilan burish kerak
+* F2
+Izdan chiqishni iloji boricha tezroq boshlash, dastlab boshqaruv chambaragini chiqish tomoniga, keyin esa ro'parasiga burish kerak
+
+
+
+Haydovchi qanday holda bu belgining talablarini to'g'ri bajaradi?
+* F1
+Kesishadigan yo'l bo'ylab harakat qilayotgan mexanik transport vositalariga yo'l beradi
+* F2   +
+Kesishadigan yo'l bo'ylab harakat qilayotgan transport vositalariga yo'l beradi
+https://ptest.uz/images/3732ba1f-208b-4336-86ac-b5bfcd6ad3f8.webp
+
+
+
+22-bilet
+Qaysi belgi kesishadigan yo'l bo'ylab harakat qilayotgan transport vositalariga yo'l berish majburiyatini yuklaydi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4   +
+4
+* F5
+5
+https://ptest.uz/images/5277d174-31ff-41a8-9697-2330ee2fda26.webp
+
+
+Manyovr vaqtida haydovchi xar doim ogoxlantiruvchi ishorasi berishi kerakmi?
+* F1
+Faqat agar uning orqasida boshqa transport vositasi harakatlanayotgan holda
+* F2
+Faqat agar uning transport vositasi burilishini ko'rsatuvchi chiroqlar bilan jihozlangan holda
+* F3
+Faqat serqatnov harakatli yo'lda
+* F4   +
+Faqat u harakatning boshqa ishtirokchilarini chalg'itmagan hollarda
+
+
+
+Chorrahani kesib o'tish navbatini ko'rsating:
+* F1
+Ko'k, qizil, ayni vaqtda yashil bilan
+* F2
+Qizil, ko'k, yashil
+* F3   +
+Qizil ayni vaqtda yashil bilan, ko'k
+https://ptest.uz/images/6616c132-f0cf-42ee-99d7-37861bd5cc2c.webp
+
+
+Transport vositasining haydovchisi oldida "to'xtash chizig'i" chizilgan va svetoforning yashil yoritkichi yoniq bo'lgan chorrahaga yaqinlashayotib nima qilishi kerak?
+* F1
+"?????? ??????"da to'xtashi, so'ng esa harakatni qayta tiklashi
+* F2   +
+To'xtamasdan chorraha orqali harakatni davom ettirishi
+
+
+
+Ruxsat etilgan to'la vazni 3,5 t dan kam bo'lgan yuk avtomobilining haydovchisiga avtomagistrallarda nima taqiqlangan?
+* F1
+Uch bo'lakli yo'lning ikkinchi bo'lagida harakatlanish
+* F2    +
+Orqa bilan harakatlanish
+* F3
+Mexanik transport vositalarini shatakka olish
+* F4
+Barcha sanab o'tilgan harakatlar
+
+
+
+Qaysi transport vositasi haydovchisi yo'l berishi kerak?
+* F1
+Avtomobil haydovchisi
+* F2     +
+Motosikl haydovchisi
+https://ptest.uz/images/f0b7329e-4325-41e6-9054-b746f36b0e12.webp
+
+
+Aholi punktlaridan tashqarida yuk avtomobil yukxonasida odamlarni tashishda qanday eng yuqori tezlikda harakatlanishga ruxsat etiladi?
+* F1
+40 km/s
+* F2
+50 km/s
+* F3   +
+60 km/s
+* F4
+70 km/s
+* F5
+80 km/s
+
+
+
+Bunday vaziyatda haydovchi nima qilishi kerak?
+* F1
+Oldindan yaqin fara chiroqlarini yoqib va uzluksiz tovush ishorasini berib, eng kam tezlik bilan turgan transport vositasini aylanib o'tishi
+* F2   +
+Qatnov qismidan o'tayotgan bolalarga yo'l berishi
+* F3
+Bu yo'l qismidan o'tishi kerak, chunki bolalar qatnov qismini piyodalar o'tish joyidan kesib o'tmayaptilar
+https://ptest.uz/images/3ce87672-16cf-4f85-bb8a-ba3ee5271ebf.webp
+
+
+Mazkur taniqlik belgisi nimani bildiradi?
+* F1
+Oldinda qatnov qismi notekis bo'lgan yo'l qismini
+* F2
+Oldinda shu yo'nalishda harakatlanish uchun uch bo'lakli yo'l qismini
+* F3   +
+Mexanik transport vositasida tishli turumlangan (shiplar) shinalar o'rnatilganini
+https://ptest.uz/images/90d8baf5-c067-4546-8efd-c1fd08dc3c08.webp
+Avtobus haydovchisiga yo'lovchilarni tushirish uchun to'xtashga ruxsat etiladimi?
+* F1   +
+Taqiqlanadi
+* F2
+Ruxsat etiladi
+https://ptest.uz/images/971ae0f9-4594-41ec-ab25-46ee30dce6f8.webp
+
+
+Bu yotiq chiziq nimani bildiradi?
+* F1
+Piyodalar o'tish joyini
+* F2   +
+Velosiped yo'lkasi qatnov qismini kesib o'tadigan joyni
+* F3
+Mol haydaladigan joyni
+https://ptest.uz/images/9fc9a8e0-55fe-44f3-8984-c982399d9fb8.webp
+
+
+
+Qaysi transport vositasi haydovchisi yo'l berishi kerak?
+* F1
+Avtobusning haydovchisi
+* F2   +
+Yuk tashuvchi avtomobilning haydovchisi
+https://ptest.uz/images/2fe6efa9-b8c0-426e-b132-dcc58e641d85.webp
+
+
+
+Qaysi transport vositasining haydovchisi aylanma harakatli kesishmaga to'g'ri chiqadi?
+* F1    +
+Ikki haydovchi
+* F2
+Faqat avtobusning haydovchisi
+* F3
+Faqat engil avtomobilning haydovchisi
+https://ptest.uz/images/1b5ee07c-3ebf-44ac-8ff0-0e0efa6cce24.webp
+
+
+Yo'lovchilarni tushirish uchun bu belgi o'rnatilgan bo'lakda to'xtashga ruxsat etiladimi?
+* F1   +
+Agar bo'lak qatnov qismining o'ng chetida joylashgan va u yotiq uzluksiz chizig'i bilan qatnov qismidan ajratilmagan bo'lsa ruxsat etiladi
+* F2
+Taqiqlanadi
+* F3
+Ruxsat etiladi
+https://ptest.uz/images/7fc48bf5-61e9-4708-9e13-ab7b54a861b7.webp
+
+
+Siz quvib o'tish uchun chiqdingiz va bexosdan ro'paradan kelayotgan avtobusni ko'rib qoldingiz. Agar Siz quvib o'tishni tugallay olishingizga ishonchingiz bo'lmasa, Siz:
+* F1
+Tovush xabarini berib va faralarni yoqib quvib o'tishni uni tugallaguncha davom ettirishingiz kerak
+* F2
+Tezlikni asta ko'paytirishingiz va quvib o'tishni tezroq tugallashingiz kerak
+* F3   +
+Tezlikni kamaytirishingiz va avval egallagan bo'lagingizga qaytishingiz kerak
+
+Bu joyda quvib o'tishga ruxsat etilganmi?
+* F1
+Quvib o'tilayotgan transport vositasi 40 km/s dan kam tezlik bilan harakatlanganda ruxsat etiladi
+* F2   +
+Taqiqlanadi
+* F3
+Agar quvib o'tish temir yo'l kesishmasigacha tugasa, ruxsat etiladi
+https://ptest.uz/images/23843879-b00d-4832-a5d0-84a92bc804db.webp
+
+
+Ishlamayotgan boshqaruv ruli bilan to'xtab turish yoki tamirlash joyiga borishga ruxsat etiladimi?
+* F1
+Qattiq ulagichda shatakka olinganda ruxsat etiladi
+* F2
+Harakat havfsizligini taminlovchi tezlikda ruxsat etiladi
+* F3    +
+Taqiqlanadi
+
+
+
+Bu belgida qaysi yuk avtomobili harakatni davom ettirishi mumkin?
+* F1
+8 tonnagacha yuk ortgan avtomobil
+* F2
+8 tonna yuk ko'tarish quvvatiga ega bo'lgan bo'sh avtomobil
+* F3   +
+Ruxsat etilgan to'la vazni 8 tonnadan ortiq bo'lmagan avtomobil
+https://ptest.uz/images/80dff73e-7d0f-4908-9432-3acd4dbe2b6e.webp
+
+Qayta tizilishda haydovchi boshqa transport vositalariga yo'l berishi kerakmi?
+* F1   +
+Kerak, agar transport vositasi qo'shni bo'lak bo'yicha yo'lakay harakat qilsa
+* F2
+Kerak emas
+* F3
+O'zaro qayta tizilishda barcha hollarda kerak
+
+
+
+Tyagach haydovchisi nima qilishi kerak?
+* F1   +
+Xavfli burilishdan 100 metr o'tib turib to'xtash va orqasida to'plangan transport vositalarini o'tkazib yuborishi
+* F2
+O'sha tezlik bilan harakatni davom ettirishi
+* F3
+Qo'li bilan o'zini ro'para bo'lakdan quvib o'tishlari haqida ishora qilishi kerak
+https://ptest.uz/images/3ad7e0d6-5ea1-4d19-8e82-8e73e6a49f83.webp
+
+
+
+Qaysi belgi kesishadigan yo'l bo'ylab harakat qilayotgan transport vositalariga yo'l berish majburiyatini yuklaydi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4   +
+4
+* F5
+5
+https://ptest.uz/images/5277d174-31ff-41a8-9697-2330ee2fda26.webp
+
+
+
+
+23-bilet
+Uch bo'lakli bo'lgan ikki tomonlama harakatlanadigan yo'llarda ro'paradagi harakat uchun mo'ljallangan chetki chap bo'lakka o'tishga ruxsat etiladimi?
+* F1
+Quvib o'tish uchun ruxsat etiladi
+* F2
+Barcha hollarda ruxsat etiladi
+* F3   +
+Taqiqlanadi
+
+
+Qayta tizilish oldidan ogohlantiruvchi ishora qachon berilishi kerak?
+* F1
+Bevosita manyovrni bajarishni boshlash oldidan
+* F2
+Manyovrni bajarishni boshlagandan so'ng zudlik bilan
+* F3   +
+Manyovrni bajarishni boshlamasidan oldinroq
+
+
+
+Transport vositalari chorrahani quyidagi tartibda kesib o'tadilar:
+* F1   +
+Qizil avtomobil, tramvay ayni vaqtda yashil avtomobil bilan
+* F2
+Tramvay, qizil, yashil avtomobillar
+* F3
+Tramvay, ayni vaqtda yashil avtomobil, qizil avtomobil
+https://ptest.uz/images/9fdaf374-1436-46d3-91b6-9657d5370647.webp
+
+
+Bu yo'l belgisi nimani bildiradi?
+* F1    +
+Yo'l (marshrut) raqamini ko'rsatadi
+* F2
+Eng yaqin aholi yashaydigan joygacha bo'lgan masofani ko'rsatadi
+* F3
+DANning eng yaqin mahkamasigacha bo'lgan masofani ko'rsatadi
+* F4
+"???????? ???????" vazifasini bajaradi
+https://ptest.uz/images/a768212a-d5c8-4571-a406-ebe16689e44e.webp
+
+
+Furgon yukxonada odamlarni tashishga ruxsat etiladimi?
+* F1
+Taqiqlanadi
+* F2
+Ruxsat etiladi
+* F3   +
+Agar ularning tuzilishi odamlarni tashishga moslashtirilgan bo'lsa, ruxsat etiladi
+
+
+Yo'lning chapga burilishiga yaqinlashganingizda, u o'ylaganingizdan ko'ra ancha keskinroq bo'lib chiqsa, Siz
+* F1
+Tezlikni o'zgartirmay va yo'l qatnov qismining chap yoqasidan harakatni davom ettirishingiz kerak
+* F2   +
+Harakat tezligini kamaytirishingiz kerak
+* F3
+Burilishdan tezroq o'tish uchun tezlikni oshirishingiz kerak
+ 
+
+
+Ko'k avtomobilga qaysi yo'nalishda harakatlanishga ruxsat etiladi?
+* F1
+Faqat orqa yo'nalishda
+* F2
+To'g'riga, chap va orqa yo'nalishda
+* F3   +
+Chap va orqa yo'nalishda
+* F4
+Barcha yo'nalishlarda
+https://ptest.uz/images/1044f826-f496-4dfc-ba14-fb05dd40eb05.webp
+
+
+Agar transport vositasining ishchi tormozining samaradorligi Qoidalar talabiga javob bermasa, u holda siz majbursiz:
+* F1
+Belgilangan safarni davom ettirishga, bunda kunning yorug' vaqtida yaqinni yorituvchi fara chirog'ini yoqishga
+* F2
+Bundan keyingi harakatni to'xtatishga
+* F3   +
+Nosozlikni o'sha joyda bartaraf etishga, agar buning iloji bo'lmasa zarur ehtiyot choralariga rioya qilgan holda to'xtab turish yoki tamirlashga olib borishga
+
+
+
+Haydovchi to'xtash oldidan ogohlatiruvchi ishora berishga qachon majbur?
+* F1
+Faqat shu holdaki, agar uning orqasidan boshqa transport vositasi harakat qilsa
+* F2
+Faqat aholi punktlarida
+* F3   +
+Barcha hollarda
+
+
+
+
+Ro'paradan kelayotgan avtomobil haydovchisi qanday yo'l tutishi kerak?
+* F1
+Yo'l yoqasida to'xtashi
+* F2   +
+Yalt-yalt etuvchi chiroq mayoqchasi yoqilgan avtomobiliga halaqit bermasdan harakatni davom ettirishi
+https://ptest.uz/images/91adc14e-7916-4528-a661-b4beaac94c32.webp
+
+
+Yo'naltirgichlar bilan ko'rsatilgan qaysi yo'nalishlarda harakatlanishga ruxsat etilgan?
+* F1   +
+"?"
+* F2
+"?"
+* F3
+"?" va "?"
+https://ptest.uz/images/042c6fa6-abf7-43f2-9f12-f4ca1c8bfb09.webp
+
+
+Motosiklning haydovchisi qanday holda chapga to'g'ri burildi?
+* F1
+Chorrahaga chiqdi, yuk avtomobilini o'tkazib yubordi, burilishni tugalladi
+* F2
+Chorrahaga chiqdi va tartibga soluvchining ruxsat etuvchi ishorasini kutib, burilishni tugalladi
+* F3    +
+To'xtadi va tartibga soluvchining ruxsat etuvchi ishorasida to'xtamay chapga burildi
+https://ptest.uz/images/48063952-a0a4-4703-84bb-a0cf8df8fbc1.webp
+
+
+Avtomobilning qaysi yo'nalishda harakatlanishiga ruxsat etiladi?
+* F1
+Chapga va o'ngga
+* F2
+Faqat to'g'riga
+* F3   +
+Barcha yo'nalishlarga
+https://ptest.uz/images/017923a8-8ec7-423f-b6b2-7b83712e86ab.webp
+
+
+Chorrahani ikkinchi bo'lib kim kesib o'tadi?
+* F1
+Yashil avtomobil
+* F2   +
+Qizil avtomobil
+* F3
+Ko'k avtomobil
+* F4
+Sariq avtomobil
+https://ptest.uz/images/b1e93ee9-2072-41c0-947d-c24f5f93bae7.webp
+
+
+Qaysi transport vositasining haydovchisi yo'lda tezlanish bo'lagi bo'lganda unga chiqish qoidasini buzdi?
+* F1
+Har ikki haydovchi
+* F2
+Har ikki haydovchi to'g'ri chiqadi
+* F3
+Ko'k avtomobilning haydovchisi
+* F4   +
+Yashil avtomobilning haydovchisi
+https://ptest.uz/images/914230f7-7094-4639-870a-0b79bfc9f319.webp
+
+
+Haydovchi yo'l-transport hodisasida shikastlangan transport vositasini shatakka olish uchun yuk avtomobilini ichki ishlar organi xodimi ixtiyoriga qanday holda berishi kerak?
+* F1
+Faqat shu holdaki, agar shatakka olish yo'l-yo'lakay yo'nalishda amalga oshirilsa
+* F2   +
+Har qanday holda, fuqarolarga tegishli transport vositalaridan tashqari
+* F3
+Haydovchining istagi bo'yicha
+ To'xtash qoidasini buzgan hamma haydovchilar qaysi javobda ko'rsatilgan?
+* F1
+Qizil avtomobil va motosiklning haydovchilari
+* F2
+Ko'k avtomobil haydovchisi
+* F3
+Motosiklning haydovchisi
+* F4   +
+Barcha transport vositalarining haydovchilari
+https://ptest.uz/images/78cda1b5-6ade-42e8-8356-047cfacbf30b.webp
+
+
+Burilish vaqtida qatnov qismining kesishmasidan chiqishda transport vositasi qaerda bo'lmasligi kerak?
+* F1
+Chap bo'lakda, agar o'ng bo'lak bo'sh bo'lsa
+* F2   +
+Qarama-qarshi harakat tomonida
+* F3
+Agar bir yo'nalishda harakatlanish uchun uchtadan kam bo'lmagan bo'lak bo'lganda, chap bo'lakda
+* F4
+Ruxsat etilgan to'la vazni 3,5 t. dan ortiq bo'lgan faqat yuk avtomobillariga bir yo'nalishdan harakatlanishi uchun ikkita bo'lak bo'lsa, chap bo'lakda
+
+
+
+Bu yotiq chiziq nimani bildiradi?
+* F1
+Faqat avtobusning harakatlanishi uchun mo'ljallangan bo'lakni bildiradi
+* F2   +
+Faqat belgilangan yo'nalishdagi transport vositalarining harakatlanishi uchun mo'ljallangan bo'lakni bildiradi
+* F3
+Avtobuslar va trolleybuslarning harakatlanishi uchun mo'ljallangan bo'lakni bildiradi
+* F4
+Avtobuslar va marshrutli taksi (alohida kichik avtobuslar)ning harakatlanishi uchun mo'ljallangan bo'lakni bildiradi
+https://ptest.uz/images/e5512446-aa69-4808-aa5a-ec7e96f9032c.webp
+
+
+Avtomagistralda ajratuvchi bo'lakning uzilishlariga kirishga ruxsat etiladimi?
+* F1
+Ruxsat etiladi
+* F2
+Faqat orqa burilish uchun ruxsat etiladi, to'la vazni 3,5 t dan ortiq bo'lgan yuk avtomobillarning haydovchilari bundan mustasno
+* F3   +
+Taqiqlanadi
+* F4
+Belgilangan yo'nalishdagi transport vositalariga ruxsat etiladi
+
+
+
+Uch bo'lakli bo'lgan ikki tomonlama harakatlanadigan yo'llarda ro'paradagi harakat uchun mo'ljallangan chetki chap bo'lakka o'tishga ruxsat etiladimi?
+* F1
+Quvib o'tish uchun ruxsat etiladi
+* F2
+Barcha hollarda ruxsat etiladi
+* F3   +
+Taqiqlanadi
+24-bilet
+Ko'k avtomobilning haydovchisiga quvib o'tishga ruxsat etiladimi?
+* F1
+Ruxsat etiladi
+* F2   +
+Taqiqlanadi
+* F3
+Ruxsat etiladi, agar qizil avtomobil 40 km/soatdan kam tezlik bilan harakatlanayotgan bo'lsa
+https://ptest.uz/images/9cb5edd2-51b5-402d-a3e8-59032c60d577.webp
+
+
+Sirpanchiq yo'lda yurgizgich bilan tormozlashni qo'llash orqa uzatmali avtomobil uchun:
+* F1   +
+Avtomobilning turg'unligini oshiradi
+* F2
+Avtomobilning turg'unligini kamaytiradi
+* F3
+Avtomobilning turg'unligiga hech qanday tasir ko'rsatmaydi
+
+
+Agar qatnov qismining kengligi chetki chap bo'lakdan qayrilish uchun etarli bo'lmasa, qoidalar qayrilishni qatnov qismining o'ng chekkasi yoki yo'lning o'ng yoqasidan amalga oshirishga yo'l qo'yadimi?
+* F1
+Qatnov qismining faqat o'ng chekkasidan yo'l qo'yadi. Yo'lning o'ng yoqasidan yo'l qo'yilmaydi
+* F2    +
+Yo'l qo'yiladi. Bunda qayrilayotgan haydovchi yo'lakay va qarama-qarshi kelayotgan transport vositalarini o'tkazib yuborishi kerak
+* F3
+Yo'l qo'yilmaydi
+
+
+
+Svetoforning bir vaqtda yoqilgan sariq va qizil ishoralari nimani bildiradi?
+* F1
+Harakatni boshlash mumkin
+* F2   +
+Harakatni taqiqlaydi va tezda yashil ishora yoqilishi haqida ogohlantiradi
+* F3
+Chorrahaga maxsus ovoz yoki miltillovchi chiroq bilan ishora berayotgan transport vositasi yaqinlashib kelayotganini
+https://ptest.uz/images/3785acdb-6c23-41a2-adff-6046497aa4cd.webp
+
+
+
+Transport vositalarining haydovchilari avtobus yoki trolleybusga yo'l berishlari kerak:
+* F1
+Agar u harakatni to'xtash joyidan boshlasa
+* F2
+Agar u "?????" soatda marshrut bo'yicha harakat qilsa
+* F3    +
+Aholi punktlarida, agar u belgilangan to'xtash joyidan (bekatlardan) harakatni boshlasa
+
+
+
+Aholi punktlarida relssiz transport vositalariga, agar bir yo'nalishda uchta va undan ortiq harakatlanish bo'lagi bo'lganda, qaysi bo'lakdan harakatlanishga ruxsat etiladi? Yuk avtomobillari hisobga kirmaydi
+* F1
+Har qanday bo'lak bo'yicha
+* F2
+Iloji boricha qatnov qismining o'ng chekkasiga yaqin bo'lak bo'yicha
+* F3   +
+Chapki chekkadan tashqari har qanday bo'lak bo'yicha. Unga faqat boshqa bo'laklarda harakat serqatnov bo'lganda, shuningdek, chapga burilish, orqaga qayrilish va bir tomonlama harakat tashkil qilingan yo'lda to'xtash uchun o'tishga ruxsat etiladi
+
+
+
+Quyidagi qaysi suratda haydovchi avtomobilni qoidaga xilof ravishda to'xtash joyiga qo'ygan?
+* F1
+Faqat chapdagi
+* F2   +
+Chap va o'rtadagi
+* F3
+Barchasida
+  https://ptest.uz/images/222f1fd2-85da-4e7e-a188-00aa3554f891.webp
+
+
+Ko'k avtomobil chorrahani kesib o'tadi:
+* F1
+Birinchi bo'lib ayni bir vaqtda qizil bilan
+* F2
+Ikkinchi bo'lib ayni vaqtda qizil bilan
+* F3    +
+Uchinchi bo'lib ayni vaqtda qizil bilan
+https://ptest.uz/images/861c2490-a6da-466d-9440-5028d14b4d2d.webp
+
+Chorrahada harakatlanishning majburiy yo'nalishini qaysi belgi ko'rsatadi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4   +
+4
+* F5
+5
+https://ptest.uz/images/eaff8f04-88d9-4f5d-b55a-d88f43955618.webp
+
+
+Harakatni boshlashdan avval shaharlararo avtobus haydovchilari nima qilishlari kerak?
+* F1   +
+Yo'lovchilarga halokat bo'lganda chiqish joylaridan foydalanish haqida tushuntirish
+* F2
+Yo'lovchilarga chiqish, undan tushish va unga joylashish tartibi haqida tushuntirish
+* F3
+Yo'lovchilarga harakatlanish vaqtida salon ichida yurish mumkin emasligi haqida tushuntirish
+
+
+
+Qaysi belgi to'xtamasdan o'tishni taqiqlaydi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4    +
+4
+* F5
+5
+https://ptest.uz/images/f0e60e4f-1a15-47c3-93dc-df5d9aa48ae2.webp
+
+Davlat YHX xizmati ruxsatisiz transport vositasining yuk bilan yoki yuksiz harakatlanishiga qanday yuqori maksimal kenglikda yo'l qo'yiladi?
+* F1
+2,0 m
+* F2   +
+2,55 m
+* F3
+3,8 m
+* F4
+4,0 m
+* F5
+5,0 m
+
+
+
+Qaysi transport vositasining haydovchisi yo'l berishi kerak?
+* F1   +
+Avtomobil haydovchisi
+* F2
+Tramvay haydovchisi
+https://ptest.uz/images/d9a46d53-5595-4b18-9cee-d1e72eeec003.webp
+
+Bu tik yo'l chizig'i nimani bildiradi?
+* F1
+Yo'lning xavfli joylaridagi harakatlanish bo'lagi chegarasini bildiradi
+* F2   +
+Yo'lning boshqa qismlarida yo'l chetidagi to'siqlarning yon chegarasini belgilaydi
+* F3
+Xavfli yo'l qismlarida bordyurlarni belgilaydi
+* F4
+Yo'naltiruvchi ustunchalar, beton yoki temir-beton ustunchalar, to'siq ustunchalari va shunga o'xshashlarni belgilaydi
+https://ptest.uz/images/27ae6be7-5c0f-406f-9ac4-186248d8dc0e.webp
+
+
+Qaysi rasmda haydovchi to'g'ri burilmoqda?
+* F1   +
+Chapdagi rasmda
+* F2
+O'ngdagi rasmda
+https://ptest.uz/images/93357a1e-818d-4eb0-ba9e-70f930a43858.webp
+
+
+Bu yo'l chizig'i nimani bildiradi?
+* F1
+Yo'llar ostin-ustun o'tadigan chorrahalarni
+* F2
+Harakatlanish tezligi 40 km/s gacha cheklangan qismini
+* F3   +
+Yo'l inshootlarining harakatdagi transport vositalariga xavf tug'diradigan tik bo'laklarini
+https://ptest.uz/images/7164a0ec-159f-47aa-9629-935be6c9435f.webp
+
+Qaysi avtomobil to'xtab turishga to'g'ri qo'yilgan?
+* F1
+Engil avtomobil
+* F2   +
+Har ikkisi noto'g'ri qo'yilgan
+* F3
+Har ikkisi to'g'ri qo'yilgan
+* F4
+Yuk avtomobil
+https://ptest.uz/images/2376ab73-b210-49e7-8107-2dce8f5786ff.webp
+
+
+Avtomobilga o'rnatilgan bu taniqlik belgi nimani bildiradi?
+* F1    +
+Avtomobil shifokor haydovchiga tegishli ekanini
+* F2
+Avtomobil haydovchi nogironga tegishli ekanini
+* F3
+Avtomobil uyda tibbiy yordami ko'rsatish uchun mo'ljallanganini
+https://ptest.uz/images/15517695-2d1f-4c30-bb87-7a7f3c9a29eb.webp
+
+
+
+Harakatlanishga ruxsat etilgan barcha transport vositalari qaysi javobda to'g'ri ko'rsatilgan?
+* F1   +
+Avtomobillar va motosikl
+* F2
+Barcha transport vositalari
+* F3
+Avtomobillar va tramvay
+https://ptest.uz/images/d7018304-6099-4eb4-bab7-913c6a16e4ab.webp
+
+
+
+Haydovchi oq hassa bilan ishora berayotgan ko'zi ojiz piyodalarni o'tkazib yuborishi kerakmi?
+* F1    +
+Barcha hollarda o'tkazib yuborishi kerak, shu jumladan piyodalar o'tish joylardan tashqarida ham
+* F2
+Tartibga solinadigan piyodalar o'tish joyida o'tkazib yuborishi kerak
+* F3
+Tartibga solinmagan piyodalar o'tish joyida o'tkazib yuborishi kerak
+* F4
+Har qanday piyodalar o'tish joyida o'tkazib yuborish kerak
+
+
+
+Ko'k avtomobilning haydovchisiga quvib o'tishga ruxsat etiladimi?
+* F1
+Ruxsat etiladi
+* F2    +
+Taqiqlanadi
+* F3
+Ruxsat etiladi, agar qizil avtomobil 40 km/soatdan kam tezlik bilan harakatlanayotgan bo'lsa
+https://ptest.uz/images/9cb5edd2-51b5-402d-a3e8-59032c60d577.webp
+
+
+
+25-bilet
+Haydovchi aholi punktidan tashqarida harakat qoidalarini buzmoqdami?
+* F1   +
+Ha
+* F2
+Yo'q
+https://ptest.uz/images/afe230b7-d8a4-4724-94ac-15f271b945f3.webp
+
+
+Bu yo'l belgisi nimani bildiradi?
+* F1
+Shlagbaum bilan jihozlanmagan bir izli temir yo'l kesishmasini
+* F2
+Shlagbaum bilan jihozlangan bir izli temir yo'l kesishmasini
+* F3    +
+Shlagbaum bilan jihozlanmagan ikki va undan ko'p izli temir yo'l kesishmasini
+https://ptest.uz/images/436fe4fb-f268-428e-b55f-a1420eb071bb.webp
+
+
+
+Ko'rsatilgan belgilardan qaysi biri avtomagistrallarga o'rnatiladi?
+* F1
+1
+* F2
+2
+* F3    +
+3
+* F4
+4
+* F5
+5
+https://ptest.uz/images/d192075b-b130-4961-8cc2-dadc132c1a9f.webp
+
+
+Bu erda avtomobilning to'xtashiga ruxsat berilganmi?
+* F1
+Taqiqlangan, chunki uzuq-uzuq yotiq chizig'i bilan to'xtab turgan va avtomobil orasidagi masofa 3 metrdan kam
+* F2
+Oyning juft kunlarida taqiqlangan
+* F3    +
+Ruxsat berilgan
+https://ptest.uz/images/ab703a9e-417d-4841-bdb2-9157491506d7.webp
+
+
+Belgilardan qay biri ajratuvchi bo'lagi bo'lgan yo'lning harakat uchun yopiq qatnov qismini aylanib o'tish yo'nalishini ko'rsatadi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4
+4
+* F5   +
+5
+https://ptest.uz/images/759671cd-a342-4af0-8cf7-262b45f1daa7.webp
+
+
+Tormozlanish bo'lagi bo'lgan yo'lda qaysi transport vositasi unga chiqish qoidasini buzdi?
+* F1
+Har ikki transport vositasi
+* F2    +
+Sariq avtomobil
+* F3
+Har ikki transport vositasi to'g'ri burilyapti
+https://ptest.uz/images/2eb626be-44da-4f81-a2d2-6224a18163d4.webp
+
+
+Transport vositalarining temir yo'l kesishmasiga qancha masofadan yaqinroqda to'xtab turishlari taqaqlanadi?
+* F1
+300 m
+* F2
+150 m
+* F3
+100 m
+* F4    +
+50 m
+* F5
+25 m
+
+
+
+Chorrahani transport vositalari quyidagi tartibda kesib o'tadilar:
+* F1   +
+Hamma bir vaqtda
+* F2
+Ko'k, qizil, yashil
+* F3
+Ko'k ayni vaqtda yashil bilan, qizil
+* F4
+Qizil, yashil bilan ko'k
+https://ptest.uz/images/f6055d32-7d47-450c-9fa2-162ff10bfc8e.webp
+
+
+Harakatlanish ruxsat etilgan:
+* F1    +
+Qizil avtomobilga
+* F2
+Motosiklga
+* F3
+Tramvayga va qizil avtomobilga
+* F4
+Tramvayga
+* F5
+Ko'k avtomobilga
+https://ptest.uz/images/54638144-854c-4844-9be4-e6003e9df6de.webp
+
+
+Haydovchining o'zi aniqlay oladigan harakatlanish uchun to'sqinlik yoki xavf tug'ilganda qanday choralar ko'rishi kerak?
+* F1
+Xavfsizlik choralariga rioya qilgan holda tezlikni kamaytirishi va xavfli yo'l qismidan o'tishi
+* F2    +
+Tezlikni transport vositasi to'xtagunicha kamaytirishi yoki to'siqni aylanib o'tishning boshqa harakat qatnashchilari uchun xavfsiz choralarni ko'rishi
+* F3
+Sodir bo'lgan hodisa haqida ichki ishlar organlariga xabar berishi
+* F4
+DYHX xizmatining eng yaqin mahkamasiga yoki IIO idorasiga kelishi va paydo bo'lgan to'sqinliklar yoki xavf-xatar to'g'risida xabar berishi
+
+
+
+
+Yo'l chizig'i bilan ajratilgan bekat maydonchasidan harakatlanish uchun foydalanishga ruxsat etiladimi?
+* F1
+Ruxsat etiladi
+* F2   +
+Taqiqlanadi
+* F3
+To'xtash joyida tramvay bo'lmaganda ruxsat etiladi
+https://ptest.uz/images/5c3929e8-d5f9-495e-b5c3-b2aee7780fa1.webp  
+
+
+
+Agar jonlantirishni (reanimasiyani) 2 kishi bir vaqtda olib borganda yurakni bilvosita massaj qilish va suniy nafas oldirish qanday bajariladi?
+* F1
+Bir marta ko'krak qafasi bosiladi, bir marta havo puflanadi va hokazo
+* F2   +
+Ikki marta havo puflanadi, so'ng yurak sohasi 30 marta bosiladi va hokazo
+* F3
+2-3 marta havo puflangandan so'ng 15 marta ko'krak qafasi bosiladi
+
+
+Sanab o'tilgan sharoitlardan qay birida avtomobillar va avtopoezdlardan foydalanish taqiqlanadi?
+* F1   +
+Gidravlik tormoz tizimining zichligi buzilganda
+* F2
+Tormoz tizimining samaradorligi qoida talablariga javob beradi
+* F3
+To'xtab turish tormoz tizimi harakatsiz holatda to'la vazndagi transport vositalarini 16% dan kam bo'lgan qiyalikda ushlab tura olganda
+
+
+
+Qaysi belgi agar yuk avtomobilni tirkamasi bilan birga ruxsat etilgan to'liq vazni 7 tonnaga teng bo'lsa, tirkamali avtomobillarning harakatlanishini taqiqlaydi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4   +
+4
+* F5
+5
+https://ptest.uz/images/2411eab0-c3f2-424d-b87f-47516068a21e.webp
+
+
+Qaysi transport vositalari yo'lovchilarni tushirish uchun noto'g'ri to'xtagan?
+* F1   +
+Qizil avtomobil
+* F2
+Ko'k avtomobil
+* F3
+Motosikl
+* F4
+Har ikki avtomobil
+* F5
+Hamma transport vositalari
+https://ptest.uz/images/ea518e55-dbdb-4c41-877c-2b3891b772a4.webp
+
+
+Jabrlanuvchiga uning yurak faoliyati yoki nafas olishi to'xtaganda qanday ketma-ketlikda birinchi yordam ko'rsatish zarur?
+* F1
+Yurakni massaj qilish, nafas yo'llarini bo'shatish, suniy nafas oldirish
+* F2
+Suniy nafas oldirish, yurakni ustidan massaj qilish, nafas yo'llarini bo'shatish
+* F3   +
+Nafas yo'llarini bo'shatish, suniy nafas oldirish va yurakning ustidan massaj qilish
+
+
+
+Tashiladigan yuk vaznini va o'qlar bo'yicha tushadigan og'irlikni taqsimlashni kim tartibga solib turadi?
+* F1
+Davlat YHXX
+* F2
+Avtoxo'jalik mamuriyati
+* F3   +
+Mazkur transport vositasini tayyorlovchi-korxona
+
+
+Bu belgi qaysi transport vositalariga tegishli emas?
+* F1
+Traktorlar va o'ziyurar avtomobillarga
+* F2
+Avtobuslar va mikro avtobuslarga
+* F3   +
+Belgi tasirida joylashgan korxonalarga xizmat ko'rsatayotgan transport vositasiga
+https://ptest.uz/images/58b580a1-a62e-4eea-9620-851b1ec78167.webp 
+
+
+Mazkur vaziyatda qizil avtomobilga quvib o'tishga ruxsat etiladimi?
+* F1   +
+Ruxsat etiladi
+* F2
+Taqiqlanadi
+* F3
+Quvib o'tilayotgan transport vositasing tezligi 40 km/s dan kam bo'lganda ruxsat etiladi
+https://ptest.uz/images/f4c9fb0b-e2fa-4c4b-a225-df93d930b63b.webp
+
+
+Harakatlanish taqiqlangan:
+* F1   +
+Ko'k-sariq avtomobilga chapga
+* F2
+Ko'k-sariq avtomobilga to'g'riga, qizil avtomobilga to'g'riga va o'ngga
+* F3
+Qizil avtomobilga - to'g'riga va o'ngga
+https://ptest.uz/images/4abfded4-94c2-451e-9da0-0af9eb5225d1.webp
+
+
+
+Haydovchi aholi punktidan tashqarida harakat qoidalarini buzmoqdami?
+* F1   +
+Ha
+* F2
+Yo'q
+https://ptest.uz/images/afe230b7-d8a4-4724-94ac-15f271b945f3.webp
+
+
+
+
+26-bilet
+Transport vositalariga qaysi yo'nalish bo'yicha harakatlanishga ruxsat etiladi?
+* F1
+Tramvayga chapga yoki to'g'riga
+* F2
+Faqat avtomobilga chapga
+* F3
+Tramvay va avtomobilga chapga
+* F4
+Tramvayga chapga yoki to'g'riga, avtomobilga tramvaydan so'ng
+* F5   +
+Tramvayga chapga, avtomobilga chapga va teskari yo'nalishga
+https://ptest.uz/images/eae6f5c7-2408-47b2-9218-5d2a28e03fe8.webp
+
+
+Bu belgi o'rnatilgan yo'lda avtobuslarga harakatlanish ruxsat etiladimi?
+* F1
+Faqat ruxsat etilgan to'la vazni 3,5 t dan ortiq bo'lmagan avtomobillarga ruxsat etiladi
+* F2
+Taqiqlanadi
+* F3    +
+Ruxsat etiladi
+https://ptest.uz/images/ac3305ee-a7c1-4971-baf0-c98d495fa07e.webp
+
+
+Belgilangan yo'nalishdagi transport vositalariga qaysilar kiradi?
+* F1
+Avtobuslar va yo'nalishli taksilar
+* F2
+Tramvaylar va trolleybuslar
+* F3   +
+Belgilangan yo'nalishlar bo'yicha harakatlanadigan avtobuslar, trolleybuslar, tramvaylar va yo'nalishli taksilar
+
+
+"Gazel" yuk avtomobilining yuk bilan balandligi yo'l ustidan 3,8 m bo'lsa, uni tashish mumkinmi?
+* F1   +
+Ruxsat beriladi
+* F2
+Ruxsat berilmaydi
+* F3
+Ruxsat beriladi, faqat yo'nalishlarda osma ko'priklar, osma yo'l (estakada) bo'lmasa
+
+
+
+Yuk transport vositasining o'lchamlaridan chiqib tursa, kunning qorong'i vaqtida va etarli ko'rinmaydigan sharoitda qanday belgilanadi?
+* F1
+Ishora taxtachalari yoki bayroqchalar (diagonal bo'yicha navbatma-navbat tortilgan qizil va oq yo'lli) bilan
+* F2   +
+"????? ??????? ??" taniqlik belgisi bilan belgilanishi, qo'shimcha ravishda oldiga oq, orqasiga esa qizil chiroqlar yoki yorug'lik qaytargich bilan
+* F3
+Orqasiga qizil, oldiga oq bayroqchalar bilan
+
+
+
+Qaysi avtomobil haydovchisiga to'xtashga ruxsat etilgan?
+* F1
+Engil avtomobilning haydovchisiga
+* F2   +
+Yuk avtomobilining haydovchisiga
+* F3
+Har ikki haydovchiga
+https://ptest.uz/images/8a31031a-16fc-49a1-80f6-766375d40317.webp
+
+
+
+Ko'k avtomobilning haydovchisi qanday yo'l tutishi kerak?
+* F1
+Sariq avtomobilga u orqadan kelayotgani uchun yo'l bermay, mo'ljallangan yo'nalishda chorrahani kesib o'tishi
+* F2
+Qarama-qarshi harakat bo'lagiga darhol qayta tizilishi
+* F3   +
+Tezlikni kamaytirishi, sariq avtomobilga quvib o'tishni tugallashiga imkon berishi, so'ng esa chapga burilishni ko'rsatadigan chiroqni yoqib, chapga burilishi lozim
+https://ptest.uz/images/e8078d7e-5278-4b88-b73a-d8b4766bc0cf.webp
+Belgilardan qaysi biri bevosita yo'lning xavfli qismi oldiga o'rnatiladi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4
+4
+* F5   +
+5
+https://ptest.uz/images/d8179554-9702-40d6-8835-269937479750.webp
+
+
+
+Qaysi transport vositasiga harakatlanish ruxsat etiladi?
+* F1   +
+Sariq va qizil avtomobilga
+* F2
+Yashil, qizil va oq avtomobilgatosiklga
+* F3
+Oq va yashil avtomobilga
+https://ptest.uz/images/604edbfc-b7ad-4b32-9adc-fcd320655884.webp
+
+
+
+Yo'lovchilarni tushirish uchun qaysi transport vositalari to'g'ri to'xtadi?
+* F1   +
+Engil avtomobil
+* F2
+Motosikl
+* F3
+Avtobus
+* F4
+Barcha transport vositalari
+https://ptest.uz/images/1b966794-41ff-4e8e-9e18-e932435b442b.webp
+
+
+Qayrilish taqiqlanadi:
+* F1
+Chorrahalarda va ularga 15 metrdan dan yaqinroqda
+* F2
+Chorrahalar oldiga 15 metrdan yaqinroqda
+* F3
+Yo'lning loaqal bir yo'nalishida 100 metrdan kamroq qismi ko'rinadigan aholi punktlaridan tashqarida
+* F4   +
+Loaqal bir yo'nalishda yo'lning 100 metrdan kamroq qismi ko'ringanda
+
+
+Avtomobil harakatlanayotganda kutilmaganda shinasi yorilib ketsa, haydovchi nima qilishi zarur?
+* F1
+Ishchi tormoz bilan to'la to'xtaguncha keskin tormozlash
+* F2
+Avtomobilni to'xtab turish tormozi yordamida to'xtatish
+* F3   +
+Rul chambaragini ushlab turish, to'g'ri chiziqda harakatni saqlash, tezlikni kamaytirish va to'xtatish
+
+
+
+Qaysi belgi chapga burilishga ruxsat etadi?
+* F1
+1
+* F2
+2
+* F3   +
+3
+* F4
+4
+* F5
+5
+https://ptest.uz/images/135cb2f0-ef26-4b13-b22e-1d3cd10a3bb2.webp
+
+
+Bunday yo'l belgisi bilan belgilangan yo'l qismlarida ruxsat etilgan to'la vazni 3,5 t dan ortiq bo'lgan yuk avtomobillarining qanday yuqori tezlik bilan harakatlanishiga ruxsat etiladi?
+* F1
+60 km/s
+* F2
+90 km/s
+* F3   +
+80 km/s
+* F4
+70 km/s
+* F5
+100 km/s
+https://ptest.uz/images/fa7c3a54-fc0e-4a9f-8a75-b0b351482e31.webp 
+
+
+Harakat tezligi 40 km/sdan oshmaydigan transport vositasiga qatnov qismining chap tasmasiga chiqishga qachon ruxsat etiladi?
+* F1
+Burilish yoki qayrilish oldidan qayta tizilishda
+* F2
+Quvib o'tishda, o'zib ketishda yoki aylanib o'tishda
+* F3    +
+Sanab o'tilgan barcha hollarda
+* F4
+Sanab o'tilgan barcha hollarda, shuningdek, agar bir yo'nalishda harakatlanish uchun uchta va undan ortiq tasma bo'lganda
+https://ptest.uz/images/a1b62224-e46f-4b31-8c94-94144757251a.webp
+
+
+Agar pnevmatik uzatmaning zichligi buzilib, kompressor ishlamay turganda boshqaruv asboblarining erkin holatida havo bosimining 30 daqiqada qancha MPa-ga pasayishiga sabab bo'lsa, tormoz tizimi nosoz hisoblanadi?
+* F1
+0,025
+* F2
+0,035
+* F3    +
+0,05
+* F4
+0,055
+* F5
+0,06
+
+
+Kim o'quv tashkilotlarida avtomototransport vositalarini boshqarishni o'rgatish huquqiga ega?
+* F1  +
+Boshqarishni o'rgatish huquqini beruvchi hujjatlari bo'lgan haydashni o'rgatuvchi instruktor
+* F2
+Tajribali haydovchi
+* F3
+3 yillik ishlagan davri bo'lgan haydovchi
+* F4
+5 yil haydovchilik ishlagan davriga ega bo'lgan 1 - va 2 - toifa haydovchilar
+
+
+
+Transport vositalari chorrahani quyidagi tartibda kesib o'tadi:
+* F1
+1- va 2-tramvaylar ayni vaqtda yashil avtomobil bilan, qizil, ko'k avtomobillar
+* F2   +
+1-tramvay ayni vaqtda yashil avtomobil bilan, qizil avtomobil; 2-tramvay va ko'k avtomobil bir vaqtda
+https://ptest.uz/images/97e8b669-bcad-407d-a8c4-a90d31f9046b.webp
+
+
+Bu yo'l belgisi bilan belgilangan yo'l qismida engil avtomobilni shatakka olishga ruxsat etiladimi?
+* F1
+Ruxsat etiladi
+* F2   +
+Taqiqlanadi
+https://ptest.uz/images/a4029266-08f4-4d52-bc0d-ca3b74b180ea.webp
+
+
+Chorrahani oxirgi bo'lib kesib o'tadi:
+* F1   +
+Ko'k avtomobil
+* F2
+Yashil avtomobil
+* F3
+Qizil avtomobil
+https://ptest.uz/images/1dee9371-da27-4f25-bf6a-4c18266b776e.webp
+
+
+Transport vositalariga qaysi yo'nalish bo'yicha harakatlanishga ruxsat etiladi?
+* F1
+Tramvayga chapga yoki to'g'riga
+* F2
+Faqat avtomobilga chapga
+* F3
+Tramvay va avtomobilga chapga
+* F4
+Tramvayga chapga yoki to'g'riga, avtomobilga tramvaydan so'ng
+* F5   +
+Tramvayga chapga, avtomobilga chapga va teskari yo'nalishga
+https://ptest.uz/images/eae6f5c7-2408-47b2-9218-5d2a28e03fe8.webp
+
+
+
+
+27-bilet
+Qanday sharoitlarda transport vositalaridan foydalanish taqiqlanadi?
+* F1
+Yoritish chiroqlari yo'nalishi buzilgan bo'lsa
+* F2
+Tashqi yoritish asboblari va yorug'lik qaytargichlar ifloslanganda
+* F3
+Yoritish asboblari o'rnida mazkur yoritish asboblarining turiga mos kelmaydigan lampalardan foydalanilganda
+* F4   +
+Sanab o'tilgan barcha hollarda
+
+
+
+Haydovchi, agar uning transport vositasi 40 km/s ga teng yoki undan ortiq tezlik bilan balandlikka chiqa olmasa, nima chora ko'rishi kerak?
+* F1
+Asosiy bo'lak bo'yicha, agar unda boshqa transport vositalari yo'q bo'lsa, harakatlanishni davom ettirishi
+* F2   +
+Qo'shimcha bo'lakka qayta tizilishi
+* F3
+Agar balandlikning davomliligi 30 m dan oshmasa, asosiy bo'lak bo'yicha harakatlanishni davom ettirishi
+https://ptest.uz/images/1cb3b8a5-fcd3-4d24-9af9-468b90120d33.webp
+
+
+Yo'lovchi tashishga mo'ljallanmagan yuk avtomobilida yukni kuzatib boruvchi yoki qabul qilib oluvchi shaxslarning tashilishiga ruxsat beriladimi?
+* F1   +
+Agar bort balandligidan pastda joylashgan qulay o'rindiq bo'lsa ruxsat beriladi
+* F2
+Taqiqlanadi
+
+
+
+Qaysi belgi yo'lning bir tomonlamali harakatlanish yo'l qismini ko'rsatadi?
+* F1
+1
+* F2
+2
+* F3   +
+3
+* F4
+4
+* F5
+5
+https://ptest.uz/images/08369abe-03c1-44af-899a-fc939be94572.webp
+
+
+Quvib o'tish nima?
+* F1
+Egallagan harakatlanish bo'lagidan chiqib oldinda ketayotgan transport vositasidan o'zib ketish
+* F2   +
+Bir yoki bir nechta transport vositalarini qarama-qarshi yo'nalishda harakatlanish uchun mo'ljallangan tasmaga chiqib, so'ngra ilgari egallagan qatoriga qaytib o'tish bilan bog'liq bo'lgan o'zib ketish
+* F3
+Kam tezlik bilan qo'shni qatorda harakatlanayotgan bir yoki bir qancha transport vositalaridan o'zib ketish
+
+
+
+O'ng va chap g'ildiraklarining shinalari turlicha yeyilgan avtomobilga tormoz berish qanday xavfli oqibatlarga olib kelishi mumkin?
+* F1
+Tormoz barabanlarining qizib ketishiga
+* F2
+Naqsh izlarining ko'chib ketishiga
+* F3   +
+Avtomobilning ag'darilib ketishi mumkin darajada sirpanib ketishiga
+
+
+
+Avtomobillar chorrahani quyidagi tartibda kesib o'tadilar:
+* F1
+Sariq chorrahaga chiqadi va yashilni o'tkazib yuborish uchun to'xtaydi; yashil, ko'k ayni vaqtda qizil bilan, sariq
+* F2
+Ko'k, ayni vaqtda qizil bilan, yashil, sariq
+* F3   +
+Yashil, ko'k ayni vaqtda qizil, so'ng sariq
+https://ptest.uz/images/f094b919-affd-4092-a139-45f7b0cb50fe.webp
+
+
+Chiziqlar bilan bo'laklarga ajratilgan yo'lning qatnov qismida transport vositalarining harakatlanishi qanday amalga oshirilishi kerak?
+* F1   +
+Qatiy bo'laklar bo'yicha, uzuq-uzuq chiziqni kesib o'tishga faqat qayta tizilishda ruxsat etiladi
+* F2
+Agar qatnov qismi transport vositalaridan xoli bo'lsa, bo'lak bo'yicha qatiy emas
+* F3
+Agar transport vositalarining o'lchamlari eniga katta bo'lmasa, bo'lak bo'yicha qatiy emas
+* F4
+Agar qatnov qismida tirkamali avtomobillar bo'lmasa va bunda ancha tor harakat oralig'ini saqlash mumkin bo'lsa, bo'laklar bo'yicha qatiy emas
+
+
+Boldir suyagi o'rtasidan singanda transportda olib yurish uchun taxtakach yoki uning o'rniga o'tuvchi narsa qanday qo'yiladi?
+* F1
+Singan joyga qo'yiladigan shina yoki uning o'rnini bosuvchi narsani siqib bog'lash kerak
+* F2
+Shinani ikki tomondan butun boldir uzunligida tovondan to tizza bo'g'inigacha qo'yish kerak
+* F3   +
+Tovon tagidan to son o'rtasigacha oyoqning ichki va tashqi tomonidan ikkita shina qo'yish kerak. Singan joyni, tizza va boldir-oyoq kafti bo'g'inlarini qimirlatmaslik lozim
+
+
+
+Qizil avtomobilning haydovchisiga tramvay yo'li bo'yicha harakatlanishga ruxsat etiladimi?
+* F1   +
+Ruxsat etiladi
+* F2
+Taqiqlangan
+https://ptest.uz/images/437cdb0a-8581-4cd2-bfd8-274338dedd77.webp
+
+
+Siz chapga burilishga yoki qayrilishga qaror qildingiz. Orqa ko'rinadigan ko'zguga qarab, bildingizki, ortingizdagi haydovchi sizni quvib o'tmoqchi. Sizning bundan keyingi harakatingiz?
+* F1
+Burilishning chap ko'rsatkichini yoqish va qatnov qismida qulay joylashib olishdan foydalanib, manyovr qilishga kirishish
+* F2   +
+Sizning ortingizdan kelayotgan haydovchi sizni quvib o'tib ketgandan so'nggina burilishning chap ko'rsatkichini yoqish
+* F3
+Burilishning chap ko'rsatkichini yoqish, o'zini quvib o'tishga imkon berishi va so'ng manyovr qilishga kirishish
+
+
+Qaysi transport vositasining haydovchisi to'xtash qoidasini buzdi?
+* F1   +
+Faqat motosikl haydovchisi
+* F2
+Faqat avtomobil haydovchisi
+* F3
+Har ikkisi buzdi
+* F4
+Hech kim buzmadi
+https://ptest.uz/images/5c8d7ae5-bf8f-46ee-a089-cc2823e3da28.webp
+
+
+"Ruxsat etilgan to'la vazn" nima?
+* F1
+Transport vositasining yuk ko'tarishi
+* F2
+Transport vositasining haqiqiy vazni
+* F3  +
+Aslahalangan transport vositasining ishlab chiqaruvchi korxona tomonidan belgilangan, yuk, haydovchi va yo'lovchilari bilan birgalikdagi eng yuqori vazni (o'lchovi). Bir tarkibda harakatlanayotgan (tirkama va h.k.) transport vositalarining ruxsat etilgan to'la vazniga shu tarkibga kiruvchi transport vositalarining ruxsat etilgan to'la vaznlari yig'indisi kiradi
+* F4
+Transport vositasida tashiladigan yukning ishlab chiqargan korxona yo'l qo'ygan texnik tavsifnomasi sifatida belgilanadigan vazni
+
+Mazkur vaziyatda quvib o'tishga ruxsat etilganmi?
+* F1
+40 km/soatdan kam tezlik bilan harakatlanayotgan faqat yakka transport vositalariga ruxsat etilgan
+* F2   +
+Taqiqlangan
+* F3
+Hamma hollarda ruxsat etilgan
+https://ptest.uz/images/85b7c372-10bc-484a-a87d-042a81c846d9.webp
+
+
+Aholi punktlarida malum harakat tezligiga rioya etayotgan yirik o'lchamli transport vositasining haydovchisi qanday yo'l tutishi kerak?
+* F1
+To'xtashi va orqasida to'planib qolgan transport vositalarini o'tkazib yuborishi
+* F2   +
+Harakatni davom ettirishi
+https://ptest.uz/images/d50d8712-6ef9-44bf-b007-6d169df3ab47.webp
+
+
+Avtomagistralda qatnov qismining chetini bildiruvchi sidirg'a oq chiziqni bosib o'tishga ruxsat etiladimi?
+* F1   +
+Ruxsat etiladi
+* F2
+Taqiqlanadi
+* F3
+Agar avtomagistralda harakatlanish serqatnov bo'lsa, taqiqlanadi
+https://ptest.uz/images/78fd555c-7e40-46b6-b75d-a6d0a3e5d00c.webp
+
+
+Transport vositalari chorrahani quyidagi tartibda kesib o'tadilar:
+* F1
+Yashil avtomobil ayni vaqtda 2-tramvay bilan; 1-tramvay, ko'k, sariq, qizil avtomobillar
+* F2   +
+1- va 2-tramvaylar ayni vaqtda sariq avtomobil bilan, yashil, ko'k, qizil avtomobillar
+https://ptest.uz/images/6908cf09-f7b3-410d-ac2f-2315c10811f8.webp
+
+
+Bu belgida harakatlanish ruxsat etiladi:
+* F1
+Faqat avtomobil haydovchisiga
+* F2
+Faqat avtomobil va motosikl haydovchilariga
+* F3   +
+Barcha transport vositalarining haydovchilariga
+* F4
+Faqat avtomobil va avtobus haydovchilariga
+https://ptest.uz/images/bfee5768-af13-4a3a-956e-b3d7e86ba6b7.webp
+
+
+Qaysi rasmda haydovchi o'ngga to'g'ri burilyapti?
+* F1    +
+1
+* F2
+2
+https://ptest.uz/images/d45d59e1-19e0-4fae-907a-250f27b9b812.webp
+
+
+Qanday sharoitlarda transport vositalaridan foydalanish taqiqlanadi?
+* F1
+Yoritish chiroqlari yo'nalishi buzilgan bo'lsa
+* F2
+Tashqi yoritish asboblari va yorug'lik qaytargichlar ifloslanganda
+* F3
+Yoritish asboblari o'rnida mazkur yoritish asboblarining turiga mos kelmaydigan lampalardan foydalanilganda
+* F4   +
+Sanab o'tilgan barcha hollarda
+
+
+
+28-bilet
+Chorrahani oxirgi kesib o'tadi:
+* F1
+Qizil avtomobil
+* F2
+Ko'k avtomobil
+* F3  +
+Yashil avtomobil
+https://ptest.uz/images/93cb8a81-2d6c-4044-895d-d20fe7d235cb.webp
+
+
+Bu belgida yuk avtomobillaridan qaysi biriga harakatlanishni davom ettirishga ruxsat etiladi?
+* F1  +
+Yukxonasida odam tashishga moslashtirilgan maxsus yuk avtomobillarida
+* F2
+Furgon-yukxonada mahsulotlar tashiydigan avtomobillarga
+* F3
+"?????" yozuvi bo'lgan avtomobillarga
+https://ptest.uz/images/bb528f38-abb1-4de0-951e-8428324bc244.webp
+
+
+Transport vositalari chorrahadan quyidagi tartibda o'tadilar:
+* F1   +
+Ko'k avtomobil, tramvay, qizil avtomobil
+* F2
+Tramvay, qizil, so'ngra ko'k avtomobil
+* F3
+Tramvay, ko'k avtomobil chorrahaga chiqadi, qizilga yo'l beradi, so'ngra burilishni tugallaydi
+https://ptest.uz/images/22eec92a-5ea9-4e0e-b84c-3925321914a1.webp
+
+
+Bu joyda to'xtashga ruxsat etilganmi?
+* F1
+Ruxsat etilgan
+* F2   +
+Taqiqlangan
+https://ptest.uz/images/859c742f-5635-4776-89a2-adc6a69ae486.webp
+
+
+Transport vositasini boshqarishni o'rgatyotgan shaxs haydovchi hisoplanadimi?
+* F1   +
+Ha
+* F2
+Yo'q
+
+
+Bu yo'l belgisi:
+* F1
+Ikki g'ildirakli kajavasiz motosikllardan tashqari hamma mexanik transport vositalarining harakatlanishini taqiqlaydi
+* F2
+G'ildirakli traktorlardan tashqari hamma transport vositalarining harakatlanishini taqiqlaydi
+* F3   +
+Traktorlar va o'zi yurar mashinalarning harakatlanishi taqiqlanadi
+https://ptest.uz/images/d12de547-6450-4f14-815a-181e35584a34.webp
+
+
+Chorrahani oxirgi bo'lib kim kesib o'tadi?
+* F1   +
+Qizil avtomobil
+* F2
+Ko'k avtomobil
+* F3
+Yashil avtomobil
+https://ptest.uz/images/f39d6ea1-c529-465d-b174-0a14d75dfafa.webp
+
+
+Belgilarning tasiri qaysi transport vositalariga tatbiq etiladi?
+* F1
+Faqat engil avtomobillarga
+* F2
+Engil avtomobillarga va motosikllarga
+* F3   +
+Engil avtomobillarga va ruxsat etilgan to'la vazni 3,5 t dan kam yoki teng bo'lgan yuk avtomobillariga
+https://ptest.uz/images/81539064-3f6f-4ea0-9cda-be91bd38f2c2.webp
+
+Shatakka olish qanday hollarda taqiqlangan?
+* F1
+Yaxmalakda qattiq ulagichda
+* F2   +
+Yaxmalakda egiluvchan ulagichda
+* F3
+Yon kajavali motosikllar bilan
+
+
+Harakatlanish qaysi yo'nalishga ruxsat etilgan?
+* F1
+To'g'riga va o'ngga birinchi yo'nalishga
+* F2   +
+O'ngga birinchi yo'nalishga
+* F3
+O'ngga ikkinchi yo'nalishga
+* F4
+O'ngga birinchi va ikkinchi yo'nalishga
+https://ptest.uz/images/ae80e50a-c76d-4f03-85b7-d966b7728228.webp
+
+
+Shaharlararo qatnaydigan avtobusning haydovchisiga aholi punktlaridan tashqarida tezlikni 80 km/s dan oshirishga ruxsat etiladimi?
+* F1
+Faqat shu yo'nalishda harakatlanish uchun ikki yoki undan ortiq bo'lak bo'lgan yo'l bo'yicha harakatlanganda ruxsat etiladi
+* F2   +
+Ruxsat etiladi
+* F3
+Taqiqlanadi
+
+Aholi yashaydigan joylardan tashqarida transport vositalarining uzoq to'xtab turishi (dam olishi, tunash va hokazo)ga qaerda ruxsat etiladi?
+* F1
+Yo'l chetida
+* F2  +
+To'xtab turish maydonchalarida yoki yo'ldan tashqarida
+* F3
+Yo'l qatnov qismining o'ng tomonida, biroq boshqa transport vositalarining harakatlanishiga to'sqinlik qilmasligi kerak
+* F4
+Yo'lning chap tomonida, biroq harakat xafvsizligi choralariga rioya qilgan holda
+
+
+
+Yonilg'i quyish joyidan yo'lga chiqish chorraha hisoblanadimi?
+* F1   +
+Hisoblanmaydi
+* F2
+Hisoblanadi
+
+
+
+Qaysi belgi shlagbaumli temir yo'l kesishmasiga yaqinlashganlik haqida ogohlantiradi?
+* F1
+1
+* F2
+2
+* F3
+3
+* F4   +
+4
+* F5
+5
+https://ptest.uz/images/dd9be77c-05af-41ed-836b-50cc2d6a8397.webp
+
+
+
+Mazkur belgi nima haqida xabar beradi?
+* F1   +
+Trolleybus yoki avtobus to'xtash joylarini bildiradi
+* F2
+Marshrutdan boshqa barcha transport vositalariga yo'lning o'ng qatori bo'yicha harakatlanishni taqiqlaydi
+https://ptest.uz/images/b300c9af-8b99-4427-9a2a-3a42253a7982.webp
+
+
+Ushbu yotiq chiziqlardan qaysi biri belgilangan yo'nalishdagi transport vositalari uchun to'xtashga ruxsat beradi?
+* F1
+"?"
+* F2
+"?"
+* F3
+"?"
+* F4   +
+"?", "?", "?"
+https://ptest.uz/images/a54ba283-0657-44fd-a0f0-2035c71a8e85.webp
+
+
+Egiluvchan ulagichda shatakka olganda transport vositalari orasidagi masofa qanday bo'lishi kerak?
+* F1
+1-3 m
+* F2
+2-4 m
+* F3
+3-6 m
+* F4   +
+4-6 m
+* F5
+4-8 m
+
+
+
+Qaysi belgi "Mehmonxona"ni bildiradi?
+* F1
+1
+* F2
+2
+* F3   +
+3
+* F4
+4
+* F5
+5
+https://ptest.uz/images/954f077d-0fc3-442b-ab54-d982006f5dc4.webp
+
+
+Zanjirli bo'lgan qishloq xo'jalik, yo'l qurilishi va mexanik transport vositalariga temir yo'l kesishmasidan o'tishga ruxsat etiladimi?
+* F1
+Agar temir yo'l boshlig'ining ruxsati bo'lsa, ruxsat etiladi
+* F2   +
+Mexanik transport vositalariga yuklab olib o'tishga ruxsat etiladi
+* F3
+Taqiqlanadi
+
+
+
+Qizil avtomobil chorrahani kesib o'tadi:
+* F1   +
+Birinchi bo'lib
+* F2
+Ikkinchi bo'lib
+https://ptest.uz/images/e6172828-953e-493b-9394-d86a7c64afb0.webp
+
+
+
+Chorrahani oxirgi kesib o'tadi:
+* F1
+Qizil avtomobil
+* F2
+Ko'k avtomobil
+* F3   +
+Yashil avtomobil
+https://ptest.uz/images/93cb8a81-2d6c-4044-895d-d20fe7d235cb.webp
+
+
+
+
+
+29-bilet
+Mazkur yotiq chiziq nimani anglatadi?
+* F1
+Belgilangan yo'nalishdagi transport vositalari harakatlanadigan bo'lakni
+* F2
+Maxsus avtomobillar harakatlanadigan bo'lakni
+* F3   +
+Reversiv harakatlanish bo'lagining chegarasini
+https://ptest.uz/images/a375cf9f-a222-465a-b91c-0168471b1e6b.webp
+
+
+Transport vositalarining trotuar va piyodalar yo'lkasi bo'ylab harakatlanishiga yo'l qo'yiladimi?
+* F1
+Yo'l qo'yiladi, agar bu piyodalarning harakatiga xalal bermasa
+* F2
+Yo'l qo'yilmaydi, chunki bu piyodalarning hayotini xavf ostiga qo'yishi mumkin
+* F3   +
+Bevosita shu trotuar yoki yo'lkalarda joylashgan savdo yoki boshqa korxonalarga xizmat ko'rsatishda yo'l qo'yiladi
+* F4
+Trotuarda turgan boshqa transport vositasini aylanib o'tish uchun yo'l qo'yiladi
+
+
+
+Qaysi qo'shimcha axborot belgisi transport vositalarini to'xtab turish joyiga qo'yish usulini ko'rsatadi?
+* F1
+1
+* F2
+2
+* F3   +
+3
+* F4
+4
+* F5
+5
+https://ptest.uz/images/fb8c480a-aa19-4820-8053-ef4f7e615975.webp
+
+
+Qizil avtomobilning haydovchisi:
+* F1   +
+Yo'l berishi kerak
+* F2
+Birinchi galda harakatlanishga ustunlikka ega
+https://ptest.uz/images/691b7879-98f4-4cf7-ad0d-ce2b0c7b10b3.webp
+
+
+Bu yo'l belgisi bildiradi:
+* F1   +
+Oxiri berk ko'chaga olib boradigan yo'lni
+* F2
+Aholi yashaydigan joydagi manzilga tomon harakatlanish yo'nalishini
+* F3
+Balandlikda yoki tezlanish bo'lagida qo'shimcha bo'lakning tugaganini
+https://ptest.uz/images/96e7e4c7-a31d-4912-a152-6f6d1644a1d1.webp
+
+
+
+Uzunasiga ketgan sidirg'a chizig'i bilan to'xtagan transport vositalari o'rtasidagi masofa quyidagidan kam bo'lgan joylarda transport vositalarining to'xtashi va to'xtab turishi taqiqlanadi:
+* F1
+2,0 m
+* F2   +
+3,0 m
+* F3
+4,0 m
+* F4
+5,0 m
+* F5
+6,0 m
+
+
+
+Shatakka olingan engil avtomobilda yo'lovchilarni tashish mumkinmi?
+* F1   +
+Egiluvchi va qattiq ulagichda ruxsat etiladi
+* F2
+Taqiqlanadi
+
+
+
+Quyidagi belgi tagidagi qo'shimcha axborot belgisi haydovchiga nima haqida xabar beradi?
+* F1
+To'xtab turish paytida yurgizgichni o'chirish taqiqlanadi
+* F2   +
+Yurgizgichni o'chirish sharti bilan to'xtab turish
+https://ptest.uz/images/270aec62-945d-4c9d-b726-7716ec79a8c1.webp
+
+
+Yuk avtomobilining yukxonasida 8 nafardan ko'p odamlarni tashish qaysi haydovchilarga ruxsat beriladi?
+* F1
+"?" toifadagi transport vositasini boshqarish huquqi guvohnomasi bo'lib, shu avtomobilda uch yillik ish davriga ega bo'lgan haydovchilarga
+* F2   +
+"D" va "?" toifadagi transport vositalarini boshqarish huquqiga ega bo'lgan va shu toifadagi transport vositalaridan birini 3 yildan ortiq boshqargan haydovchilarga
+
+
+
+Bunday yo'l belgisi bilan belgilangan yo'l qismlarida shaharlararo qatnaydigan avtobuslarning qanday eng yuqori tezlikda harakatlanishiga ruxsat etiladi?
+* F1
+50 km/s
+* F2
+60 km/s
+* F3
+70 km/s
+* F4
+80 km/s
+* F5   +
+90 km/s
+https://ptest.uz/images/2e7b86d8-9d88-4246-8f66-42c125fa52e5.webp
+
+
+Benzin bug'idan zaharlanishning alomatlari qanday?
+* F1
+Ko'z o'ngi qorong'ilashadi, bosh aylanadi, muvozanat yo'qoladi, yiqiladi. Tomir urishi sekinlashadi. Oyoq-qo'l soviydi
+* F2   +
+Mastga o'xshab harakatlanadi, bosh aylanadi, og'riydi, ko'ngil ayniydi, qayt qiladi, mushaklari tortishadi. Nafas olish sekinlashadi
+
+
+
+Haydovchi quvib o'tishni boshlashdan oldin nimaga ishonch hosil qilishi kerak?
+* F1
+Quvib o'tayotgan transport vositasidan ancha tezroq harakatlanishiga
+* F2   +
+Shu bo'lak bo'yicha oldinda harakatlanayotgan transport vositasining haydovchisi chapga burilish (qayta tizilish) haqida ishora bermaganiga
+* F3
+U chiqishga mo'ljallangan yo'l qismi 1000 m masofada bo'sh ekanligiga
+
+
+
+Motosikllarni shatakka olishga ruxsat etiladimi?
+* F1   +
+Yon kajavali motosikllarga ruxsat etiladi
+* F2
+Taqiqlanadi
+* F3
+Tekis joylarda ruxsat etiladi
+* F4
+Yon kajavasi bo'lmagan motosikllarga ruxsat etiladi
+
+
+
+Chorrahani birinchi bo'lib kesib o'tadi
+* F1
+Qizil avtomobil
+* F2
+Ko'k avtomobil
+* F3   +
+Yashil avtomobil
+https://ptest.uz/images/8af12ca4-1bee-42ea-b688-079aab44d5db.webp
+
+
+Yotiq uzluksiz sariq chiziq "To'xtash taqiqlangan" belgisi bilan birga to'xtashga ruxsat etadi:
+* F1
+Yo'lovchilarni tushiradigai barcha transport vositalariga
+* F2
+Avtobuslarga va trolleybuslarga
+* F3   +
+Faqat belgilangan yo'nalishdagi transport vositalariga va yo'nalishsiz engil taksilarga
+https://ptest.uz/images/cf1a51d2-1731-4dec-a64d-0c9faf931f67.webp
+
+
+Chorrahani ikkinchi bo'lib kim kesib o'tadi?
+* F1
+Yashil avtom obil
+* F2   +
+Qizil avtomobil ayni vaqtda ko'k bilan
+* F3
+Sariq avtomobil
+https://ptest.uz/images/5cc7a33f-70f0-493e-bf7b-bbfb4aae5ad4.webp
+
+
+Qaysi yo'l asosiy yo'l hisoblanadi?
+* F1   +
+Tuproqli yo'lga nisbatan qoplamali yo'l yoki tegishli belgilar bilan belgilangan yo'l
+* F2
+Uch tomonlama chorrahada tutashib kelgan yo'lga nisbatan har ikki tomonga davom etuvchi yo'l
+* F3
+Har bir yo'nalishda harakatlanish uchun bir bo'lakli yo'lga nisbatan ko'p bo'lakli qatnov qismi bo'lgan yo'l
+
+
+Sekinyurar transport vositalarining temir yo'l kesishmasi orqali harakatlanishiga faqat temir yo'l boshlig'ining ruxsati bilan harakat tezligi quyidagidan kam bo'lganda yo'l qo'yiladi
+* F1
+3 km/s
+* F2
+5 km/s
+* F3   +
+8 km/s
+* F4
+10 km/s
+* F5
+30 km/s
+
+
+
+Temir yo'l kesishmasidan o'tishda haydovchi nimaga amal qilishi kerak?
+* F1
+Shlagbaumning holatiga va yorug'lik ishorasiga
+* F2
+Yo'l belgilari va chiziqlariga
+* F3
+Temir yo'l kesishmasi navbatchisining ko'rsatmalari va ishoralariga
+* F4   +
+Barcha sanab o'tilgan talablarga
+
+
+
+Bu belgi bilan belgilangan yo'l qismlarida ajratuvchi bo'lakning uzilish joyida qayrilishga ruxsat etiladimi?
+* F1
+Ruxsat etiladi
+* F2   +
+Taqiqlanadi
+* F3
+Faqat to'la vazni 3,5 tonnagacha bo'lgan transport vositalariga ruxsat etiladi
+https://ptest.uz/images/e4662f75-db7f-4e5c-94a6-17706e775f9a.webp
+
+
+Mazkur yotiq chiziq nimani anglatadi?
+* F1
+Belgilangan yo'nalishdagi transport vositalari harakatlanadigan bo'lakni
+* F2
+Maxsus avtomobillar harakatlanadigan bo'lakni
+* F3   +
+Reversiv harakatlanish bo'lagining chegarasini
+https://ptest.uz/images/a375cf9f-a222-465a-b91c-0168471b1e6b.webp
+
+
+
+
+
+30-Bilet 
+???????????? ????? ?? ????? ??????????????? ???? ?????????????? ???? ?????? ??????? ???????
+F1 +
+???????????? ???? ???????? ????????? ???????????????? ?????? ??????? ??????????? ??????
+F2
+???????????? ????? ?? ????? ????????????? ???????????????? ?????? ??????? ??????????? ??????
+https://ptest.uz/images/7b1549fe-c27a-4404-941c-77217bc06197.webp
+
+??????? ?????? ???????????? ????????? ???????? ?????? ?????? 2.5 "??????????? ???????????? ???????????" ??? ??????? ??? ???????? ??????????, ???? ????????? ??????? ??????? ???????? ????? ?????? ???????????? ?????? ????? ?????? ????????? ?????? ??????
+F1  1 ?
+F2       + 5 ?
+F3   10 ?
+F4   15 ?
+F5    20 ?
+
+????????? ??????? ????? ??? ????? ??????
+
+F1    +
+??? ?????????
+F2
+???? ?????????
+F3
+????? ?????????
+https://ptest.uz/images/5ed03906-ad5e-46a9-8cc0-df1bdcc49d20.webp
+
+???????????? ??????? ???????? ???????? ??????? ??????? ?????? ???????? ??????? ???? ??????? ?????? ???????? ???? ????????? ???? ???????? ??????
+F1  ????? ??????? ?????? ???????? ???????????
+F2  ????? ??????? ????????? ????????
+F3  ???????????? ???????? ????
+F4  ????? ?????? ???????????? ????? ????????   + 
+
+??????? ????????? ????????????? ?????????? ?????? ??????????? ????????????
+F1
+???????? ????? ?????? ????????
+F2
+?????? ???????? ?????? ????????
+F3    + 
+?????? ?????? ?????? ????????? ??????????? ???????? ?????????
+
+?? ??????? ????? ??????????? ?????????????? ?????? ????????
+F1
+??????? ????? 12 ? ?????? ???? ???? ?? ????????????
+F2    +
+??????? ????? 12 ? ?????? ?? ???? ?? ????????????
+https://ptest.uz/images/50dcd403-9536-4bbe-91be-97f7ec44d123.webp
+
+
+?????????????? ????? ??????????? ?????????????? ????? ??????? ?????????????? ?????? ????????
+F1
+"?" ?? "?"
+F2 
+"?" ?? "?"
+F3     +
+"?" ?? "?"
+
+https://ptest.uz/images/c6e3848e-2973-450c-9b94-9bb16c85a7df.webp
+
+"?????? ???????????" ??????? ???? ???????????
+F1
+???????? ???????? ?????? ????
+F2
+??????? 150 ?. ??? ??? ?????? ?????
+F3     +
+????? ????????, ?????, ??? ?????????? ?? ?????? ???????????, ????????? ??????? ????-???? ??????? ??????? ???????? 300 ?. ??? ??? ??????
+F4
+?????, ??? ?????, ?????
+
+???? ????????? ????????? ??????? ????? ????? ??????
+F1
+???????
+F2   +
+???????
+F3
+??????
+https://ptest.uz/images/86b0f103-f510-414b-bdac-8be2c6b26eab.webp
+??????? ????????? ???????? ??????? ????????? ????????? ?????? ?????? ??????????? ??????
+F1   +
+????? ?? ?? ?????? ???????? ??????????, ??????? ???????????? ?????, ??????????? ??? ?????????? ?????
+F2
+????????? ???????? ???????? ??????????????? ??????? ?????? ??????? ????? ??????????? ?????
+F3
+????????? ???????? ???? ?????? ?? ??????, ?????? ????? ?????? ???????? ????? ??????????? ?????
+???? ?????? ?? ????? ??????? ??????? ????????? ????????? ?????????????? ????? ????????? ????????? ????????? ?????? ?????? ????? ??????????????? ?????? ???????
+F1
+40 ??/??????? ??????????
+F2
+60 ??/??????? ??????????
+F3   + 
+????? ???????? ????? ???????????? ?????? ??? ??????? ?????? ????????? ??????????
+
+?? ?????????? ???????? ?????????? ???????, ???????? ???? ???? ????? ????????????
+
+F1 ????????????? ?????????? ?????
+F2
+????????? ????????? ?????
+F3  +
+??????????? ?????????????? ???? ?????
+F4
+???????????? ?????? ?????
+
+????? ???????? ??? ???????????? ?????? ????? ???????? ????? ???????
+F1
+2 ??????? ??? ????????
+F2
+3 ??????? ??? ????????
+F3  +
+1 ??????? ??? ????????
+?????? ????????? ?????????????? ??????? ?? ?????? ?????? ????????????
+F1
+????????? ?????????? ?? ???????????? ???????? ????????? ????????
+F2 +
+???????????, ????????????? ?? ???? ????????, ??? ????????? ????? ??? ?????? ?????? ???????????? ?????? ????????
+F3
+??????????? ?????? ????? ?????? 30 ? ??? ?????? ?????? ????????
+?2; ?3 ????????? ????????????? ?????????????? ???? ?????????? ???????????? ?????????? ?????????????? ??? ?????????? ?????:
+F1
+0,8 ??
+F2
+1,0 ??
+F3
+1,6 ??
+F4  + 
+2,0 ??
+F5
+2,5 ??
+??????? ????? ????????? ?????? ????????
+F1
+????? ???????
+F2
+????? ?? ?????
+F3   + 
+???????, ????? ?? ?????
+F4
+????? ????????????
+https://ptest.uz/images/b5bd46d7-26f3-43c0-98e2-fd35b943f1a9.webp
+????? ????-???? ???? ????? ????? ??? ??????? ????? ??????????? ???????
+F1
+"?????? ???????????"
+F2  + 
+"?????? ????? ???????????"
+F3
+"?????? ??? ????? ????????? ?????? ????? ???????????"
+https://ptest.uz/images/6dd25b26-a224-4890-8231-44955b78ad2c.webp
+????? ????????????? ?????????? ?????? ????? ??????????? ????????
+F1
+?????
+F2
+?????
+F3  + 
+??? ?????? ??????
+F4
+??? ??????? ???????
+https://ptest.uz/images/b3f85398-d1da-44c9-8190-8c8e17f52f4f.webp
+???????????? ???? ????????? ????? ????????? ???????????? ?????????????? ?????? ????????
+F1
+????????? ?? ??????????
+F2
+??????????, ????? ??????????? ?? ?? ????????????
+F3  + 
+????? ?? ?? ???????????????
+F4
+????? ????????? ????????????
+https://ptest.uz/images/79811900-ed57-45dd-850f-d9461f018240.webp
+?????? ?????? ??????????? ????????? ?????????? ??????? ???? ?????????
+F1  + 
+???? ??????? ????? ????????? ???????????? ??????? ????? ??????? ???????? ????????? ???????? ???? ??????? ????? ?????, ?????? ?????? ?????
+F2
+????? ?????? ????????
+F3
+???? ??????? ??????? ????????? ?????????? ???????? ????? ??? ?????? ???? ?????
+F4
+????? ???? ?????? ????? ????? ?????
+     

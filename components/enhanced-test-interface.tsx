@@ -351,42 +351,43 @@ export function EnhancedTestInterface({
             </h1>
           </div>
           <div className="flex items-center gap-3">
-            <LanguageSwitcher />
             <Button variant="outline" onClick={handleFinish} className="bg-white/50 hover:bg-white border-red-200 text-red-600">
               {t("test.finish")}
             </Button>
           </div>
         </div>
 
-        {/* Top Navigation Strip (Test Numbers) */}
-        <div className="mb-6 bg-white border border-zinc-200 p-4 rounded-xl shadow-sm overflow-x-auto">
-          <div className="flex flex-wrap justify-center gap-2 min-w-max">
-            {tests.map((_, idx) => {
-              const ansIdx = selectedAnswers[idx]
-              const isAns = answeredQuestions[idx]
-              const correct = ansIdx === tests[idx].correct_answer
+        {/* Top Navigation Strip (Test Numbers) - Hidden for Random Tests */}
+        {testType !== "random" && (
+          <div className="mb-6 bg-white border border-zinc-200 p-4 rounded-xl shadow-sm overflow-x-auto">
+            <div className="flex flex-wrap justify-center gap-2 min-w-max">
+              {tests.map((_, idx) => {
+                const ansIdx = selectedAnswers[idx]
+                const isAns = answeredQuestions[idx]
+                const correct = ansIdx === tests[idx].correct_answer
 
-              let btnClass = "bg-gray-200 text-gray-600"
-              if (currentIndex === idx) btnClass = "ring-2 ring-primary ring-offset-2 bg-primary text-white"
-              else if (isAns) {
-                btnClass = correct ? "bg-green-600 text-white" : "bg-red-600 text-white"
-              }
+                let btnClass = "bg-gray-200 text-gray-600"
+                if (currentIndex === idx) btnClass = "ring-2 ring-primary ring-offset-2 bg-primary text-white"
+                else if (isAns) {
+                  btnClass = correct ? "bg-green-600 text-white" : "bg-red-600 text-white"
+                }
 
-              return (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentIndex(idx)}
-                  className={`
-                    h-8 w-10 md:h-9 md:w-12 rounded flex items-center justify-center text-xs md:text-sm font-bold
-                    ${btnClass}
-                  `}
-                >
-                  {idx + 1}
-                </button>
-              )
-            })}
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => setCurrentIndex(idx)}
+                    className={`
+                      h-8 w-10 md:h-9 md:w-12 rounded flex items-center justify-center text-xs md:text-sm font-bold
+                      ${btnClass}
+                    `}
+                  >
+                    {idx + 1}
+                  </button>
+                )
+              })}
+            </div>
           </div>
-        </div>
+        )}
 
         <Card className="bg-white border-zinc-200 shadow-sm overflow-hidden rounded-2xl">
           <QuizProtection>

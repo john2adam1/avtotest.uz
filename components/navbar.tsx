@@ -155,22 +155,55 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
           {mounted && (
             <div className="flex items-center gap-2">
               {isAdmin && (
-                <Button asChild variant="ghost" size="sm" className="text-zinc-400 hover:text-white hover:bg-zinc-900">
-                  <Link href="/admin">
-                    <Settings className="h-4 w-4 mr-2" />
-                    Admin
-                  </Link>
-                </Button>
+                <>
+                  <Button asChild variant="ghost" size="sm" className="text-zinc-400 hover:text-white hover:bg-zinc-900">
+                    <Link href="/dashboard">
+                      <LayoutDashboard className="h-4 w-4 mr-2" />
+                      Dashboard
+                    </Link>
+                  </Button>
+                  <Button asChild variant="ghost" size="sm" className="text-zinc-400 hover:text-white hover:bg-zinc-900">
+                    <Link href="/admin">
+                      <Settings className="h-4 w-4 mr-2" />
+                      Admin
+                    </Link>
+                  </Button>
+                </>
               )}
 
-              <div className="flex items-center gap-2 px-3 h-9 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 text-sm font-medium">
-                <Avatar className="h-5 w-5 bg-zinc-700">
-                  <AvatarFallback className="bg-transparent text-[10px] text-white">{userEmail?.charAt(0).toUpperCase() || "U"}</AvatarFallback>
-                </Avatar>
-                {(userProfile?.firstName || userProfile?.lastName)
-                  ? `${userProfile.firstName || ""} ${userProfile.lastName || ""}`.trim()
-                  : "Foydalanuvchi"}
-              </div>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button variant="ghost" size="sm" className="flex items-center gap-2 px-3 h-9 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 text-sm font-medium hover:bg-zinc-800 hover:text-white">
+                    <Avatar className="h-5 w-5 bg-zinc-700">
+                      <AvatarFallback className="bg-transparent text-[10px] text-white">{userEmail?.charAt(0).toUpperCase() || "U"}</AvatarFallback>
+                    </Avatar>
+                    {(userProfile?.firstName || userProfile?.lastName)
+                      ? `${userProfile.firstName || ""} ${userProfile.lastName || ""}`.trim()
+                      : "Foydalanuvchi"}
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-56">
+                  <div className="px-2 py-1.5 text-sm">
+                    <p className="font-medium">
+                      {(userProfile?.firstName || userProfile?.lastName)
+                        ? `${userProfile.firstName || ""} ${userProfile.lastName || ""}`.trim()
+                        : "Foydalanuvchi"}
+                    </p>
+                    {userProfile?.phone && (
+                      <p className="text-xs text-muted-foreground mt-0.5">
+                        {userProfile.phone}
+                      </p>
+                    )}
+                  </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/settings" className="cursor-pointer">
+                      <Settings className="h-4 w-4 mr-2" />
+                      Sozlamalar
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
 
               <Button
                 variant="ghost"

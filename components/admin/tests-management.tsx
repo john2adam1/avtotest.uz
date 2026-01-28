@@ -13,7 +13,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useToast } from "@/hooks/use-toast"
 import { Trash2, Edit2, Plus, X } from "lucide-react"
-import type { Test, Ticket } from "@/lib/types"
+import type { Test, Ticket, Topic } from "@/lib/types"
 
 interface TestWithRelation extends Test {
   ticket_title?: string
@@ -21,15 +21,12 @@ interface TestWithRelation extends Test {
 
 export function TestsManagement() {
   const [tests, setTests] = useState<TestWithRelation[]>([])
+  const [topics, setTopics] = useState<Topic[]>([])
+  const [selectedTopicId, setSelectedTopicId] = useState("")
   const [category, setCategory] = useState("")
-  const [imageFile, setImageFile] = useState<File | null>(null)
-  const [audioFile, setAudioFile] = useState<File | null>(null)
   const [imageUrl, setImageUrl] = useState("")
   const [audioUrl, setAudioUrl] = useState("")
-  const [imagePreview, setImagePreview] = useState<string | null>(null)
-  const [audioPreview, setAudioPreview] = useState<string | null>(null)
-  const [uploadingImage, setUploadingImage] = useState(false)
-  const [uploadingAudio, setUploadingAudio] = useState(false)
+  const [audioUrlCyrl, setAudioUrlCyrl] = useState("")
   const [question, setQuestion] = useState("")
   const [questionCyrl, setQuestionCyrl] = useState("")
   const [answers, setAnswers] = useState(["", ""])
@@ -40,9 +37,6 @@ export function TestsManagement() {
   const [explanationTitleCyrl, setExplanationTitleCyrl] = useState("")
   const [explanationText, setExplanationText] = useState("")
   const [explanationTextCyrl, setExplanationTextCyrl] = useState("")
-  const [audioFileCyrl, setAudioFileCyrl] = useState<File | null>(null)
-  const [audioUrlCyrl, setAudioUrlCyrl] = useState("")
-  const [audioPreviewCyrl, setAudioPreviewCyrl] = useState<string | null>(null)
   const [editingTest, setEditingTest] = useState<Test | null>(null)
   const [loading, setLoading] = useState(true)
   const { toast } = useToast()
@@ -50,8 +44,13 @@ export function TestsManagement() {
 
   useEffect(() => {
     fetchTests()
+    fetchTopics()
   }, [])
 
+  const fetchTopics = async () => {
+    const { data } = await supabase.from("topics").select("*").order("title")
+    if (data) setTopics(data)
+  }
 
   const fetchTests = async () => {
     setLoading(true)
@@ -67,13 +66,11 @@ export function TestsManagement() {
   }
 
   const resetForm = () => {
+    setSelectedTopicId("")
     setCategory("")
-    setImageFile(null)
-    setAudioFile(null)
     setImageUrl("")
     setAudioUrl("")
-    setImagePreview(null)
-    setAudioPreview(null)
+    setAudioUrlCyrl("")
     setQuestion("")
     setQuestionCyrl("")
     setAnswers(["", ""])
@@ -84,182 +81,73 @@ export function TestsManagement() {
     setExplanationTitleCyrl("")
     setExplanationText("")
     setExplanationTextCyrl("")
-    setAudioFileCyrl(null)
-    setAudioUrlCyrl("")
-    setAudioPreviewCyrl(null)
     setEditingTest(null)
   }
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      if (!file.type.startsWith("image/")) {
-        toast({
-          title: "Error",
-          description: "Rasm faylini tanlang",
-          variant: "destructive",
-        })
-        return
+  const cleanUrl = (url: string) => {
+    if (!url) return ""
+    let cleaned = url.trim()
+
+    // 1. Handle BBCode [img] tags (common with postimg.cc)
+    const bbCodeImgMatch = cleaned.match(/\[img\](https?:\/\/[^\[]+)\[\/img\]/i)
+    if (bbCodeImgMatch) {
+      cleaned = bbCodeImgMatch[1]
+    } else {
+      // 2. Extract first URL found in string, checking for both http(s):// and http(s):/
+      const urlMatch = cleaned.match(/https?:(?:\/){1,2}[^\s\][()]+/i)
+      if (urlMatch) {
+        cleaned = urlMatch[0]
       }
-      setImageFile(file)
-      const reader = new FileReader()
-      reader.onloadend = () => {
-        setImagePreview(reader.result as string)
-      }
-      reader.readAsDataURL(file)
     }
+
+    // 3. Fix single slash mistakes (e.g., https:/postimg.cc -> https://postimg.cc)
+    if (cleaned.toLowerCase().startsWith('https:/') && !cleaned.toLowerCase().startsWith('https://')) {
+      cleaned = cleaned.replace(/https?:\//i, (match) => match.toLowerCase().includes('s') ? 'https://' : 'http://')
+    } else if (cleaned.toLowerCase().startsWith('http:/') && !cleaned.toLowerCase().startsWith('http://')) {
+      cleaned = cleaned.replace('http:/', 'http://')
+    }
+
+    // 4. If it's just a domain (e.g., postimg.cc/abc), add https://
+    if (!cleaned.startsWith('http') && cleaned.includes('.')) {
+      cleaned = 'https://' + cleaned
+    }
+
+    return cleaned
   }
 
-  const handleAudioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      if (!file.type.startsWith("audio/")) {
-        toast({
-          title: "Error",
-          description: "Audio faylini tanlang",
-          variant: "destructive",
-        })
-        return
-      }
-      setAudioFile(file)
-      setAudioPreview(URL.createObjectURL(file))
-    }
-  }
+  useEffect(() => {
+    // Debug: Log Supabase config (masked)
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL || "MISSING"
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "MISSING"
+    console.log("Supabase Config Check:", {
+      url: url.substring(0, 15) + "...",
+      key: key.length > 10 ? (key.substring(0, 5) + "..." + key.substring(key.length - 5)) : "INVALID"
+    })
 
-  const handleAudioCyrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]
-    if (file) {
-      if (!file.type.startsWith("audio/")) {
-        toast({
-          title: "Error",
-          description: "Audio faylini tanlang",
-          variant: "destructive",
-        })
-        return
-      }
-      setAudioFileCyrl(file)
-      setAudioPreviewCyrl(URL.createObjectURL(file))
-    }
-  }
-
-  const uploadImage = async (): Promise<string | null> => {
-    if (!imageFile) return imageUrl || null
-
-    setUploadingImage(true)
-    try {
-      const fileExt = imageFile.name.split(".").pop()
-      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
-      const filePath = `test-images/${fileName}`
-
-      const { error: uploadError } = await supabase.storage.from("test-images").upload(filePath, imageFile, {
-        cacheControl: "3600",
-        upsert: false,
-      })
-
-      if (uploadError) throw uploadError
-
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from("test-images").getPublicUrl(filePath)
-
-      setUploadingImage(false)
-      return publicUrl
-    } catch (error: any) {
-      setUploadingImage(false)
-      toast({
-        title: "Error",
-        description: error.message || "Rasm faylini yuklashda xatolik yuz berdi",
-        variant: "destructive",
-      })
-      return null
-    }
-  }
-
-  const uploadAudio = async (): Promise<string | null> => {
-    if (!audioFile) return audioUrl || null
-
-    setUploadingAudio(true)
-    try {
-      const fileExt = audioFile.name.split(".").pop()
-      const fileName = `${Date.now()}-${Math.random().toString(36).substring(7)}.${fileExt}`
-      const filePath = `test-audio/${fileName}`
-
-      const { error: uploadError } = await supabase.storage.from("test-audio").upload(filePath, audioFile, {
-        cacheControl: "3600",
-        upsert: false,
-      })
-
-      if (uploadError) throw uploadError
-
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from("test-audio").getPublicUrl(filePath)
-
-      setUploadingAudio(false)
-      return publicUrl
-    } catch (error: any) {
-      setUploadingAudio(false)
-      toast({
-        title: "Error",
-        description: error.message || "Audio faylini yuklashda xatolik yuz berdi",
-        variant: "destructive",
-      })
-      return null
-    }
-  }
-
-  const uploadAudioCyrl = async (): Promise<string | null> => {
-    if (!audioFileCyrl) return audioUrlCyrl || null
-
-    setUploadingAudio(true)
-    try {
-      const fileExt = audioFileCyrl.name.split(".").pop()
-      const fileName = `${Date.now()}-cyrl-${Math.random().toString(36).substring(7)}.${fileExt}`
-      const filePath = `test-audio/${fileName}`
-
-      const { error: uploadError } = await supabase.storage.from("test-audio").upload(filePath, audioFileCyrl, {
-        cacheControl: "3600",
-        upsert: false,
-      })
-
-      if (uploadError) throw uploadError
-
-      const {
-        data: { publicUrl },
-      } = supabase.storage.from("test-audio").getPublicUrl(filePath)
-
-      setUploadingAudio(false)
-      return publicUrl
-    } catch (error: any) {
-      setUploadingAudio(false)
-      toast({
-        title: "Error",
-        description: error.message || "Audio faylini (Kirill) yuklashda xatolik yuz berdi",
-        variant: "destructive",
-      })
-      return null
-    }
-  }
+    // Debug: Check session
+    supabase.auth.getSession().then(({ data }) => {
+      console.log("Browser Session Status:", data.session ? `Logged in as ${data.session.user.email}` : "Not logged in")
+    })
+  }, [])
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
 
-    // Validation
-
-
-    if (!category) {
+    if (!selectedTopicId) {
       toast({
-        title: "Error",
-        description: "Kategoriyani kiriting",
+        title: "Xatolik",
+        description: "Mavzuni (Topic) tanlang",
         variant: "destructive",
       })
       return
     }
 
-    if ((!imageUrl && !imageFile) || !question) {
+    const finalImageUrl = cleanUrl(imageUrl)
+
+    if (!finalImageUrl || !question) {
       toast({
-        title: "Error",
-        description: "Barcha majburiy maydonlarni to'ldiring",
+        title: "Xatolik",
+        description: "Barcha majburiy maydonlarni to'ldiring (Yaroqli Rasm URL va Savol)",
         variant: "destructive",
       })
       return
@@ -267,57 +155,35 @@ export function TestsManagement() {
 
     if (answers.some((a) => !a.trim())) {
       toast({
-        title: "Error",
+        title: "Xatolik",
         description: `Barcha ${answers.length} javoblarni kiriting`,
         variant: "destructive",
       })
       return
     }
 
-    let finalImageUrl = imageUrl
-    let finalAudioUrl = audioUrl
-    let finalAudioUrlCyrl = audioUrlCyrl
-
-    if (imageFile) {
-      const uploadedImageUrl = await uploadImage()
-      if (!uploadedImageUrl) return
-      finalImageUrl = uploadedImageUrl
-    }
-
-    if (audioFile) {
-      const uploadedAudioUrl = await uploadAudio()
-      if (uploadedAudioUrl) {
-        finalAudioUrl = uploadedAudioUrl
-      }
-    }
-
-    if (audioFileCyrl) {
-      const uploadedAudioUrlCyrl = await uploadAudioCyrl()
-      if (uploadedAudioUrlCyrl) {
-        finalAudioUrlCyrl = uploadedAudioUrlCyrl
-      }
-    }
-
-    const testData = {
+    const testData: any = {
       image_url: finalImageUrl,
       // Latin
-      question,
-      answers,
+      question: question.trim(),
+      answers: answers.map(a => a.trim()),
       explanation_title: explanationTitle.trim() || null,
       explanation_text: explanationText.trim() || null,
-      audio_url: finalAudioUrl || null,
+      audio_url: cleanUrl(audioUrl) || null,
       // Cyrillic
       question_cyrl: questionCyrl.trim() || null,
-      answers_cyrl: answersCyrl.length === answers.length ? answersCyrl : null,
+      answers_cyrl: answersCyrl.some(a => a.trim() !== "") ? answersCyrl.map(a => a.trim()) : null,
       explanation_title_cyrl: explanationTitleCyrl.trim() || null,
       explanation_text_cyrl: explanationTextCyrl.trim() || null,
-      audio_url_cyrl: finalAudioUrlCyrl || null,
+      audio_url_cyrl: cleanUrl(audioUrlCyrl) || null,
 
-      correct_answer: parseInt(correctAnswer),
-      time_limit: parseInt(timeLimit),
+      correct_answer: parseInt(correctAnswer) || 0,
+      time_limit: parseInt(timeLimit) || 300,
       category: category.trim(),
-      topic_id: null // Ensure topic_id is null as we use category
+      topic_id: selectedTopicId,
     }
+
+    console.log("Submitting test data:", testData);
 
     if (editingTest) {
       const { error } = await supabase
@@ -326,31 +192,37 @@ export function TestsManagement() {
         .eq("id", editingTest.id)
 
       if (error) {
+        console.error("Update failed! Full error object:", error);
+        console.error("Error keys:", Object.keys(error));
+        console.error("Error stringified:", JSON.stringify(error));
         toast({
-          title: "Error",
-          description: "Testni yangilashda xatolik yuz berdi",
+          title: "Xatolik",
+          description: `Update failed: ${error.message} (Code: ${error.code})`,
           variant: "destructive",
         })
       } else {
         toast({
-          title: "Success",
+          title: "Muvaffaqiyatli",
           description: "Test muvaffaqiyatli yangilandi",
         })
         resetForm()
         fetchTests()
       }
     } else {
-      const { data: newTest, error } = await supabase.from("tests").insert(testData).select().single()
+      const { error } = await supabase.from("tests").insert(testData)
 
       if (error) {
+        console.error("Insert failed! Full error object:", error);
+        console.error("Error keys:", Object.keys(error));
+        console.error("Error stringified:", JSON.stringify(error));
         toast({
-          title: "Error",
-          description: "Testni yaratishda xatolik yuz berdi",
+          title: "Xatolik",
+          description: `Insert failed: ${error.message} (Code: ${error.code})`,
           variant: "destructive",
         })
       } else {
         toast({
-          title: "Success",
+          title: "Muvaffaqiyatli",
           description: "Test muvaffaqiyatli yaratildi",
         })
         resetForm()
@@ -361,15 +233,11 @@ export function TestsManagement() {
 
   const handleEdit = (test: TestWithRelation) => {
     setEditingTest(test)
-    // For editing, we don't necessarily change the ticket unless we implement that logic
-    // But we should set the Category
+    setSelectedTopicId(test.topic_id || "")
     setCategory(test.category || "")
     setImageUrl(test.image_url)
-    setImagePreview(test.image_url)
     setAudioUrl(test.audio_url || "")
-    setAudioPreview(test.audio_url || null)
-    setImageFile(null)
-    setAudioFile(null)
+    setAudioUrlCyrl(test.audio_url_cyrl || "")
     setQuestion(test.question)
     setQuestionCyrl(test.question_cyrl || "")
     setAnswers(test.answers)
@@ -380,8 +248,6 @@ export function TestsManagement() {
     setExplanationTitleCyrl(test.explanation_title_cyrl || "")
     setExplanationText(test.explanation_text || "")
     setExplanationTextCyrl(test.explanation_text_cyrl || "")
-    setAudioUrlCyrl(test.audio_url_cyrl || "")
-    setAudioPreviewCyrl(test.audio_url_cyrl || null)
   }
 
   const handleDelete = async (id: string) => {
@@ -438,10 +304,33 @@ export function TestsManagement() {
               )}
 
               <div className="space-y-2">
-                <Label htmlFor="category">Kategoriya (Mavzu)</Label>
+                <Label htmlFor="topic">Mavzu (Topic)</Label>
+                <Select
+                  value={selectedTopicId}
+                  onValueChange={(val) => {
+                    setSelectedTopicId(val)
+                    const selectedTopic = topics.find(t => t.id === val)
+                    if (selectedTopic) setCategory(selectedTopic.title)
+                  }}
+                >
+                  <SelectTrigger id="topic">
+                    <SelectValue placeholder="Mavzuni tanlang..." />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {topics.map((t) => (
+                      <SelectItem key={t.id} value={t.id}>
+                        {t.title}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="category">Kategoriya (Avtomatik to'ldiriladi)</Label>
                 <Input
                   id="category"
-                  placeholder="Kategoriya nomini kiriting (masalan: Yo'l belgilari)"
+                  placeholder="Kategoriya kodi yoki nomi"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                   required
@@ -449,32 +338,17 @@ export function TestsManagement() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="image">Rasm</Label>
+                <Label htmlFor="image">Rasm URL</Label>
                 <Input
                   id="image"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageChange}
-                  required={!editingTest && !imageUrl}
+                  placeholder="Rasm URL manzilini kiriting..."
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                  required={!editingTest}
                 />
-                {imagePreview && (
+                {imageUrl && (
                   <div className="mt-2">
-                    <img src={imagePreview} alt="Preview" className="max-w-xs rounded-lg border" />
-                  </div>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="audio">Audio (Optional)</Label>
-                <Input
-                  id="audio"
-                  type="file"
-                  accept="audio/*"
-                  onChange={handleAudioChange}
-                />
-                {audioPreview && (
-                  <div className="mt-2">
-                    <audio controls src={audioPreview} className="w-full" />
+                    <img src={cleanUrl(imageUrl)} alt="Preview" className="max-w-xs rounded-lg border" />
                   </div>
                 )}
               </div>
@@ -498,16 +372,16 @@ export function TestsManagement() {
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="audio">Audio (Lotin, Optional)</Label>
+                      <Label htmlFor="audio">Audio URL (Lotin, Optional)</Label>
                       <Input
                         id="audio"
-                        type="file"
-                        accept="audio/*"
-                        onChange={handleAudioChange}
+                        placeholder="Audio URL manzilini kiriting..."
+                        value={audioUrl}
+                        onChange={(e) => setAudioUrl(e.target.value)}
                       />
-                      {audioPreview && (
+                      {audioUrl && (
                         <div className="mt-2">
-                          <audio controls src={audioPreview} className="w-full" />
+                          <audio controls src={audioUrl} className="w-full" />
                         </div>
                       )}
                     </div>
@@ -539,20 +413,19 @@ export function TestsManagement() {
                         placeholder="Саволни киритинг..."
                         value={questionCyrl}
                         onChange={(e) => setQuestionCyrl(e.target.value)}
-                        required={!!question} // If one is present, both should be? User might want to start with one.
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="audio-cyrl">Audio (Kirill, Optional)</Label>
+                      <Label htmlFor="audio-cyrl">Audio URL (Kirill, Optional)</Label>
                       <Input
                         id="audio-cyrl"
-                        type="file"
-                        accept="audio/*"
-                        onChange={handleAudioCyrlChange}
+                        placeholder="Audio URL manzilini киритинг..."
+                        value={audioUrlCyrl}
+                        onChange={(e) => setAudioUrlCyrl(e.target.value)}
                       />
-                      {audioPreviewCyrl && (
+                      {audioUrlCyrl && (
                         <div className="mt-2">
-                          <audio controls src={audioPreviewCyrl} className="w-full" />
+                          <audio controls src={audioUrlCyrl} className="w-full" />
                         </div>
                       )}
                     </div>
@@ -595,60 +468,56 @@ export function TestsManagement() {
                     Javob qo'shish
                   </Button>
                 </div>
-                <div className="space-y-4">
+                <div className="space-y-2">
                   {answers.map((_, index) => (
-                    <Card key={index} className="p-4 bg-zinc-50/30">
-                      <div className="flex justify-between items-center mb-2">
-                        <Label className="text-xs font-bold uppercase text-zinc-500">Javob {index + 1}</Label>
-                        {answers.length > 2 && (
-                          <Button
-                            type="button"
-                            variant="ghost"
-                            size="icon"
-                            className="h-6 w-6"
-                            onClick={() => {
-                              const newAnswers = answers.filter((_, i) => i !== index)
-                              const newAnswersCyrl = answersCyrl.filter((_, i) => i !== index)
-                              setAnswers(newAnswers)
-                              setAnswersCyrl(newAnswersCyrl)
-                              if (parseInt(correctAnswer) >= newAnswers.length) {
-                                setCorrectAnswer((newAnswers.length - 1).toString())
-                              }
-                            }}
-                          >
-                            <X className="h-4 w-4 text-destructive" />
-                          </Button>
-                        )}
-                      </div>
-                      <div className="grid gap-3 sm:grid-cols-2">
-                        <div className="space-y-1">
-                          <Label className="text-[10px]">Lotin</Label>
-                          <Input
-                            placeholder={`Javob ${index + 1} (Lotin)`}
-                            value={answers[index]}
-                            onChange={(e) => {
-                              const newAnswers = [...answers]
-                              newAnswers[index] = e.target.value
-                              setAnswers(newAnswers)
-                            }}
-                            required
-                          />
-                        </div>
-                        <div className="space-y-1">
-                          <Label className="text-[10px]">Kirill</Label>
-                          <Input
-                            placeholder={`Жавоб ${index + 1} (Кирилл)`}
-                            value={answersCyrl[index] || ""}
-                            onChange={(e) => {
-                              const newAnswersCyrl = [...answersCyrl]
-                              newAnswersCyrl[index] = e.target.value
-                              setAnswersCyrl(newAnswersCyrl)
-                            }}
-                            required={!!answers[index]}
-                          />
+                    <div key={index} className="flex gap-4 items-start border p-3 rounded-lg bg-zinc-50/30">
+                      <div className="flex-1 space-y-3">
+                        <div className="grid gap-2 sm:grid-cols-2">
+                          <div className="space-y-1">
+                            <Label className="text-[10px] uppercase text-zinc-500 font-bold">Lotin {index + 1}</Label>
+                            <Input
+                              placeholder={`Javob ${index + 1}`}
+                              value={answers[index]}
+                              onChange={(e) => {
+                                const newAnswers = [...answers]
+                                newAnswers[index] = e.target.value
+                                setAnswers(newAnswers)
+                              }}
+                              required
+                            />
+                          </div>
+                          <div className="space-y-1">
+                            <Label className="text-[10px] uppercase text-zinc-500 font-bold">Kirill {index + 1}</Label>
+                            <Input
+                              placeholder={`Жавоб ${index + 1}`}
+                              value={answersCyrl[index] || ""}
+                              onChange={(e) => {
+                                const newAnswersCyrl = [...answersCyrl]
+                                newAnswersCyrl[index] = e.target.value
+                                setAnswersCyrl(newAnswersCyrl)
+                              }}
+                            />
+                          </div>
                         </div>
                       </div>
-                    </Card>
+                      {answers.length > 2 && (
+                        <Button
+                          type="button"
+                          variant="ghost"
+                          size="icon"
+                          className="mt-6 h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10"
+                          onClick={() => {
+                            setAnswers(answers.filter((_, i) => i !== index))
+                            setAnswersCyrl(answersCyrl.filter((_, i) => i !== index))
+                            if (parseInt(correctAnswer) >= answers.length - 1) {
+                              setCorrectAnswer("0")
+                            }
+                          }}
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      )}
+                    </div>
                   ))}
                 </div>
               </div>
@@ -657,7 +526,7 @@ export function TestsManagement() {
                 <div className="space-y-2">
                   <Label htmlFor="correct">To'g'ri javob</Label>
                   <Select value={correctAnswer} onValueChange={setCorrectAnswer}>
-                    <SelectTrigger>
+                    <SelectTrigger id="correct">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -677,19 +546,15 @@ export function TestsManagement() {
                     type="number"
                     value={timeLimit}
                     onChange={(e) => setTimeLimit(e.target.value)}
-                    min="60"
+                    min="10"
                     required
                   />
                 </div>
               </div>
 
               <div className="flex gap-2">
-                <Button type="submit" className="flex-1" disabled={uploadingImage || uploadingAudio}>
-                  {uploadingImage || uploadingAudio
-                    ? "Yuklanmoqda..."
-                    : editingTest
-                      ? "Testni tahrirlash"
-                      : "Test yaratish"}
+                <Button type="submit" className="flex-1">
+                  {editingTest ? "Testni tahrirlash" : "Test yaratish"}
                 </Button>
                 {editingTest && (
                   <Button type="button" variant="outline" onClick={resetForm}>
