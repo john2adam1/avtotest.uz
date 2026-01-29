@@ -6,15 +6,12 @@ import { Toaster } from "@/components/ui/toaster"
 import "./global.css"
 import { I18nProvider } from "@/components/providers/i18n-provider"
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-})
+import { Poppins } from "next/font/google"
 
-const spaceGrotesk = Space_Grotesk({
+const poppins = Poppins({
   subsets: ["latin"],
-  variable: "--font-heading",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-sans",
   display: "swap",
 })
 
@@ -81,7 +78,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased`}>
+      <body className={`${poppins.variable} font-sans antialiased`}>
         <I18nProvider>
           {children}
           <Toaster />

@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-    title: "Kirish | Tezkor Avtotest",
+    title: "Kirish | Sarvar Avtotest",
     description: "Tizimga kirish va testlarni davom ettirish.",
 }
 

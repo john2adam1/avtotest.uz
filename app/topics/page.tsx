@@ -33,13 +33,17 @@ export default async function TopicsPage() {
     // Fetch user stats for topics
     const { data: topicStats } = await supabase
         .from("topic_statistics")
-        .select("topic_id, percentage")
+        .select("topic_id, percentage, correct_count, wrong_count")
         .eq("user_id", user.id)
 
     const topicStatsMap = (topicStats || []).reduce((acc, stat) => {
-        acc[stat.topic_id] = stat.percentage
+        acc[stat.topic_id] = {
+            percentage: stat.percentage,
+            correct: stat.correct_count,
+            wrong: stat.wrong_count
+        }
         return acc
-    }, {} as Record<string, number>)
+    }, {} as Record<string, { percentage: number; correct: number; wrong: number }>)
 
     return (
         <div className="min-h-screen bg-background">
@@ -70,7 +74,8 @@ export default async function TopicsPage() {
                                 {topics.map((topic) => {
                                     const isPublic = topic.is_public
                                     const canAccess = isPublic || hasAccess
-                                    const percentage = topicStatsMap[topic.id]
+                                    const stats = topicStatsMap[topic.id]
+                                    const percentage = stats?.percentage
 
                                     return (
                                         <div key={topic.id} className="group flex items-center justify-between p-4 sm:p-5 hover:bg-muted/30 transition-colors">
@@ -88,10 +93,17 @@ export default async function TopicsPage() {
                                             </div>
 
                                             <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-                                                {canAccess && percentage !== undefined && (
-                                                    <Badge className={`text-sm px-2.5 py-0.5 ${percentage >= 90 ? "bg-green-500 hover:bg-green-600" : percentage >= 60 ? "bg-yellow-500 hover:bg-yellow-600" : "bg-red-500 hover:bg-red-600"}`}>
-                                                        {percentage}%
-                                                    </Badge>
+                                                {canAccess && stats && (
+                                                    <div className="flex flex-col items-end gap-1 mr-2">
+                                                        <Badge className={`text-sm px-2.5 py-0.5 ${percentage >= 90 ? "bg-green-500 hover:bg-green-600" : percentage >= 60 ? "bg-yellow-500 hover:bg-yellow-600" : "bg-red-500 hover:bg-red-600"}`}>
+                                                            {percentage}%
+                                                        </Badge>
+                                                        <div className="flex gap-1 text-[10px] sm:text-xs font-medium">
+                                                            <span className="text-green-600">{stats.correct} T</span>
+                                                            <span className="text-zinc-300">|</span>
+                                                            <span className="text-red-500">{stats.wrong} X</span>
+                                                        </div>
+                                                    </div>
                                                 )}
 
                                                 <Button

@@ -35,13 +35,17 @@ export default async function TicketsPage() {
   // Fetch user stats for tickets
   const { data: ticketStats } = await supabase
     .from("ticket_statistics")
-    .select("ticket_id, percentage")
+    .select("ticket_id, percentage, correct_count, wrong_count")
     .eq("user_id", user.id)
 
   const statsMap = (ticketStats || []).reduce((acc, stat) => {
-    acc[stat.ticket_id] = stat.percentage
+    acc[stat.ticket_id] = {
+      percentage: stat.percentage,
+      correct: stat.correct_count,
+      wrong: stat.wrong_count
+    }
     return acc
-  }, {} as Record<string, number>)
+  }, {} as Record<string, { percentage: number; correct: number; wrong: number }>)
 
   return (
     <div className="min-h-screen bg-background">
@@ -61,60 +65,61 @@ export default async function TicketsPage() {
           <p className="text-muted-foreground">Biletni tanlang va testni boshlang</p>
         </div>
 
-        <Card className="max-w-4xl mx-auto">
-          <CardContent className="p-6">
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 gap-3">
+        <Card className="max-w-5xl mx-auto border-none shadow-none bg-transparent">
+          <CardContent className="p-0">
+            <div className="grid grid-cols-5 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-2 sm:gap-3">
               {tickets && tickets.length > 0 ? (
                 tickets.map((ticket, index) => {
                   const isPublic = ticket.is_public ?? false
                   const canAccess = isPublic || hasAccess
                   const ticketNumber = index + 1
-                  const percentage = statsMap[ticket.id]
+                  const stats = statsMap[ticket.id]
+                  const percentage = stats?.percentage
 
-                  let buttonVariant = "default" as "default" | "destructive" | "outline" | "secondary" | "ghost" | "link"
-                  if (!canAccess) buttonVariant = "outline"
-                  else if (percentage !== undefined) {
-                    if (percentage >= 90) buttonVariant = "default" // Green-ish usually (handled by class below if needed)
-                    else if (percentage < 60) buttonVariant = "destructive"
-                  }
+                  let bgClass = "bg-white border border-gray-300 hover:border-blue-500 text-gray-700"
 
-                  let bgClass = ""
-                  if (canAccess && percentage !== undefined) {
-                    if (percentage >= 90) bgClass = "bg-green-600 hover:bg-green-700"
-                    else if (percentage >= 70) bgClass = "bg-yellow-500 hover:bg-yellow-600"
-                    else bgClass = "bg-red-500 hover:bg-red-600"
-                  }
+                  // If we strictly follow the user request "Ticket statistics should appear on each ticket"
+                  // and "Image 1" (which shows plain boxes), maybe they want the stats visible but subtle?
+                  // The user uploaded an image of PLAIN boxes numbered 1-8. 
+                  // But also said "Ticket statistics should appear on each ticket".
+                  // I'll stick to a simple box design, but keep the small stats if available.
 
                   return (
-                    <div key={ticket.id} className="relative">
+                    <div key={ticket.id} className="relative aspect-square">
                       <Button
                         asChild={canAccess}
-                        variant={canAccess && !bgClass ? "default" : "outline"} // fallback variant
+                        variant="ghost"
                         disabled={!canAccess}
-                        className={`aspect-square h-16 sm:h-20 text-lg font-semibold w-full relative ${bgClass} ${!canAccess ? 'opacity-50' : ''}`}
+                        className={`w-full h-full p-0 rounded-none border border-gray-300 hover:bg-blue-50 flex flex-col items-center justify-center gap-0 shadow-sm ${bgClass} ${!canAccess ? 'opacity-50 bg-gray-100' : ''}`}
                       >
                         {canAccess ? (
-                          <Link href={`/test/ticket/${ticket.id}`} className="flex flex-col items-center justify-center">
-                            <span>{ticketNumber}</span>
-                            {percentage !== undefined && (
-                              <span className="text-xs absolute bottom-1">{percentage}%</span>
+                          <Link href={`/test/ticket/${ticket.id}`} className="flex flex-col items-center justify-center w-full h-full">
+                            <span className="text-xl font-bold text-gray-800">{ticketNumber}</span>
+                            {stats && (
+                              <div className="flex gap-1 text-[10px] sm:text-[10px] mt-1 font-medium opacity-80">
+                                <span className="text-green-600">{stats.correct}</span>
+                                <span className="text-gray-300">|</span>
+                                <span className="text-red-500">{stats.wrong}</span>
+                              </div>
                             )}
                           </Link>
                         ) : (
                           <div className="flex flex-col items-center justify-center">
-                            <Lock className="h-4 w-4 mb-1" />
-                            {ticketNumber}
+                            <span className="text-xl font-medium text-gray-400">{ticketNumber}</span>
+                            <Lock className="h-3 w-3 mt-1 text-gray-400" />
                           </div>
                         )}
                       </Button>
-                      {!isPublic && (
-                        <Badge
-                          variant="destructive"
-                          className="absolute -top-2 -right-2 text-xs px-1"
-                        >
-                          Premium
-                        </Badge>
-                      )}
+                      {
+                        !isPublic && (
+                          <Badge
+                            variant="destructive"
+                            className="absolute -top-2 -right-2 text-xs px-1"
+                          >
+                            Premium
+                          </Badge>
+                        )
+                      }
                     </div>
                   )
                 })
@@ -127,6 +132,6 @@ export default async function TicketsPage() {
           </CardContent>
         </Card>
       </main>
-    </div>
+    </div >
   )
 }

@@ -71,7 +71,7 @@ function LoginForm() {
         <div className="mb-8 text-center">
           <div className="inline-flex items-center gap-2">
             <BookOpen className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold">Tezkor Avtotest</span>
+            <span className="text-2xl font-bold">Sarvar Avtotest</span>
           </div>
         </div>
 
@@ -110,7 +110,7 @@ function LoginForm() {
                   required
                 />
                 <div className="text-right">
-                  <a href="https://t.me/ADMIN_USERNAME" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary hover:underline">
+                  <a href="https://t.me/sarvaravtotest_admin" target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-primary hover:underline">
                     Parolni unutdingizmi?
                   </a>
                 </div>
@@ -142,7 +142,7 @@ export default function LoginPage() {
           <div className="mb-8 text-center">
             <div className="inline-flex items-center gap-2">
               <BookOpen className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold">Tezkor Avtotest</span>
+              <span className="text-2xl font-bold">Sarvar Avtotest</span>
             </div>
           </div>
           <Card>

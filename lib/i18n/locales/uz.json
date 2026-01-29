@@ -20,6 +20,62 @@
         "yes": "Ha",
         "no": "Yo'q"
     },
+    "stats": {
+        "title": "Sarvar Avtotest afzalliklari",
+        "access247": "24/7 foydalanish imkoniyati",
+        "access247_desc": "Har qanday vaqtda, har qanday joyda test ishlashingiz mumkin",
+        "categories": "Turli xil test kategoriyalari",
+        "categories_desc": "O'zingizga qulay tezlikda bilimlarni mustahkamlang",
+        "progress": "Progressni kuzatish",
+        "progress_desc": "Natijalaringiz va rivojlanishingizni real vaqtda ko‘ring",
+        "secure": "Maxfiy va ishonchli",
+        "secure_desc": "Ma’lumotlaringiz to‘liq himoyalangan holda saqlanadi"
+    },
+    "landing_about": {
+        "badge": "Biz haqimizda",
+        "title": "Sarvar Avtotest platformasi",
+        "desc1": "bu foydalanuvchilarning bilimlarini oshirishga yordam beradigan zamonaviy onlayn test platformasi. Platformamiz orqali bilimlarni mustahkamlash, imtihonlarga puxta tayyorgarlik ko‘rish mumkin.",
+        "desc2": "Intuitiv interfeys, keng test kutubxonasi va real vaqtli",
+        "progress": "progress kuzatuvi",
+        "desc3": "orqali siz o‘z natijalaringizni aniq ko‘rib borasiz."
+    },
+    "prices_section": {
+        "title": "Tariflar",
+        "subtitle": "Hamma uchun qulay va hamyonbop narxlar. Bugunoq o'qishni boshlang.",
+        "premium": "Premium Obuna",
+        "month": "/oy",
+        "feature1": "Barcha testlarga kirish",
+        "feature2": "Mukammal statistika",
+        "feature3": "Reklamasiz interfeys",
+        "cta": "Hoziroq obuna bo'lish",
+        "secure": "To'lov xavfsizligi kafolatlangan.",
+        "discount": "CHEGIRMA"
+    },
+    "contact_section": {
+        "title": "Biz bilan bog'laning",
+        "subtitle": "Savollaringiz bormi? Biz sizga yordam berishdan mamnunmiz.",
+        "phone": "Telefon",
+        "telegram": "Telegram",
+        "telegram_link": "Telegram orqali yozish",
+        "address": "Manzil",
+        "no_data": "Bog'lanish ma'lumotlari hozirda mavjud emas."
+    },
+    "landing": {
+        "title1": "HAYDOVCHILIK",
+        "title2": "GUVOHNOMASINI",
+        "title3": "OLISHNING",
+        "title4": "ENG OSON YO'LI",
+        "subtitle": "Bizning online kurslar orqali uydan chiqmasdan yo'l harakati qoidalarini o'rganing va imtihonga tayyorlaning.",
+        "start": "Boshlash",
+        "register": "Ro'yxatdan o'tish",
+        "login": "KIRISH",
+        "badge": "O'ZBEKISTONDAGI №1 TAYYORLOV MARKAZI",
+        "statistics": "Statistika",
+        "prices": "Tariflar",
+        "about": "Biz haqimizda",
+        "contact": "Aloqa",
+        "results": "Natijalar"
+    },
     "nav": {
         "dashboard": "Bosh sahifa",
         "adminPanel": "Admin Panel",

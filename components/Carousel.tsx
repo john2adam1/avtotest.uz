@@ -10,7 +10,10 @@ interface CarouselImage {
   order_index: number
 }
 
+import { useTranslation } from "react-i18next"
+
 export function Carousel() {
+  const { t } = useTranslation()
   const [images, setImages] = useState<CarouselImage[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const supabase = getSupabaseBrowserClient()
@@ -44,7 +47,7 @@ export function Carousel() {
     <section className="py-16 sm:py-20 bg-gradient-to-b from-background/80 to-background/40">
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="text-center text-3xl sm:text-4xl md:text-5xl font-extrabold mb-8 sm:mb-12 text-foreground">
-          Natijalar
+          {t("landing.results")}
         </h2>
 
         <div className="relative overflow-hidden rounded-3xl border border-gray-200/20 shadow-2xl bg-background/50 backdrop-blur-lg">

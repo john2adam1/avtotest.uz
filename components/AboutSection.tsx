@@ -1,32 +1,34 @@
-import Image from "next/image"
+"use client"
 
-export async function AboutSection() {
+import Image from "next/image"
+import { useTranslation } from "react-i18next"
+
+export function AboutSection() {
+  const { t } = useTranslation()
+
   return (
-    <section className="mt-16 mb-16 sm:mt-32 sm:mb-32">
+    <section id="about" className="mt-16 mb-16 sm:mt-32 sm:mb-32">
       <div className="mx-auto max-w-7xl px-4">
         <div className="grid items-center gap-8 md:grid-cols-2">
 
           {/* TEXT */}
           <div className="order-2 md:order-1 text-center md:text-left">
             <span className="inline-block mb-4 rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
-              Biz haqimizda
+              {t("landing_about.badge")}
             </span>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 sm:mb-6">
-              Sarvar Avtotest platformasi
+              {t("landing_about.title")}
             </h2>
 
             <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              <span className="font-medium text-foreground">Sarvar Avtotest</span> — bu
-              foydalanuvchilarning bilimlarini oshirishga yordam beradigan zamonaviy
-              onlayn test platformasi. Platformamiz orqali bilimlarni mustahkamlash,
-              imtihonlarga puxta tayyorgarlik ko‘rish mumkin.
+              <span className="font-medium text-foreground">Sarvar Avtotest</span> — {t("landing_about.desc1")}
             </p>
 
             <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              Intuitiv interfeys, keng test kutubxonasi va real vaqtli
-              <span className="text-foreground font-medium"> progress kuzatuvi </span>
-              orqali siz o‘z natijalaringizni aniq ko‘rib borasiz.
+              {t("landing_about.desc2")}
+              <span className="text-foreground font-medium"> {t("landing_about.progress")} </span>
+              {t("landing_about.desc3")}
             </p>
           </div>
 

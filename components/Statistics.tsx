@@ -1,34 +1,39 @@
+"use client"
+
 import { Clock, BookOpen, Trophy, Shield } from "lucide-react"
+import { useTranslation } from "react-i18next"
 
-const stats = [
-  {
-    icon: Clock,
-    title: "24/7 foydalanish imkoniyati",
-    description: "Har qanday vaqtda, har qanday joyda test ishlashingiz mumkin"
-  },
-  {
-    icon: BookOpen,
-    title: "Turli xil test kategoriyalari",
-    description: "O'zingizga qulay tezlikda bilimlarni mustahkamlang"
-  },
-  {
-    icon: Trophy,
-    title: "Progressni kuzatish",
-    description: "Natijalaringiz va rivojlanishingizni real vaqtda ko‘ring"
-  },
-  {
-    icon: Shield,
-    title: "Maxfiy va ishonchli",
-    description: "Ma’lumotlaringiz to‘liq himoyalangan holda saqlanadi"
-  }
-]
+export function Statistics() {
+  const { t } = useTranslation()
 
-export async function Statistics() {
+  const stats = [
+    {
+      icon: Clock,
+      title: t("stats.access247"),
+      description: t("stats.access247_desc")
+    },
+    {
+      icon: BookOpen,
+      title: t("stats.categories"),
+      description: t("stats.categories_desc")
+    },
+    {
+      icon: Trophy,
+      title: t("stats.progress"),
+      description: t("stats.progress_desc")
+    },
+    {
+      icon: Shield,
+      title: t("stats.secure"),
+      description: t("stats.secure_desc")
+    }
+  ]
+
   return (
-    <section className="mt-32 mb-32">
+    <section id="statistics" className="mt-32 mb-32">
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="text-center text-4xl font-extrabold tracking-tight mb-14">
-          Sarvar Avtotest afzalliklari
+          {t("stats.title")}
         </h2>
 
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">

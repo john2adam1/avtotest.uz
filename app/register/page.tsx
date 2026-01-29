@@ -82,7 +82,7 @@ export default function RegisterPage() {
         <div className="mb-8 text-center">
           <div className="inline-flex items-center gap-2">
             <BookOpen className="h-8 w-8 text-primary" />
-            <span className="text-2xl font-bold">Tezkor Avtotest</span>
+            <span className="text-2xl font-bold">Sarvar Avtotest</span>
           </div>
         </div>
 
