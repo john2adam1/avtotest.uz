@@ -4,12 +4,10 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { useTranslation } from "react-i18next"
-import { Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
 
 export function LandingHeader() {
     const { t } = useTranslation()
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
     const [mounted, setMounted] = useState(false)
 
     useEffect(() => {
@@ -19,64 +17,45 @@ export function LandingHeader() {
     if (!mounted) return null
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 border-b border-white/5 bg-background/80 backdrop-blur-md">
-            <div className="container mx-auto flex h-20 items-center justify-between px-4">
-                <div className="flex items-center gap-2">
-                    <span className="text-2xl font-bold font-heading tracking-tight text-white">SARVAR AVTOTEST</span>
+        <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-gray-100">
+            <div className="container mx-auto flex h-20 items-center justify-between px-4 max-w-7xl">
+                <div className="flex items-center gap-12">
+                    <Link href="/" className="flex items-center gap-2">
+                        <div className="flex flex-col leading-none">
+                            <span className="text-2xl font-bold text-primary">Tezkor</span>
+                            <span className="text-lg font-medium text-gray-700">Avtotest</span>
+                        </div>
+                    </Link>
+
+                    <nav className="hidden lg:flex items-center gap-8">
+                        <Link href="/" className="text-[19.2px] font-medium text-gray-800 hover:text-primary transition-colors">
+                            {t("nav.home")}
+                        </Link>
+                        <Link href="#features" className="text-[19.2px] font-medium text-gray-800 hover:text-primary transition-colors">
+                            {t("nav.features")}
+                        </Link>
+                        <Link href="#prices" className="text-[19.2px] font-medium text-gray-800 hover:text-primary transition-colors">
+                            {t("nav.pricing")}
+                        </Link>
+                        <Link href="#results" className="text-[19.2px] font-medium text-gray-800 hover:text-primary transition-colors">
+                            {t("nav.results")}
+                        </Link>
+                        <Link href="#about" className="text-[19.2px] font-medium text-gray-800 hover:text-primary transition-colors">
+                            {t("nav.about")}
+                        </Link>
+                    </nav>
                 </div>
 
-                {/* Desktop Nav */}
-                <nav className="hidden md:flex items-center gap-6">
-                    <Link href="#statistics" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                        {t("landing.statistics")}
-                    </Link>
-                    <Link href="#prices" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                        {t("landing.prices")}
-                    </Link>
-                    <Link href="#about" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                        {t("landing.about")}
-                    </Link>
-                    <Link href="#contact" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-                        {t("landing.contact")}
-                    </Link>
-                </nav>
-
-                <div className="hidden md:flex gap-4 items-center">
+                <div className="flex items-center gap-4">
                     <LanguageSwitcher />
-                    <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-full px-6">
-                        <Link href="/register">{t("landing.start")}</Link>
+                    <Button asChild variant="outline" className="hidden border-primary/20 text-gray-600 hover:bg-gray-50 rounded-xl px-6 h-11 text-[19.2px]">
+                        <Link href="/login">{t("nav.login")}</Link>
                     </Button>
-                </div>
-
-                {/* Mobile Menu Toggle */}
-                <div className="flex md:hidden items-center gap-4">
-                    <LanguageSwitcher />
-                    <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white p-2">
-                        {isMenuOpen ? <X /> : <Menu />}
-                    </button>
+                    <Button asChild className="bg-primary/10 text-primary hover:bg-primary/20 rounded-xl px-6 h-11 text-[19.2px] border-none shadow-none">
+                        <Link href="/login">{t("nav.login")}</Link>
+                    </Button>
                 </div>
             </div>
-
-            {/* Mobile Menu */}
-            {isMenuOpen && (
-                <div className="md:hidden absolute top-20 left-0 right-0 bg-background border-b border-white/5 p-4 flex flex-col gap-4 shadow-xl animate-in slide-in-from-top-5">
-                    <Link href="#statistics" className="text-lg font-medium text-muted-foreground hover:text-foreground p-2" onClick={() => setIsMenuOpen(false)}>
-                        {t("landing.statistics")}
-                    </Link>
-                    <Link href="#prices" className="text-lg font-medium text-muted-foreground hover:text-foreground p-2" onClick={() => setIsMenuOpen(false)}>
-                        {t("landing.prices")}
-                    </Link>
-                    <Link href="#about" className="text-lg font-medium text-muted-foreground hover:text-foreground p-2" onClick={() => setIsMenuOpen(false)}>
-                        {t("landing.about")}
-                    </Link>
-                    <Link href="#contact" className="text-lg font-medium text-muted-foreground hover:text-foreground p-2" onClick={() => setIsMenuOpen(false)}>
-                        {t("landing.contact")}
-                    </Link>
-                    <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-full px-6 w-full mt-2">
-                        <Link href="/register">{t("landing.start")}</Link>
-                    </Button>
-                </div>
-            )}
         </header>
     )
 }

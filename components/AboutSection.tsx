@@ -3,49 +3,52 @@
 import Image from "next/image"
 import { useTranslation } from "react-i18next"
 
+import { useState, useEffect } from "react"
+
 export function AboutSection() {
   const { t } = useTranslation()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
 
   return (
-    <section id="about" className="mt-16 mb-16 sm:mt-32 sm:mb-32">
+    <section id="about" className="py-24">
       <div className="mx-auto max-w-7xl px-4">
-        <div className="grid items-center gap-8 md:grid-cols-2">
+        <div className="grid items-center gap-16 md:grid-cols-2">
 
           {/* TEXT */}
-          <div className="order-2 md:order-1 text-center md:text-left">
-            <span className="inline-block mb-4 rounded-full bg-primary/10 px-4 py-1 text-sm font-medium text-primary">
+          <div className="order-2 md:order-1 text-left">
+            <span className="inline-block mb-6 rounded-full bg-primary/10 px-6 py-2 text-base font-semibold text-primary">
               {t("landing_about.badge")}
             </span>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4 sm:mb-6">
-              {t("landing_about.title")}
+            <h2 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight mb-8">
+              {t("common.appName")}
             </h2>
 
-            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-              <span className="font-medium text-foreground">Sarvar Avtotest</span> — {t("landing_about.desc1")}
-            </p>
+            <div className="space-y-6 text-lg md:text-xl text-gray-600 leading-relaxed">
+              <p>
+                <span className="font-bold text-primary">{t("common.appName")}</span> — {t("landing_about.desc1")}
+              </p>
 
-            <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
-              {t("landing_about.desc2")}
-              <span className="text-foreground font-medium"> {t("landing_about.progress")} </span>
-              {t("landing_about.desc3")}
-            </p>
+              <p>
+                {t("landing_about.desc2")}
+                <span className="text-primary font-bold"> {t("landing_about.progress")} </span>
+                {t("landing_about.desc3")}
+              </p>
+            </div>
           </div>
 
           {/* IMAGE */}
-          <div className="relative group order-1 md:order-2 mb-8 md:mb-0">
-            {/* glow */}
-            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-purple-500/30 opacity-0 blur-2xl transition group-hover:opacity-100" />
-
-            <div className="
-              relative overflow-hidden rounded-2xl border 
-              bg-background/60 backdrop-blur-xl
-              transition-transform duration-300
-              group-hover:scale-[1.02]
-            ">
+          <div className="order-1 md:order-2">
+            <div className="relative overflow-hidden rounded-[2.5rem] shadow-2xl shadow-gray-200/50">
               <Image
                 src="/images/about-us.jpg"
-                alt="Sarvar Avtotest platformasi"
+                alt={t("common.appName")}
                 width={600}
                 height={400}
                 className="object-cover w-full h-auto"

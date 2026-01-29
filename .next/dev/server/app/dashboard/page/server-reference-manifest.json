@@ -1,20 +1,4 @@
 {
-  "node": {
-    "00beeeb5781905c99f4d545c1588b2b9bdbfdab5a9": {
-      "workers": {
-        "app/dashboard/page": {
-          "moduleId": "[project]/Desktop/avtotest/.next-internal/server/app/dashboard/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/avtotest/app/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
-          "async": false,
-          "exportedName": "clearUserResults",
-          "filename": "Desktop/avtotest/app/actions.ts"
-        }
-      },
-      "layer": {
-        "app/dashboard/page": "action-browser"
-      },
-      "exportedName": "clearUserResults",
-      "filename": "Desktop/avtotest/app/actions.ts"
-    }
-  },
+  "node": {},
   "edge": {}
 }

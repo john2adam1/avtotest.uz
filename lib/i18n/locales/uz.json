@@ -1,4 +1,7 @@
 {
+    "hero_title": "O'rganing . Tayyorlaning. Imtihondan muvaffaqiyatli o'ting !",
+    "hero_subtitle": "Video darslar, testlar va real imtihon tajriba - barchasi bir joyda!",
+    "activate_premium": "Premium obunani faollashtiring",
     "common": {
         "appName": "Tezkor Avtotest",
         "loading": "Yuklanmoqda...",
@@ -21,7 +24,7 @@
         "no": "Yo'q"
     },
     "stats": {
-        "title": "Sarvar Avtotest afzalliklari",
+        "title": "Nega aynan bizdan o'rganishingiz kerak?",
         "access247": "24/7 foydalanish imkoniyati",
         "access247_desc": "Har qanday vaqtda, har qanday joyda test ishlashingiz mumkin",
         "categories": "Turli xil test kategoriyalari",
@@ -32,8 +35,8 @@
         "secure_desc": "Ma’lumotlaringiz to‘liq himoyalangan holda saqlanadi"
     },
     "landing_about": {
-        "badge": "Biz haqimizda",
-        "title": "Sarvar Avtotest platformasi",
+        "badge": "BIZ HAQIMIZDA",
+        "title": "Tezkor Avtotest platformasi",
         "desc1": "bu foydalanuvchilarning bilimlarini oshirishga yordam beradigan zamonaviy onlayn test platformasi. Platformamiz orqali bilimlarni mustahkamlash, imtihonlarga puxta tayyorgarlik ko‘rish mumkin.",
         "desc2": "Intuitiv interfeys, keng test kutubxonasi va real vaqtli",
         "progress": "progress kuzatuvi",
@@ -52,7 +55,7 @@
         "discount": "CHEGIRMA"
     },
     "contact_section": {
-        "title": "Biz bilan bog'laning",
+        "title": "Bog'lanish",
         "subtitle": "Savollaringiz bormi? Biz sizga yordam berishdan mamnunmiz.",
         "phone": "Telefon",
         "telegram": "Telegram",
@@ -77,12 +80,16 @@
         "results": "Natijalar"
     },
     "nav": {
+        "home": "Bosh sahifa",
+        "features": "Imkoniyatlar",
+        "pricing": "Narxlar",
+        "results": "Natijalar",
+        "about": "Biz haqimizda",
+        "login": "Kirish",
         "dashboard": "Bosh sahifa",
         "adminPanel": "Admin Panel",
-        "settings": "Sozlamalar",
+        "settings": "Sozalamar",
         "logout": "Chiqish",
-        "login": "Kirish",
-        "register": "Ro'yxatdan o'tish",
         "account": "Hisob"
     },
     "auth": {

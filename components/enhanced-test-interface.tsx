@@ -3,16 +3,12 @@
 import { useState, useEffect, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
+import { Card } from "@/components/ui/card"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
-import { CheckCircle2, XCircle, Volume2, Lightbulb, BookOpen, ArrowLeft } from "lucide-react"
+import { CheckCircle2, XCircle, ArrowLeft } from "lucide-react"
 import Image from "next/image"
 import type { Test, UserSettings } from "@/lib/types"
 import { useTranslation } from "react-i18next"
-import { QuizProtection } from "@/components/quiz-protection"
-import { ImageModal } from "@/components/image-modal"
 import { Timer } from "@/components/timer"
 
 interface EnhancedTestInterfaceProps {
@@ -38,57 +34,19 @@ export function EnhancedTestInterface({
   const [answeredQuestions, setAnsweredQuestions] = useState<Record<number, boolean>>({})
   const [isFinished, setIsFinished] = useState(false)
   const [results, setResults] = useState<{ correct: number; wrong: number; unanswered: number; score: number } | null>(null)
-  const [showExplanation, setShowExplanation] = useState<Record<number, boolean>>({})
-  const [playingAudio, setPlayingAudio] = useState<Record<number, boolean>>({})
-  const [isMounted, setIsMounted] = useState(false)
-  const [modalImage, setModalImage] = useState<string | null>(null)
-  const audioRefs = useRef<Record<number, HTMLAudioElement>>({})
   const router = useRouter()
   const supabase = getSupabaseBrowserClient()
 
-  // We rely on i18next for language, but we can verify consistency if needed.
-  // The userSettings language should ideally ideally match i18n.language, but i18next is the source of truth for UI.
-  const questionFontSize = userSettings?.question_font_size || 16
-  const answerFontSize = userSettings?.answer_font_size || 14
+  const currentTest = tests[currentIndex]
+  const isCyrillic = i18n.language === 'uz_cyrl'
 
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  const displayQuestion = (isCyrillic && currentTest.question_cyrl) ? currentTest.question_cyrl : currentTest.question
+  const displayAnswers = (isCyrillic && currentTest.answers_cyrl) ? currentTest.answers_cyrl : currentTest.answers
 
-  // Reset audio when question changes
-  useEffect(() => {
-    // Stop any playing audio
-    const currentAudio = Object.values(audioRefs.current).find(audio => !audio.paused);
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-    }
-    setPlayingAudio({});
+  const selectedAnswer = selectedAnswers[currentIndex]
+  const isAnswered = answeredQuestions[currentIndex]
 
-    // Auto-scroll to top if needed
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [currentIndex]);
-
-  const autoNextTimeoutRef = useRef<NodeJS.Timeout | null>(null)
-
-  useEffect(() => {
-    const handleKeyPress = (e: KeyboardEvent) => {
-      if (isFinished) return
-
-      if (e.key === "ArrowLeft" && currentIndex > 0) {
-        setCurrentIndex(currentIndex - 1)
-      } else if (e.key === "ArrowRight" && currentIndex < tests.length - 1) {
-        // Allow navigation regardless of answer status
-        setCurrentIndex(currentIndex + 1)
-      }
-    }
-
-    window.addEventListener("keydown", handleKeyPress)
-    return () => {
-      window.removeEventListener("keydown", handleKeyPress)
-      if (autoNextTimeoutRef.current) clearTimeout(autoNextTimeoutRef.current)
-    }
-  }, [currentIndex, tests.length, isFinished])
+  const hasTimer = tests.length === 20
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (answeredQuestions[currentIndex]) return
@@ -96,17 +54,14 @@ export function EnhancedTestInterface({
     setSelectedAnswers({ ...selectedAnswers, [currentIndex]: answerIndex })
     setAnsweredQuestions({ ...answeredQuestions, [currentIndex]: true })
 
-    // Auto-advance logic
     if (currentIndex < tests.length - 1) {
-      if (autoNextTimeoutRef.current) clearTimeout(autoNextTimeoutRef.current)
-      autoNextTimeoutRef.current = setTimeout(() => {
+      setTimeout(() => {
         setCurrentIndex(prev => prev + 1)
-      }, 1500)
+      }, 1000)
     }
   }
 
   const handleFinish = async () => {
-    if (autoNextTimeoutRef.current) clearTimeout(autoNextTimeoutRef.current)
     setIsFinished(true)
 
     let correct = 0
@@ -138,13 +93,7 @@ export function EnhancedTestInterface({
     }
   }
 
-  const saveTopicStatistics = async (
-    topicId: string,
-    correct: number,
-    wrong: number,
-    unanswered: number,
-    percentage: number
-  ) => {
+  const saveTopicStatistics = async (topicId: string, correct: number, wrong: number, unanswered: number, percentage: number) => {
     const { data: existing } = await supabase
       .from("topic_statistics")
       .select("*")
@@ -155,33 +104,14 @@ export function EnhancedTestInterface({
     if (existing) {
       await supabase
         .from("topic_statistics")
-        .update({
-          correct_count: correct,
-          wrong_count: wrong,
-          unanswered_count: unanswered,
-          percentage,
-          last_attempt_at: new Date().toISOString(),
-        })
+        .update({ correct_count: correct, wrong_count: wrong, unanswered_count: unanswered, percentage, last_attempt_at: new Date().toISOString() })
         .eq("id", existing.id)
     } else {
-      await supabase.from("topic_statistics").insert({
-        user_id: userId,
-        topic_id: topicId,
-        correct_count: correct,
-        wrong_count: wrong,
-        unanswered_count: unanswered,
-        percentage,
-      })
+      await supabase.from("topic_statistics").insert({ user_id: userId, topic_id: topicId, correct_count: correct, wrong_count: wrong, unanswered_count: unanswered, percentage })
     }
   }
 
-  const saveTicketStatistics = async (
-    ticketId: string,
-    correct: number,
-    wrong: number,
-    unanswered: number,
-    percentage: number
-  ) => {
+  const saveTicketStatistics = async (ticketId: string, correct: number, wrong: number, unanswered: number, percentage: number) => {
     const { data: existing } = await supabase
       .from("ticket_statistics")
       .select("*")
@@ -192,33 +122,14 @@ export function EnhancedTestInterface({
     if (existing) {
       await supabase
         .from("ticket_statistics")
-        .update({
-          correct_count: correct,
-          wrong_count: wrong,
-          unanswered_count: unanswered,
-          percentage,
-          last_attempt_at: new Date().toISOString(),
-        })
+        .update({ correct_count: correct, wrong_count: wrong, unanswered_count: unanswered, percentage, last_attempt_at: new Date().toISOString() })
         .eq("id", existing.id)
     } else {
-      await supabase.from("ticket_statistics").insert({
-        user_id: userId,
-        ticket_id: ticketId,
-        correct_count: correct,
-        wrong_count: wrong,
-        unanswered_count: unanswered,
-        percentage,
-      })
+      await supabase.from("ticket_statistics").insert({ user_id: userId, ticket_id: ticketId, correct_count: correct, wrong_count: wrong, unanswered_count: unanswered, percentage })
     }
   }
 
-  const saveExamStatistics = async (
-    examType: 20 | 50 | 100,
-    correct: number,
-    wrong: number,
-    unanswered: number,
-    percentage: number
-  ) => {
+  const saveExamStatistics = async (examType: 20 | 50 | 100, correct: number, wrong: number, unanswered: number, percentage: number) => {
     const { data: existing } = await supabase
       .from("exam_statistics")
       .select("*")
@@ -229,147 +140,72 @@ export function EnhancedTestInterface({
     if (existing) {
       await supabase
         .from("exam_statistics")
-        .update({
-          correct_count: correct,
-          wrong_count: wrong,
-          unanswered_count: unanswered,
-          percentage,
-          last_attempt_at: new Date().toISOString(),
-        })
+        .update({ correct_count: correct, wrong_count: wrong, unanswered_count: unanswered, percentage, last_attempt_at: new Date().toISOString() })
         .eq("id", existing.id)
     } else {
-      await supabase.from("exam_statistics").insert({
-        user_id: userId,
-        exam_type: examType,
-        correct_count: correct,
-        wrong_count: wrong,
-        unanswered_count: unanswered,
-        percentage,
-      })
+      await supabase.from("exam_statistics").insert({ user_id: userId, exam_type: examType, correct_count: correct, wrong_count: wrong, unanswered_count: unanswered, percentage })
     }
-  }
-
-  const toggleAudio = (index: number) => {
-    if (!audioRefs.current[index] && tests[index].audio_url) {
-      const audio = new Audio(tests[index].audio_url!)
-      audioRefs.current[index] = audio
-      audio.onended = () => setPlayingAudio({ ...playingAudio, [index]: false })
-    }
-
-    const audio = audioRefs.current[index]
-    if (audio) {
-      if (playingAudio[index]) {
-        audio.pause()
-        audio.currentTime = 0
-        setPlayingAudio({ ...playingAudio, [index]: false })
-      } else {
-        audio.play()
-        setPlayingAudio({ ...playingAudio, [index]: true })
-      }
-    }
-  }
-
-  const toggleExplanation = (index: number) => {
-    setShowExplanation({ ...showExplanation, [index]: !showExplanation[index] })
   }
 
   if (isFinished && results) {
     return (
       <main className="container mx-auto px-4 py-8">
-        <Card className="max-w-2xl mx-auto">
-          <CardHeader>
-            <CardTitle className="text-center text-2xl">{t("test.finished")}</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-6">
+        <Card className="max-w-2xl mx-auto p-8">
+          <div className="text-center space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900">{t("test.finished")}</h2>
+
             <div className="text-center">
               <div className="text-6xl font-bold text-primary mb-2">{results.score}%</div>
-              <div className="text-muted-foreground">{t("test.finalScore")}</div>
+              <div className="text-gray-600">{t("test.finalScore")}</div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-4">
-              <div className="rounded-lg border bg-card p-4 text-center">
-                <div className="text-2xl font-bold">{tests.length}</div>
-                <div className="text-sm text-muted-foreground">{t("test.totalQuestions")}</div>
+              <div className="rounded-lg border border-gray-200 bg-white p-4 text-center">
+                <div className="text-2xl font-bold text-gray-900">{tests.length}</div>
+                <div className="text-sm text-gray-600">{t("test.totalQuestions")}</div>
               </div>
-              <div className="rounded-lg border bg-success/10 p-4 text-center">
-                <div className="flex items-center justify-center gap-2 text-2xl font-bold text-success">
+              <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-center">
+                <div className="flex items-center justify-center gap-2 text-2xl font-bold text-green-600">
                   <CheckCircle2 className="h-6 w-6" />
                   {results.correct}
                 </div>
-                <div className="text-sm text-muted-foreground">{t("test.correct")}</div>
+                <div className="text-sm text-gray-600">{t("test.correct")}</div>
               </div>
-              <div className="rounded-lg border bg-destructive/10 p-4 text-center">
-                <div className="flex items-center justify-center gap-2 text-2xl font-bold text-destructive">
+              <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-center">
+                <div className="flex items-center justify-center gap-2 text-2xl font-bold text-red-600">
                   <XCircle className="h-6 w-6" />
                   {results.wrong}
                 </div>
-                <div className="text-sm text-muted-foreground">{t("test.wrong")}</div>
+                <div className="text-sm text-gray-600">{t("test.wrong")}</div>
               </div>
-              <div className="rounded-lg border bg-muted/10 p-4 text-center">
-                <div className="text-2xl font-bold">{results.unanswered}</div>
-                <div className="text-sm text-muted-foreground">{t("test.unanswered")}</div>
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-center">
+                <div className="text-2xl font-bold text-gray-900">{results.unanswered}</div>
+                <div className="text-sm text-gray-600">{t("test.unanswered")}</div>
               </div>
             </div>
 
-            <Button onClick={() => router.push("/dashboard")} className="w-full">
+            <Button onClick={() => router.push("/dashboard")} className="w-full bg-primary hover:bg-primary/90 text-white font-bold h-12 rounded-xl">
               {t("test.backToDashboard")}
             </Button>
-          </CardContent>
+          </div>
         </Card>
       </main>
     )
   }
 
-  if (!isMounted) {
-    return <main className="min-h-screen bg-[#e0f2fe]" />
-  }
-
-  const currentTest = tests[currentIndex]
-  const isCyrillic = i18n.language === 'uz_cyrl'
-
-  // Dynamic content based on language
-  const displayQuestion = (isCyrillic && currentTest.question_cyrl) ? currentTest.question_cyrl : currentTest.question
-  const displayAnswers = (isCyrillic && currentTest.answers_cyrl) ? currentTest.answers_cyrl : currentTest.answers
-  const displayExplanationTitle = (isCyrillic && currentTest.explanation_title_cyrl) ? currentTest.explanation_title_cyrl : currentTest.explanation_title
-  const displayExplanationText = (isCyrillic && currentTest.explanation_text_cyrl) ? currentTest.explanation_text_cyrl : currentTest.explanation_text
-  const displayAudioUrl = (isCyrillic && currentTest.audio_url_cyrl) ? currentTest.audio_url_cyrl : currentTest.audio_url
-
-  const selectedAnswer = selectedAnswers[currentIndex]
-  const isAnswered = answeredQuestions[currentIndex]
-
-  const getFLabel = (index: number) => `F${index + 1}`
-  const isExam = testType === "exam"
-  // Actually logic: 20 questions = 25 mins. 50/100 = no timer.
-  const hasTimer = tests.length === 20
-
-  // Update getFLabel to match F1, F2... logic looks good, but let's ensure styling matches
-  // Image 2 shows: Grey bold box left, White text box right.
-
-  // Image 4 Design Implementation
-  // - Background: Light Blue #E9F6FF (global)
-  // - Nav: Number row top.
-  // - Layout: Image Left, Answers Right.
-  // - Answer Style: White bg, Green/Blue border, Radio circle icon left.
-  // - Button: Blue "Keyingisi" centered.
-
   return (
-    <main className="min-h-screen bg-[#E9F6FF] font-sans">
+    <main className="min-h-screen bg-background">
       {/* Header */}
-      <div className="bg-white px-4 py-3 shadow-sm flex items-center justify-between sticky top-0 z-20">
-        <div className="flex items-center gap-2">
-          {/* Logo placeholder if needed, or just Back */}
-          <Button variant="ghost" onClick={() => router.back()} className="text-gray-600 hover:bg-gray-100">
-            <ArrowLeft className="w-5 h-5 mr-1" />
-            Orqaga
-          </Button>
-        </div>
+      <div className="bg-background px-4 py-3 shadow-sm flex items-center justify-between sticky top-0 z-20 border-b border-gray-200">
+        <Button variant="ghost" onClick={() => router.back()} className="text-gray-600">
+          <ArrowLeft className="w-5 h-5 mr-1" />
+          Orqaga
+        </Button>
         <div className="flex items-center gap-3">
           {hasTimer && (
-            <div className="font-mono font-bold text-xl text-blue-600 bg-blue-50 px-3 py-1 rounded border border-blue-100">
-              <Timer durationSeconds={1500} onTimeUp={handleFinish} />
-            </div>
+            <Timer durationSeconds={1500} onTimeUp={handleFinish} />
           )}
-          <Button onClick={handleFinish} className="bg-[#1976D2] hover:bg-[#1565C0] text-white font-medium px-6">
+          <Button onClick={handleFinish} className="bg-primary hover:bg-primary/90 text-white font-bold rounded-lg px-6">
             Testni yakunlash
           </Button>
         </div>
@@ -377,17 +213,16 @@ export function EnhancedTestInterface({
 
       <div className="container mx-auto px-4 py-6 max-w-6xl">
         {/* Navigation Strip */}
-        <div className="bg-white p-2 rounded-lg shadow-sm mb-6 overflow-x-auto border border-gray-200">
+        <div className="bg-background p-2 rounded-lg shadow-sm mb-6 overflow-x-auto border border-gray-200">
           <div className="flex gap-1 min-w-max">
             {tests.map((_, idx) => {
               const isActive = currentIndex === idx
               const isAns = answeredQuestions[idx]
               const correct = selectedAnswers[idx] === tests[idx].correct_answer
 
-              // Style based on Image 4 navigation (Blue active, White default)
-              let bg = "bg-white text-gray-700 hover:bg-gray-50 border border-gray-200"
-              if (isActive) bg = "bg-[#1976D2] text-white border-[#1976D2]"
-              else if (isAns) bg = correct ? "bg-green-600 text-white border-green-600" : "bg-red-600 text-white border-red-600"
+              let bg = "bg-background text-gray-700 hover:bg-gray-50 border border-gray-200"
+              if (isActive) bg = "bg-primary text-white border-primary"
+              else if (isAns) bg = correct ? "bg-success text-white border-success" : "bg-destructive text-white border-destructive"
 
               return (
                 <button
@@ -403,62 +238,48 @@ export function EnhancedTestInterface({
         </div>
 
         {/* Question Card */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 md:p-8 min-h-[500px] flex flex-col items-center">
-
-          <h2 className="text-xl md:text-2xl font-semibold text-center text-gray-800 mb-8 max-w-4xl">
+        <div className="bg-background rounded-xl shadow-sm border border-gray-200 p-6 md:p-8">
+          <h2 className="text-xl md:text-2xl font-bold text-center text-gray-900 mb-8">
             {displayQuestion}
           </h2>
 
-          <div className="w-full flex flex-col lg:flex-row gap-8 lg:gap-12 items-start justify-center">
-            {/* Left: Image */}
-            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-              <div
-                className="relative w-full max-w-md aspect-[4/3] bg-gray-50 rounded-lg border border-gray-200 overflow-hidden cursor-zoom-in"
-                onClick={() => currentTest.image_url && setModalImage(currentTest.image_url)}
-              >
-                {currentTest.image_url ? (
+          <div className="flex flex-col lg:flex-row gap-8 items-start justify-center">
+            {/* Image */}
+            <div className="w-full lg:w-1/2 flex justify-center">
+              <div className="relative w-full max-w-md aspect-[4/3] bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+                {currentTest.image_url && (
                   <Image src={currentTest.image_url} alt="Question" fill className="object-contain" />
-                ) : (
-                  <div className="flex items-center justify-center h-full text-gray-400">
-                    <BookOpen className="w-12 h-12 opacity-20" />
-                  </div>
                 )}
               </div>
             </div>
 
-            {/* Right: Answers */}
+            {/* Answers */}
             <div className="w-full lg:w-1/2 flex flex-col gap-3">
               {displayAnswers.map((answer, index) => {
                 const isSelected = selectedAnswer === index
                 const isCorrect = index === currentTest.correct_answer
                 const showFeedback = isAnswered
 
-                // Styles for Image 4 matching
-                // Base: Light Green/Blue border + Green Text? Or just simple?
-                // User's image has Green borders for unselected items. 
-                // Let's stick to standard behavior first but clean up.
-                // Active/Selected: dark blue border?
-
                 let containerClass = "border border-gray-300 bg-white hover:bg-gray-50"
-                let circleClass = "border-2 border-gray-300 text-transparent"
+                let circleClass = "border-2 border-gray-300"
 
                 if (isSelected) {
-                  containerClass = "border-2 border-[#1976D2] bg-blue-50"
-                  circleClass = "border-[#1976D2] bg-[#1976D2] text-white"
+                  containerClass = "border-2 border-primary bg-primary/5"
+                  circleClass = "border-primary bg-primary"
                 }
 
                 if (showFeedback) {
                   if (isSelected) {
                     if (isCorrect) {
-                      containerClass = "border-2 border-green-500 bg-green-50"
-                      circleClass = "border-green-500 bg-green-500 text-white"
+                      containerClass = "border-2 border-success bg-success/5"
+                      circleClass = "border-success bg-success"
                     } else {
-                      containerClass = "border-2 border-red-500 bg-red-50"
-                      circleClass = "border-red-500 bg-red-500 text-white"
+                      containerClass = "border-2 border-destructive bg-destructive/5"
+                      circleClass = "border-destructive bg-destructive"
                     }
                   } else if (isCorrect) {
-                    containerClass = "border-2 border-green-500 bg-green-50"
-                    circleClass = "border-green-500 text-green-500 bg-green-500" // Filled green for correct indication
+                    containerClass = "border-2 border-success bg-success/5"
+                    circleClass = "border-success bg-success"
                   }
                 }
 
@@ -466,16 +287,12 @@ export function EnhancedTestInterface({
                   <div
                     key={index}
                     onClick={() => !isAnswered && handleAnswerSelect(index)}
-                    className={`
-                              flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all min-h-[50px]
-                              ${containerClass}
-                           `}
+                    className={`flex items-center gap-3 p-4 rounded-lg cursor-pointer transition-all ${containerClass}`}
                   >
                     <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${circleClass}`}>
-                      {/* Inner dot or check icon can go here */}
-                      <div className="w-2 h-2 bg-current rounded-full" />
+                      <div className="w-2 h-2 bg-white rounded-full" />
                     </div>
-                    <span className="text-lg text-gray-800 font-medium leading-snug">{answer}</span>
+                    <span className="text-lg text-gray-800 font-medium">{answer}</span>
                   </div>
                 )
               })}
@@ -483,22 +300,17 @@ export function EnhancedTestInterface({
           </div>
 
           {/* Next Button */}
-          <div className="mt-10 mb-4">
+          <div className="mt-10 flex justify-center">
             <Button
               onClick={() => setCurrentIndex(currentIndex + 1)}
               disabled={currentIndex === tests.length - 1}
-              className="bg-[#1976D2] hover:bg-[#1565C0] text-white font-bold text-lg px-12 py-6 rounded-lg shadow-md"
+              className="bg-primary hover:bg-primary/90 text-white font-bold text-lg px-12 py-6 rounded-xl shadow-lg shadow-primary/20"
             >
               Keyingisi
             </Button>
           </div>
-
         </div>
       </div>
-
-      {modalImage && (
-        <ImageModal isOpen={!!modalImage} onClose={() => setModalImage(null)} imageUrl={modalImage} />
-      )}
     </main>
   )
 }

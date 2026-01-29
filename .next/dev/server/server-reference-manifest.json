@@ -1,5 +1,21 @@
 {
-  "node": {},
+  "node": {
+    "6038abc29842d59a4c07f94737dabff6cc0c27e5b9": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/Desktop/avtotest/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/Desktop/avtotest/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "adminUpdateUserPassword",
+          "filename": "Desktop/avtotest/app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/page": "action-browser"
+      },
+      "filename": "Desktop/avtotest/app/admin/actions.ts",
+      "exportedName": "adminUpdateUserPassword"
+    }
+  },
   "edge": {},
   "encryptionKey": "JI3qjU/UkqB8mkriVJfwAGhe3ixVOiK/RjUpDfmErGU="
 }

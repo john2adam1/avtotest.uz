@@ -3,8 +3,17 @@
 import { Clock, BookOpen, Trophy, Shield } from "lucide-react"
 import { useTranslation } from "react-i18next"
 
+import { useState, useEffect } from "react"
+
 export function Statistics() {
   const { t } = useTranslation()
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
 
   const stats = [
     {
@@ -30,47 +39,30 @@ export function Statistics() {
   ]
 
   return (
-    <section id="statistics" className="mt-32 mb-32">
+    <section id="features" className="py-24">
       <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-center text-4xl font-extrabold tracking-tight mb-14">
+        <h2 className="text-center text-3xl md:text-4xl font-extrabold text-primary mb-16">
           {t("stats.title")}
         </h2>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-left">
           {stats.map((item, idx) => {
             const Icon = item.icon
 
             return (
               <div
                 key={idx}
-                className="
-                  group relative overflow-hidden rounded-2xl border 
-                  bg-background/60 backdrop-blur-xl
-                  p-8 text-center
-                  transition-all duration-300
-                  hover:-translate-y-2 hover:shadow-2xl
-                "
+                className="space-y-4"
               >
-                {/* gradient border effect */}
-                <div className="absolute inset-0 -z-10 opacity-0 group-hover:opacity-100 transition">
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/30 via-transparent to-purple-500/30" />
+                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+                  <Icon className="h-8 w-8 text-primary" />
                 </div>
 
-                {/* icon */}
-                <div className="
-                  mx-auto mb-5 flex h-14 w-14 items-center justify-center 
-                  rounded-full bg-primary/10
-                  transition-all duration-300
-                  group-hover:scale-110 group-hover:rotate-6
-                ">
-                  <Icon className="h-7 w-7 text-primary" />
-                </div>
-
-                <h3 className="text-lg font-semibold mb-2">
+                <h3 className="text-xl font-bold text-gray-900">
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-lg text-gray-600 leading-relaxed">
                   {item.description}
                 </p>
               </div>
