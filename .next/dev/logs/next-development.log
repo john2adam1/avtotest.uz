@@ -1,494 +1,547 @@
-[00:00:03.145] Server  LOG      ✓ Ready in 2.3s
-[00:00:03.802] Server  LOG     Middleware hitting path: "/"
-[00:00:08.772] Server  LOG      ○ Compiling / ...
-[00:00:11.084] Server  ERROR    ⨯ ./Desktop/avtotest/app/global.css
+[00:00:02.466] Server  LOG      ✓ Ready in 1959ms
+[00:00:04.980] Server  LOG     Middleware hitting path: "/"
+[00:00:08.027] Server  LOG      ○ Compiling / ...
+[00:01:03.125] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:03.591] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:03.591] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:01:03.591] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677905507} /_vercel/insights/view
+[00:01:05.572] Server  LOG     Middleware hitting path: "/login"
+[00:01:07.191] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677909103} /_vercel/insights/view
+[00:01:24.902] Server  LOG     Middleware hitting path: "/register"
+[00:01:26.199] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677928113} /_vercel/insights/view
+[00:01:43.025] Server  LOG     Middleware hitting path: "/login"
+[00:01:43.218] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677945126} /_vercel/insights/view
+[00:01:47.427] Server  LOG     Middleware hitting path: "/register"
+[00:01:47.606] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677949519} /_vercel/insights/view
+[00:01:55.196] Server  LOG     Middleware hitting path: "/register"
+[00:01:57.161] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:59.926] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677961834} /_vercel/insights/view
+[00:02:11.462] Server  LOG     Middleware hitting path: "/topics"
+[00:02:15.660] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677977563} /_vercel/insights/view
+[00:02:17.189] Server  LOG     Middleware hitting path: "/dashboard"
+[00:02:17.907] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677979817} /_vercel/insights/view
+[00:03:08.151] Server  LOG     Middleware hitting path: "/tickets"
+[00:03:11.905] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771678033810} /_vercel/insights/view
+[00:03:13.111] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:13.856] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771678035767} /_vercel/insights/view
+[00:04:15.819] Server  LOG      ✓ Compiled in 1570ms
+[00:04:16.931] Server  LOG      ✓ Compiled in 772ms
+[00:04:37.420] Server  LOG      ✓ Compiled in 364ms
+[00:05:07.679] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:09.766] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:09.941] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:05:09.941] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:05:09.941] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771678151840} /_vercel/insights/view
+[00:08:50.064] Server  LOG      ✓ Compiled in 3.2s
+[00:08:50.404] Browser ERROR   ./app/global.css
 Error evaluating Node.js code
-CssSyntaxError: tailwindcss: C:\Users\user\Desktop\avtotest\app\global.css:1:1: Cannot apply unknown utility class `border-border`
-    [at Input.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (C:\Users\user\Desktop\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/lazy-result.js:293:11)]
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
     [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
     [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
 Import trace:
   Client Component Browser:
-    ./Desktop/avtotest/app/global.css [Client Component Browser]
-    ./Desktop/avtotest/app/layout.tsx [Server Component]
-
-
-[00:00:14.373] Browser ERROR   uncaughtError: Error: ./Desktop/avtotest/app/global.css
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:09:11.322] Browser ERROR   ./app/global.css
 Error evaluating Node.js code
-CssSyntaxError: tailwindcss: C:\Users\user\Desktop\avtotest\app\global.css:1:1: Cannot apply unknown utility class `border-border`
-    [at Input.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (C:\Users\user\Desktop\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/lazy-result.js:293:11)]
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
     [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
     [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
 Import trace:
   Client Component Browser:
-    ./Desktop/avtotest/app/global.css [Client Component Browser]
-    ./Desktop/avtotest/app/layout.tsx [Server Component]
-
-
-[00:00:14.650] Browser ERROR   ./Desktop/avtotest/app/global.css
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:09:16.329] Browser ERROR   ./app/global.css
 Error evaluating Node.js code
-CssSyntaxError: tailwindcss: C:\Users\user\Desktop\avtotest\app\global.css:1:1: Cannot apply unknown utility class `border-border`
-    [at Input.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (C:\Users\user\Desktop\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/lazy-result.js:293:11)]
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
     [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
     [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
 Import trace:
   Client Component Browser:
-    ./Desktop/avtotest/app/global.css [Client Component Browser]
-    ./Desktop/avtotest/app/layout.tsx [Server Component]
-[00:00:15.413] Browser ERROR   ./Desktop/avtotest/app/global.css
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:09:20.332] Browser ERROR   ./app/global.css
 Error evaluating Node.js code
-CssSyntaxError: tailwindcss: C:\Users\user\Desktop\avtotest\app\global.css:1:1: Cannot apply unknown utility class `border-border`
-    [at Input.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (C:\Users\user\Desktop\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/lazy-result.js:293:11)]
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
     [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
     [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
 Import trace:
   Client Component Browser:
-    ./Desktop/avtotest/app/global.css [Client Component Browser]
-    ./Desktop/avtotest/app/layout.tsx [Server Component]
-[00:00:30.983] Browser ERROR   ./Desktop/avtotest/app/global.css
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:09:23.331] Browser ERROR   ./app/global.css
 Error evaluating Node.js code
-CssSyntaxError: tailwindcss: C:\Users\user\Desktop\avtotest\app\global.css:1:1: Cannot apply unknown utility class `border-border`
-    [at Input.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (C:\Users\user\Desktop\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/lazy-result.js:293:11)]
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
     [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
     [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
 Import trace:
   Client Component Browser:
-    ./Desktop/avtotest/app/global.css [Client Component Browser]
-    ./Desktop/avtotest/app/layout.tsx [Server Component]
-[00:00:32.983] Browser ERROR   ./Desktop/avtotest/app/global.css
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:09:57.323] Browser ERROR   ./app/global.css
 Error evaluating Node.js code
-CssSyntaxError: tailwindcss: C:\Users\user\Desktop\avtotest\app\global.css:1:1: Cannot apply unknown utility class `border-border`
-    [at Input.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (C:\Users\user\Desktop\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/lazy-result.js:293:11)]
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
     [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
     [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
 Import trace:
   Client Component Browser:
-    ./Desktop/avtotest/app/global.css [Client Component Browser]
-    ./Desktop/avtotest/app/layout.tsx [Server Component]
-[00:01:53.975] Browser ERROR   ./Desktop/avtotest/app/global.css
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:10:09.322] Browser ERROR   ./app/global.css
 Error evaluating Node.js code
-CssSyntaxError: tailwindcss: C:\Users\user\Desktop\avtotest\app\global.css:1:1: Cannot apply unknown utility class `border-border`
-    [at Input.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (C:\Users\user\Desktop\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/lazy-result.js:293:11)]
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
     [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
     [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
 Import trace:
   Client Component Browser:
-    ./Desktop/avtotest/app/global.css [Client Component Browser]
-    ./Desktop/avtotest/app/layout.tsx [Server Component]
-[00:02:59.988] Browser ERROR   ./Desktop/avtotest/app/global.css
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:10:09.322] Browser ERROR   ./components/AboutSection.tsx:19:1
+Parsing ecmascript source code failed
+  17 |
+  18 |   return (
+> 19 | export function AboutSection() {
+     | ^^^^^^
+  20 |     const { t } = useTranslation()
+  21 |     const [mounted, setMounted] = useState(false)
+  22 |
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./components/AboutSection.tsx
+    ./app/page.tsx
+[00:10:10.334] Browser ERROR   ./app/global.css
 Error evaluating Node.js code
-CssSyntaxError: tailwindcss: C:\Users\user\Desktop\avtotest\app\global.css:1:1: Cannot apply unknown utility class `border-border`
-    [at Input.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (C:\Users\user\Desktop\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/Desktop/avtotest/node_modules/postcss/lib/lazy-result.js:293:11)]
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
     [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
     [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
 Import trace:
   Client Component Browser:
-    ./Desktop/avtotest/app/global.css [Client Component Browser]
-    ./Desktop/avtotest/app/layout.tsx [Server Component]
-[00:03:41.348] Server  LOG      ✓ Compiled in 2s
-[00:03:41.376] Server  LOG     Middleware hitting path: "/"
-[00:03:45.929] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:46.986] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:03:46.986] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:03:46.986] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673015389}
-[00:07:40.525] Server  LOG      ✓ Compiled in 639ms
-[00:08:19.336] Server  LOG      ✓ Compiled in 448ms
-[00:08:20.810] Server  LOG      ✓ Compiled in 186ms
-[00:08:38.811] Server  LOG      ✓ Compiled in 85ms
-[00:09:03.589] Server  LOG      ✓ Compiled in 169ms
-[00:09:05.513] Server  LOG      ✓ Compiled in 164ms
-[00:09:50.689] Server  LOG      ✓ Compiled in 90ms
-[00:09:53.251] Server  LOG      ✓ Compiled in 564ms
-[00:10:13.424] Server  LOG      ✓ Compiled in 150ms
-[00:10:16.052] Server  LOG      ✓ Compiled in 75ms
-[00:10:16.143] Server  LOG     Middleware hitting path: "/"
-[00:10:55.763] Server  LOG      ✓ Compiled in 177ms
-[00:11:10.129] Server  LOG      ✓ Compiled in 148ms
-[00:11:23.139] Server  LOG      ✓ Compiled in 191ms
-[00:12:54.083] Server  LOG     Middleware hitting path: "/login"
-[00:12:55.070] Server  LOG     Middleware hitting path: "/dashboard"
-[00:12:58.693] Server  LOG      ○ Compiling /dashboard ...
-[00:12:59.532] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673568222}
-[00:13:12.398] Server  LOG     Middleware hitting path: "/admin"
-[00:13:16.625] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673585303}
-[00:13:22.093] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:13:22.093] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:13:22.093] Browser LOG     Browser Session Status: Logged in as 
-[00:13:22.094] Browser LOG     Browser Session Status: Logged in as 
-[00:13:26.031] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/carousel/carousel-1769574775800-rzpzkl.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:13:26.166] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/carousel/carousel-1769574785022-042ec.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:13:26.166] Browser WARN    Image with src "https://lgacbbewpuzeyxijzfii.supabase.co/storage/v1/object/public/test-images/carousel/carousel-1769574791480-dgu09e.jpg" has "fill" but is missing "sizes" prop. Please add it to improve page performance. Read more: https://nextjs.org/docs/api-reference/next/image#sizes
-[00:14:31.796] Server  LOG     Middleware hitting path: "/"
-[00:14:36.633] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:14:36.915] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:10:10.335] Browser ERROR   ./components/AboutSection.tsx:19:1
+Parsing ecmascript source code failed
+  17 |
+  18 |   return (
+> 19 | export function AboutSection() {
+     | ^^^^^^
+  20 |     const { t } = useTranslation()
+  21 |     const [mounted, setMounted] = useState(false)
+  22 |
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
+Expression expected
 
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+Import trace:
+  Server Component:
+    ./components/AboutSection.tsx
+    ./app/page.tsx
+[00:10:10.335] Browser ERROR   ./components/ContactSection.tsx:25:1
+Parsing ecmascript source code failed
+  23 |
+  24 |   return (
+> 25 | export function ContactSection({ contact }: ContactSectionProps) {
+     | ^^^^^^
+  26 |     const { t } = useTranslation()
+  27 |     const [mounted, setMounted] = useState(false)
+  28 |
 
-https://react.dev/link/hydration-mismatch
+Expression expected
 
-  ...
-    <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
-      <LoadingBoundary name="/" loading={null}>
-        <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
-          <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
-            <RedirectBoundary>
-              <RedirectErrorBoundary router={{...}}>
-                <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
-                  <SegmentViewNode type="page" pagePath="/Desktop/a...">
-                    <SegmentTrieNode>
-                    <Home>
-                      <div className="min-h-scre...">
-                        <LandingHeader>
-                        <main className="pt-20">
-                          <LandingHero>
-                          <Statistics>
-                            <section id="features" className="py-24 bg-w...">
-                              <div className="mx-auto ma...">
-                                <h2 className="text-center text-3xl md:text-4xl font-extrabold text-primary mb-16">
-+                                 Сарвар Автотест афзалликлари
--                                 {"Nega aynan bizdan o'rganishingiz kerak?"}
-                                ...
-                          ...
-                  ...
-                ...
+Import trace:
+  Server Component:
+    ./components/ContactSection.tsx
+    ./app/page.tsx
+[00:10:40.330] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-[00:14:36.915] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:14:36.915] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:14:36.915] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:14:36.915] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673665610}
-[00:14:36.915] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673665610}
-[00:15:15.716] Server  LOG      ✓ Compiled in 246ms
-[00:15:29.940] Server  LOG      ✓ Compiled in 70ms
-[00:15:31.983] Server  LOG      ✓ Compiled in 64ms
-[00:15:33.990] Server  LOG      ✓ Compiled in 57ms
-[00:15:36.053] Server  LOG      ✓ Compiled in 58ms
-[00:15:38.059] Server  LOG      ✓ Compiled in 59ms
-[00:15:40.077] Server  LOG     Middleware hitting path: "/"
-[00:15:40.096] Server  LOG      ✓ Compiled in 67ms
-[00:16:07.112] Server  LOG     Middleware hitting path: "/"
-[00:16:09.892] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:16:10.144] Browser ERROR   uncaughtError: Error: Hydration failed because the server rendered text didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:10:40.330] Browser ERROR   ./components/ContactSection.tsx:25:1
+Parsing ecmascript source code failed
+  23 |
+  24 |   return (
+> 25 | export function ContactSection({ contact }: ContactSectionProps) {
+     | ^^^^^^
+  26 |     const { t } = useTranslation()
+  27 |     const [mounted, setMounted] = useState(false)
+  28 |
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
+Expression expected
 
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+Import trace:
+  Server Component:
+    ./components/ContactSection.tsx
+    ./app/page.tsx
+[00:10:41.320] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-https://react.dev/link/hydration-mismatch
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:11:08.330] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-  ...
-    <ErrorBoundary errorComponent={undefined} errorStyles={undefined} errorScripts={undefined}>
-      <LoadingBoundary name="/" loading={null}>
-        <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
-          <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
-            <RedirectBoundary>
-              <RedirectErrorBoundary router={{...}}>
-                <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{lazyData:null, ...}} segmentPath={[...]} ...>
-                  <SegmentViewNode type="page" pagePath="/Desktop/a...">
-                    <SegmentTrieNode>
-                    <Home>
-                      <div className="min-h-scre...">
-                        <LandingHeader>
-                        <main className="pt-20">
-                          <LandingHero>
-                          <Statistics>
-                            <section id="features" className="py-24">
-                              <div className="mx-auto ma...">
-                                <h2 className="text-center text-3xl md:text-4xl font-extrabold text-primary mb-16">
-+                                 Сарвар Автотест афзалликлари
--                                 {"Nega aynan bizdan o'rganishingiz kerak?"}
-                                ...
-                          ...
-                  ...
-                ...
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:11:21.021] Server  LOG      ✓ Compiled in 604ms
+[00:11:21.340] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-[00:16:10.144] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:16:10.144] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:16:10.144] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:16:10.144] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673758839}
-[00:16:10.144] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673758840}
-[00:18:11.820] Server  LOG      ✓ Compiled in 133ms
-[00:18:13.789] Server  LOG      ✓ Compiled in 72ms
-[00:18:15.824] Server  LOG      ✓ Compiled in 80ms
-[00:18:17.845] Server  LOG      ✓ Compiled in 62ms
-[00:18:19.855] Server  LOG      ✓ Compiled in 69ms
-[00:18:20.983] Browser ERROR   uncaughtError: ReferenceError: Cannot access 'fetchImages' before initialization
-[00:19:01.626] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:19:01.655] Server  LOG      ✓ Compiled in 302ms
-[00:19:01.663] Server  LOG     Middleware hitting path: "/"
-[00:19:01.756] Browser ERROR   uncaughtError: ReferenceError: Cannot access 'fetchImages' before initialization
-[00:19:01.756] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673930443}
-[00:19:04.550] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:04.844] Browser ERROR   uncaughtError: ReferenceError: Cannot access 'fetchImages' before initialization
-[00:19:04.844] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:19:04.844] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:19:04.844] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673933527}
-[00:19:05.294] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:19:05.315] Server  LOG     Middleware hitting path: "/"
-[00:19:05.326] Server  LOG      ✓ Compiled in 268ms
-[00:19:07.472] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:07.991] Browser ERROR   uncaughtError: ReferenceError: Cannot access 'fetchImages' before initialization
-[00:19:07.991] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:19:07.991] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:19:07.991] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673936529}
-[00:19:09.129] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:19:09.148] Server  LOG     Middleware hitting path: "/"
-[00:19:09.158] Server  LOG      ✓ Compiled in 191ms
-[00:19:10.363] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:10.982] Browser ERROR   uncaughtError: ReferenceError: Cannot access 'fetchImages' before initialization
-[00:19:10.982] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:19:10.982] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:19:10.982] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673939442}
-[00:19:55.875] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:19:55.900] Server  LOG      ✓ Compiled in 115ms
-[00:19:55.909] Server  LOG     Middleware hitting path: "/"
-[00:19:57.877] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:19:57.905] Server  LOG      ✓ Compiled in 50ms
-[00:19:58.791] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:19:59.980] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:11:21.340] Browser ERROR   ./components/navbar.tsx:68:3
+Parsing ecmascript source code failed
+  66 |
+  67 |   return (
+> 68 |   return (
+     |   ^^^^^^
+  69 |     <header className="sticky top-0 z-50 px-4 pt-4 transition-all duration-300">
+  70 |       <div className="container mx-auto flex h-16 items-center justify-between px-6 rounded-2xl glass-dark border-white/10 shadow-2xl backdrop-blur-xl">
+  71 |         <Link href="/dashboard" className="flex items-center gap-3 hover:scale-105 transition-all group">
 
-   Previous render            Next render
-   ------------------------------------------------------
-%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- Carousel 1. useContext                 useContext
-2. useMemo                    useMemo
-3. useMemo                    useMemo
-4. useRef                     useRef
-5. useCallback                useCallback
-6. useRef                     useRef
-7. useCallback                useCallback
-8. useState                   useState
-9. useSyncExternalStore       useSyncExternalStore
-10. useEffect                 useEffect
-11. useRef                    useRef
-12. useRef                    useRef
-13. useMemo                   useMemo
-14. useState                  useState
-15. useState                  useState
-16. useState                  useState
-17. useEffect                 useEffect
-18. undefined                 useEffect
+Expression expected
 
-[00:19:59.980] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
-[00:19:59.980] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:19:59.980] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:19:59.980] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769673987907}
-[00:20:27.432] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:20:27.453] Server  LOG      ✓ Compiled in 61ms
-[00:20:27.461] Server  LOG     Middleware hitting path: "/"
-[00:20:29.432] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:20:29.992] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:20:29.992] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:20:29.992] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674018515}
-[00:20:29.992] Browser ERROR   React has detected a change in the order of Hooks called by %s. This will lead to bugs and errors if not fixed. For more information, read the Rules of Hooks: https://react.dev/link/rules-of-hooks
+Import trace:
+  Server Component:
+    ./components/navbar.tsx
+    ./app/dashboard/page.tsx
+[00:11:30.513] Server  LOG      ✓ Compiled in 206ms
+[00:11:31.331] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-   Previous render            Next render
-   ------------------------------------------------------
-%s   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- Carousel 1. useContext                 useContext
-2. useMemo                    useMemo
-3. useMemo                    useMemo
-4. useRef                     useRef
-5. useCallback                useCallback
-6. useRef                     useRef
-7. useCallback                useCallback
-8. useState                   useState
-9. useSyncExternalStore       useSyncExternalStore
-10. useEffect                 useEffect
-11. useRef                    useRef
-12. useRef                    useRef
-13. useMemo                   useMemo
-14. useState                  useState
-15. useState                  useState
-16. useState                  useState
-17. useEffect                 useEffect
-18. undefined                 useEffect
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:11:31.331] Browser ERROR   ./components/navbar.tsx:68:3
+Parsing ecmascript source code failed
+  66 |
+  67 |   return (
+> 68 |   return (
+     |   ^^^^^^
+  69 |     <header className="sticky top-0 z-50 px-4 pt-4 transition-all duration-300">
+  70 |       <div className="container mx-auto flex h-16 items-center justify-between px-6 rounded-2xl glass-dark border-white/10 shadow-2xl backdrop-blur-xl">
+  71 |         <Link href="/dashboard" className="flex items-center gap-3 hover:scale-105 transition-all group">
 
-[00:20:29.992] Browser ERROR   uncaughtError: Error: Rendered more hooks than during the previous render.
-[00:24:53.759] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:24:53.763] Server  LOG      ✓ Compiled in 154ms
-[00:24:53.853] Server  LOG     Middleware hitting path: "/"
-[00:24:56.109] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:24:56.997] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:24:56.997] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:24:56.997] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674285522}
-[00:25:39.733] Server  LOG     Middleware hitting path: "/"
-[00:25:42.128] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:25:42.718] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+Expression expected
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
+Import trace:
+  Server Component:
+    ./components/navbar.tsx
+    ./app/dashboard/page.tsx
+[00:12:08.330] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:12:08.331] Browser ERROR   ./components/navbar.tsx:68:3
+Parsing ecmascript source code failed
+  66 |
+  67 |   return (
+> 68 |   return (
+     |   ^^^^^^
+  69 |     <header className="sticky top-0 z-50 px-4 pt-4 transition-all duration-300">
+  70 |       <div className="container mx-auto flex h-16 items-center justify-between px-6 rounded-2xl glass-dark border-white/10 shadow-2xl backdrop-blur-xl">
+  71 |         <Link href="/dashboard" className="flex items-center gap-3 hover:scale-105 transition-all group">
 
-%s%s https://react.dev/link/hydration-mismatch 
+Expression expected
 
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="/Desktop/a...">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html lang="en">
-                          <body
-+                           className="poppins_200c5dfa-module__JOwRzG__variable font-sans antialiased"
--                           className="poppins_200c5dfa-module__JOwRzG__variable font-sans antialiased antigravity-scr..."
-                          >
-                  ...
+Import trace:
+  Server Component:
+    ./components/navbar.tsx
+    ./app/dashboard/page.tsx
+[00:12:31.030] Server  LOG      ✓ Compiled in 895ms
+[00:12:31.325] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-[00:25:42.922] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:25:42.923] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:25:42.923] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674331611}
-[00:25:44.958] Server  LOG      ○ Compiling /_not-found/page ...
-[00:25:54.470] Server  LOG     Middleware hitting path: "/"
-[00:26:59.713] Server  LOG     Middleware hitting path: "/"
-[00:27:01.299] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:27:02.079] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:27:02.079] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:27:02.079] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674410755}
-[00:28:07.108] Server  LOG     Middleware hitting path: "/"
-[00:29:23.622] Server  LOG     Middleware hitting path: "/"
-[00:29:26.802] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:29:27.568] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:13:04.336] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-- A server/client branch `if (typeof window !== 'undefined')`.
-- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
-- Date formatting in a user's locale which doesn't match the server.
-- External changing data without sending a snapshot of it along with the HTML.
-- Invalid HTML tag nesting.
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:13:04.336] Browser ERROR   ./app/topics/page.tsx:49:5
+Parsing ecmascript source code failed
+  47 |
+  48 |     return (
+> 49 |     return (
+     |     ^^^^^^
+  50 |         <div className="min-h-screen bg-slate-950 relative overflow-hidden">
+  51 |             {/* Background Blobs */}
+  52 |             <div className="absolute top-0 -left-20 w-[40rem] h-[40rem] bg-primary/10 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 animate-blob" />
 
-It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+Expression expected
+[00:13:05.326] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
 
-%s%s https://react.dev/link/hydration-mismatch 
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:13:05.327] Browser ERROR   ./app/topics/page.tsx:49:5
+Parsing ecmascript source code failed
+  47 |
+  48 |     return (
+> 49 |     return (
+     |     ^^^^^^
+  50 |         <div className="min-h-screen bg-slate-950 relative overflow-hidden">
+  51 |             {/* Background Blobs */}
+  52 |             <div className="absolute top-0 -left-20 w-[40rem] h-[40rem] bg-primary/10 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 animate-blob" />
 
-  ...
-    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
-      <AppDevOverlayErrorBoundary globalError={[...]}>
-        <ReplaySsrOnlyErrors>
-        <DevRootHTTPAccessFallbackBoundary>
-          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
-            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
-              <RedirectBoundary>
-                <RedirectErrorBoundary router={{...}}>
-                  <Head>
-                  <__next_root_layout_boundary__>
-                    <SegmentViewNode type="layout" pagePath="/Desktop/a...">
-                      <SegmentTrieNode>
-                      <link>
-                      <script>
-                      <script>
-                      <script>
-                      <RootLayout>
-                        <html lang="en">
-                          <body
-+                           className="poppins_200c5dfa-module__JOwRzG__variable font-sans antialiased"
--                           className="poppins_200c5dfa-module__JOwRzG__variable font-sans antialiased antigravity-scr..."
-                          >
-                  ...
+Expression expected
+[00:13:05.327] Browser ERROR   ./app/tickets/page.tsx:142:3
+Parsing ecmascript source code failed
+  140 |   )
+  141 | }
+> 142 |   )
+      |   ^
+  143 | }
 
-[00:29:27.992] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:29:27.992] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:29:27.992] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674556668}
-[00:31:11.075] Server  LOG     Middleware hitting path: "/"
-[00:31:18.111] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
-[00:31:36.570] Server  LOG     Middleware hitting path: "/login"
-[00:31:37.614] Server  LOG     Middleware hitting path: "/dashboard"
-[00:31:39.671] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674688347}
-[00:32:02.174] Server  LOG     Middleware hitting path: "/admin"
-[00:32:05.467] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674714116}
-[00:32:11.169] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:32:11.169] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:32:11.169] Browser LOG     Browser Session Status: Logged in as 
-[00:32:11.169] Browser LOG     Browser Session Status: Logged in as 
-[00:32:38.873] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:32:38.873] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:32:38.873] Browser LOG     Browser Session Status: Logged in as 
-[00:32:38.873] Browser LOG     Browser Session Status: Logged in as 
-[00:32:54.202] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:32:54.202] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:32:54.202] Browser LOG     Browser Session Status: Logged in as 
-[00:32:54.202] Browser LOG     Browser Session Status: Logged in as 
-[00:33:08.752] Server  LOG     Middleware hitting path: "/admin"
-[00:33:16.613] Server  LOG     Middleware hitting path: "/dashboard"
-[00:33:18.848] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
-[00:33:20.535] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:33:20.535] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:33:20.535] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674788530}
-[00:33:27.220] Server  LOG     Middleware hitting path: "/tickets"
-[00:33:31.392] Server  LOG      ○ Compiling /tickets ...
-[00:33:35.408] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674804047}
-[00:33:39.297] Server  LOG     Middleware hitting path: "/test/ticket/b9ef7f2b-1859-4dce-a4ce-8fe95fb962bb"
-[00:33:44.043] Server  LOG     Ticket page hit with ID: "b9ef7f2b-1859-4dce-a4ce-8fe95fb962bb"
-[00:33:44.266] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/b9ef7f2b-1859-4dce-a4ce-8fe95fb962bb color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/b9ef7f2b-1859-4dce-a4ce-8fe95fb962bb","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674812951}
-[00:33:45.486] Server  LOG     Ticket Debug: User: true
-[00:33:45.488] Server  LOG     Ticket Debug: Ticket: true
-[00:33:45.490] Server  LOG     Ticket Debug: TicketTests: 0
-[00:33:45.491] Server  LOG     Ticket Debug: Redirecting - No Ticket Data
-[00:33:45.625] Server  LOG     Middleware hitting path: "/dashboard"
-[00:33:46.480] Server  LOG     Middleware hitting path: "/dashboard"
-[00:33:47.626] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674816310}
-[00:33:50.980] Server  LOG     Middleware hitting path: "/tickets"
-[00:33:54.104] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674822794}
-[00:33:54.973] Server  LOG     Middleware hitting path: "/test/ticket/3d60e966-1d91-4bbd-a33f-4f18a7107e99"
-[00:33:55.915] Server  LOG     Ticket page hit with ID: "3d60e966-1d91-4bbd-a33f-4f18a7107e99"
-[00:33:56.106] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/test/ticket/3d60e966-1d91-4bbd-a33f-4f18a7107e99 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/3d60e966-1d91-4bbd-a33f-4f18a7107e99","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1769674824798}
-[00:33:57.528] Server  LOG     Ticket Debug: User: true
-[00:33:57.530] Server  LOG     Ticket Debug: Ticket: true
-[00:33:57.532] Server  LOG     Ticket Debug: TicketTests: 60
-[00:33:57.533] Server  LOG     Ticket Debug: Tests count: 60
+Expression expected
+[00:13:53.326] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:13:53.326] Browser ERROR   ./app/tickets/page.tsx:142:3
+Parsing ecmascript source code failed
+  140 |   )
+  141 | }
+> 142 |   )
+      |   ^
+  143 | }
+
+Expression expected
+[00:15:51.334] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:15:53.336] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:16:29.330] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:17:03.325] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:18:17.327] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:18:38.325] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:18:51.319] Browser ERROR   ./app/global.css
+Error evaluating Node.js code
+CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
+    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
+    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
+    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
+    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
+    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
+    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
+
+Import trace:
+  Client Component Browser:
+    ./app/global.css [Client Component Browser]
+    ./app/layout.tsx [Server Component]
+[00:19:08.156] Server  LOG      ✓ Compiled in 2.8s
+[00:19:08.442] Server  LOG     Middleware hitting path: "/dashboard"
+[00:19:12.331] Server  LOG     Middleware hitting path: "/dashboard"
+[00:19:13.439] Server  LOG     Middleware hitting path: "/dashboard"
+[00:19:14.152] Server  LOG     Middleware hitting path: "/dashboard"
+[00:19:14.865] Server  LOG     Middleware hitting path: "/dashboard"
+[00:19:15.847] Server  LOG     Middleware hitting path: "/dashboard"

@@ -167,89 +167,88 @@ export function CarouselManagement() {
   }
 
   return (
-    <div className="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>Karousel rasmlari qo'shish</CardTitle>
-          <CardDescription>Bosh sahifadagi karousel uchun rasmlar</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="image">Rasm</Label>
+    <div className="space-y-12">
+      <div className="space-y-6">
+        <div className="pb-4 border-b-2 border-gray-300">
+          <h2 className="text-2xl font-bold uppercase tracking-wide">Karousel rasmlari qo'shish</h2>
+          <p className="text-gray-500">Bosh sahifadagi karousel uchun rasmlar</p>
+        </div>
+
+        <div className="space-y-6 max-w-2xl">
+          <div className="space-y-3">
+            <Label htmlFor="image" className="text-lg font-bold">Rasm</Label>
             <Input
               id="image"
               type="file"
               accept="image/*"
+              className="h-14 border-2 border-gray-300 rounded-none bg-white p-2"
               onChange={handleImageChange}
             />
           </div>
-          <Button onClick={handleAdd} disabled={uploading || !imageFile}>
+          <Button
+            onClick={handleAdd}
+            disabled={uploading || !imageFile}
+            className="h-14 px-10 bg-[#1976d2] text-white font-bold text-xl uppercase"
+          >
             {uploading ? "Yuklanmoqda..." : "Rasm qo'shish"}
           </Button>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Karousel rasmlari ({images.length})</CardTitle>
-        </CardHeader>
-        <CardContent>
-          {loading ? (
-            <div className="text-center py-8">Yuklanmoqda...</div>
-          ) : images.length === 0 ? (
-            <div className="text-center py-8 text-muted-foreground">
-              Hozircha rasmlar mavjud emas
-            </div>
-          ) : (
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-              {images.map((image, index) => (
-                <div key={image.id} className="relative group rounded-lg border overflow-hidden">
-                  <div className="aspect-video relative">
-                    <Image
-                      src={image.image_url}
-                      alt={`Carousel ${index + 1}`}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+      <div className="space-y-6">
+        <div className="pb-4 border-b-2 border-gray-300">
+          <h2 className="text-2xl font-bold uppercase tracking-wide">Karousel rasmlari ({images.length})</h2>
+        </div>
+
+        {loading ? (
+          <div className="text-center py-12 text-xl font-bold">Yuklanmoqda...</div>
+        ) : images.length === 0 ? (
+          <div className="py-12 border-2 border-dashed border-gray-300 bg-white text-center text-xl font-bold text-gray-500 italic">
+            Hozircha rasmlar mavjud emas
+          </div>
+        ) : (
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {images.map((image, index) => (
+              <div key={image.id} className="group relative border-2 border-gray-300 bg-white p-2 h-full">
+                <div className="aspect-video relative overflow-hidden">
+                  <Image
+                    src={image.image_url}
+                    alt={`Carousel ${index + 1}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+
+                <div className="p-4 flex items-center justify-between border-t-2 border-gray-100 mt-2">
+                  <span className="text-xl font-bold text-[#1976d2] uppercase tracking-tighter">Tartib: {index + 1}</span>
+                  <div className="flex gap-2">
                     <Button
-                      variant="secondary"
-                      size="icon"
-                      className="h-8 w-8"
+                      className="h-10 w-10 bg-gray-100 text-gray-700 border-2 border-gray-300 flex items-center justify-center p-0"
                       onClick={() => handleReorder(image.id, "up")}
                       disabled={index === 0}
                     >
-                      <ArrowUp className="h-4 w-4" />
+                      <ArrowUp className="h-5 w-5" />
                     </Button>
                     <Button
-                      variant="secondary"
-                      size="icon"
-                      className="h-8 w-8"
+                      className="h-10 w-10 bg-gray-100 text-gray-700 border-2 border-gray-300 flex items-center justify-center p-0"
                       onClick={() => handleReorder(image.id, "down")}
                       disabled={index === images.length - 1}
                     >
-                      <ArrowDown className="h-4 w-4" />
+                      <ArrowDown className="h-5 w-5" />
                     </Button>
                     <Button
-                      variant="destructive"
-                      size="icon"
-                      className="h-8 w-8"
+                      className="h-10 w-10 bg-red-50 text-red-600 border-2 border-red-200 flex items-center justify-center p-0"
                       onClick={() => handleDelete(image.id)}
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-5 w-5" />
                     </Button>
                   </div>
-                  <div className="p-2 text-xs text-center text-muted-foreground">
-                    Tartib: {index + 1}
-                  </div>
                 </div>
-              ))}
-            </div>
-          )}
-        </CardContent>
-      </Card>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   )
 }
-

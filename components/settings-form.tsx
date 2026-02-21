@@ -162,11 +162,10 @@ export function SettingsForm({ initialSettings }: SettingsFormProps) {
           </Select>
         </div>
 
-        <Button onClick={handleSave} className="w-full" disabled={saving}>
+        <Button onClick={handleSave} className="w-full bg-primary hover:opacity-90 text-white" disabled={saving}>
           {saving ? "Saqlanmoqda..." : "Saqlash"}
         </Button>
       </CardContent>
     </Card>
   )
 }
-

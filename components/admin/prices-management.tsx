@@ -82,47 +82,53 @@ export function PricesManagement() {
   }
 
   return (
-    <Card className="max-w-2xl mx-auto">
-      <CardHeader>
-        <CardTitle>Narxlar boshqaruvi</CardTitle>
-        <CardDescription>Bosh sahifadagi narxlar bo'limini boshqarish</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="discount-percent">Chegirma foizi (%)</Label>
+    <div className="max-w-2xl mx-auto space-y-10">
+      <div className="pb-4 border-b-2 border-gray-300">
+        <h2 className="text-3xl font-bold uppercase tracking-wide">Narxlar boshqaruvi</h2>
+        <p className="text-gray-500 text-lg">Bosh sahifadagi narxlar bo'limini boshqarish</p>
+      </div>
+
+      <div className="space-y-8 bg-white border-2 border-gray-300 p-10">
+        <div className="space-y-3">
+          <Label htmlFor="discount-percent" className="text-xl font-bold uppercase">Chegirma foizi (%)</Label>
           <Input
             id="discount-percent"
+            className="h-14 rounded-none border-2 border-gray-300 text-2xl font-black focus:border-[#1976d2]"
             placeholder="33"
             value={discountPercent}
             onChange={(e) => setDiscountPercent(e.target.value)}
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="original-price">Asl narx (so'm)</Label>
+        <div className="space-y-3">
+          <Label htmlFor="original-price" className="text-xl font-bold uppercase">Asl narx (so'm)</Label>
           <Input
             id="original-price"
+            className="h-14 rounded-none border-2 border-gray-300 text-2xl font-black focus:border-[#1976d2]"
             placeholder="300000"
             value={originalPrice}
             onChange={(e) => setOriginalPrice(e.target.value)}
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="discounted-price">Chegirmali narx (so'm)</Label>
+        <div className="space-y-3">
+          <Label htmlFor="discounted-price" className="text-xl font-bold uppercase">Chegirmali narx (so'm)</Label>
           <Input
             id="discounted-price"
+            className="h-14 rounded-none border-2 border-gray-300 text-2xl font-black focus:border-[#1976d2]"
             placeholder="200000"
             value={discountedPrice}
             onChange={(e) => setDiscountedPrice(e.target.value)}
           />
         </div>
 
-        <Button onClick={handleSave} className="w-full">
+        <Button
+          onClick={handleSave}
+          className="w-full h-16 bg-[#1976d2] text-white text-2xl font-black uppercase tracking-widest mt-6"
+        >
           Narxlarni saqlash
         </Button>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }
-

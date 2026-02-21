@@ -84,57 +84,66 @@ export default function ContactManager() {
     return <div className="text-center py-8">Loading...</div>
   }
 
+
   return (
-    <Card className="max-w-2xl mx-auto">
-      <CardHeader>
-        <CardTitle>Bog'lanish ma'lumotlari</CardTitle>
-        <CardDescription>Bog'lanish ma'lumotlarini boshqarish</CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <div className="space-y-2">
-          <Label htmlFor="phone">Telefon raqami</Label>
+    <div className="max-w-2xl mx-auto space-y-12">
+      <div className="pb-4 border-b-2 border-gray-300">
+        <h2 className="text-3xl font-bold uppercase tracking-wide">Bog'lanish ma'lumotlari</h2>
+        <p className="text-gray-500 text-lg">Bog'lanish ma'lumotlarini boshqarish</p>
+      </div>
+
+      <div className="space-y-8 bg-white border-2 border-gray-300 p-10">
+        <div className="space-y-3">
+          <Label htmlFor="phone" className="text-xl font-bold uppercase">Telefon raqami</Label>
           <Input
             id="phone"
+            className="h-14 rounded-none border-2 border-gray-300 text-xl font-bold focus:border-[#1976d2]"
             placeholder="+998901234567"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="telegram">Telegram foydalanuvchi nomi</Label>
+        <div className="space-y-3">
+          <Label htmlFor="telegram" className="text-xl font-bold uppercase">Telegram foydalanuvchi nomi</Label>
           <Input
             id="telegram"
+            className="h-14 rounded-none border-2 border-gray-300 text-xl font-bold focus:border-[#1976d2]"
             placeholder="e.g., @yourusername"
             value={telegram}
             onChange={(e) => setTelegram(e.target.value)}
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="telegram-link">Telegram Link</Label>
+        <div className="space-y-3">
+          <Label htmlFor="telegram-link" className="text-xl font-bold uppercase">Telegram Link</Label>
           <Input
             id="telegram-link"
+            className="h-14 rounded-none border-2 border-gray-300 text-xl font-bold focus:border-[#1976d2]"
             placeholder="https://t.me/yourusername"
             value={telegramLink}
             onChange={(e) => setTelegramLink(e.target.value)}
           />
         </div>
 
-        <div className="space-y-2">
-          <Label htmlFor="address">Manzil</Label>
+        <div className="space-y-3">
+          <Label htmlFor="address" className="text-xl font-bold uppercase">Manzil</Label>
           <Input
             id="address"
+            className="h-14 rounded-none border-2 border-gray-300 text-xl font-bold focus:border-[#1976d2]"
             placeholder="Manzilni kiriting"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
           />
         </div>
 
-        <Button onClick={handleSave} className="w-full">
+        <Button
+          onClick={handleSave}
+          className="w-full h-16 bg-[#1976d2] text-white text-2xl font-black uppercase tracking-widest mt-6"
+        >
           Bog'lanish ma'lumotlarini saqlash
         </Button>
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }

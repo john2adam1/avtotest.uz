@@ -48,37 +48,45 @@ export function Carousel() {
   if (images.length === 0) return null
 
   return (
-    <section className="py-24">
-      <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-center text-3xl md:text-5xl font-bold mb-16 text-primary">
+    <section className="py-24 relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 relative z-10">
+        <h2 className="text-center text-3xl md:text-5xl font-extrabold mb-16 text-white tracking-tight">
           {t("landing.results")}
         </h2>
 
-        <div className="relative overflow-hidden rounded-[2.5rem] border-4 border-gray-50 shadow-xl bg-background">
+        <div className="relative group overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl bg-white/5 glass-dark p-2 transition-all duration-500 hover:scale-[1.01]">
+          {/* Background Decoration */}
+          <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/20 rounded-full blur-[100px] opacity-20" />
+
           <div
-            className="flex transition-transform duration-700 ease-in-out h-[300px] md:h-[500px]"
+            className="flex transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1) h-[300px] md:h-[600px]"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {images.map((img, index) => (
-              <div key={img.id} className="relative w-full h-full flex-shrink-0 p-4">
-                <Image
-                  src={img.image_url}
-                  alt={`Carousel image ${index + 1}`}
-                  fill
-                  className="object-contain rounded-2xl"
-                  priority={index === 0}
-                />
+              <div key={img.id} className="relative w-full h-full flex-shrink-0 p-6">
+                <div className="relative w-full h-full overflow-hidden rounded-[2rem]">
+                  <Image
+                    src={img.image_url}
+                    alt={`Carousel image ${index + 1}`}
+                    fill
+                    className="object-cover transition-transform duration-700 hover:scale-105"
+                    priority={index === 0}
+                  />
+                </div>
               </div>
             ))}
           </div>
 
           {/* Indicators */}
-          <div className="absolute bottom-6 left-0 right-0 flex justify-center gap-3">
+          <div className="absolute bottom-10 left-0 right-0 flex justify-center gap-4 relative z-20">
             {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex ? "w-10 bg-primary" : "w-3 bg-gray-200"}`}
+                className={`h-2.5 rounded-full transition-all duration-500 hover:bg-primary/50 ${index === currentIndex
+                    ? "w-12 bg-primary shadow-lg shadow-primary/50"
+                    : "w-2.5 bg-white/20"
+                  }`}
               />
             ))}
           </div>

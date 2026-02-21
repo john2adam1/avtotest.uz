@@ -36,22 +36,25 @@ export default async function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#e9f6ff]">
       <Navbar userEmail={user.email} isAdmin={true} />
 
-      <main className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-8">Admin Panel</h1>
+      <main className="container mx-auto px-4 py-12">
+        <div className="pb-6 border-b-2 border-gray-300 mb-10">
+          <h1 className="text-4xl font-bold uppercase tracking-widest text-[#0f172a]">Admin Panel</h1>
+        </div>
 
-        <Tabs defaultValue="users" className="space-y-6">
-          <TabsList className="grid w-full grid-cols-7">
-            <TabsTrigger value="users">Foydalanuvchilar</TabsTrigger>
-            <TabsTrigger value="topics">Mavzular</TabsTrigger>
-            <TabsTrigger value="tests">Testlar</TabsTrigger>
-            <TabsTrigger value="tickets">Biletlar</TabsTrigger>
-            <TabsTrigger value="carousel">Karousel</TabsTrigger>
-            <TabsTrigger value="prices">Narxlar</TabsTrigger>
-            <TabsTrigger value="contact">Bog'lanish</TabsTrigger>
+        <Tabs defaultValue="users" className="space-y-10">
+          <TabsList className="grid w-full grid-cols-7 bg-gray-200 p-1 border-2 border-gray-300 h-auto">
+            <TabsTrigger value="users" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Foydalanuvchilar</TabsTrigger>
+            <TabsTrigger value="topics" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Mavzular</TabsTrigger>
+            <TabsTrigger value="tests" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Testlar</TabsTrigger>
+            <TabsTrigger value="tickets" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Biletlar</TabsTrigger>
+            <TabsTrigger value="carousel" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Karousel</TabsTrigger>
+            <TabsTrigger value="prices" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Narxlar</TabsTrigger>
+            <TabsTrigger value="contact" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Bog'lanish</TabsTrigger>
           </TabsList>
+          {/* ... tabs content sits directly on background ... */}
 
           <TabsContent value="users">
             <UsersManagement />

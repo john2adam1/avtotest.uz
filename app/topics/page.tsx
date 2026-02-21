@@ -46,31 +46,35 @@ export default async function TopicsPage() {
     }, {} as Record<string, { percentage: number; correct: number; wrong: number }>)
 
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-slate-950 relative overflow-hidden">
+            {/* Background Blobs */}
+            <div className="absolute top-0 -left-20 w-[40rem] h-[40rem] bg-primary/10 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 animate-blob" />
+            <div className="absolute top-1/2 -right-20 w-[30rem] h-[30rem] bg-orange-500/10 rounded-full mix-blend-multiply filter blur-[100px] opacity-10 animate-blob animation-delay-2000" />
+
             <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
 
-            <main className="container mx-auto px-4 py-8">
-                <div className="max-w-4xl mx-auto mb-8">
-                    <Button variant="ghost" asChild className="pl-0 hover:pl-2 transition-all">
-                        <Link href="/dashboard" className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground">
-                            <ArrowLeft className="h-4 w-4" />
+            <main className="container mx-auto px-6 py-12 max-w-5xl relative z-10">
+                <div className="mb-10">
+                    <Button variant="ghost" asChild className="group text-slate-400 hover:text-white hover:bg-white/5 rounded-xl px-4">
+                        <Link href="/dashboard" className="inline-flex items-center gap-2">
+                            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
                             Orqaga
                         </Link>
                     </Button>
                 </div>
 
-                <div className="mb-8 text-center">
-                    <div className="inline-flex items-center justify-center p-3 bg-orange-500/10 rounded-full mb-4">
-                        <BookOpen className="h-8 w-8 text-orange-600" />
+                <div className="mb-16 text-center space-y-4">
+                    <div className="inline-flex items-center justify-center p-4 bg-orange-500/10 rounded-2xl border border-orange-500/20 shadow-xl shadow-orange-500/5 mb-2">
+                        <BookOpen className="h-10 w-10 text-orange-500" />
                     </div>
-                    <h1 className="text-3xl font-bold mb-2">Mavzular bo'yicha testlar</h1>
-                    <p className="text-muted-foreground">Mavzuni tanlang va bilimingizni sinang</p>
+                    <h1 className="text-4xl md:text-5xl font-black text-white tracking-tight">Mavzular bo'yicha testlar</h1>
+                    <p className="text-slate-400 text-lg font-medium max-w-lg mx-auto">Mavzuni tanlang va bilimingizni sinang</p>
                 </div>
 
-                <Card className="max-w-4xl mx-auto bg-background/60 backdrop-blur-xl border-white/10 shadow-xl">
-                    <CardContent className="p-0">
+                <Card className="glass-dark border-white/5 rounded-[2.5rem] shadow-3xl overflow-hidden">
+                    <CardContent className="p-2 sm:p-4">
                         {topics && topics.length > 0 ? (
-                            <div className="divide-y divide-border/50">
+                            <div className="space-y-2">
                                 {topics.map((topic) => {
                                     const isPublic = topic.is_public
                                     const canAccess = isPublic || hasAccess
@@ -78,59 +82,70 @@ export default async function TopicsPage() {
                                     const percentage = stats?.percentage
 
                                     return (
-                                        <div key={topic.id} className="group flex items-center justify-between p-4 sm:p-5 hover:bg-muted/30 transition-colors">
-                                            <div className="flex flex-col gap-1.5 flex-1 min-w-0 pr-4">
-                                                <div className="flex items-center gap-2 flex-wrap">
-                                                    <h3 className={`font-semibold text-lg ${canAccess ? 'text-foreground' : 'text-muted-foreground'}`}>
-                                                        {topic.title}
-                                                    </h3>
-                                                    {!isPublic && (
-                                                        <Badge variant="secondary" className="text-xs px-2 py-0.5 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 font-bold border-green-200">
-                                                            Premium
-                                                        </Badge>
-                                                    )}
-                                                </div>
-                                            </div>
-
-                                            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-                                                {canAccess && stats && (
-                                                    <div className="flex flex-col items-end gap-1 mr-2">
-                                                        <Badge className={`text-sm px-2.5 py-0.5 ${percentage >= 90 ? "bg-green-500 hover:bg-green-600" : percentage >= 60 ? "bg-yellow-500 hover:bg-yellow-600" : "bg-red-500 hover:bg-red-600"}`}>
-                                                            {percentage}%
-                                                        </Badge>
-                                                        <div className="flex gap-1 text-[10px] sm:text-xs font-medium">
-                                                            <span className="text-green-600">{stats.correct} T</span>
-                                                            <span className="text-zinc-300">|</span>
-                                                            <span className="text-red-500">{stats.wrong} X</span>
-                                                        </div>
+                                        <div key={topic.id} className="group relative">
+                                            <div className="flex items-center justify-between p-6 rounded-3xl transition-all duration-300 hover:bg-white/5 border border-transparent hover:border-white/10 overflow-hidden">
+                                                <div className="flex flex-col gap-2 flex-1 min-w-0 pr-4">
+                                                    <div className="flex items-center gap-3 flex-wrap">
+                                                        <h3 className={`font-black text-xl transition-colors ${canAccess ? 'text-white' : 'text-slate-500'}`}>
+                                                            {topic.title}
+                                                        </h3>
+                                                        {!isPublic && (
+                                                            <div className="px-3 py-1 rounded-full bg-success/10 border border-success/20 text-success text-[10px] font-black uppercase tracking-widest">
+                                                                Premium
+                                                            </div>
+                                                        )}
                                                     </div>
-                                                )}
+                                                </div>
 
-                                                <Button
-                                                    asChild
-                                                    size="sm"
-                                                    variant={canAccess ? "outline" : "secondary"}
-                                                    className={`min-w-[100px] h-10 ${canAccess ? "border-primary/20 hover:bg-primary/5 hover:text-primary hover:border-primary/50" : "opacity-70"}`}
-                                                    disabled={!canAccess}
-                                                >
-                                                    {canAccess ? (
-                                                        <Link href={`/test/topic/${topic.id}`}>Boshlash</Link>
-                                                    ) : (
-                                                        <div className="flex items-center gap-1.5">
-                                                            <Lock className="h-3.5 w-3.5" />
-                                                            <span>Premium</span>
+                                                <div className="flex items-center gap-6 shrink-0">
+                                                    {canAccess && stats && (
+                                                        <div className="flex flex-col items-end gap-1.5 mr-2">
+                                                            <div className={`px-4 py-1 rounded-full text-sm font-black shadow-lg ${percentage >= 90 ? "bg-success/20 text-success border border-success/30" :
+                                                                percentage >= 60 ? "bg-amber-500/20 text-amber-500 border border-amber-500/30" :
+                                                                    "bg-destructive/20 text-destructive border border-destructive/30"
+                                                                }`}>
+                                                                {percentage}%
+                                                            </div>
+                                                            <div className="flex gap-2 text-[10px] font-black uppercase tracking-widest text-slate-500">
+                                                                <span className="text-success">{stats.correct} To&apos;g&apos;ri</span>
+                                                                <span className="opacity-20">|</span>
+                                                                <span className="text-destructive">{stats.wrong} Xato</span>
+                                                            </div>
                                                         </div>
                                                     )}
-                                                </Button>
+
+                                                    <Button
+                                                        asChild
+                                                        className={`h-12 px-8 rounded-2xl font-black text-base transition-all ${canAccess
+                                                            ? "bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary/20 hover:scale-105 active:scale-95"
+                                                            : "bg-white/5 text-slate-600 cursor-not-allowed border-none shadow-none"
+                                                            }`}
+                                                        disabled={!canAccess}
+                                                    >
+                                                        {canAccess ? (
+                                                            <Link href={`/test/topic/${topic.id}`}>Boshlash</Link>
+                                                        ) : (
+                                                            <div className="flex items-center gap-2">
+                                                                <Lock className="h-4 w-4" />
+                                                                <span>Premium</span>
+                                                            </div>
+                                                        )}
+                                                    </Button>
+                                                </div>
                                             </div>
                                         </div>
                                     )
                                 })}
                             </div>
                         ) : (
-                            <p className="text-center text-muted-foreground py-12">
-                                Mavzular topilmadi
-                            </p>
+                            <div className="text-center py-20 px-6 space-y-4">
+                                <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <BookOpen className="h-10 w-10 text-slate-700" />
+                                </div>
+                                <p className="text-slate-500 text-xl font-bold">
+                                    Mavzular topilmadi
+                                </p>
+                            </div>
                         )}
                     </CardContent>
                 </Card>

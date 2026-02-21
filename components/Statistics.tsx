@@ -39,32 +39,44 @@ export function Statistics() {
   ]
 
   return (
-    <section id="features" className="py-24">
-      <div className="mx-auto max-w-7xl px-4">
-        <h2 className="text-center text-3xl md:text-4xl font-extrabold text-primary mb-16">
-          {t("stats.title")}
-        </h2>
+    <section id="features" className="py-24 relative overflow-hidden">
+      <div className="mx-auto max-w-7xl px-6 relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+            {t("stats.title")}
+          </h2>
+          <p className="text-slate-400 text-lg">
+            Platformamiz orqali haydovchilik guvohnomasini olish imtihoniga tayyorgarlik ko'ring
+          </p>
+        </div>
 
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-left">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((item, idx) => {
             const Icon = item.icon
 
             return (
               <div
                 key={idx}
-                className="space-y-4"
+                className="group relative glass-dark border-white/5 p-8 rounded-[2rem] text-center hover:border-primary/30 transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
-                  <Icon className="h-8 w-8 text-primary" />
+                {/* Hover Glow */}
+                <div className="absolute inset-0 bg-primary/5 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity blur-2xl" />
+
+                <div className="relative z-10 space-y-6">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 border border-white/10 mx-auto group-hover:bg-primary group-hover:text-white transition-all duration-300">
+                    <Icon className="h-8 w-8 text-primary group-hover:text-white transition-colors" />
+                  </div>
+
+                  <div className="space-y-3">
+                    <h3 className="text-xl font-bold text-white">
+                      {item.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-400 leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
                 </div>
-
-                <h3 className="text-xl font-bold text-gray-900">
-                  {item.title}
-                </h3>
-
-                <p className="text-lg text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
               </div>
             )
           })}

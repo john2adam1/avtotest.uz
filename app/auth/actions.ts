@@ -18,22 +18,22 @@ export async function registerUserWithPhone(prevState: any, formData: FormData):
         return { error: "Telefon raqam yoki parol noto'g'ri (parol min 6 belgi)" }
     }
 
-    // Format phone: remove spaces
-    // Expected format: +998 90 123 45 67 -> +998901234567
-    let cleanPhone = phone.replace(/\s+/g, "")
+    // Format phone: remove all non-digits except +
+    // This ensures E.164-ish compliance and consistent email generation
+    let cleanPhone = phone.replace(/[^\d+]/g, "")
 
-    // Ensure it starts with + if missing (assuming Uzbekistan context primarily, but let's be safe)
+    // Ensure it starts with +998 if it's a local number without prefix
     if (!cleanPhone.startsWith("+")) {
-        // If user entered 99890..., add +
         if (cleanPhone.startsWith("998")) {
             cleanPhone = "+" + cleanPhone
-        } else {
-            // Fallback or explicit error? Let's assume user might enter local format? 
-            // Best to rely on what frontend sends. Frontend sends +998 usually.
-            // If it's just 901234567, we might need logic. 
-            // For now, let's assume frontend validation + manual entry includes prefix.
+        } else if (cleanPhone.length === 9) {
+            // Assume Uzbekistan 90...
+            cleanPhone = "+998" + cleanPhone
         }
     }
+
+    // Constructed email for Supabase Auth
+    const authEmail = `${cleanPhone.replace("+", "")}@gmail.com`
 
     const supabaseAdmin = getSupabaseAdminClient()
 
@@ -44,12 +44,13 @@ export async function registerUserWithPhone(prevState: any, formData: FormData):
 
         // 2. Create User in Auth (verified)
         const { data: linkData, error: linkError } = await supabaseAdmin.auth.admin.createUser({
-            phone: cleanPhone,
+            email: authEmail,
             password: password,
-            phone_confirm: true, // Auto-verify
+            email_confirm: true, // Auto-verify email
             user_metadata: {
                 first_name: firstName,
                 last_name: lastName,
+                phone: cleanPhone, // Keep original phone in metadata too
             }
         })
 
@@ -63,16 +64,13 @@ export async function registerUserWithPhone(prevState: any, formData: FormData):
         }
 
         // 3. Create Profile in public.users
-        // We generate a placeholder email to satisfy any legacy constraints or just to have data
-        // Even if schema makes it nullable, it's harmless to have a dummy one for admin view consistency.
-        const placeholderEmail = `${cleanPhone.replace('+', '')}@phone.dummy`
         // 7 days trial
         const now = new Date()
         const trialEnd = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString()
 
         const { error: profileError } = await supabaseAdmin.from("users").insert({
             id: linkData.user.id,
-            email: placeholderEmail,
+            email: authEmail,
             phone: cleanPhone,
             role: "user",
             trial_end: trialEnd,

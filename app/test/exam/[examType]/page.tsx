@@ -21,9 +21,11 @@ export default async function ExamTestPage({ params }: { params: Promise<{ examT
 
   const { data: userData } = await supabase.from("users").select("*").eq("id", user.id).single()
 
-  if (!userData || !hasActiveAccess(userData)) {
-    redirect("/dashboard?premium=required")
-  }
+  /*
+    if (!userData || !hasActiveAccess(userData)) {
+      redirect("/dashboard?premium=required")
+    }
+  */
 
   // Get all tests
   const { data: allTests } = await supabase.from("tests").select("*")

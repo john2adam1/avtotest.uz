@@ -9,7 +9,7 @@ import { useToast } from "@/hooks/use-toast"
 import { CheckCircle2, XCircle } from "lucide-react"
 import type { User } from "@/lib/types"
 
-import { adminUpdateUserPassword } from "@/app/admin/actions"
+import { adminUpdateUserPassword, adminGrantSubscription, adminRevokeSubscription } from "@/app/admin/actions"
 import {
   Dialog,
   DialogContent,
@@ -76,46 +76,48 @@ export function UsersManagement() {
   }
 
   const grantSubscription = async (userId: string) => {
-    const subscriptionEnd = new Date()
-    subscriptionEnd.setMonth(subscriptionEnd.getMonth() + 1)
+    console.log('Granting subscription to user:', userId)
 
-    const { error } = await supabase
-      .from("users")
-      .update({ subscription_end: subscriptionEnd.toISOString() })
-      .eq("id", userId)
+    const result = await adminGrantSubscription(userId, 1)
 
-    if (error) {
+    if (result.error) {
+      console.error('Error granting subscription:', result.error)
       toast({
         title: "Error",
-        description: "Foydalanuvchi abonemasi muvaffaqiyatli taqdim etilmadi",
+        description: result.error,
         variant: "destructive",
       })
     } else {
+      console.log('Subscription granted successfully')
       toast({
         title: "Success",
         description: "Foydalanuvchi abonemasi muvaffaqiyatli taqdim etildi",
         variant: "default",
       })
-      fetchUsers()
+      await fetchUsers()
     }
   }
 
   const revokeSubscription = async (userId: string) => {
-    const { error } = await supabase.from("users").update({ subscription_end: null }).eq("id", userId)
+    console.log('Revoking subscription for user:', userId)
 
-    if (error) {
+    const result = await adminRevokeSubscription(userId)
+
+    if (result.error) {
+      console.error('Error revoking subscription:', result.error)
       toast({
         title: "Error",
-        description: "Foydalanuvchi abonemasi muvaffaqiyatli bekor qilindi",
+        description: result.error,
         variant: "destructive",
       })
     } else {
+      console.log('Subscription revoked successfully')
       toast({
         title: "Success",
         description: "Foydalanuvchi abonemasi muvaffaqiyatli bekor qilindi",
         variant: "default",
       })
-      fetchUsers()
+      await fetchUsers()
     }
   }
 
@@ -172,117 +174,118 @@ export function UsersManagement() {
     return <div>Yuklanmoqda...</div>
   }
 
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Foydalanuvchi boshqarish</CardTitle>
-        <CardDescription>Foydalanuvchi abonemalarini va kirishlarini boshqarish</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          {users.map((user) => (
-            <div key={user.id} className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:items-center sm:justify-between rounded-lg border p-4">
-              <div className="space-y-2 flex-1">
-                <div className="flex items-center gap-2">
-                  <p className="font-medium">{user.email}</p>
-                  {user.role === "admin" && <Badge variant="secondary">Admin</Badge>}
-                </div>
-                <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                  {user.subscription_end && (
-                    <span>Abonemasi: {new Date(user.subscription_end).toLocaleDateString()}</span>
-                  )}
-                </div>
-                <div className="flex gap-4 text-xs text-muted-foreground mt-2">
-                  <span className="bg-blue-100 text-blue-800 px-2 py-0.5 rounded dark:bg-blue-900 dark:text-blue-200">
-                    Imtihon: {userStats[user.id]?.examAvg || 0}%
-                  </span>
-                  <span className="bg-green-100 text-green-800 px-2 py-0.5 rounded dark:bg-green-900 dark:text-green-200">
-                    Bilet: {userStats[user.id]?.ticketAvg || 0}%
-                  </span>
-                  <span className="bg-purple-100 text-purple-800 px-2 py-0.5 rounded dark:bg-purple-900 dark:text-purple-200">
-                    Mavzu: {userStats[user.id]?.topicAvg || 0}%
-                  </span>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 sm:ml-4">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => {
-                    setSelectedUser(user)
-                    setResetPasswordOpen(true)
-                  }}
-                >
-                  <KeyRound className="mr-1 h-3 w-3" />
-                  Parol
-                </Button>
 
-                {hasActiveSubscription(user) ? (
-                  <>
-                    <Badge variant="default" className="bg-success text-success-foreground">
-                      <CheckCircle2 className="mr-1 h-3 w-3" />
-                      Aktiv
-                    </Badge>
-                    <Button variant="outline" size="sm" onClick={() => revokeSubscription(user.id)}>
-                      Bekor qilish
-                    </Button>
-                  </>
-                ) : (
-                  <>
-                    <Badge variant="destructive">
-                      <XCircle className="mr-1 h-3 w-3" />
-                      Abonemasi yo'q
-                    </Badge>
-                    <Button variant="default" size="sm" onClick={() => grantSubscription(user.id)}>
-                      Abonemani taqdim etish (1 oy)
-                    </Button>
-                  </>
+  return (
+    <div className="space-y-6">
+      <div className="pb-4 border-b-2 border-gray-300">
+        <h2 className="text-2xl font-bold">Foydalanuvchi boshqarish</h2>
+        <p className="text-gray-500">Foydalanuvchi abonemalarini va kirishlarini boshqarish</p>
+      </div>
+
+      <div className="space-y-4">
+        {users.map((user) => (
+          <div key={user.id} className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:items-center sm:justify-between border-2 border-gray-300 p-6 bg-white">
+            <div className="space-y-3 flex-1">
+              <div className="flex items-center gap-3">
+                <p className="text-xl font-bold">{user.email}</p>
+                {user.role === "admin" && <Badge variant="secondary" className="rounded-none bg-gray-200">Admin</Badge>}
+              </div>
+              <div className="text-lg text-gray-600">
+                {user.subscription_end && (
+                  <span>Abonemasi: {new Date(user.subscription_end).toLocaleDateString()}</span>
                 )}
               </div>
+              <div className="flex gap-4 text-sm font-bold mt-2">
+                <span className="bg-blue-50 text-blue-700 px-3 py-1 border border-blue-200">
+                  Imtihon: {userStats[user.id]?.examAvg || 0}%
+                </span>
+                <span className="bg-green-50 text-green-700 px-3 py-1 border border-green-200">
+                  Bilet: {userStats[user.id]?.ticketAvg || 0}%
+                </span>
+                <span className="bg-purple-50 text-purple-700 px-3 py-1 border border-purple-200">
+                  Mavzu: {userStats[user.id]?.topicAvg || 0}%
+                </span>
+              </div>
             </div>
-          ))}
-        </div>
+            <div className="flex items-center gap-3 sm:ml-6">
+              <Button
+                variant="outline"
+                className="h-12 px-6 border-2 border-[#1976d2] text-[#1976d2] bg-white"
+                onClick={() => {
+                  setSelectedUser(user)
+                  setResetPasswordOpen(true)
+                }}
+              >
+                <KeyRound className="mr-2 h-5 w-5" />
+                Parol
+              </Button>
 
-        <Dialog open={resetPasswordOpen} onOpenChange={setResetPasswordOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Parolni o'zgartirish</DialogTitle>
-              <DialogDescription>
-                Foydalanuvchi: {selectedUser?.email}
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handlePasswordReset} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="new-password">Yangi parol</Label>
-                <Input
-                  id="new-password"
-                  type="password"
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="confirm-password">Parolni tasdiqlash</Label>
-                <Input
-                  id="confirm-password"
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  required
-                />
-              </div>
-              <DialogFooter>
-                <Button type="button" variant="outline" onClick={() => setResetPasswordOpen(false)}>Bekor qilish</Button>
-                <Button type="submit" disabled={updatingPassword}>
-                  {updatingPassword ? "Yangilanmoqda..." : "Saqlash"}
-                </Button>
-              </DialogFooter>
-            </form>
-          </DialogContent>
-        </Dialog>
+              {hasActiveSubscription(user) ? (
+                <>
+                  <Badge variant="default" className="h-12 px-4 rounded-none bg-[#3ca64c] text-white border-none flex items-center">
+                    <CheckCircle2 className="mr-2 h-5 w-5" />
+                    Aktiv
+                  </Badge>
+                  <Button variant="outline" className="h-12 px-6 border-2 border-red-600 text-red-600 bg-white" onClick={() => revokeSubscription(user.id)}>
+                    Bekor qilish
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <Badge variant="destructive" className="h-12 px-4 rounded-none bg-red-600 text-white border-none flex items-center">
+                    <XCircle className="mr-2 h-5 w-5" />
+                    Abonemasi yo'q
+                  </Badge>
+                  <Button className="h-12 px-6 bg-[#1976d2] text-white" onClick={() => grantSubscription(user.id)}>
+                    Abonemani taqdim etish (1 oy)
+                  </Button>
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
 
-      </CardContent>
-    </Card>
+      <Dialog open={resetPasswordOpen} onOpenChange={setResetPasswordOpen}>
+        <DialogContent className="rounded-none border-4 border-[#1976d2]">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold">Parolni o'zgartirish</DialogTitle>
+            <DialogDescription className="text-lg">
+              Foydalanuvchi: {selectedUser?.email}
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handlePasswordReset} className="space-y-6">
+            <div className="space-y-2">
+              <Label htmlFor="new-password">Yangi parol</Label>
+              <Input
+                id="new-password"
+                type="password"
+                className="h-12 rounded-none border-2 border-gray-300"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="confirm-password">Parolni tasdiqlash</Label>
+              <Input
+                id="confirm-password"
+                type="password"
+                className="h-12 rounded-none border-2 border-gray-300"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </div>
+            <DialogFooter className="pt-4">
+              <Button type="button" variant="outline" className="h-12 px-8 border-2 border-gray-400" onClick={() => setResetPasswordOpen(false)}>Bekor qilish</Button>
+              <Button type="submit" className="h-12 px-8 bg-[#1976d2] text-white" disabled={updatingPassword}>
+                {updatingPassword ? "Yangilanmoqda..." : "Saqlash"}
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
+    </div>
   )
 }
