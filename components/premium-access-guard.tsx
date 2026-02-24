@@ -4,14 +4,12 @@
 import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-} from "@/components/ui/alert-dialog"
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog"
+import { Button } from "@/components/ui/button"
 import { Crown } from "lucide-react"
 
 export function PremiumAccessGuard({ telegramLink }: { telegramLink?: string }) {
@@ -37,35 +35,35 @@ export function PremiumAccessGuard({ telegramLink }: { telegramLink?: string }) 
   }
 
   return (
-    <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <div className="flex items-center justify-center mb-4">
-            <div className="p-3 bg-primary/10 rounded-full">
-              <Crown className="h-8 w-8 text-primary" />
-            </div>
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogContent className="max-w-md rounded-[3rem] p-10 bg-white border-none shadow-2xl">
+        <DialogHeader className="space-y-6">
+          <div className="mx-auto w-24 h-24 bg-amber-50 rounded-[2.5rem] flex items-center justify-center shadow-lg shadow-amber-500/10">
+            <Crown className="h-12 w-12 text-amber-500 fill-amber-500" />
           </div>
-          <AlertDialogTitle className="text-center text-xl">
-            Premium obuna kerak
-          </AlertDialogTitle>
-          <AlertDialogDescription className="text-center">
-            Bu test yoki mavzu premium foydalanuvchilar uchun mo'ljallangan.
-            Barcha testlar va funksiyalarga kirish uchun premium obuna sotib oling.
-          </AlertDialogDescription>
-        </AlertDialogHeader>
-        <AlertDialogFooter className="flex-col sm:flex-row gap-2">
-          <AlertDialogAction
+          <div className="space-y-2">
+            <DialogTitle className="text-3xl font-black text-center text-slate-900 italic uppercase tracking-tighter">PREMIUM OBUNA</DialogTitle>
+            <p className="text-slate-500 text-center font-bold text-lg leading-relaxed">
+              Bu test yoki mavzu premium foydalanuvchilar uchun mo'ljallangan. Barcha funksiyalarga kirish uchun obuna bo'ling!
+            </p>
+          </div>
+        </DialogHeader>
+        <div className="mt-10 space-y-4">
+          <Button
+            onClick={handleBuySubscription}
+            className="w-full h-20 bg-amber-500 hover:bg-amber-600 text-white font-black rounded-3xl shadow-2xl shadow-amber-500/20 uppercase tracking-widest text-xl italic transition-all active:scale-95"
+          >
+            Obunani sotib olish
+          </Button>
+          <Button
+            variant="ghost"
             onClick={handleGoBack}
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/80"
+            className="w-full h-12 text-slate-400 font-bold uppercase tracking-widest text-xs hover:bg-slate-50 rounded-2xl"
           >
             Orqaga
-          </AlertDialogAction>
-          <AlertDialogAction onClick={handleBuySubscription}>
-            <Crown className="h-4 w-4 mr-2" />
-            Obuna sotib olish
-          </AlertDialogAction>
-        </AlertDialogFooter>
-      </AlertDialogContent>
-    </AlertDialog>
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
   )
 }

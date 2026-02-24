@@ -39,40 +39,37 @@ export function Statistics() {
   ]
 
   return (
-    <section id="features" className="py-24 relative overflow-hidden">
+    <section id="features" className="py-24 relative overflow-hidden bg-[#e9f6ff]">
       <div className="mx-auto max-w-7xl px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+          <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase italic">
             {t("stats.title")}
           </h2>
-          <p className="text-slate-400 text-lg">
-            Platformamiz orqali haydovchilik guvohnomasini olish imtihoniga tayyorgarlik ko'ring
+          <p className="text-slate-500 text-lg font-bold">
+            Platformamiz orqali haydovchilik guvohnomasini olish imtihoniga tayyorgarlik ko&apos;ring
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((item, idx) => {
             const Icon = item.icon
 
             return (
               <div
                 key={idx}
-                className="group relative glass-dark border-white/5 p-8 rounded-[2rem] text-center hover:border-primary/30 transition-all duration-500 hover:scale-[1.02] active:scale-[0.98]"
+                className="group relative bg-white border border-slate-100 p-8 rounded-[2.5rem] text-center hover:border-blue-100 transition-all duration-300 hover:scale-105 shadow-xl shadow-blue-500/5"
               >
-                {/* Hover Glow */}
-                <div className="absolute inset-0 bg-primary/5 rounded-[2rem] opacity-0 group-hover:opacity-100 transition-opacity blur-2xl" />
-
                 <div className="relative z-10 space-y-6">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/5 border border-white/10 mx-auto group-hover:bg-primary group-hover:text-white transition-all duration-300">
-                    <Icon className="h-8 w-8 text-primary group-hover:text-white transition-colors" />
+                  <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-50 border border-slate-100 mx-auto group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                    <Icon className="h-10 w-10 text-blue-600 group-hover:text-white transition-colors" />
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-xl font-bold text-white">
+                    <h3 className="text-xl font-black text-slate-900 uppercase italic">
                       {item.title}
                     </h3>
 
-                    <p className="text-sm text-slate-400 leading-relaxed">
+                    <p className="text-sm text-slate-500 leading-relaxed font-bold">
                       {item.description}
                     </p>
                   </div>

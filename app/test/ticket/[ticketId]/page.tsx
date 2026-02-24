@@ -72,17 +72,15 @@ async function TicketTestContent({ params }: { params: Promise<{ ticketId: strin
   return (
     <>
       <PremiumAccessGuard telegramLink={telegramLink} />
-      <div className="min-h-screen bg-background">
-        <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
-        <EnhancedTestInterface
-          title={ticket.title}
-          tests={tests}
-          userId={user.id}
-          testType="ticket"
-          testTypeId={ticketId}
-          userSettings={userSettings}
-        />
-      </div>
+      <PremiumAccessGuard telegramLink={telegramLink} />
+      <EnhancedTestInterface
+        title={ticket.title}
+        tests={tests}
+        userId={user.id}
+        testType="ticket"
+        testTypeId={ticketId}
+        userSettings={userSettings}
+      />
     </>
   )
 }

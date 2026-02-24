@@ -58,49 +58,50 @@ export function SubscriptionBanner({ user, telegramLink = "https://t.me/youruser
 
   if (hasAccess) {
     return (
-      <Card className="bg-green-50 border-green-200">
-        <div className="p-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-500/20 rounded-lg">
-                <Crown className="h-6 w-6 text-green-600" />
-              </div>
-              <div>
-                <h3 className="font-bold text-lg text-gray-900">{t("subscription.premiumActive")}</h3>
-                <p className="text-sm text-gray-600">
-                  {t("subscription.validUntil")}: {timeLeft}
-                </p>
-              </div>
+      <div className="bg-green-50/50 backdrop-blur-sm border border-green-100 rounded-[2.5rem] p-8 shadow-xl shadow-green-500/5 relative overflow-hidden group">
+        <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:rotate-12 transition-transform duration-500">
+          <Crown className="w-32 h-32 text-green-600" />
+        </div>
+        <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-5 text-center sm:text-left">
+            <div className="w-16 h-16 bg-green-500 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/20">
+              <Crown className="h-8 w-8 text-white fill-white" />
+            </div>
+            <div>
+              <h3 className="text-2xl font-black text-slate-900 italic uppercase tracking-tight">{t("subscription.premiumActive")}</h3>
+              <p className="text-green-600 font-bold">
+                {t("subscription.validUntil")}: {timeLeft}
+              </p>
             </div>
           </div>
         </div>
-      </Card>
+      </div>
     )
   }
 
   return (
-    <Card className="bg-sky-50 border-sky-200">
-      <div className="p-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-sky-500/20 rounded-lg">
-              <Crown className="h-6 w-6 text-sky-600" />
-            </div>
-            <div>
-              <h3 className="font-bold text-lg text-gray-900">{t("subscription.getPremium")}</h3>
-              <p className="text-sm text-gray-600">
-                {t("subscription.premiumDescription")}
-              </p>
-            </div>
-          </div>
-          <Button asChild className="bg-sky-500 hover:bg-sky-600 text-white">
-            <a href={telegramLink} target="_blank" rel="noopener noreferrer">
-              <Crown className="h-4 w-4 mr-2" />
-              {t("subscription.buySubscription")}
-            </a>
-          </Button>
-        </div>
+    <div className="bg-[#0969DA]/5 backdrop-blur-sm border border-blue-100 rounded-[2.5rem] p-8 shadow-xl shadow-blue-500/5 relative overflow-hidden group">
+      <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:-rotate-12 transition-transform duration-500">
+        <Crown className="w-32 h-32 text-[#0969DA]" />
       </div>
-    </Card>
+      <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="flex items-center gap-5 text-center sm:text-left">
+          <div className="w-16 h-16 bg-[#0969DA] rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+            <Crown className="h-8 w-8 text-white fill-white" />
+          </div>
+          <div>
+            <h3 className="text-2xl font-black text-slate-900 italic uppercase tracking-tight">{t("subscription.getPremium")}</h3>
+            <p className="text-slate-500 font-medium">
+              {t("subscription.premiumDescription")}
+            </p>
+          </div>
+        </div>
+        <Button asChild className="h-16 px-10 bg-[#0969DA] hover:bg-blue-600 text-white font-black rounded-2xl shadow-xl shadow-blue-500/20 uppercase tracking-widest italic transition-all active:scale-95 shrink-0">
+          <a href={telegramLink} target="_blank" rel="noopener noreferrer">
+            {t("subscription.buySubscription")}
+          </a>
+        </Button>
+      </div>
+    </div>
   )
 }

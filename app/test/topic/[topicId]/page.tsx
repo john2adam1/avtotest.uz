@@ -59,17 +59,14 @@ async function TopicTestContent({ params }: { params: Promise<{ topicId: string 
   return (
     <>
       <PremiumAccessGuard telegramLink={telegramLink} />
-      <div className="min-h-screen bg-background">
-        <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
-        <EnhancedTestInterface
-          title={topic.title}
-          tests={tests}
-          userId={user.id}
-          testType="topic"
-          testTypeId={topicId}
-          userSettings={userSettings}
-        />
-      </div>
+      <EnhancedTestInterface
+        title={topic.title}
+        tests={tests}
+        userId={user.id}
+        testType="topic"
+        testTypeId={topicId}
+        userSettings={userSettings}
+      />
     </>
   )
 }

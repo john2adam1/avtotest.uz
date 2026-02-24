@@ -34,8 +34,6 @@ export function TestsManagement() {
   const [answersCyrl, setAnswersCyrl] = useState(["", ""])
   const [correctAnswer, setCorrectAnswer] = useState("0")
   const [timeLimit, setTimeLimit] = useState("300")
-  const [explanationTitle, setExplanationTitle] = useState("")
-  const [explanationTitleCyrl, setExplanationTitleCyrl] = useState("")
   const [explanationText, setExplanationText] = useState("")
   const [explanationTextCyrl, setExplanationTextCyrl] = useState("")
   const [editingTest, setEditingTest] = useState<Test | null>(null)
@@ -55,10 +53,18 @@ export function TestsManagement() {
 
   const fetchTests = async () => {
     setLoading(true)
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("tests")
       .select(`*`)
       .order("created_at", { ascending: false })
+
+    if (error) {
+      toast({
+        title: "Xatolik",
+        description: "Testlarni yuklashda xatolik: " + error.message,
+        variant: "destructive"
+      })
+    }
 
     if (data) {
       setTests(data)
@@ -78,8 +84,6 @@ export function TestsManagement() {
     setAnswersCyrl(["", ""])
     setCorrectAnswer("0")
     setTimeLimit("300")
-    setExplanationTitle("")
-    setExplanationTitleCyrl("")
     setExplanationText("")
     setExplanationTextCyrl("")
     setEditingTest(null)
@@ -168,13 +172,13 @@ export function TestsManagement() {
       // Latin
       question: question.trim(),
       answers: answers.map(a => a.trim()),
-      explanation_title: explanationTitle.trim() || null,
+      explanation_title: null,
       explanation_text: explanationText.trim() || null,
       audio_url: cleanUrl(audioUrl) || null,
       // Cyrillic
       question_cyrl: questionCyrl.trim() || null,
       answers_cyrl: answersCyrl.some(a => a.trim() !== "") ? answersCyrl.map(a => a.trim()) : null,
-      explanation_title_cyrl: explanationTitleCyrl.trim() || null,
+      explanation_title_cyrl: null,
       explanation_text_cyrl: explanationTextCyrl.trim() || null,
       audio_url_cyrl: cleanUrl(audioUrlCyrl) || null,
 
@@ -245,8 +249,6 @@ export function TestsManagement() {
     setAnswersCyrl(test.answers_cyrl || Array(test.answers.length).fill(""))
     setCorrectAnswer(test.correct_answer.toString())
     setTimeLimit(test.time_limit.toString())
-    setExplanationTitle(test.explanation_title || "")
-    setExplanationTitleCyrl(test.explanation_title_cyrl || "")
     setExplanationText(test.explanation_text || "")
     setExplanationTextCyrl(test.explanation_text_cyrl || "")
   }
@@ -439,20 +441,10 @@ export function TestsManagement() {
 
                   <div className="space-y-6">
                     <div className="space-y-1.5">
-                      <Label htmlFor="explanation-title" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Tushuntirish Sarlavhasi</Label>
-                      <Input
-                        id="explanation-title"
-                        className="h-11 bg-white/5 border-white/10 rounded-xl text-white font-bold px-4 text-xs"
-                        placeholder="Masalan: Yodda tuting!"
-                        value={explanationTitle}
-                        onChange={(e) => setExplanationTitle(e.target.value)}
-                      />
-                    </div>
-                    <div className="space-y-1.5">
                       <Label htmlFor="explanation-text" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Tushuntirish Matni</Label>
                       <Textarea
                         id="explanation-text"
-                        className="min-h-[120px] bg-white/5 border-white/10 rounded-2xl text-slate-300 font-medium p-5 focus:ring-primary/50 transition-all leading-relaxed text-sm"
+                        className="min-h-[178px] bg-white/5 border-white/10 rounded-2xl text-slate-300 font-medium p-5 focus:ring-primary/50 transition-all leading-relaxed text-sm"
                         placeholder="Qoida yoki sharh..."
                         value={explanationText}
                         onChange={(e) => setExplanationText(e.target.value)}
@@ -489,20 +481,10 @@ export function TestsManagement() {
 
                   <div className="space-y-6">
                     <div className="space-y-1.5">
-                      <Label htmlFor="explanation-title-cyrl" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Тушунтириш Сарлавҳаси</Label>
-                      <Input
-                        id="explanation-title-cyrl"
-                        className="h-11 bg-white/5 border-white/10 rounded-xl text-white font-bold px-4 text-xs"
-                        placeholder="Мисол: Ёдда тутинг!"
-                        value={explanationTitleCyrl}
-                        onChange={(e) => setExplanationTitleCyrl(e.target.value)}
-                      />
-                    </div>
-                    <div className="space-y-1.5">
                       <Label htmlFor="explanation-text-cyrl" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Тушунтириш Матни</Label>
                       <Textarea
                         id="explanation-text-cyrl"
-                        className="min-h-[120px] bg-white/5 border-white/10 rounded-2xl text-slate-300 font-medium p-5 focus:ring-primary/50 transition-all leading-relaxed text-sm"
+                        className="min-h-[178px] bg-white/5 border-white/10 rounded-2xl text-slate-300 font-medium p-5 focus:ring-primary/50 transition-all leading-relaxed text-sm"
                         placeholder="Қоида ёki шарҳ..."
                         value={explanationTextCyrl}
                         onChange={(e) => setExplanationTextCyrl(e.target.value)}

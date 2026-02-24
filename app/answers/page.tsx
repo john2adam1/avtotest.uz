@@ -33,18 +33,21 @@ export default async function AnswersPage() {
         .order("created_at", { ascending: false })
 
     return (
-        <div className="min-h-screen bg-[#f1f5f9]">
+        <div className="min-h-screen bg-[#e9f6ff]">
             <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
-            <main className="container mx-auto px-4 py-8">
-                <div className="mb-6">
-                    <Link href="/dashboard">
-                        <Button variant="ghost" className="mb-4 hover:bg-white/50 text-[#0369a1]">
-                            <ArrowLeft className="h-4 w-4 mr-2" />
+            <main className="container mx-auto px-6 py-12 max-w-5xl">
+                <div className="mb-10">
+                    <Button variant="ghost" asChild className="group text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-xl px-4">
+                        <Link href="/dashboard" className="inline-flex items-center gap-2">
+                            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
                             Orqaga
-                        </Button>
-                    </Link>
-                    <h1 className="text-3xl font-bold text-gray-800">Barcha testlar javoblari</h1>
-                    <p className="text-gray-500 mt-2">Barcha mavjud test savollari va ularning to'g'ri javoblari</p>
+                        </Link>
+                    </Button>
+                </div>
+
+                <div className="mb-12 text-center space-y-4">
+                    <h1 className="text-4xl font-black text-slate-900 tracking-tight italic uppercase">Barcha testlar javoblari</h1>
+                    <p className="text-slate-500 text-lg font-medium max-w-lg mx-auto">Barcha mavjud test savollari va ularning to&apos;g&apos;ri javoblari</p>
                 </div>
                 <AnswersClient tests={tests || []} />
             </main>

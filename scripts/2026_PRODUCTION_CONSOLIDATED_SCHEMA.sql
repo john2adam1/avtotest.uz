@@ -90,14 +90,12 @@ CREATE TABLE IF NOT EXISTS tests (
   -- Latin Content
   question TEXT NOT NULL,
   answers TEXT[] NOT NULL,
-  explanation_title TEXT,
   explanation_text TEXT,
   audio_url TEXT,
   
   -- Cyrillic Content
   question_cyrl TEXT,
   answers_cyrl TEXT[],
-  explanation_title_cyrl TEXT,
   explanation_text_cyrl TEXT,
   audio_url_cyrl TEXT,
   
@@ -106,6 +104,10 @@ CREATE TABLE IF NOT EXISTS tests (
   category TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- Cleanup unused columns from tests
+ALTER TABLE tests DROP COLUMN IF EXISTS explanation_title;
+ALTER TABLE tests DROP COLUMN IF EXISTS explanation_title_cyrl;
 
 -- Apply Flexible Answer Constraints
 ALTER TABLE tests DROP CONSTRAINT IF EXISTS check_answers_count;
@@ -121,11 +123,13 @@ ALTER TABLE tests ADD CONSTRAINT check_correct_answer_bounds CHECK (correct_answ
 CREATE TABLE IF NOT EXISTS tickets (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   title TEXT NOT NULL,
-  description TEXT,
   is_public BOOLEAN NOT NULL DEFAULT FALSE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- Cleanup unused columns from tickets
+ALTER TABLE tickets DROP COLUMN IF EXISTS description;
 
 -- Ticket Tests (Relationship)
 CREATE TABLE IF NOT EXISTS ticket_tests (
@@ -288,6 +292,89 @@ EXECUTE FUNCTION manage_ticket_insert();
 -- C. UPDATED_AT TIMESTAMP
 DROP TRIGGER IF EXISTS update_tickets_updated_at ON tickets;
 CREATE TRIGGER update_tickets_updated_at BEFORE UPDATE ON tickets FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- D. AUTOMATIC TICKET CREATION (Assign new tests to tickets automatically)
+DROP TRIGGER IF EXISTS trigger_auto_assign_test_to_ticket ON tests;
+DROP FUNCTION IF EXISTS auto_assign_test_to_ticket();
+
+CREATE OR REPLACE FUNCTION auto_assign_test_to_ticket()
+RETURNS TRIGGER AS $$
+DECLARE
+    latest_ticket_id UUID;
+    current_count INT;
+    next_ticket_num INT;
+BEGIN
+    SELECT t.id, 
+           (SELECT count(*) FROM ticket_tests tt WHERE tt.ticket_id = t.id) as test_count
+    INTO latest_ticket_id, current_count
+    FROM tickets t
+    ORDER BY COALESCE(NULLIF(regexp_replace(t.title, '\D', '', 'g'), '')::INT, 0) DESC
+    LIMIT 1;
+
+    IF latest_ticket_id IS NULL OR current_count >= 20 THEN
+        SELECT COALESCE(MAX(NULLIF(regexp_replace(title, '\D', '', 'g'), '')::INT), 0)
+        INTO next_ticket_num
+        FROM tickets;
+        
+        next_ticket_num := next_ticket_num + 1;
+        
+        INSERT INTO tickets (title, is_public)
+        VALUES ('Bilet #' || next_ticket_num, FALSE)
+        RETURNING id INTO latest_ticket_id;
+        
+        current_count := 0;
+    END IF;
+
+    INSERT INTO ticket_tests (ticket_id, test_id, order_index)
+    VALUES (latest_ticket_id, NEW.id, current_count);
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER trigger_auto_assign_test_to_ticket
+AFTER INSERT ON tests
+FOR EACH ROW
+EXECUTE FUNCTION auto_assign_test_to_ticket();
+
+-- E. MANUAL SYNC FUNCTION (Batch group unassigned tests)
+DROP FUNCTION IF EXISTS divide_tests_into_tickets(INT);
+
+CREATE OR REPLACE FUNCTION divide_tests_into_tickets(batch_size INT DEFAULT 20)
+RETURNS VOID AS $$
+DECLARE
+    test_id_record RECORD;
+    current_ticket_id UUID;
+    current_batch_count INT := 0;
+    ticket_num INT;
+BEGIN
+    SELECT COALESCE(MAX(NULLIF(regexp_replace(title, '\D', '', 'g'), '')::INT), 0) 
+    INTO ticket_num 
+    FROM tickets;
+    
+    FOR test_id_record IN 
+        SELECT id FROM tests 
+        WHERE id NOT IN (SELECT test_id FROM ticket_tests)
+        ORDER BY created_at ASC
+    LOOP
+        IF current_batch_count = 0 THEN
+            ticket_num := ticket_num + 1;
+            INSERT INTO tickets (title, is_public) 
+            VALUES ('Bilet #' || ticket_num, FALSE)
+            RETURNING id INTO current_ticket_id;
+        END IF;
+        
+        INSERT INTO ticket_tests (ticket_id, test_id)
+        VALUES (current_ticket_id, test_id_record.id);
+        
+        current_batch_count := current_batch_count + 1;
+        
+        IF current_batch_count >= batch_size THEN
+            current_batch_count := 0;
+        END IF;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 -- 5. RLS POLICIES (HARDENED)
 -- ==============================================================================

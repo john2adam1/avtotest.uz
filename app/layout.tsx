@@ -77,8 +77,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${poppins.variable} font-sans antialiased bg-slate-950 text-slate-200`}>
+    <html lang="en">
+      <body className={`${poppins.variable} font-sans antialiased bg-[#e9f6ff] text-slate-900`}>
         <I18nProvider>
           {children}
           <Toaster />

@@ -208,7 +208,7 @@ export function UsersManagement() {
                     <span className="w-1 h-1 rounded-full bg-slate-700" />
                     ID: <span className="text-slate-400">{user.id.slice(0, 8)}</span>
                   </div>
-                  {user.subscription_end && (
+                  {user.role !== "admin" && user.subscription_end && (
                     <div className="flex items-center gap-1 text-slate-500 font-bold">
                       <span className="w-1 h-1 rounded-full bg-success" />
                       Abonemasi: <span className="text-success">{new Date(user.subscription_end).toLocaleDateString()}</span>
@@ -242,34 +242,36 @@ export function UsersManagement() {
                   Parol
                 </Button>
 
-                {hasActiveSubscription(user) ? (
-                  <div className="flex items-center gap-2">
-                    <div className="h-8 px-3 rounded-lg bg-success/10 border border-success/20 text-success flex items-center shadow-lg shadow-success/5">
-                      <CheckCircle2 className="mr-1.5 h-3 w-3" />
-                      <span className="font-black uppercase tracking-widest text-[9px]">Aktiv</span>
+                {user.role !== "admin" && (
+                  hasActiveSubscription(user) ? (
+                    <div className="flex items-center gap-2">
+                      <div className="h-8 px-3 rounded-lg bg-success/10 border border-success/20 text-success flex items-center shadow-lg shadow-success/5">
+                        <CheckCircle2 className="mr-1.5 h-3 w-3" />
+                        <span className="font-black uppercase tracking-widest text-[9px]">Aktiv</span>
+                      </div>
+                      <Button
+                        variant="ghost"
+                        className="h-8 px-3 rounded-lg bg-destructive/10 hover:bg-destructive/20 text-destructive border border-destructive/20 text-[10px] font-bold transition-all"
+                        onClick={() => revokeSubscription(user.id)}
+                      >
+                        Bekor qilish
+                      </Button>
                     </div>
-                    <Button
-                      variant="ghost"
-                      className="h-8 px-3 rounded-lg bg-destructive/10 hover:bg-destructive/20 text-destructive border border-destructive/20 text-[10px] font-bold transition-all"
-                      onClick={() => revokeSubscription(user.id)}
-                    >
-                      Bekor qilish
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="flex items-center gap-2">
-                    <div className="h-8 px-3 rounded-lg bg-slate-900/50 border border-white/5 text-slate-500 flex items-center">
-                      <XCircle className="mr-1.5 h-3 w-3" />
-                      <span className="font-black uppercase tracking-widest text-[9px] text-slate-600">FAOL EMAS</span>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <div className="h-8 px-3 rounded-lg bg-slate-900/50 border border-white/5 text-slate-500 flex items-center">
+                        <XCircle className="mr-1.5 h-3 w-3" />
+                        <span className="font-black uppercase tracking-widest text-[9px] text-slate-600">FAOL EMAS</span>
+                      </div>
+                      <Button
+                        size="sm"
+                        className="h-8 px-4 bg-primary hover:bg-primary/90 text-white font-black rounded-lg shadow-lg shadow-primary/20 transition-all border-none text-[10px]"
+                        onClick={() => grantSubscription(user.id)}
+                      >
+                        Grant 1 Oy
+                      </Button>
                     </div>
-                    <Button
-                      size="sm"
-                      className="h-8 px-4 bg-primary hover:bg-primary/90 text-white font-black rounded-lg shadow-lg shadow-primary/20 transition-all border-none text-[10px]"
-                      onClick={() => grantSubscription(user.id)}
-                    >
-                      Grant 1 Oy
-                    </Button>
-                  </div>
+                  )
                 )}
               </div>
             </div>

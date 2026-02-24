@@ -46,16 +46,13 @@ export default async function RandomTestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
-      <EnhancedTestInterface
-        title="Tasodifiy Test"
-        tests={shuffledTests}
-        userId={user.id}
-        testType="random"
-        userSettings={userSettings}
-      />
-    </div>
+    <EnhancedTestInterface
+      title="Tasodifiy Test"
+      tests={shuffledTests}
+      userId={user.id}
+      testType="random"
+      userSettings={userSettings}
+    />
   )
 }
 

@@ -59,17 +59,14 @@ export default async function ExamTestPage({ params }: { params: Promise<{ examT
   const selectedTests = shuffledTests.slice(0, examTypeNum)
 
   return (
-    <div className="min-h-screen bg-background">
-      <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
-      <EnhancedTestInterface
-        title={`Imtihon ${examType}`}
-        tests={selectedTests}
-        userId={user.id}
-        testType="exam"
-        testTypeId={examType}
-        userSettings={userSettings}
-      />
-    </div>
+    <EnhancedTestInterface
+      title={`Imtihon ${examType}`}
+      tests={selectedTests}
+      userId={user.id}
+      testType="exam"
+      testTypeId={examType}
+      userSettings={userSettings}
+    />
   )
 }
 

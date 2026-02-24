@@ -83,38 +83,35 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-slate-950">
-      {/* Animated Background Blobs */}
-      <div className="absolute top-0 -left-4 w-72 h-72 bg-primary/30 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
-      <div className="absolute top-0 -right-4 w-72 h-72 bg-blue-400/30 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
-      <div className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-500/30 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000" />
-
+    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-[#e9f6ff]">
       <div className="w-full max-w-md space-y-8 relative z-10 py-8">
         <div className="text-center space-y-4">
-          <Link href="/" className="inline-flex items-center gap-3 hover:scale-105 transition-transform duration-300">
-            <div className="p-2 bg-primary/20 rounded-xl backdrop-blur-md border border-primary/30">
-              <BookOpen className="h-10 w-10 text-primary" />
+          <Link href="/" className="inline-flex items-center gap-2 hover:scale-105 transition-all group">
+            <div className="text-blue-700 font-black">
+              <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 10V15H15V35H25V15H35V10H5Z" fill="currentColor" />
+              </svg>
             </div>
-            <div className="text-left">
-              <div className="text-3xl font-bold tracking-tight text-white leading-tight">Tezkor</div>
-              <div className="text-sm font-medium text-slate-400">Avtotest Platformasi</div>
+            <div className="flex flex-col -space-y-1 text-left">
+              <span className="text-2xl font-black text-slate-800 tracking-tighter uppercase italic">Tezkor</span>
+              <span className="text-lg font-bold text-slate-800 tracking-tight uppercase">Avtotest</span>
             </div>
           </Link>
 
-          <h1 className="text-2xl font-bold text-white mt-6">
+          <h1 className="text-3xl font-black text-slate-900 mt-6 italic uppercase tracking-tight">
             {t("auth.register")}
           </h1>
-          <p className="text-slate-400 text-sm">
-            Ro'yxatdan o'tish uchun quyidagi ma'lumotlarni to'ldiring
+          <p className="text-slate-500 font-medium">
+            Ro&apos;yxatdan o&apos;tish uchun quyidagi ma&apos;lumotlarni to&apos;ldiring
           </p>
         </div>
 
-        <div className="glass-dark border border-white/5 rounded-3xl overflow-hidden shadow-2xl">
+        <div className="bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-xl shadow-blue-500/5">
           <CardContent className="p-8">
             <form onSubmit={handleRegister} className="space-y-5">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="first-name" className="text-slate-300 ml-1">
+                  <Label htmlFor="first-name" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
                     {t("auth.firstName")}
                   </Label>
                   <Input
@@ -123,12 +120,12 @@ export default function RegisterPage() {
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
-                    className="rounded-2xl bg-white/5 border-white/10 text-white placeholder:text-slate-500 h-11 focus:ring-primary/50 focus:border-primary transition-all"
+                    className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all font-bold"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="last-name" className="text-slate-300 ml-1">
+                  <Label htmlFor="last-name" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
                     {t("auth.lastName")}
                   </Label>
                   <Input
@@ -137,19 +134,19 @@ export default function RegisterPage() {
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     required
-                    className="rounded-2xl bg-white/5 border-white/10 text-white placeholder:text-slate-500 h-11 focus:ring-primary/50 focus:border-primary transition-all"
+                    className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all font-bold"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone" className="text-slate-300 ml-1">
+                <Label htmlFor="phone" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
                   {t("auth.phone")}
                 </Label>
                 <div className="flex gap-2">
-                  <div className="flex items-center gap-2 px-4 rounded-2xl bg-white/5 border border-white/10 text-white min-w-[100px] backdrop-blur-sm">
+                  <div className="flex items-center gap-2 px-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 min-w-[100px]">
                     <img src="https://flagcdn.com/uz.svg" className="w-5 h-3 rounded-sm shadow-sm" alt="UZ" />
-                    <span className="text-sm font-bold">+998</span>
+                    <span className="text-sm font-black">+998</span>
                   </div>
                   <div className="relative flex-1">
                     <Input
@@ -159,14 +156,14 @@ export default function RegisterPage() {
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       required
-                      className="rounded-2xl bg-white/5 border-white/10 text-white placeholder:text-slate-500 h-11 focus:ring-primary/50 focus:border-primary transition-all"
+                      className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all font-bold"
                     />
                   </div>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" title="" className="text-slate-300 ml-1">
+                <Label htmlFor="password" title="" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
                   {t("auth.password")}
                 </Label>
                 <div className="relative group">
@@ -177,12 +174,12 @@ export default function RegisterPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="rounded-2xl bg-white/5 border-white/10 text-white placeholder:text-slate-500 h-11 focus:ring-primary/50 focus:border-primary transition-all pr-12"
+                    className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all pr-12 font-bold"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 hover:text-white transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-blue-500 transition-colors"
                   >
                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                   </button>
@@ -192,7 +189,7 @@ export default function RegisterPage() {
               <div className="space-y-4 pt-4">
                 <Button
                   type="submit"
-                  className="w-full h-12 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl shadow-lg shadow-primary/20 transition-all hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50"
+                  className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-lg shadow-blue-500/20 transition-all active:scale-95 disabled:opacity-50 text-lg uppercase italic tracking-widest"
                   disabled={loading}
                 >
                   {loading ? (
@@ -202,25 +199,24 @@ export default function RegisterPage() {
                     </div>
                   ) : (
                     <span className="flex items-center justify-center gap-2">
-                      <Plus className="h-5 w-5" />
                       {t("auth.registerButton")}
                     </span>
                   )}
                 </Button>
 
-                <div className="relative">
+                <div className="relative py-2">
                   <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-white/5"></span>
+                    <span className="w-full border-t border-slate-100"></span>
                   </div>
-                  <div className="relative flex justify-center text-xs uppercase">
-                    <span className="bg-[#0f172a] px-2 text-slate-500">Yoki allaqachon hisobingiz bormi?</span>
+                  <div className="relative flex justify-center text-[10px] uppercase font-black tracking-widest text-center">
+                    <span className="bg-white px-4 text-slate-300">Hisobingiz bormi?</span>
                   </div>
                 </div>
 
                 <Button
                   variant="outline"
                   asChild
-                  className="w-full h-12 rounded-2xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-white/20 transition-all"
+                  className="w-full h-14 rounded-2xl border-slate-100 bg-slate-50 text-slate-600 hover:bg-slate-100 hover:border-slate-200 transition-all font-black uppercase italic tracking-widest"
                 >
                   <Link href="/login">
                     {t("auth.loginButton")}
@@ -231,8 +227,8 @@ export default function RegisterPage() {
           </CardContent>
         </div>
 
-        <p className="text-center text-slate-500 text-xs">
-          &copy; {new Date().getFullYear()} Tezkor Avtotest. Barcha huquqlar himoyalangan.
+        <p className="text-center text-slate-400 text-[10px] font-black uppercase tracking-widest">
+          &copy; {new Date().getFullYear()} Tezkor Avtotest
         </p>
       </div>
     </div>

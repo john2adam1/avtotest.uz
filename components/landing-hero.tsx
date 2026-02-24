@@ -10,43 +10,40 @@ export function LandingHero() {
 
     return (
         <div className="container mx-auto px-6 py-24 md:py-32 relative text-center">
-            {/* Background elements moved to page.tsx for global effect, 
-                but keeping potential section-specific accents here if needed */}
-
             <div className="max-w-4xl mx-auto space-y-10 relative z-10">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold animate-fade-in">
+                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-white border border-blue-100 text-blue-600 text-xs font-black uppercase tracking-widest shadow-xl shadow-blue-500/5">
                     <Crown className="h-4 w-4" />
                     <span>Eng zamonaviy avtotest platformasi</span>
                 </div>
 
-                <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] tracking-tight">
+                <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-slate-900 leading-[1.1] tracking-tighter italic uppercase">
                     {t("hero_title")}
                 </h1>
 
-                <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-xl md:text-2xl text-slate-500 mb-8 max-w-2xl mx-auto leading-relaxed font-bold">
                     {t("hero_subtitle")}
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
                     <Button
                         asChild
                         size="lg"
-                        className="h-14 px-10 bg-primary hover:bg-primary/90 text-white font-bold rounded-2xl shadow-xl shadow-primary/20 transition-all hover:scale-105 active:scale-95 group"
+                        className="h-20 px-12 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-[2rem] shadow-2xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95 group uppercase italic tracking-widest text-xl"
                     >
-                        <Link href="/login" className="flex items-center gap-2 text-lg">
-                            <Crown className="h-6 w-6 group-hover:rotate-12 transition-transform" />
+                        <Link href="/login" className="flex items-center gap-3">
+                            <Crown className="h-7 w-7 group-hover:rotate-12 transition-transform" />
                             {t("activate_premium")}
                         </Link>
                     </Button>
 
                     <Button
                         asChild
-                        variant="outline"
+                        variant="ghost"
                         size="lg"
-                        className="h-14 px-10 rounded-2xl border-white/10 bg-white/5 text-white hover:bg-white/10 hover:border-white/20 transition-all text-lg font-bold"
+                        className="h-20 px-12 rounded-[2rem] border-2 border-slate-100 bg-white text-slate-600 hover:bg-slate-50 hover:border-slate-200 transition-all text-xl font-black uppercase italic tracking-widest"
                     >
                         <Link href="#features">
-                            Batafsil ma'lumot
+                            Batafsil
                         </Link>
                     </Button>
                 </div>

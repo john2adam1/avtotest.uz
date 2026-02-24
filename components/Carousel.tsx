@@ -48,23 +48,20 @@ export function Carousel() {
   if (images.length === 0) return null
 
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden bg-[#e9f6ff]">
       <div className="mx-auto max-w-7xl px-6 relative z-10">
-        <h2 className="text-center text-3xl md:text-5xl font-extrabold mb-16 text-white tracking-tight">
+        <h2 className="text-center text-4xl md:text-5xl font-black mb-16 text-slate-900 tracking-tighter uppercase italic">
           {t("landing.results")}
         </h2>
 
-        <div className="relative group overflow-hidden rounded-[3rem] border border-white/10 shadow-2xl bg-white/5 glass-dark p-2 transition-all duration-500 hover:scale-[1.01]">
-          {/* Background Decoration */}
-          <div className="absolute -top-24 -right-24 w-64 h-64 bg-primary/20 rounded-full blur-[100px] opacity-20" />
-
+        <div className="relative group overflow-hidden rounded-[3rem] border border-slate-100 shadow-xl shadow-blue-500/5 bg-white p-2 transition-all duration-300 hover:scale-[1.01]">
           <div
             className="flex transition-transform duration-1000 cubic-bezier(0.4, 0, 0.2, 1) h-[300px] md:h-[600px]"
             style={{ transform: `translateX(-${currentIndex * 100}%)` }}
           >
             {images.map((img, index) => (
               <div key={img.id} className="relative w-full h-full flex-shrink-0 p-6">
-                <div className="relative w-full h-full overflow-hidden rounded-[2rem]">
+                <div className="relative w-full h-full overflow-hidden rounded-[2.5rem]">
                   <Image
                     src={img.image_url}
                     alt={`Carousel image ${index + 1}`}
@@ -83,9 +80,9 @@ export function Carousel() {
               <button
                 key={index}
                 onClick={() => setCurrentIndex(index)}
-                className={`h-2.5 rounded-full transition-all duration-500 hover:bg-primary/50 ${index === currentIndex
-                    ? "w-12 bg-primary shadow-lg shadow-primary/50"
-                    : "w-2.5 bg-white/20"
+                className={`h-3 rounded-full transition-all duration-500 hover:bg-blue-400 ${index === currentIndex
+                  ? "w-14 bg-blue-600 shadow-lg shadow-blue-500/50"
+                  : "w-3 bg-slate-200"
                   }`}
               />
             ))}

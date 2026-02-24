@@ -29,30 +29,32 @@ export function LandingHeader() {
         >
             <div
                 className={`container mx-auto flex h-full items-center justify-between px-6 rounded-2xl transition-all duration-300 ${scrolled
-                        ? "glass-dark border-white/10 shadow-2xl scale-[0.98]"
-                        : "bg-transparent border-transparent"
+                    ? "bg-white/80 backdrop-blur-md border border-slate-100 shadow-xl shadow-blue-500/5 scale-[0.98]"
+                    : "bg-transparent border-transparent"
                     }`}
             >
                 <div className="flex items-center gap-10">
-                    <Link href="/" className="flex items-center gap-3 transition-transform hover:scale-105 active:scale-95 group">
-                        <div className="p-2 bg-primary/20 rounded-xl group-hover:bg-primary/30 transition-colors">
-                            <span className="text-xl font-bold text-primary tracking-tighter">TA</span>
+                    <Link href="/" className="flex items-center gap-2 hover:scale-105 transition-all group">
+                        <div className="text-blue-700 font-black">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 10V15H15V35H25V15H35V10H5Z" fill="currentColor" />
+                            </svg>
                         </div>
-                        <div className="flex flex-col leading-none">
-                            <span className="text-xl font-bold text-white tracking-tight">Tezkor</span>
-                            <span className="text-xs font-semibold text-slate-500 uppercase tracking-widest">Avtotest</span>
+                        <div className="flex flex-col -space-y-1">
+                            <span className="text-xl font-black text-slate-800 tracking-tighter uppercase italic">Tezkor</span>
+                            <span className="text-base font-bold text-slate-800 tracking-tight uppercase">Avtotest</span>
                         </div>
                     </Link>
 
-                    <nav className="hidden lg:flex items-center gap-8">
+                    <nav className="hidden lg:flex items-center gap-8 font-black uppercase tracking-tighter italic">
                         {["home", "features", "pricing", "results", "about"].map((item) => (
                             <Link
                                 key={item}
                                 href={item === "home" ? "/" : `#${item}`}
-                                className="text-sm font-medium text-slate-400 transition-colors hover:text-white relative group"
+                                className="text-sm font-black text-slate-400 transition-colors hover:text-blue-600 relative group"
                             >
                                 {t(`nav.${item}`)}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full" />
                             </Link>
                         ))}
                     </nav>
@@ -62,8 +64,7 @@ export function LandingHeader() {
                     <LanguageSwitcher />
                     <Button
                         asChild
-                        variant="secondary"
-                        className="rounded-xl font-bold bg-white/5 border-white/10 text-white hover:bg-white/10 transition-all"
+                        className="rounded-[1rem] font-black uppercase italic tracking-widest bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/20 px-6"
                     >
                         <Link href="/login">{t("nav.login")}</Link>
                     </Button>

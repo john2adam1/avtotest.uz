@@ -55,7 +55,7 @@ export default async function DashboardPage() {
   const telegramLink = contactData?.content?.telegram_link || "https://t.me/yourusername"
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#e9f6ff]">
       <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
 
       <main className="container mx-auto px-4 py-8">
