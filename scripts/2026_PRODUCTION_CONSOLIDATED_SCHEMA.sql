@@ -1,32 +1,38 @@
 -- ==============================================================================
--- 2026 FINAL STABLE SCHEMA (CONSOLIDATED & HARDENED)
+-- 2026 CONSOLIDATED PRODUCTION SCHEMA
 -- ==============================================================================
--- Run this script in the Supabase SQL Editor.
--- This is the SINGLE SOURCE OF TRUTH for the AvtoTest database schema.
+-- This script merges the STABLE SCHEMA and HOTFIXES into a single source of truth.
+-- It is idempotent and safe to run multiple times.
 -- 
--- FEATURES:
--- 1. Full Schema (Users, Topics, Tests, Tickets, Statistics).
--- 2. Stable Ticket Logic (Strict 20-test limit, no auto-reshuffling).
--- 3. Concurrency Safety (Explicit locking).
--- 4. HARDENED SECURITY:
---    - Prevent Role Escalation (Users cannot make themselves admin).
---    - Privacy (Public users cannot see other users' data).
---    - Content Access (Premium/Subscription enforcement).
+-- UPDATES:
+-- 1. Flexible Answers: Min 2, Max unlimited.
+-- 2. Correct Answer Validation: Must be within bounds of the answers array.
+-- 3. Simplified Ticket Insertion: Removed concurrency locking (pg_advisory_xact_lock).
+-- 4. Hardened RLS & Admin Logic Separation.
 -- ==============================================================================
 
--- 1. EXTENSIONS & HELPERS
+-- 1. EXTENSIONS
 -- ==============================================================================
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Helper: Check if current user is admin
-CREATE OR REPLACE FUNCTION is_admin() RETURNS BOOLEAN AS $$
+-- 2. HELPERS (SECURITY DEFINER)
+-- ==============================================================================
+
+-- Check if current user is admin
+CREATE OR REPLACE FUNCTION is_admin() 
+RETURNS BOOLEAN AS $$
 BEGIN
-  RETURN EXISTS (SELECT 1 FROM users WHERE id = auth.uid() AND role = 'admin');
+  RETURN EXISTS (
+    SELECT 1 FROM users 
+    WHERE id = auth.uid() 
+    AND role = 'admin'
+  );
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
--- Helper: Check if current user has premium access (Admin or Active Subscription/Trial)
-CREATE OR REPLACE FUNCTION has_premium_access() RETURNS BOOLEAN AS $$
+-- Check if current user has premium access
+CREATE OR REPLACE FUNCTION has_premium_access() 
+RETURNS BOOLEAN AS $$
 BEGIN
   RETURN EXISTS (
     SELECT 1 FROM users
@@ -39,7 +45,17 @@ BEGIN
   );
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
--- 2. TABLES
+
+-- Update timestamp helper
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+  NEW.updated_at = NOW();
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- 3. TABLES
 -- ==============================================================================
 
 -- Users
@@ -57,7 +73,7 @@ CREATE TABLE IF NOT EXISTS users (
   last_login_at TIMESTAMP WITH TIME ZONE
 );
 
--- Topics (Mavzular)
+-- Topics
 CREATE TABLE IF NOT EXISTS topics (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   title TEXT NOT NULL,
@@ -85,18 +101,28 @@ CREATE TABLE IF NOT EXISTS tests (
   explanation_text_cyrl TEXT,
   audio_url_cyrl TEXT,
   
-  correct_answer INTEGER NOT NULL,
+  correct_answer INTEGER NOT NULL, -- 0-based index
   time_limit INTEGER NOT NULL DEFAULT 300,
   category TEXT,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Tickets (Biletlar)
+-- Apply Flexible Answer Constraints
+ALTER TABLE tests DROP CONSTRAINT IF EXISTS check_answers_count;
+ALTER TABLE tests ADD CONSTRAINT check_answers_count CHECK (array_length(answers, 1) >= 2);
+
+ALTER TABLE tests DROP CONSTRAINT IF EXISTS check_answers_cyrl_count;
+ALTER TABLE tests ADD CONSTRAINT check_answers_cyrl_count CHECK (answers_cyrl IS NULL OR array_length(answers_cyrl, 1) >= 2);
+
+ALTER TABLE tests DROP CONSTRAINT IF EXISTS check_correct_answer_bounds;
+ALTER TABLE tests ADD CONSTRAINT check_correct_answer_bounds CHECK (correct_answer >= 0 AND correct_answer < array_length(answers, 1));
+
+-- Tickets
 CREATE TABLE IF NOT EXISTS tickets (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   title TEXT NOT NULL,
   description TEXT,
-  is_public BOOLEAN NOT NULL DEFAULT FALSE, -- Premium by default
+  is_public BOOLEAN NOT NULL DEFAULT FALSE,
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
@@ -111,7 +137,11 @@ CREATE TABLE IF NOT EXISTS ticket_tests (
   UNIQUE(ticket_id, test_id)
 );
 
--- Test Results
+-- Apply Ticket Constraints
+ALTER TABLE ticket_tests DROP CONSTRAINT IF EXISTS unique_ticket_order;
+ALTER TABLE ticket_tests ADD CONSTRAINT unique_ticket_order UNIQUE (ticket_id, order_index);
+
+-- Other Supporting Tables
 CREATE TABLE IF NOT EXISTS test_results (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
@@ -123,7 +153,6 @@ CREATE TABLE IF NOT EXISTS test_results (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Site Content
 CREATE TABLE IF NOT EXISTS site_content (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   type TEXT NOT NULL UNIQUE,
@@ -132,7 +161,6 @@ CREATE TABLE IF NOT EXISTS site_content (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Carousel Images
 CREATE TABLE IF NOT EXISTS carousel_images (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   image_url TEXT NOT NULL,
@@ -140,7 +168,6 @@ CREATE TABLE IF NOT EXISTS carousel_images (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- Statistics
 CREATE TABLE IF NOT EXISTS topic_statistics (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   user_id UUID REFERENCES users(id) ON DELETE CASCADE,
@@ -193,29 +220,31 @@ CREATE TABLE IF NOT EXISTS user_settings (
   updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
 
--- ============================================
--- 3. SECURITY TRIGGERS (ROLE PROTECTION)
--- ============================================
+-- 4. FUNCTIONAL LOGIC (TRIGGERS)
+-- ==============================================================================
 
--- Prevent users from escalating their privileges
+-- A. USER PROTECTION
 CREATE OR REPLACE FUNCTION protect_critical_user_fields()
 RETURNS TRIGGER AS $$
 BEGIN
-    -- If the user is NOT an admin, they cannot change critical fields
+    IF auth.role() = 'service_role' OR auth.uid() IS NULL THEN
+        RETURN NEW;
+    END IF;
+
     IF NOT is_admin() THEN
         IF NEW.role IS DISTINCT FROM OLD.role THEN
-            RAISE EXCEPTION 'You are not authorized to change your role.';
+            RAISE EXCEPTION 'Unauthorized: Role change forbidden.';
         END IF;
         IF NEW.subscription_end IS DISTINCT FROM OLD.subscription_end THEN
-            RAISE EXCEPTION 'You are not authorized to change your subscription status.';
+            RAISE EXCEPTION 'Unauthorized: Subscription change forbidden.';
         END IF;
         IF NEW.trial_end IS DISTINCT FROM OLD.trial_end THEN
-            RAISE EXCEPTION 'You are not authorized to change your trial period.';
+            RAISE EXCEPTION 'Unauthorized: Trial change forbidden.';
         END IF;
     END IF;
     RETURN NEW;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
 
 DROP TRIGGER IF EXISTS trigger_protect_user_fields ON users;
 CREATE TRIGGER trigger_protect_user_fields
@@ -223,63 +252,80 @@ BEFORE UPDATE ON users
 FOR EACH ROW
 EXECUTE FUNCTION protect_critical_user_fields();
 
--- ============================================
--- 4. RLS POLICIES (HARDENED)
--- ============================================
+-- B. TICKET INSERTION (SIMPLIFIED - NO ADVISORY LOCKS)
+CREATE OR REPLACE FUNCTION manage_ticket_insert()
+RETURNS TRIGGER AS $$
+DECLARE
+    v_count INTEGER;
+    v_next_index INTEGER;
+BEGIN
+    -- 1. Check Capacity (Strict 20-test limit)
+    SELECT count(*) INTO v_count 
+    FROM ticket_tests 
+    WHERE ticket_id = NEW.ticket_id;
+
+    IF v_count >= 20 THEN
+        RAISE EXCEPTION 'Ticket overflow: Max 20 tests allowed per ticket.';
+    END IF;
+
+    -- 2. Auto-increment Order Index
+    SELECT COALESCE(MAX(order_index), -1) + 1 INTO v_next_index
+    FROM ticket_tests 
+    WHERE ticket_id = NEW.ticket_id;
+
+    NEW.order_index := v_next_index;
+
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER SET search_path = public;
+
+DROP TRIGGER IF EXISTS trigger_manage_ticket_insert ON ticket_tests;
+CREATE TRIGGER trigger_manage_ticket_insert
+BEFORE INSERT ON ticket_tests
+FOR EACH ROW
+EXECUTE FUNCTION manage_ticket_insert();
+
+-- C. UPDATED_AT TIMESTAMP
+DROP TRIGGER IF EXISTS update_tickets_updated_at ON tickets;
+CREATE TRIGGER update_tickets_updated_at BEFORE UPDATE ON tickets FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- 5. RLS POLICIES (HARDENED)
+-- ==============================================================================
+
+-- Admin-only logic: Ensure users don't see admin-only data or functionality paths.
 
 -- USERS
--- Privacy: Users see only themselves. Admins see all.
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Public read users" ON users;
 DROP POLICY IF EXISTS "Read users" ON users;
-CREATE POLICY "Read users" ON users FOR SELECT USING (
-  auth.uid() = id OR is_admin()
-);
+CREATE POLICY "Read users" ON users FOR SELECT USING (auth.uid() = id OR is_admin());
 
-DROP POLICY IF EXISTS "Users can update own profile" ON users;
--- Split Update Policies
 DROP POLICY IF EXISTS "Admin update users" ON users;
-CREATE POLICY "Admin update users" ON users FOR UPDATE USING (
-  is_admin()
-);
+CREATE POLICY "Admin update users" ON users FOR UPDATE USING (is_admin());
+
 DROP POLICY IF EXISTS "User self update" ON users;
-CREATE POLICY "User self update" ON users FOR UPDATE USING (
-  auth.uid() = id
-);
+CREATE POLICY "User self update" ON users FOR UPDATE USING (auth.uid() = id);
+
 DROP POLICY IF EXISTS "User insert own profile" ON users;
-CREATE POLICY "User insert own profile" ON users FOR INSERT WITH CHECK (
-  auth.uid() = id
-);
--- Note: The `trigger_protect_user_fields` handles the column-level security for self-updates.
+CREATE POLICY "User insert own profile" ON users FOR INSERT WITH CHECK (auth.uid() = id);
 
 -- TOPICS
 ALTER TABLE topics ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Public read topics" ON topics;
 DROP POLICY IF EXISTS "Read topics" ON topics;
-CREATE POLICY "Read topics" ON topics FOR SELECT USING (
-  is_public OR has_premium_access()
-);
+CREATE POLICY "Read topics" ON topics FOR SELECT USING (is_public OR has_premium_access());
+
 DROP POLICY IF EXISTS "Admin manage topics" ON topics;
-CREATE POLICY "Admin manage topics" ON topics FOR ALL USING (
-  is_admin()
-);
+CREATE POLICY "Admin manage topics" ON topics FOR ALL USING (is_admin());
 
 -- TICKETS
 ALTER TABLE tickets ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Public read tickets" ON tickets;
 DROP POLICY IF EXISTS "Read tickets" ON tickets;
-CREATE POLICY "Read tickets" ON tickets FOR SELECT USING (
-  is_public OR has_premium_access()
-);
+CREATE POLICY "Read tickets" ON tickets FOR SELECT USING (is_public OR has_premium_access());
+
 DROP POLICY IF EXISTS "Admin manage tickets" ON tickets;
-CREATE POLICY "Admin manage tickets" ON tickets FOR ALL USING (
-  is_admin()
-);
+CREATE POLICY "Admin manage tickets" ON tickets FOR ALL USING (is_admin());
 
 -- TICKET_TESTS
--- Visible if the parent ticket is visible
 ALTER TABLE ticket_tests ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Public read ticket_tests" ON ticket_tests;
 DROP POLICY IF EXISTS "Read ticket_tests" ON ticket_tests;
 CREATE POLICY "Read ticket_tests" ON ticket_tests FOR SELECT USING (
   EXISTS (
@@ -288,64 +334,44 @@ CREATE POLICY "Read ticket_tests" ON ticket_tests FOR SELECT USING (
     AND (t.is_public OR has_premium_access())
   )
 );
+
 DROP POLICY IF EXISTS "Admin manage ticket_tests" ON ticket_tests;
-CREATE POLICY "Admin manage ticket_tests" ON ticket_tests FOR ALL USING (
-  is_admin()
-);
+CREATE POLICY "Admin manage ticket_tests" ON ticket_tests FOR ALL USING (is_admin());
 
 -- TESTS
--- Visible if (Admin) OR (Premium User) OR (Linked to Public Topic) OR (Linked to Public Ticket)
 ALTER TABLE tests ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Public read tests" ON tests;
 DROP POLICY IF EXISTS "Read tests" ON tests;
 CREATE POLICY "Read tests" ON tests FOR SELECT USING (
-  -- 1. Premium users (Admins included) see everything
   has_premium_access()
-  OR
-  -- 2. Tests in Public Topics
-  EXISTS (
-    SELECT 1 FROM topics t 
-    WHERE t.id = tests.topic_id 
-    AND t.is_public
-  )
-  OR
-  -- 3. Tests in Public Tickets
-  EXISTS (
-    SELECT 1 FROM ticket_tests tt
-    JOIN tickets t ON t.id = tt.ticket_id
-    WHERE tt.test_id = tests.id 
-    AND t.is_public
-  )
-);
-DROP POLICY IF EXISTS "Admin manage tests" ON tests;
-CREATE POLICY "Admin manage tests" ON tests FOR ALL USING (
-  is_admin()
+  OR EXISTS (SELECT 1 FROM topics t WHERE t.id = tests.topic_id AND t.is_public)
+  OR EXISTS (SELECT 1 FROM ticket_tests tt JOIN tickets t ON t.id = tt.ticket_id WHERE tt.test_id = tests.id AND t.is_public)
 );
 
--- RESULTS & STATS (User Private)
+DROP POLICY IF EXISTS "Admin manage tests" ON tests;
+CREATE POLICY "Admin manage tests" ON tests FOR ALL USING (is_admin());
+
+-- STATS & RESULTS
 ALTER TABLE test_results ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Users read own results" ON test_results;
-CREATE POLICY "Users read own results" ON test_results FOR SELECT USING (auth.uid() = user_id);
-DROP POLICY IF EXISTS "Users create own results" ON test_results;
-CREATE POLICY "Users create own results" ON test_results FOR INSERT WITH CHECK (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users manage own results" ON test_results;
+CREATE POLICY "Users manage own results" ON test_results FOR ALL USING (auth.uid() = user_id);
 
 ALTER TABLE topic_statistics ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Users read/write own topic_stats" ON topic_statistics;
-CREATE POLICY "Users read/write own topic_stats" ON topic_statistics FOR ALL USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users manage own topic_stats" ON topic_statistics;
+CREATE POLICY "Users manage own topic_stats" ON topic_statistics FOR ALL USING (auth.uid() = user_id);
 
 ALTER TABLE ticket_statistics ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Users read/write own ticket_stats" ON ticket_statistics;
-CREATE POLICY "Users read/write own ticket_stats" ON ticket_statistics FOR ALL USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users manage own ticket_stats" ON ticket_statistics;
+CREATE POLICY "Users manage own ticket_stats" ON ticket_statistics FOR ALL USING (auth.uid() = user_id);
 
 ALTER TABLE exam_statistics ENABLE ROW LEVEL SECURITY;
-DROP POLICY IF EXISTS "Users read/write own exam_stats" ON exam_statistics;
-CREATE POLICY "Users read/write own exam_stats" ON exam_statistics FOR ALL USING (auth.uid() = user_id);
+DROP POLICY IF EXISTS "Users manage own exam_stats" ON exam_statistics;
+CREATE POLICY "Users manage own exam_stats" ON exam_statistics FOR ALL USING (auth.uid() = user_id);
 
 ALTER TABLE user_settings ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Users manage own settings" ON user_settings;
 CREATE POLICY "Users manage own settings" ON user_settings FOR ALL USING (auth.uid() = user_id);
 
--- CONTENT (Public Read / Admin Write)
+-- CONTENT & CAROUSEL
 ALTER TABLE site_content ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Public read site_content" ON site_content;
 CREATE POLICY "Public read site_content" ON site_content FOR SELECT USING (true);
@@ -358,98 +384,25 @@ CREATE POLICY "Public read carousel_images" ON carousel_images FOR SELECT USING 
 DROP POLICY IF EXISTS "Admin manage carousel_images" ON carousel_images;
 CREATE POLICY "Admin manage carousel_images" ON carousel_images FOR ALL USING (is_admin());
 
--- ============================================
--- 5. TICKET LOGIC (STABLE & CONCURRENCY SAFE)
--- ============================================
-
--- A. CLEANUP OLD LOGIC
-DROP TRIGGER IF EXISTS trigger_reorganize_tickets ON tests;
-DROP FUNCTION IF EXISTS reorganize_tickets;
-DROP TRIGGER IF EXISTS trigger_check_ticket_capacity ON ticket_tests;
-DROP FUNCTION IF EXISTS check_ticket_capacity;
-DROP TRIGGER IF EXISTS trigger_set_ticket_order_index ON ticket_tests;
-DROP FUNCTION IF EXISTS set_ticket_order_index;
-
--- B. UNIQUE CONSTRAINT
--- Remove duplicates if any exist (keeping the one with smallest ID)
-DELETE FROM ticket_tests a USING ticket_tests b
-WHERE a.id > b.id 
-AND a.ticket_id = b.ticket_id 
-AND a.order_index = b.order_index;
-
-ALTER TABLE ticket_tests DROP CONSTRAINT IF EXISTS unique_ticket_order;
-ALTER TABLE ticket_tests ADD CONSTRAINT unique_ticket_order UNIQUE (ticket_id, order_index);
-
--- C. MANAGE TICKET INSERT (LOCKING TRIGGER)
-CREATE OR REPLACE FUNCTION manage_ticket_insert()
-RETURNS TRIGGER AS $$
-DECLARE
-    v_count INTEGER;
-    v_next_index INTEGER;
-    v_lock_key BIGINT;
-BEGIN
-    -- Serialize inserts for this specific ticket
-    -- FIX: Type Safety - Explicitly cast hashtext result to BIGINT
-    v_lock_key := hashtext(NEW.ticket_id::text)::bigint;
-    PERFORM pg_advisory_xact_lock(v_lock_key);
-
-    -- 1. Check Capacity
-    SELECT count(*) INTO v_count 
-    FROM ticket_tests 
-    WHERE ticket_id = NEW.ticket_id;
-
-    IF v_count >= 20 THEN
-        RAISE EXCEPTION 'Ticket is full (Max 20 tests). Please select another ticket.';
-    END IF;
-
-    -- 2. Assign Order Index
-    -- Use COALESCE(MAX, -1) + 1 for 0-based indexing (0..19)
-    SELECT COALESCE(MAX(order_index), -1) + 1 INTO v_next_index
-    FROM ticket_tests 
-    WHERE ticket_id = NEW.ticket_id;
-
-    NEW.order_index := v_next_index;
-
-    RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-DROP TRIGGER IF EXISTS trigger_manage_ticket_insert ON ticket_tests;
-CREATE TRIGGER trigger_manage_ticket_insert
-BEFORE INSERT ON ticket_tests
-FOR EACH ROW
-EXECUTE FUNCTION manage_ticket_insert();
-
--- ============================================
--- 6. OTHER TRIGGERS & STORAGE
--- ============================================
-
-CREATE OR REPLACE FUNCTION update_updated_at_column()
-RETURNS TRIGGER AS $$
-BEGIN
-  NEW.updated_at = NOW();
-  RETURN NEW;
-END;
-$$ LANGUAGE plpgsql;
-
-DROP TRIGGER IF EXISTS update_tickets_updated_at ON tickets;
-CREATE TRIGGER update_tickets_updated_at BEFORE UPDATE ON tickets FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
-
--- Storage Buckets
+-- 6. STORAGE
+-- ==============================================================================
 INSERT INTO storage.buckets (id, name, public) VALUES ('test-images', 'test-images', true) ON CONFLICT (id) DO NOTHING;
 INSERT INTO storage.buckets (id, name, public) VALUES ('test-audio', 'test-audio', true) ON CONFLICT (id) DO NOTHING;
 
 DROP POLICY IF EXISTS "Storage Select" ON storage.objects;
-DROP POLICY IF EXISTS "Storage Insert" ON storage.objects;
-DROP POLICY IF EXISTS "Storage Update" ON storage.objects;
-DROP POLICY IF EXISTS "Storage Delete" ON storage.objects;
-
 CREATE POLICY "Storage Select" ON storage.objects FOR SELECT USING (bucket_id IN ('test-images', 'test-audio'));
+
+DROP POLICY IF EXISTS "Storage Insert" ON storage.objects;
 CREATE POLICY "Storage Insert" ON storage.objects FOR INSERT WITH CHECK (bucket_id IN ('test-images', 'test-audio') AND is_admin());
+
+DROP POLICY IF EXISTS "Storage Update" ON storage.objects;
 CREATE POLICY "Storage Update" ON storage.objects FOR UPDATE USING (bucket_id IN ('test-images', 'test-audio') AND is_admin());
+
+DROP POLICY IF EXISTS "Storage Delete" ON storage.objects;
 CREATE POLICY "Storage Delete" ON storage.objects FOR DELETE USING (bucket_id IN ('test-images', 'test-audio') AND is_admin());
 
--- Default Contact Info
+-- 7. SEED DATA
+-- ==============================================================================
 INSERT INTO site_content (type, content)
 VALUES (
   'contact', 
@@ -460,5 +413,3 @@ VALUES (
     "address": "Toshkent"
   }'::jsonb
 ) ON CONFLICT (type) DO NOTHING;
-
--- DONE

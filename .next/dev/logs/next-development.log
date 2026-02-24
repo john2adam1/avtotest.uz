@@ -1,547 +1,1694 @@
-[00:00:02.466] Server  LOG      ✓ Ready in 1959ms
-[00:00:04.980] Server  LOG     Middleware hitting path: "/"
-[00:00:08.027] Server  LOG      ○ Compiling / ...
-[00:01:03.125] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:03.591] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:01:03.591] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
-[00:01:03.591] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677905507} /_vercel/insights/view
-[00:01:05.572] Server  LOG     Middleware hitting path: "/login"
-[00:01:07.191] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677909103} /_vercel/insights/view
-[00:01:24.902] Server  LOG     Middleware hitting path: "/register"
-[00:01:26.199] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677928113} /_vercel/insights/view
-[00:01:43.025] Server  LOG     Middleware hitting path: "/login"
-[00:01:43.218] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677945126} /_vercel/insights/view
-[00:01:47.427] Server  LOG     Middleware hitting path: "/register"
-[00:01:47.606] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677949519} /_vercel/insights/view
-[00:01:55.196] Server  LOG     Middleware hitting path: "/register"
-[00:01:57.161] Server  LOG     Middleware hitting path: "/dashboard"
-[00:01:59.926] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677961834} /_vercel/insights/view
-[00:02:11.462] Server  LOG     Middleware hitting path: "/topics"
-[00:02:15.660] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677977563} /_vercel/insights/view
-[00:02:17.189] Server  LOG     Middleware hitting path: "/dashboard"
-[00:02:17.907] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771677979817} /_vercel/insights/view
-[00:03:08.151] Server  LOG     Middleware hitting path: "/tickets"
-[00:03:11.905] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771678033810} /_vercel/insights/view
-[00:03:13.111] Server  LOG     Middleware hitting path: "/dashboard"
-[00:03:13.856] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771678035767} /_vercel/insights/view
-[00:04:15.819] Server  LOG      ✓ Compiled in 1570ms
-[00:04:16.931] Server  LOG      ✓ Compiled in 772ms
-[00:04:37.420] Server  LOG      ✓ Compiled in 364ms
-[00:05:07.679] Server  LOG     Middleware hitting path: "/dashboard"
-[00:05:09.766] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:05:09.941] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:05:09.941] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:05:09.941] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771678151840} /_vercel/insights/view
-[00:08:50.064] Server  LOG      ✓ Compiled in 3.2s
-[00:08:50.404] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:09:11.322] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:09:16.329] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:09:20.332] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:09:23.331] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:09:57.323] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:10:09.322] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:10:09.322] Browser ERROR   ./components/AboutSection.tsx:19:1
+[00:00:04.503] Server  LOG      ✓ Ready in 3.2s
+[00:00:05.018] Server  LOG     Middleware hitting path: "/"
+[00:00:09.407] Server  LOG      ○ Compiling / ...
+[00:00:17.128] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:18.994] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:18.994] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:18.994] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911376947} /_vercel/insights/view
+[00:00:31.823] Server  LOG     Middleware hitting path: "/login"
+[00:00:32.566] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:36.027] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911394659} /_vercel/insights/view
+[00:00:38.202] Server  LOG     Middleware hitting path: "/login"
+[00:00:38.485] Server  LOG     Middleware hitting path: "/login"
+[00:00:38.495] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:39.118] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:39.790] Server  LOG     Middleware hitting path: "/login"
+[00:00:40.102] Server  LOG     Middleware hitting path: "/login"
+[00:00:40.109] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:40.937] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:41.621] Server  LOG     Middleware hitting path: "/login"
+[00:00:41.915] Server  LOG     Middleware hitting path: "/login"
+[00:00:41.921] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:42.801] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:43.162] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:00:43.888] Server  LOG     Middleware hitting path: "/login"
+[00:00:44.309] Server  LOG     Middleware hitting path: "/login"
+[00:00:44.316] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:45.166] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:46.244] Server  LOG     Middleware hitting path: "/login"
+[00:00:46.837] Server  LOG     Middleware hitting path: "/login"
+[00:00:46.844] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:47.499] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:48.359] Server  LOG     Middleware hitting path: "/login"
+[00:00:49.397] Server  LOG     Middleware hitting path: "/login"
+[00:00:49.403] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:51.119] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:51.874] Server  LOG     Middleware hitting path: "/login"
+[00:00:52.364] Server  LOG     Middleware hitting path: "/login"
+[00:00:52.369] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:52.960] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:53.675] Server  LOG     Middleware hitting path: "/login"
+[00:00:53.962] Server  LOG     Middleware hitting path: "/login"
+[00:00:53.969] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:54.544] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:55.199] Server  LOG     Middleware hitting path: "/login"
+[00:00:55.485] Server  LOG     Middleware hitting path: "/login"
+[00:00:55.489] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:56.315] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:57.000] Server  LOG     Middleware hitting path: "/login"
+[00:00:57.357] Server  LOG     Middleware hitting path: "/login"
+[00:00:57.363] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:57.933] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:58.612] Server  LOG     Middleware hitting path: "/login"
+[00:00:58.929] Server  LOG     Middleware hitting path: "/login"
+[00:00:58.940] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:59.518] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:00.194] Server  LOG     Middleware hitting path: "/login"
+[00:01:00.476] Server  LOG     Middleware hitting path: "/login"
+[00:01:00.481] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:01.044] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:01.708] Server  LOG     Middleware hitting path: "/login"
+[00:01:01.997] Server  LOG     Middleware hitting path: "/login"
+[00:01:02.001] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:02.567] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:03.276] Server  LOG     Middleware hitting path: "/login"
+[00:01:04.138] Server  LOG     Middleware hitting path: "/login"
+[00:01:04.143] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:05.466] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:06.616] Server  LOG     Middleware hitting path: "/login"
+[00:01:07.037] Server  LOG     Middleware hitting path: "/login"
+[00:01:07.046] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:07.844] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:08.499] Server  LOG     Middleware hitting path: "/login"
+[00:01:08.788] Server  LOG     Middleware hitting path: "/login"
+[00:01:08.797] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:09.378] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:10.068] Server  LOG     Middleware hitting path: "/login"
+[00:01:10.361] Server  LOG     Middleware hitting path: "/login"
+[00:01:10.367] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:10.933] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:11.617] Server  LOG     Middleware hitting path: "/login"
+[00:01:11.940] Server  LOG     Middleware hitting path: "/login"
+[00:01:11.947] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:12.774] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:13.519] Server  LOG     Middleware hitting path: "/login"
+[00:01:13.818] Server  LOG     Middleware hitting path: "/login"
+[00:01:13.824] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:14.473] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:15.197] Server  LOG     Middleware hitting path: "/login"
+[00:01:15.498] Server  LOG     Middleware hitting path: "/login"
+[00:01:15.509] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:16.137] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:16.804] Server  LOG     Middleware hitting path: "/login"
+[00:01:17.103] Server  LOG     Middleware hitting path: "/login"
+[00:01:17.109] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:17.689] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:18.376] Server  LOG     Middleware hitting path: "/login"
+[00:01:18.688] Server  LOG     Middleware hitting path: "/login"
+[00:01:18.694] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:19.284] Server  LOG     Middleware hitting path: "/logout"
+[00:01:19.293] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:19.851] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:01:20.452] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:20.452] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/logout","route":"/logout"}
+[00:01:20.452] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/logout color: rgb(120, 120, 120) color: inherit {"dp":"/logout","o":"http://localhost:3000/logout","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911439099} /_vercel/insights/view
+[00:01:24.074] Server  LOG     Middleware hitting path: "/login"
+[00:01:24.546] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:25.277] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:01:25.924] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:25.924] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:01:25.924] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911444568} /_vercel/insights/view
+[00:01:27.782] Server  LOG     Middleware hitting path: "/login"
+[00:01:28.055] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:28.788] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:01:29.375] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:29.375] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:01:29.375] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911448018} /_vercel/insights/view
+[00:01:29.637] Server  LOG     Middleware hitting path: "/login"
+[00:01:29.920] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:30.655] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:01:31.302] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:31.302] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:01:31.302] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911449880} /_vercel/insights/view
+[00:01:31.329] Server  LOG     Middleware hitting path: "/admin"
+[00:01:35.543] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:36.347] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:01:36.984] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:36.984] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:01:36.984] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911455614} /_vercel/insights/view
+[00:01:37.244] Server  LOG     Middleware hitting path: "/login"
+[00:01:37.529] Server  LOG     Middleware hitting path: "/dashboard"
+[00:01:38.548] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:01:39.075] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:39.075] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:01:39.075] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911457723} /_vercel/insights/view
+[00:01:39.644] Server  LOG     Middleware hitting path: "/sognout"
+[00:01:40.113] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:01:40.605] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:01:40.605] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/sognout","route":"/sognout"}
+[00:01:40.605] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/sognout color: rgb(120, 120, 120) color: inherit {"dp":"/sognout","o":"http://localhost:3000/sognout","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911459249} /_vercel/insights/view
+[00:02:07.167] Server  LOG     Middleware hitting path: "/signpout"
+[00:02:07.853] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:02:08.525] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:08.525] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/signpout","route":"/signpout"}
+[00:02:08.525] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/signpout color: rgb(120, 120, 120) color: inherit {"dp":"/signpout","o":"http://localhost:3000/signpout","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911487165} /_vercel/insights/view
+[00:02:15.207] Server  LOG     Middleware hitting path: "/signout"
+[00:02:16.977] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:02:17.576] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:17.577] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/signout","route":"/signout"}
+[00:02:17.577] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/signout color: rgb(120, 120, 120) color: inherit {"dp":"/signout","o":"http://localhost:3000/signout","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911496217} /_vercel/insights/view
+[00:02:22.717] Server  LOG     Middleware hitting path: "/logout"
+[00:02:23.995] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:02:24.625] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:24.625] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/logout","route":"/logout"}
+[00:02:24.625] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/logout color: rgb(120, 120, 120) color: inherit {"dp":"/logout","o":"http://localhost:3000/logout","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911503273} /_vercel/insights/view
+[00:02:33.584] Server  LOG     Middleware hitting path: "/"
+[00:02:35.340] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:02:35.672] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:02:35.672] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:02:35.673] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911514321} /_vercel/insights/view
+[00:02:50.358] Server  LOG     Middleware hitting path: "/login"
+[00:02:51.731] Server  LOG     Middleware hitting path: "/dashboard"
+[00:02:53.244] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911531885} /_vercel/insights/view
+[00:03:03.934] Server  LOG     Middleware hitting path: "/"
+[00:03:08.540] Server  ERROR   D:\projects\avtotest\.next\dev\server\chunks\node_modules_@supabase_auth-js_dist_module_b73e6ca7._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:03:08.554] Server  ERROR   AuthApiError: Invalid Refresh Token: Refresh Token Not Found
+[00:03:08.556] Server  ERROR   D:\projects\avtotest\.next\dev\server\chunks\node_modules_@supabase_auth-js_dist_module_b73e6ca7._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:03:08.558] Server  ERROR   AuthApiError: Invalid Refresh Token: Refresh Token Not Found
+[00:03:10.133] Server  LOG     Middleware hitting path: "/login"
+[00:03:19.478] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:21.112] Server  LOG     Middleware hitting path: "/login"
+[00:03:21.379] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:03:21.379] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:03:21.379] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911560014} /_vercel/insights/view
+[00:03:22.729] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911561372} /_vercel/insights/view
+[00:03:30.150] Server  LOG     Middleware hitting path: "/login"
+[00:03:33.634] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:39.588] Server  ERROR   D:\projects\avtotest\.next\dev\server\chunks\node_modules_@supabase_auth-js_dist_module_b73e6ca7._.js: Invalid source map. Only conformant source maps can be used to find the original code. Cause: Error: sourceMapURL could not be parsed
+[00:03:39.597] Server  ERROR   TypeError: fetch failed
+[00:03:45.851] Server  LOG     Middleware hitting path: "/login"
+[00:03:46.285] Server  LOG     Middleware hitting path: "/login"
+[00:03:46.298] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:48.585] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:49.932] Server  LOG     Middleware hitting path: "/login"
+[00:03:50.274] Server  LOG     Middleware hitting path: "/login"
+[00:03:50.288] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:51.029] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:51.899] Server  LOG     Middleware hitting path: "/login"
+[00:03:52.187] Server  LOG     Middleware hitting path: "/login"
+[00:03:52.201] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:52.885] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:52.938] Server  LOG     Middleware hitting path: "/register"
+[00:03:53.835] Server  LOG     Middleware hitting path: "/login"
+[00:03:54.154] Server  LOG     Middleware hitting path: "/login"
+[00:03:54.169] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:55.035] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:55.316] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911593935} /_vercel/insights/view
+[00:03:55.793] Server  LOG     Middleware hitting path: "/login"
+[00:03:56.104] Server  LOG     Middleware hitting path: "/login"
+[00:03:56.112] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:57.027] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:57.796] Server  LOG     Middleware hitting path: "/login"
+[00:03:58.105] Server  LOG     Middleware hitting path: "/login"
+[00:03:58.116] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:58.789] Server  LOG     Middleware hitting path: "/dashboard"
+[00:03:59.608] Server  LOG     Middleware hitting path: "/login"
+[00:03:59.970] Server  LOG     Middleware hitting path: "/login"
+[00:03:59.982] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:00.635] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:01.456] Server  LOG     Middleware hitting path: "/login"
+[00:04:01.810] Server  LOG     Middleware hitting path: "/login"
+[00:04:01.822] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:02.477] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:03.244] Server  LOG     Middleware hitting path: "/login"
+[00:04:03.636] Server  LOG     Middleware hitting path: "/login"
+[00:04:03.647] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:04.295] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:05.093] Server  LOG     Middleware hitting path: "/login"
+[00:04:05.409] Server  LOG     Middleware hitting path: "/login"
+[00:04:05.417] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:06.079] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:06.833] Server  LOG     Middleware hitting path: "/login"
+[00:04:07.159] Server  LOG     Middleware hitting path: "/login"
+[00:04:07.167] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:07.821] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:08.588] Server  LOG     Middleware hitting path: "/login"
+[00:04:08.892] Server  LOG     Middleware hitting path: "/register"
+[00:04:08.926] Server  LOG     Middleware hitting path: "/login"
+[00:04:08.935] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:09.610] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:10.371] Server  LOG     Middleware hitting path: "/login"
+[00:04:10.437] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:10.767] Server  LOG     Middleware hitting path: "/login"
+[00:04:10.772] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:11.274] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911609921} /_vercel/insights/view
+[00:04:11.507] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:12.196] Server  LOG     Middleware hitting path: "/login"
+[00:04:12.613] Server  LOG     Middleware hitting path: "/login"
+[00:04:12.627] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:13.553] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:14.469] Server  LOG     Middleware hitting path: "/login"
+[00:04:14.781] Server  LOG     Middleware hitting path: "/login"
+[00:04:14.798] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:15.388] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:16.076] Server  LOG     Middleware hitting path: "/login"
+[00:04:16.389] Server  LOG     Middleware hitting path: "/login"
+[00:04:16.394] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:16.997] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:17.670] Server  LOG     Middleware hitting path: "/login"
+[00:04:18.001] Server  LOG     Middleware hitting path: "/login"
+[00:04:18.010] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:18.619] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:19.420] Server  LOG     Middleware hitting path: "/login"
+[00:04:20.456] Server  LOG     Middleware hitting path: "/login"
+[00:04:20.461] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:24.258] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:25.209] Server  LOG     Middleware hitting path: "/login"
+[00:04:25.523] Server  LOG     Middleware hitting path: "/login"
+[00:04:25.536] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:26.144] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:26.917] Server  LOG     Middleware hitting path: "/login"
+[00:04:27.212] Server  LOG     Middleware hitting path: "/login"
+[00:04:27.219] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:27.829] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:28.538] Server  LOG     Middleware hitting path: "/login"
+[00:04:28.834] Server  LOG     Middleware hitting path: "/login"
+[00:04:28.847] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:29.520] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:30.350] Server  LOG     Middleware hitting path: "/login"
+[00:04:30.676] Server  LOG     Middleware hitting path: "/login"
+[00:04:30.683] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:31.286] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:32.064] Server  LOG     Middleware hitting path: "/login"
+[00:04:32.390] Server  LOG     Middleware hitting path: "/login"
+[00:04:32.398] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:33.007] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:33.681] Server  LOG     Middleware hitting path: "/login"
+[00:04:33.978] Server  LOG     Middleware hitting path: "/login"
+[00:04:33.983] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:34.567] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:35.271] Server  LOG     Middleware hitting path: "/login"
+[00:04:35.597] Server  LOG     Middleware hitting path: "/login"
+[00:04:35.602] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:36.205] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:36.890] Server  LOG     Middleware hitting path: "/login"
+[00:04:37.196] Server  LOG     Middleware hitting path: "/login"
+[00:04:37.201] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:37.813] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:38.511] Server  LOG     Middleware hitting path: "/login"
+[00:04:38.830] Server  LOG     Middleware hitting path: "/login"
+[00:04:38.837] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:39.447] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:40.132] Server  LOG     Middleware hitting path: "/login"
+[00:04:40.442] Server  LOG     Middleware hitting path: "/login"
+[00:04:40.447] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:41.075] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:41.760] Server  LOG     Middleware hitting path: "/login"
+[00:04:42.065] Server  LOG     Middleware hitting path: "/login"
+[00:04:42.071] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:42.664] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:43.339] Server  LOG     Middleware hitting path: "/login"
+[00:04:43.633] Server  LOG     Middleware hitting path: "/login"
+[00:04:43.639] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:44.236] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:44.886] Server  LOG     Middleware hitting path: "/login"
+[00:04:45.193] Server  LOG     Middleware hitting path: "/login"
+[00:04:45.199] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:45.783] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:46.474] Server  LOG     Middleware hitting path: "/login"
+[00:04:46.774] Server  LOG     Middleware hitting path: "/login"
+[00:04:46.780] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:47.363] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:48.026] Server  LOG     Middleware hitting path: "/login"
+[00:04:48.344] Server  LOG     Middleware hitting path: "/login"
+[00:04:48.348] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:48.931] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:49.580] Server  LOG     Middleware hitting path: "/login"
+[00:04:49.884] Server  LOG     Middleware hitting path: "/login"
+[00:04:49.888] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:50.499] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:51.514] Server  LOG     Middleware hitting path: "/login"
+[00:04:51.850] Server  LOG     Middleware hitting path: "/login"
+[00:04:51.869] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:52.616] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:53.021] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:54.249] Server  LOG     Middleware hitting path: "/login"
+[00:04:54.903] Server  LOG     Middleware hitting path: "/login"
+[00:04:54.912] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:55.112] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:55.238] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:55.238] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:04:55.238] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911653886} /_vercel/insights/view
+[00:04:55.787] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:56.864] Server  LOG     Middleware hitting path: "/login"
+[00:04:57.203] Server  LOG     Middleware hitting path: "/login"
+[00:04:57.216] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:58.135] Server  LOG     Middleware hitting path: "/dashboard"
+[00:04:59.067] Server  LOG     Middleware hitting path: "/login"
+[00:04:59.418] Server  LOG     Middleware hitting path: "/login"
+[00:04:59.426] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:00.102] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:01.026] Server  LOG     Middleware hitting path: "/login"
+[00:05:01.496] Server  LOG     Middleware hitting path: "/login"
+[00:05:01.526] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:02.308] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:03.398] Server  LOG     Middleware hitting path: "/login"
+[00:05:03.733] Server  LOG     Middleware hitting path: "/login"
+[00:05:03.750] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:04.549] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:05.580] Server  LOG     Middleware hitting path: "/login"
+[00:05:05.884] Server  LOG     Middleware hitting path: "/login"
+[00:05:05.899] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:06.710] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:07.708] Server  LOG     Middleware hitting path: "/login"
+[00:05:08.140] Server  LOG     Middleware hitting path: "/login"
+[00:05:08.161] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:08.930] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:09.732] Server  LOG     Middleware hitting path: "/login"
+[00:05:10.007] Server  LOG     Middleware hitting path: "/login"
+[00:05:10.012] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:10.584] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:11.186] Server  LOG     Middleware hitting path: "/login"
+[00:05:11.469] Server  LOG     Middleware hitting path: "/login"
+[00:05:11.473] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:12.034] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:12.626] Server  LOG     Middleware hitting path: "/login"
+[00:05:12.919] Server  LOG     Middleware hitting path: "/login"
+[00:05:12.921] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:13.547] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:14.504] Server  LOG     Middleware hitting path: "/login"
+[00:05:14.928] Server  LOG     Middleware hitting path: "/login"
+[00:05:15.112] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:15.880] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:16.692] Server  LOG     Middleware hitting path: "/login"
+[00:05:17.006] Server  LOG     Middleware hitting path: "/login"
+[00:05:17.015] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:17.633] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:18.313] Server  LOG     Middleware hitting path: "/login"
+[00:05:18.633] Server  LOG     Middleware hitting path: "/login"
+[00:05:18.669] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:19.275] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:19.974] Server  LOG     Middleware hitting path: "/login"
+[00:05:20.299] Server  LOG     Middleware hitting path: "/login"
+[00:05:20.307] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:20.924] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:21.635] Server  LOG     Middleware hitting path: "/login"
+[00:05:21.926] Server  LOG     Middleware hitting path: "/login"
+[00:05:21.932] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:22.535] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:23.231] Server  LOG     Middleware hitting path: "/login"
+[00:05:23.566] Server  LOG     Middleware hitting path: "/login"
+[00:05:23.571] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:24.156] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:24.845] Server  LOG     Middleware hitting path: "/login"
+[00:05:25.181] Server  LOG     Middleware hitting path: "/login"
+[00:05:25.186] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:25.834] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:26.516] Server  LOG     Middleware hitting path: "/login"
+[00:05:26.832] Server  LOG     Middleware hitting path: "/login"
+[00:05:26.838] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:27.454] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:28.131] Server  LOG     Middleware hitting path: "/login"
+[00:05:28.423] Server  LOG     Middleware hitting path: "/login"
+[00:05:28.427] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:29.005] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:30.064] Server  LOG     Middleware hitting path: "/login"
+[00:05:31.020] Server  LOG     Middleware hitting path: "/login"
+[00:05:31.024] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:32.679] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:33.784] Server  LOG     Middleware hitting path: "/login"
+[00:05:34.095] Server  LOG     Middleware hitting path: "/login"
+[00:05:34.100] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:34.903] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:35.583] Server  LOG     Middleware hitting path: "/login"
+[00:05:35.888] Server  LOG     Middleware hitting path: "/login"
+[00:05:35.895] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:36.516] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:37.193] Server  LOG     Middleware hitting path: "/login"
+[00:05:37.604] Server  LOG     Middleware hitting path: "/login"
+[00:05:37.611] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:38.213] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:38.879] Server  LOG     Middleware hitting path: "/login"
+[00:05:39.227] Server  LOG     Middleware hitting path: "/login"
+[00:05:39.232] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:39.814] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:40.481] Server  LOG     Middleware hitting path: "/login"
+[00:05:40.804] Server  LOG     Middleware hitting path: "/login"
+[00:05:40.809] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:41.403] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:42.068] Server  LOG     Middleware hitting path: "/login"
+[00:05:42.365] Server  LOG     Middleware hitting path: "/login"
+[00:05:42.370] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:42.977] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:43.687] Server  LOG     Middleware hitting path: "/login"
+[00:05:43.992] Server  LOG     Middleware hitting path: "/login"
+[00:05:43.999] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:44.802] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:45.547] Server  LOG     Middleware hitting path: "/login"
+[00:05:45.845] Server  LOG     Middleware hitting path: "/login"
+[00:05:45.851] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:46.472] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:47.206] Server  LOG     Middleware hitting path: "/login"
+[00:05:47.564] Server  LOG     Middleware hitting path: "/login"
+[00:05:47.569] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:48.398] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:49.431] Server  LOG     Middleware hitting path: "/login"
+[00:05:50.023] Server  LOG     Middleware hitting path: "/login"
+[00:05:50.027] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:50.962] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:51.677] Server  LOG     Middleware hitting path: "/login"
+[00:05:51.954] Server  LOG     Middleware hitting path: "/login"
+[00:05:51.959] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:52.564] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:53.210] Server  LOG     Middleware hitting path: "/login"
+[00:05:53.513] Server  LOG     Middleware hitting path: "/login"
+[00:05:53.517] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:54.104] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:54.796] Server  LOG     Middleware hitting path: "/login"
+[00:05:55.081] Server  LOG     Middleware hitting path: "/login"
+[00:05:55.088] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:55.703] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:56.405] Server  LOG     Middleware hitting path: "/login"
+[00:05:56.693] Server  LOG     Middleware hitting path: "/login"
+[00:05:56.700] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:57.297] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:57.964] Server  LOG     Middleware hitting path: "/login"
+[00:05:58.296] Server  LOG     Middleware hitting path: "/login"
+[00:05:58.302] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:58.925] Server  LOG     Middleware hitting path: "/dashboard"
+[00:05:59.571] Server  LOG     Middleware hitting path: "/login"
+[00:05:59.883] Server  LOG     Middleware hitting path: "/login"
+[00:05:59.887] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:00.483] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:01.148] Server  LOG     Middleware hitting path: "/login"
+[00:06:01.434] Server  LOG     Middleware hitting path: "/login"
+[00:06:01.438] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:02.066] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:02.697] Server  LOG     Middleware hitting path: "/login"
+[00:06:03.007] Server  LOG     Middleware hitting path: "/login"
+[00:06:03.012] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:03.599] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:04.288] Server  LOG     Middleware hitting path: "/login"
+[00:06:04.605] Server  LOG     Middleware hitting path: "/login"
+[00:06:04.610] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:05.199] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:05.876] Server  LOG     Middleware hitting path: "/login"
+[00:06:06.187] Server  LOG     Middleware hitting path: "/login"
+[00:06:06.192] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:06.800] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:07.458] Server  LOG     Middleware hitting path: "/login"
+[00:06:07.744] Server  LOG     Middleware hitting path: "/login"
+[00:06:07.750] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:08.362] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:09.059] Server  LOG     Middleware hitting path: "/login"
+[00:06:09.364] Server  LOG     Middleware hitting path: "/login"
+[00:06:09.368] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:09.963] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:10.633] Server  LOG     Middleware hitting path: "/login"
+[00:06:10.926] Server  LOG     Middleware hitting path: "/login"
+[00:06:10.932] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:11.531] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:12.315] Server  LOG     Middleware hitting path: "/login"
+[00:06:12.682] Server  LOG     Middleware hitting path: "/login"
+[00:06:12.687] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:14.036] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:15.033] Server  LOG     Middleware hitting path: "/login"
+[00:06:16.182] Server  LOG     Middleware hitting path: "/login"
+[00:06:16.185] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:16.747] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:17.330] Server  LOG     Middleware hitting path: "/login"
+[00:06:17.602] Server  LOG     Middleware hitting path: "/login"
+[00:06:17.606] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:18.351] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:19.171] Server  LOG     Middleware hitting path: "/login"
+[00:06:19.612] Server  LOG     Middleware hitting path: "/login"
+[00:06:19.642] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:20.454] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:21.298] Server  LOG     Middleware hitting path: "/login"
+[00:06:22.096] Server  LOG     Middleware hitting path: "/login"
+[00:06:22.142] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:23.110] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:24.573] Server  LOG     Middleware hitting path: "/login"
+[00:06:24.927] Server  LOG     Middleware hitting path: "/login"
+[00:06:24.950] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:26.010] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:27.435] Server  LOG     Middleware hitting path: "/login"
+[00:06:27.802] Server  LOG     Middleware hitting path: "/login"
+[00:06:27.812] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:28.912] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:29.932] Server  LOG     Middleware hitting path: "/login"
+[00:06:30.319] Server  LOG     Middleware hitting path: "/login"
+[00:06:30.350] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:31.176] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:32.519] Server  LOG     Middleware hitting path: "/login"
+[00:06:32.875] Server  LOG     Middleware hitting path: "/login"
+[00:06:32.892] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:33.688] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:34.577] Server  LOG     Middleware hitting path: "/login"
+[00:06:34.892] Server  LOG     Middleware hitting path: "/login"
+[00:06:34.900] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:35.563] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:36.298] Server  LOG     Middleware hitting path: "/login"
+[00:06:36.630] Server  LOG     Middleware hitting path: "/login"
+[00:06:36.639] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:37.279] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:38.009] Server  LOG     Middleware hitting path: "/login"
+[00:06:38.339] Server  LOG     Middleware hitting path: "/login"
+[00:06:38.346] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:38.996] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:39.917] Server  LOG     Middleware hitting path: "/login"
+[00:06:41.292] Server  LOG     Middleware hitting path: "/login"
+[00:06:41.297] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:41.902] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:42.659] Server  LOG     Middleware hitting path: "/login"
+[00:06:42.992] Server  LOG     Middleware hitting path: "/login"
+[00:06:42.998] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:43.627] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:44.369] Server  LOG     Middleware hitting path: "/login"
+[00:06:44.689] Server  LOG     Middleware hitting path: "/login"
+[00:06:44.695] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:45.324] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:46.168] Server  LOG     Middleware hitting path: "/login"
+[00:06:46.895] Server  LOG     Middleware hitting path: "/login"
+[00:06:46.914] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:48.277] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:48.290] Server  LOG      ✓ Compiled in 1282ms
+[00:06:50.841] Server  LOG     Middleware hitting path: "/dashboard"
+[00:06:51.726] Server  LOG     Middleware hitting path: "/admin"
+[00:06:52.679] Server  LOG     Middleware hitting path: "/admin"
+[00:06:54.992] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771911772830} /_vercel/insights/view
+[00:07:11.244] Server  LOG      ✓ Compiled in 429ms
+[00:07:26.074] Server  LOG      ✓ Compiled in 473ms
+[00:07:26.123] Server  LOG     Middleware hitting path: "/admin"
+[00:07:26.205] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:30.263] Server  LOG     Middleware hitting path: "/login"
+[00:07:30.570] Server  LOG     Middleware hitting path: "/login"
+[00:07:30.580] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:31.256] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:32.003] Server  LOG     Middleware hitting path: "/login"
+[00:07:32.323] Server  LOG     Middleware hitting path: "/login"
+[00:07:32.330] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:33.178] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:33.883] Server  LOG     Middleware hitting path: "/login"
+[00:07:34.195] Server  LOG     Middleware hitting path: "/login"
+[00:07:34.203] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:35.127] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:35.468] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:35.507] Server  LOG      ✓ Compiled in 642ms
+[00:07:35.512] Server  LOG     Middleware hitting path: "/admin"
+[00:07:36.927] Server  LOG     Middleware hitting path: "/login"
+[00:07:37.254] Server  LOG     Middleware hitting path: "/login"
+[00:07:37.263] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:37.912] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:38.670] Server  LOG     Middleware hitting path: "/login"
+[00:07:38.967] Server  LOG     Middleware hitting path: "/login"
+[00:07:38.972] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:39.623] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:40.324] Server  LOG     Middleware hitting path: "/login"
+[00:07:40.640] Server  LOG     Middleware hitting path: "/login"
+[00:07:40.644] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:41.297] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:41.969] Server  LOG     Middleware hitting path: "/login"
+[00:07:42.259] Server  LOG     Middleware hitting path: "/login"
+[00:07:42.263] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:42.836] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:43.430] Server  LOG     Middleware hitting path: "/login"
+[00:07:43.703] Server  LOG     Middleware hitting path: "/login"
+[00:07:43.706] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:44.257] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:44.868] Server  LOG     Middleware hitting path: "/login"
+[00:07:45.156] Server  LOG     Middleware hitting path: "/login"
+[00:07:45.160] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:45.716] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:46.310] Server  LOG     Middleware hitting path: "/login"
+[00:07:46.575] Server  LOG     Middleware hitting path: "/login"
+[00:07:46.578] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:47.120] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:47.762] Server  LOG     Middleware hitting path: "/login"
+[00:07:48.044] Server  LOG     Middleware hitting path: "/login"
+[00:07:48.047] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:48.603] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:49.216] Server  LOG     Middleware hitting path: "/login"
+[00:07:49.504] Server  LOG     Middleware hitting path: "/login"
+[00:07:49.509] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:50.071] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:50.658] Server  LOG     Middleware hitting path: "/login"
+[00:07:50.932] Server  LOG     Middleware hitting path: "/login"
+[00:07:50.936] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:51.481] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:52.100] Server  LOG     Middleware hitting path: "/login"
+[00:07:52.386] Server  LOG     Middleware hitting path: "/login"
+[00:07:52.389] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:52.940] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:53.523] Server  LOG     Middleware hitting path: "/login"
+[00:07:53.802] Server  LOG     Middleware hitting path: "/login"
+[00:07:53.805] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:54.355] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:54.954] Server  LOG     Middleware hitting path: "/login"
+[00:07:55.233] Server  LOG     Middleware hitting path: "/login"
+[00:07:55.240] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:55.823] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:56.418] Server  LOG     Middleware hitting path: "/login"
+[00:07:56.715] Server  LOG     Middleware hitting path: "/login"
+[00:07:56.719] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:57.324] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:57.919] Server  LOG     Middleware hitting path: "/login"
+[00:07:58.200] Server  LOG     Middleware hitting path: "/login"
+[00:07:58.203] Server  LOG     Middleware hitting path: "/dashboard"
+[00:07:59.375] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:00.573] Server  LOG     Middleware hitting path: "/login"
+[00:08:01.030] Server  LOG     Middleware hitting path: "/login"
+[00:08:01.033] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:02.428] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:03.261] Server  LOG     Middleware hitting path: "/login"
+[00:08:03.531] Server  LOG     Middleware hitting path: "/login"
+[00:08:03.533] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:04.102] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:04.742] Server  LOG     Middleware hitting path: "/login"
+[00:08:05.045] Server  LOG     Middleware hitting path: "/login"
+[00:08:05.048] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:05.608] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:06.185] Server  LOG     Middleware hitting path: "/login"
+[00:08:06.463] Server  LOG     Middleware hitting path: "/login"
+[00:08:06.466] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:07.051] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:07.653] Server  LOG     Middleware hitting path: "/login"
+[00:08:07.929] Server  LOG     Middleware hitting path: "/login"
+[00:08:07.939] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:08.481] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:09.082] Server  LOG     Middleware hitting path: "/login"
+[00:08:09.362] Server  LOG     Middleware hitting path: "/login"
+[00:08:09.365] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:09.943] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:10.562] Server  LOG     Middleware hitting path: "/login"
+[00:08:10.842] Server  LOG     Middleware hitting path: "/login"
+[00:08:10.844] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:11.397] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:12.016] Server  LOG     Middleware hitting path: "/login"
+[00:08:12.293] Server  LOG     Middleware hitting path: "/login"
+[00:08:12.296] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:13.109] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:13.703] Server  LOG     Middleware hitting path: "/login"
+[00:08:13.999] Server  LOG     Middleware hitting path: "/login"
+[00:08:14.006] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:14.750] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:15.324] Server  LOG     Middleware hitting path: "/login"
+[00:08:15.601] Server  LOG     Middleware hitting path: "/login"
+[00:08:15.605] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:16.134] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:16.735] Server  LOG     Middleware hitting path: "/login"
+[00:08:17.012] Server  LOG     Middleware hitting path: "/login"
+[00:08:17.015] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:17.593] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:18.179] Server  LOG     Middleware hitting path: "/login"
+[00:08:18.442] Server  LOG     Middleware hitting path: "/login"
+[00:08:18.448] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:19.032] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:19.602] Server  LOG     Middleware hitting path: "/login"
+[00:08:19.879] Server  LOG     Middleware hitting path: "/login"
+[00:08:19.881] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:20.413] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:21.008] Server  LOG     Middleware hitting path: "/login"
+[00:08:21.274] Server  LOG     Middleware hitting path: "/login"
+[00:08:21.277] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:21.843] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:22.438] Server  LOG     Middleware hitting path: "/login"
+[00:08:22.712] Server  LOG     Middleware hitting path: "/login"
+[00:08:22.714] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:23.400] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:23.987] Server  LOG     Middleware hitting path: "/login"
+[00:08:24.268] Server  LOG     Middleware hitting path: "/login"
+[00:08:24.272] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:24.864] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:25.473] Server  LOG     Middleware hitting path: "/login"
+[00:08:25.808] Server  LOG     Middleware hitting path: "/login"
+[00:08:25.811] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:26.398] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:27.155] Server  LOG     Middleware hitting path: "/login"
+[00:08:27.430] Server  LOG     Middleware hitting path: "/login"
+[00:08:27.433] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:28.031] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:28.640] Server  LOG     Middleware hitting path: "/login"
+[00:08:28.926] Server  LOG     Middleware hitting path: "/login"
+[00:08:28.928] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:29.514] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:30.099] Server  LOG     Middleware hitting path: "/login"
+[00:08:30.393] Server  LOG     Middleware hitting path: "/login"
+[00:08:30.396] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:30.943] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:31.514] Server  LOG     Middleware hitting path: "/login"
+[00:08:31.793] Server  LOG     Middleware hitting path: "/login"
+[00:08:31.796] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:32.673] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:33.278] Server  LOG     Middleware hitting path: "/login"
+[00:08:33.552] Server  LOG     Middleware hitting path: "/login"
+[00:08:33.556] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:34.394] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:34.995] Server  LOG     Middleware hitting path: "/login"
+[00:08:35.999] Server  LOG     Middleware hitting path: "/login"
+[00:08:36.010] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:37.503] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:39.543] Server  LOG     Middleware hitting path: "/login"
+[00:08:39.821] Server  LOG     Middleware hitting path: "/login"
+[00:08:39.824] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:40.382] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:40.991] Server  LOG     Middleware hitting path: "/login"
+[00:08:41.269] Server  LOG     Middleware hitting path: "/login"
+[00:08:41.272] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:41.839] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:42.429] Server  LOG     Middleware hitting path: "/login"
+[00:08:42.710] Server  LOG     Middleware hitting path: "/login"
+[00:08:42.714] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:43.295] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:43.898] Server  LOG     Middleware hitting path: "/login"
+[00:08:44.172] Server  LOG     Middleware hitting path: "/login"
+[00:08:44.174] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:44.780] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:45.369] Server  LOG     Middleware hitting path: "/login"
+[00:08:45.642] Server  LOG     Middleware hitting path: "/login"
+[00:08:45.645] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:46.205] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:46.796] Server  LOG     Middleware hitting path: "/login"
+[00:08:47.113] Server  LOG     Middleware hitting path: "/login"
+[00:08:47.116] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:47.675] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:48.298] Server  LOG     Middleware hitting path: "/login"
+[00:08:48.657] Server  LOG     Middleware hitting path: "/login"
+[00:08:48.660] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:49.221] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:49.821] Server  LOG     Middleware hitting path: "/login"
+[00:08:50.103] Server  LOG     Middleware hitting path: "/login"
+[00:08:50.106] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:50.691] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:51.269] Server  LOG     Middleware hitting path: "/login"
+[00:08:51.551] Server  LOG     Middleware hitting path: "/login"
+[00:08:51.553] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:52.109] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:52.691] Server  LOG     Middleware hitting path: "/login"
+[00:08:52.974] Server  LOG     Middleware hitting path: "/login"
+[00:08:52.978] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:53.529] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:54.110] Server  LOG     Middleware hitting path: "/login"
+[00:08:54.394] Server  LOG     Middleware hitting path: "/login"
+[00:08:54.397] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:54.979] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:55.596] Server  LOG     Middleware hitting path: "/login"
+[00:08:55.876] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:55.879] Server  LOG     Middleware hitting path: "/login"
+[00:08:56.434] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:57.063] Server  LOG     Middleware hitting path: "/login"
+[00:08:57.342] Server  LOG     Middleware hitting path: "/login"
+[00:08:57.345] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:57.906] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:58.509] Server  LOG     Middleware hitting path: "/login"
+[00:08:58.782] Server  LOG     Middleware hitting path: "/login"
+[00:08:58.786] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:59.349] Server  LOG     Middleware hitting path: "/dashboard"
+[00:08:59.946] Server  LOG     Middleware hitting path: "/login"
+[00:09:00.222] Server  LOG     Middleware hitting path: "/login"
+[00:09:00.225] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:00.802] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:01.393] Server  LOG     Middleware hitting path: "/login"
+[00:09:01.676] Server  LOG     Middleware hitting path: "/login"
+[00:09:01.680] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:02.251] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:02.881] Server  LOG     Middleware hitting path: "/login"
+[00:09:03.171] Server  LOG     Middleware hitting path: "/login"
+[00:09:03.176] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:03.721] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:04.311] Server  LOG     Middleware hitting path: "/login"
+[00:09:04.586] Server  LOG     Middleware hitting path: "/login"
+[00:09:04.590] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:05.187] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:05.778] Server  LOG     Middleware hitting path: "/login"
+[00:09:06.063] Server  LOG     Middleware hitting path: "/login"
+[00:09:06.066] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:06.641] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:07.236] Server  LOG     Middleware hitting path: "/login"
+[00:09:07.527] Server  LOG     Middleware hitting path: "/login"
+[00:09:07.530] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:08.100] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:08.698] Server  LOG     Middleware hitting path: "/login"
+[00:09:08.974] Server  LOG     Middleware hitting path: "/login"
+[00:09:08.976] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:10.702] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:11.637] Server  LOG     Middleware hitting path: "/login"
+[00:09:12.097] Server  LOG     Middleware hitting path: "/login"
+[00:09:12.101] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:13.698] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:14.289] Server  LOG     Middleware hitting path: "/login"
+[00:09:14.563] Server  LOG     Middleware hitting path: "/login"
+[00:09:14.571] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:15.194] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:15.898] Server  LOG     Middleware hitting path: "/login"
+[00:09:16.184] Server  LOG     Middleware hitting path: "/login"
+[00:09:16.188] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:16.775] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:17.370] Server  LOG     Middleware hitting path: "/login"
+[00:09:17.653] Server  LOG     Middleware hitting path: "/login"
+[00:09:17.655] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:18.230] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:18.839] Server  LOG     Middleware hitting path: "/login"
+[00:09:19.114] Server  LOG     Middleware hitting path: "/login"
+[00:09:19.118] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:19.670] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:20.268] Server  LOG     Middleware hitting path: "/login"
+[00:09:20.554] Server  LOG     Middleware hitting path: "/login"
+[00:09:20.556] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:21.098] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:21.682] Server  LOG     Middleware hitting path: "/login"
+[00:09:21.960] Server  LOG     Middleware hitting path: "/login"
+[00:09:21.963] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:22.631] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:23.249] Server  LOG     Middleware hitting path: "/login"
+[00:09:23.532] Server  LOG     Middleware hitting path: "/login"
+[00:09:23.536] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:24.078] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:24.791] Server  LOG     Middleware hitting path: "/login"
+[00:09:25.073] Server  LOG     Middleware hitting path: "/login"
+[00:09:25.075] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:25.616] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:26.212] Server  LOG     Middleware hitting path: "/login"
+[00:09:26.482] Server  LOG     Middleware hitting path: "/login"
+[00:09:26.485] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:27.050] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:27.638] Server  LOG     Middleware hitting path: "/login"
+[00:09:27.932] Server  LOG     Middleware hitting path: "/login"
+[00:09:27.935] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:28.497] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:29.162] Server  LOG     Middleware hitting path: "/login"
+[00:09:29.449] Server  LOG     Middleware hitting path: "/login"
+[00:09:29.453] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:30.013] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:30.603] Server  LOG     Middleware hitting path: "/login"
+[00:09:30.885] Server  LOG     Middleware hitting path: "/login"
+[00:09:30.889] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:31.719] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:32.287] Server  LOG     Middleware hitting path: "/login"
+[00:09:32.556] Server  LOG     Middleware hitting path: "/login"
+[00:09:32.559] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:33.379] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:33.969] Server  LOG     Middleware hitting path: "/login"
+[00:09:34.231] Server  LOG     Middleware hitting path: "/login"
+[00:09:34.235] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:34.794] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:35.383] Server  LOG     Middleware hitting path: "/login"
+[00:09:35.661] Server  LOG     Middleware hitting path: "/login"
+[00:09:35.663] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:36.223] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:36.830] Server  LOG     Middleware hitting path: "/login"
+[00:09:37.101] Server  LOG     Middleware hitting path: "/login"
+[00:09:37.104] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:37.650] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:38.239] Server  LOG     Middleware hitting path: "/login"
+[00:09:38.513] Server  LOG     Middleware hitting path: "/login"
+[00:09:38.515] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:39.062] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:39.670] Server  LOG     Middleware hitting path: "/login"
+[00:09:39.973] Server  LOG     Middleware hitting path: "/login"
+[00:09:39.976] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:40.531] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:41.113] Server  LOG     Middleware hitting path: "/login"
+[00:09:41.385] Server  LOG     Middleware hitting path: "/login"
+[00:09:41.392] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:41.971] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:42.565] Server  LOG     Middleware hitting path: "/login"
+[00:09:42.874] Server  LOG     Middleware hitting path: "/login"
+[00:09:42.877] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:43.420] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:44.228] Server  LOG     Middleware hitting path: "/login"
+[00:09:44.501] Server  LOG     Middleware hitting path: "/login"
+[00:09:44.505] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:45.073] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:46.200] Server  LOG     Middleware hitting path: "/login"
+[00:09:46.460] Server  LOG     Middleware hitting path: "/login"
+[00:09:46.465] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:47.164] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:47.896] Server  LOG     Middleware hitting path: "/login"
+[00:09:48.456] Server  LOG     Middleware hitting path: "/login"
+[00:09:48.468] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:49.156] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:50.077] Server  LOG     Middleware hitting path: "/login"
+[00:09:50.505] Server  LOG     Middleware hitting path: "/login"
+[00:09:50.509] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:51.530] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:52.112] Server  LOG     Middleware hitting path: "/login"
+[00:09:52.388] Server  LOG     Middleware hitting path: "/login"
+[00:09:52.391] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:52.931] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:53.512] Server  LOG     Middleware hitting path: "/login"
+[00:09:53.773] Server  LOG     Middleware hitting path: "/login"
+[00:09:53.776] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:54.308] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:54.873] Server  LOG     Middleware hitting path: "/login"
+[00:09:55.131] Server  LOG     Middleware hitting path: "/login"
+[00:09:55.135] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:55.708] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:56.742] Server  LOG     Middleware hitting path: "/login"
+[00:09:57.197] Server  LOG     Middleware hitting path: "/login"
+[00:09:57.204] Server  LOG     Middleware hitting path: "/dashboard"
+[00:09:58.693] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:00.338] Server  LOG     Middleware hitting path: "/login"
+[00:10:00.594] Server  LOG     Middleware hitting path: "/login"
+[00:10:00.598] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:01.141] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:01.927] Server  LOG     Middleware hitting path: "/login"
+[00:10:03.497] Server  LOG     Middleware hitting path: "/login"
+[00:10:03.743] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:04.872] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:05.496] Server  LOG     Middleware hitting path: "/login"
+[00:10:05.767] Server  LOG     Middleware hitting path: "/login"
+[00:10:05.770] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:07.242] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:07.982] Server  LOG     Middleware hitting path: "/login"
+[00:10:08.404] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:08.407] Server  LOG     Middleware hitting path: "/login"
+[00:10:09.476] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:10.170] Server  LOG     Middleware hitting path: "/login"
+[00:10:10.430] Server  LOG     Middleware hitting path: "/login"
+[00:10:10.433] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:10.955] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:11.522] Server  LOG     Middleware hitting path: "/login"
+[00:10:11.790] Server  LOG     Middleware hitting path: "/login"
+[00:10:11.793] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:12.328] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:12.902] Server  LOG     Middleware hitting path: "/login"
+[00:10:13.166] Server  LOG     Middleware hitting path: "/login"
+[00:10:13.168] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:13.691] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:14.307] Server  LOG     Middleware hitting path: "/login"
+[00:10:14.582] Server  LOG     Middleware hitting path: "/login"
+[00:10:14.586] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:15.131] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:15.707] Server  LOG     Middleware hitting path: "/login"
+[00:10:15.970] Server  LOG     Middleware hitting path: "/login"
+[00:10:15.973] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:16.501] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:17.097] Server  LOG     Middleware hitting path: "/login"
+[00:10:17.374] Server  LOG     Middleware hitting path: "/login"
+[00:10:17.379] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:17.914] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:18.517] Server  LOG     Middleware hitting path: "/login"
+[00:10:18.786] Server  LOG     Middleware hitting path: "/login"
+[00:10:18.788] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:19.313] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:20.001] Server  LOG     Middleware hitting path: "/login"
+[00:10:20.297] Server  LOG     Middleware hitting path: "/login"
+[00:10:20.304] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:20.883] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:21.558] Server  LOG     Middleware hitting path: "/login"
+[00:10:21.884] Server  LOG     Middleware hitting path: "/login"
+[00:10:21.889] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:22.520] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:23.226] Server  LOG     Middleware hitting path: "/login"
+[00:10:23.542] Server  LOG     Middleware hitting path: "/login"
+[00:10:23.550] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:24.133] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:24.772] Server  LOG     Middleware hitting path: "/login"
+[00:10:25.069] Server  LOG     Middleware hitting path: "/login"
+[00:10:25.075] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:25.651] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:26.420] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:10:26.420] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:10:26.420] Browser LOG     Browser Session Status: Logged in as 998901234567@gmail.com
+[00:10:26.420] Browser LOG     Browser Session Status: Logged in as 998901234567@gmail.com
+[00:10:26.593] Server  LOG     Middleware hitting path: "/login"
+[00:10:27.045] Server  LOG     Middleware hitting path: "/login"
+[00:10:27.074] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:27.880] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:28.961] Server  LOG     Middleware hitting path: "/login"
+[00:10:29.422] Server  LOG     Middleware hitting path: "/login"
+[00:10:29.427] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:30.303] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:30.874] Server  LOG     Middleware hitting path: "/login"
+[00:10:31.146] Server  LOG     Middleware hitting path: "/login"
+[00:10:31.148] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:31.667] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:32.249] Server  LOG     Middleware hitting path: "/login"
+[00:10:32.513] Server  LOG     Middleware hitting path: "/login"
+[00:10:32.518] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:33.050] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:33.645] Server  LOG     Middleware hitting path: "/login"
+[00:10:33.909] Server  LOG     Middleware hitting path: "/login"
+[00:10:33.912] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:34.704] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:35.281] Server  LOG     Middleware hitting path: "/login"
+[00:10:35.549] Server  LOG     Middleware hitting path: "/login"
+[00:10:35.553] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:36.074] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:36.652] Server  LOG     Middleware hitting path: "/login"
+[00:10:36.915] Server  LOG     Middleware hitting path: "/login"
+[00:10:36.919] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:37.446] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:38.030] Server  LOG     Middleware hitting path: "/login"
+[00:10:38.310] Server  LOG     Middleware hitting path: "/login"
+[00:10:38.313] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:38.835] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:39.424] Server  LOG     Middleware hitting path: "/login"
+[00:10:39.693] Server  LOG     Middleware hitting path: "/login"
+[00:10:39.697] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:40.210] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:40.782] Server  LOG     Middleware hitting path: "/login"
+[00:10:41.053] Server  LOG     Middleware hitting path: "/login"
+[00:10:41.059] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:41.590] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:42.193] Server  LOG     Middleware hitting path: "/login"
+[00:10:42.454] Server  LOG     Middleware hitting path: "/login"
+[00:10:42.456] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:42.976] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:43.550] Server  LOG     Middleware hitting path: "/login"
+[00:10:43.815] Server  LOG     Middleware hitting path: "/login"
+[00:10:43.819] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:44.339] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:44.908] Server  LOG     Middleware hitting path: "/login"
+[00:10:45.200] Server  LOG     Middleware hitting path: "/login"
+[00:10:45.207] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:45.757] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:46.776] Server  LOG     Middleware hitting path: "/login"
+[00:10:47.080] Server  LOG     Middleware hitting path: "/login"
+[00:10:47.089] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:47.695] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:48.424] Server  LOG     Middleware hitting path: "/login"
+[00:10:48.912] Server  LOG     Middleware hitting path: "/login"
+[00:10:48.962] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:49.570] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:50.261] Server  LOG     Middleware hitting path: "/login"
+[00:10:50.559] Server  LOG     Middleware hitting path: "/login"
+[00:10:50.564] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:51.112] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:51.696] Server  LOG     Middleware hitting path: "/login"
+[00:10:52.005] Server  LOG     Middleware hitting path: "/login"
+[00:10:52.007] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:52.577] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:53.281] Server  LOG     Middleware hitting path: "/login"
+[00:10:53.664] Server  LOG     Middleware hitting path: "/login"
+[00:10:53.669] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:54.242] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:54.838] Server  LOG     Middleware hitting path: "/login"
+[00:10:55.187] Server  LOG     Middleware hitting path: "/login"
+[00:10:55.216] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:55.854] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:56.652] Server  LOG     Middleware hitting path: "/login"
+[00:10:56.956] Server  LOG     Middleware hitting path: "/login"
+[00:10:56.961] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:57.532] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:58.207] Server  LOG     Middleware hitting path: "/login"
+[00:10:58.530] Server  LOG     Middleware hitting path: "/login"
+[00:10:58.535] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:59.134] Server  LOG     Middleware hitting path: "/dashboard"
+[00:10:59.836] Server  LOG     Middleware hitting path: "/login"
+[00:11:00.137] Server  LOG     Middleware hitting path: "/login"
+[00:11:00.144] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:00.730] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:01.400] Server  LOG     Middleware hitting path: "/login"
+[00:11:01.686] Server  LOG     Middleware hitting path: "/login"
+[00:11:01.690] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:02.267] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:02.706] Server  LOG     Middleware hitting path: "/admin"
+[00:11:02.947] Server  LOG     Middleware hitting path: "/login"
+[00:11:03.277] Server  LOG     Middleware hitting path: "/login"
+[00:11:03.568] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:04.418] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:05.066] Server  LOG     Middleware hitting path: "/login"
+[00:11:05.362] Server  LOG     Middleware hitting path: "/login"
+[00:11:05.369] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:05.934] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:06.921] Server  LOG     Middleware hitting path: "/login"
+[00:11:07.319] Server  LOG     Middleware hitting path: "/login"
+[00:11:07.327] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:08.183] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:09.055] Server  LOG     Middleware hitting path: "/login"
+[00:11:09.549] Server  LOG     Middleware hitting path: "/login"
+[00:11:09.555] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:10.505] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:11.203] Server  LOG     Middleware hitting path: "/login"
+[00:11:11.511] Server  LOG     Middleware hitting path: "/login"
+[00:11:11.538] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:12.872] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:14.842] Server  LOG     Middleware hitting path: "/login"
+[00:11:15.132] Server  LOG     Middleware hitting path: "/login"
+[00:11:15.137] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:15.819] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:16.385] Server  LOG     Middleware hitting path: "/login"
+[00:11:16.661] Server  LOG     Middleware hitting path: "/login"
+[00:11:16.664] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:17.183] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:17.753] Server  LOG     Middleware hitting path: "/login"
+[00:11:18.027] Server  LOG     Middleware hitting path: "/login"
+[00:11:18.030] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:18.550] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:19.128] Server  LOG     Middleware hitting path: "/login"
+[00:11:19.394] Server  LOG     Middleware hitting path: "/login"
+[00:11:19.397] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:19.909] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:20.480] Server  LOG     Middleware hitting path: "/login"
+[00:11:20.749] Server  LOG     Middleware hitting path: "/login"
+[00:11:20.750] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:21.273] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:21.835] Server  LOG     Middleware hitting path: "/login"
+[00:11:22.101] Server  LOG     Middleware hitting path: "/login"
+[00:11:22.104] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:22.623] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:23.187] Server  LOG     Middleware hitting path: "/login"
+[00:11:23.451] Server  LOG     Middleware hitting path: "/login"
+[00:11:23.454] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:23.973] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:24.550] Server  LOG     Middleware hitting path: "/login"
+[00:11:24.814] Server  LOG     Middleware hitting path: "/login"
+[00:11:24.817] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:25.324] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:25.895] Server  LOG     Middleware hitting path: "/login"
+[00:11:26.167] Server  LOG     Middleware hitting path: "/login"
+[00:11:26.169] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:26.759] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:27.416] Server  LOG     Middleware hitting path: "/login"
+[00:11:27.709] Server  LOG     Middleware hitting path: "/login"
+[00:11:27.713] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:28.290] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:28.947] Server  LOG     Middleware hitting path: "/login"
+[00:11:29.262] Server  LOG     Middleware hitting path: "/login"
+[00:11:29.268] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:29.852] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:30.533] Server  LOG     Middleware hitting path: "/login"
+[00:11:30.835] Server  LOG     Middleware hitting path: "/login"
+[00:11:30.840] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:31.381] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:32.065] Server  LOG     Middleware hitting path: "/login"
+[00:11:32.378] Server  LOG     Middleware hitting path: "/login"
+[00:11:32.386] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:32.959] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:33.620] Server  LOG     Middleware hitting path: "/login"
+[00:11:33.895] Server  LOG     Middleware hitting path: "/login"
+[00:11:33.901] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:34.482] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:35.184] Server  LOG     Middleware hitting path: "/login"
+[00:11:35.512] Server  LOG     Middleware hitting path: "/login"
+[00:11:35.519] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:36.086] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:36.766] Server  LOG     Middleware hitting path: "/login"
+[00:11:37.106] Server  LOG     Middleware hitting path: "/login"
+[00:11:37.111] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:37.669] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:38.402] Server  LOG     Middleware hitting path: "/login"
+[00:11:38.677] Server  LOG     Middleware hitting path: "/login"
+[00:11:38.683] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:39.229] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:39.805] Server  LOG     Middleware hitting path: "/login"
+[00:11:40.072] Server  LOG     Middleware hitting path: "/login"
+[00:11:40.078] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:40.755] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:41.577] Server  LOG     Middleware hitting path: "/login"
+[00:11:41.959] Server  LOG     Middleware hitting path: "/login"
+[00:11:41.962] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:44.853] Server  LOG      ✓ Compiled in 1484ms
+[00:11:44.866] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:45.470] Server  LOG     Middleware hitting path: "/login"
+[00:11:45.736] Server  LOG     Middleware hitting path: "/login"
+[00:11:45.739] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:46.263] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:46.977] Server  LOG     Middleware hitting path: "/login"
+[00:11:48.284] Server  LOG     Middleware hitting path: "/login"
+[00:11:48.288] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:49.004] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:49.871] Server  LOG     Middleware hitting path: "/login"
+[00:11:50.273] Server  LOG     Middleware hitting path: "/login"
+[00:11:50.278] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:52.892] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:53.475] Server  LOG     Middleware hitting path: "/login"
+[00:11:53.752] Server  LOG     Middleware hitting path: "/login"
+[00:11:53.763] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:54.301] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:55.490] Server  LOG     Middleware hitting path: "/login"
+[00:11:55.930] Server  LOG     Middleware hitting path: "/login"
+[00:11:55.939] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:57.041] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:58.649] Server  LOG     Middleware hitting path: "/login"
+[00:11:58.932] Server  LOG     Middleware hitting path: "/login"
+[00:11:58.936] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:59.499] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:00.136] Server  LOG     Middleware hitting path: "/login"
+[00:12:00.419] Server  LOG     Middleware hitting path: "/login"
+[00:12:00.424] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:01.040] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:01.913] Server  LOG     Middleware hitting path: "/login"
+[00:12:02.221] Server  LOG     Middleware hitting path: "/login"
+[00:12:02.228] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:02.778] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:03.453] Server  LOG     Middleware hitting path: "/login"
+[00:12:03.732] Server  LOG     Middleware hitting path: "/login"
+[00:12:03.734] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:04.296] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:05.308] Server  LOG     Middleware hitting path: "/login"
+[00:12:05.593] Server  LOG     Middleware hitting path: "/login"
+[00:12:05.598] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:06.150] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:06.765] Server  LOG     Middleware hitting path: "/login"
+[00:12:07.699] Server  LOG     Middleware hitting path: "/login"
+[00:12:07.703] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:08.652] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:10.180] Server  LOG     Middleware hitting path: "/login"
+[00:12:10.591] Server  LOG     Middleware hitting path: "/login"
+[00:12:10.596] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:11.311] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:11.925] Server  LOG     Middleware hitting path: "/login"
+[00:12:12.218] Server  LOG     Middleware hitting path: "/login"
+[00:12:12.220] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:12.782] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:13.388] Server  LOG     Middleware hitting path: "/login"
+[00:12:13.676] Server  LOG     Middleware hitting path: "/login"
+[00:12:13.682] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:14.250] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:14.870] Server  LOG     Middleware hitting path: "/login"
+[00:12:15.149] Server  LOG     Middleware hitting path: "/login"
+[00:12:15.155] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:15.694] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:16.300] Server  LOG     Middleware hitting path: "/login"
+[00:12:16.580] Server  LOG     Middleware hitting path: "/login"
+[00:12:16.584] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:17.138] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:17.741] Server  LOG     Middleware hitting path: "/login"
+[00:12:18.019] Server  LOG     Middleware hitting path: "/login"
+[00:12:18.022] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:18.571] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:19.157] Server  LOG     Middleware hitting path: "/login"
+[00:12:19.447] Server  LOG     Middleware hitting path: "/login"
+[00:12:19.450] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:19.999] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:20.602] Server  LOG     Middleware hitting path: "/login"
+[00:12:20.883] Server  LOG     Middleware hitting path: "/login"
+[00:12:20.886] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:21.435] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:22.059] Server  LOG     Middleware hitting path: "/login"
+[00:12:22.352] Server  LOG     Middleware hitting path: "/login"
+[00:12:22.355] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:22.921] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:23.525] Server  LOG     Middleware hitting path: "/login"
+[00:12:23.810] Server  LOG     Middleware hitting path: "/login"
+[00:12:23.813] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:24.350] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:25.404] Server  LOG     Middleware hitting path: "/login"
+[00:12:25.684] Server  LOG     Middleware hitting path: "/login"
+[00:12:25.705] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:26.259] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:26.849] Server  LOG     Middleware hitting path: "/login"
+[00:12:27.270] Server  LOG     Middleware hitting path: "/login"
+[00:12:27.276] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:28.152] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:29.431] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:29.433] Server  LOG     Middleware hitting path: "/admin"
+[00:12:29.630] Server  LOG      ✓ Compiled in 573ms
+[00:12:33.328] Server  LOG     Middleware hitting path: "/login"
+[00:12:33.679] Server  LOG     Middleware hitting path: "/login"
+[00:12:33.682] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:34.372] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:35.149] Server  LOG     Middleware hitting path: "/login"
+[00:12:35.493] Server  LOG     Middleware hitting path: "/login"
+[00:12:35.498] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:36.323] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:37.174] Server  LOG     Middleware hitting path: "/login"
+[00:12:37.446] Server  LOG     Middleware hitting path: "/login"
+[00:12:37.450] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:37.972] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:38.556] Server  LOG     Middleware hitting path: "/login"
+[00:12:38.948] Server  LOG     Middleware hitting path: "/login"
+[00:12:38.951] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:39.773] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:40.521] Server  LOG     Middleware hitting path: "/login"
+[00:12:40.935] Server  LOG     Middleware hitting path: "/login"
+[00:12:40.939] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:42.299] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:43.159] Server  LOG     Middleware hitting path: "/login"
+[00:12:43.441] Server  LOG     Middleware hitting path: "/login"
+[00:12:43.444] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:43.967] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:44.597] Server  LOG     Middleware hitting path: "/login"
+[00:12:45.027] Server  LOG     Middleware hitting path: "/login"
+[00:12:45.039] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:45.711] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:46.555] Server  LOG     Middleware hitting path: "/login"
+[00:12:46.890] Server  LOG     Middleware hitting path: "/login"
+[00:12:46.918] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:47.437] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:48.033] Server  LOG     Middleware hitting path: "/login"
+[00:12:48.292] Server  LOG     Middleware hitting path: "/login"
+[00:12:48.296] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:48.819] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:49.395] Server  LOG     Middleware hitting path: "/login"
+[00:12:49.657] Server  LOG     Middleware hitting path: "/login"
+[00:12:49.662] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:50.180] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:50.767] Server  LOG     Middleware hitting path: "/login"
+[00:12:51.193] Server  LOG     Middleware hitting path: "/login"
+[00:12:51.198] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:51.874] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:52.769] Server  LOG     Middleware hitting path: "/login"
+[00:12:53.187] Server  LOG     Middleware hitting path: "/login"
+[00:12:53.190] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:53.880] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:54.741] Server  LOG     Middleware hitting path: "/login"
+[00:12:56.530] Server  LOG     Middleware hitting path: "/login"
+[00:12:56.624] Server  LOG     Middleware hitting path: "/dashboard"
+[00:12:59.991] Server  LOG      ✓ Compiled in 49ms
+[00:13:00.043] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:03.210] Server  LOG     Middleware hitting path: "/login"
+[00:13:03.499] Server  LOG     Middleware hitting path: "/login"
+[00:13:03.502] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:04.033] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:04.617] Server  LOG     Middleware hitting path: "/login"
+[00:13:04.877] Server  LOG     Middleware hitting path: "/login"
+[00:13:04.880] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:05.599] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:06.160] Server  LOG     Middleware hitting path: "/login"
+[00:13:06.429] Server  LOG     Middleware hitting path: "/login"
+[00:13:06.431] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:06.954] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:07.553] Server  LOG     Middleware hitting path: "/login"
+[00:13:07.817] Server  LOG     Middleware hitting path: "/login"
+[00:13:07.819] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:08.332] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:08.891] Server  LOG     Middleware hitting path: "/login"
+[00:13:09.149] Server  LOG     Middleware hitting path: "/login"
+[00:13:09.152] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:09.657] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:10.237] Server  LOG     Middleware hitting path: "/login"
+[00:13:10.513] Server  LOG     Middleware hitting path: "/login"
+[00:13:10.516] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:11.029] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:11.769] Server  LOG     Middleware hitting path: "/login"
+[00:13:12.712] Server  LOG     Middleware hitting path: "/login"
+[00:13:12.716] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:14.792] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:15.938] Server  LOG     Middleware hitting path: "/login"
+[00:13:17.174] Server  LOG     Middleware hitting path: "/login"
+[00:13:17.179] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:17.722] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:18.337] Server  LOG     Middleware hitting path: "/login"
+[00:13:18.608] Server  LOG     Middleware hitting path: "/login"
+[00:13:18.616] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:19.137] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:19.720] Server  LOG     Middleware hitting path: "/login"
+[00:13:20.000] Server  LOG     Middleware hitting path: "/login"
+[00:13:20.003] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:20.547] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:21.125] Server  LOG     Middleware hitting path: "/login"
+[00:13:22.111] Server  LOG     Middleware hitting path: "/login"
+[00:13:22.114] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:23.057] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:23.803] Server  LOG     Middleware hitting path: "/login"
+[00:13:24.797] Server  LOG     Middleware hitting path: "/login"
+[00:13:24.802] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:26.210] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:27.600] Server  LOG      ✓ Compiled in 1041ms
+[00:13:27.688] Server  LOG     Middleware hitting path: "/login"
+[00:13:27.981] Server  LOG     Middleware hitting path: "/login"
+[00:13:28.008] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:28.741] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:29.379] Server  LOG     Middleware hitting path: "/login"
+[00:13:29.682] Server  LOG     Middleware hitting path: "/login"
+[00:13:29.685] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:30.252] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:30.865] Server  LOG     Middleware hitting path: "/login"
+[00:13:31.140] Server  LOG     Middleware hitting path: "/login"
+[00:13:31.143] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:31.740] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:32.441] Server  LOG     Middleware hitting path: "/login"
+[00:13:32.751] Server  LOG     Middleware hitting path: "/login"
+[00:13:32.760] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:34.144] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:35.137] Server  LOG     Middleware hitting path: "/login"
+[00:13:37.049] Server  LOG     Middleware hitting path: "/login"
+[00:13:37.056] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:37.877] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:38.587] Server  LOG     Middleware hitting path: "/login"
+[00:13:38.952] Server  LOG     Middleware hitting path: "/login"
+[00:13:38.959] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:39.587] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:40.284] Server  LOG     Middleware hitting path: "/login"
+[00:13:40.629] Server  LOG     Middleware hitting path: "/login"
+[00:13:40.633] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:41.270] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:41.988] Server  LOG     Middleware hitting path: "/login"
+[00:13:42.332] Server  LOG     Middleware hitting path: "/login"
+[00:13:42.338] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:42.975] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:43.689] Server  LOG     Middleware hitting path: "/login"
+[00:13:43.992] Server  LOG     Middleware hitting path: "/login"
+[00:13:43.996] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:44.631] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:45.345] Server  LOG     Middleware hitting path: "/login"
+[00:13:45.664] Server  LOG     Middleware hitting path: "/login"
+[00:13:45.671] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:46.374] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:47.067] Server  LOG     Middleware hitting path: "/login"
+[00:13:47.474] Server  LOG     Middleware hitting path: "/login"
+[00:13:47.482] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:48.082] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:48.809] Server  LOG     Middleware hitting path: "/login"
+[00:13:49.150] Server  LOG     Middleware hitting path: "/login"
+[00:13:49.157] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:49.784] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:50.544] Server  LOG     Middleware hitting path: "/login"
+[00:13:50.835] Server  LOG     Middleware hitting path: "/login"
+[00:13:50.843] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:51.502] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:52.282] Server  LOG     Middleware hitting path: "/login"
+[00:13:52.608] Server  LOG     Middleware hitting path: "/login"
+[00:13:52.616] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:53.200] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:54.526] Server  LOG     Middleware hitting path: "/login"
+[00:13:54.949] Server  LOG     Middleware hitting path: "/login"
+[00:13:54.955] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:57.220] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:57.949] Server  LOG     Middleware hitting path: "/login"
+[00:13:58.296] Server  LOG     Middleware hitting path: "/login"
+[00:13:58.308] Server  LOG     Middleware hitting path: "/dashboard"
+[00:13:59.489] Server  LOG      ✓ Compiled in 760ms
+[00:13:59.511] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:00.512] Server  LOG     Middleware hitting path: "/login"
+[00:14:00.908] Server  LOG     Middleware hitting path: "/login"
+[00:14:00.921] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:01.603] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:02.405] Server  LOG     Middleware hitting path: "/login"
+[00:14:02.818] Server  LOG     Middleware hitting path: "/login"
+[00:14:02.831] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:03.613] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:04.806] Server  LOG     Middleware hitting path: "/login"
+[00:14:05.107] Server  LOG     Middleware hitting path: "/login"
+[00:14:05.116] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:05.840] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:06.547] Server  LOG     Middleware hitting path: "/login"
+[00:14:06.899] Server  LOG     Middleware hitting path: "/login"
+[00:14:06.908] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:07.538] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:08.297] Server  LOG     Middleware hitting path: "/login"
+[00:14:08.643] Server  LOG     Middleware hitting path: "/login"
+[00:14:08.662] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:09.237] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:09.869] Server  LOG     Middleware hitting path: "/login"
+[00:14:10.153] Server  LOG     Middleware hitting path: "/login"
+[00:14:10.157] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:10.713] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:11.326] Server  LOG     Middleware hitting path: "/login"
+[00:14:11.632] Server  LOG     Middleware hitting path: "/login"
+[00:14:11.635] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:12.203] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:12.824] Server  LOG     Middleware hitting path: "/login"
+[00:14:13.113] Server  LOG     Middleware hitting path: "/login"
+[00:14:13.116] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:13.666] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:14.292] Server  LOG     Middleware hitting path: "/login"
+[00:14:14.580] Server  LOG     Middleware hitting path: "/login"
+[00:14:14.583] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:15.371] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:15.986] Server  LOG     Middleware hitting path: "/login"
+[00:14:16.280] Server  LOG     Middleware hitting path: "/login"
+[00:14:16.283] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:16.831] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:17.427] Server  LOG     Middleware hitting path: "/login"
+[00:14:17.710] Server  LOG     Middleware hitting path: "/login"
+[00:14:17.713] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:18.277] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:18.915] Server  LOG     Middleware hitting path: "/login"
+[00:14:19.211] Server  LOG     Middleware hitting path: "/login"
+[00:14:19.220] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:19.755] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:20.352] Server  LOG     Middleware hitting path: "/login"
+[00:14:20.663] Server  LOG     Middleware hitting path: "/login"
+[00:14:20.666] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:21.228] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:21.811] Server  LOG     Middleware hitting path: "/login"
+[00:14:22.099] Server  LOG     Middleware hitting path: "/login"
+[00:14:22.101] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:22.641] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:23.341] Server  LOG     Middleware hitting path: "/login"
+[00:14:23.625] Server  LOG     Middleware hitting path: "/login"
+[00:14:23.631] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:24.186] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:24.782] Server  LOG     Middleware hitting path: "/login"
+[00:14:25.068] Server  LOG     Middleware hitting path: "/login"
+[00:14:25.072] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:25.626] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:26.226] Server  LOG     Middleware hitting path: "/login"
+[00:14:26.525] Server  LOG     Middleware hitting path: "/login"
+[00:14:26.530] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:27.094] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:27.680] Server  LOG     Middleware hitting path: "/login"
+[00:14:27.959] Server  LOG     Middleware hitting path: "/login"
+[00:14:27.962] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:28.509] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:29.128] Server  LOG     Middleware hitting path: "/login"
+[00:14:29.423] Server  LOG     Middleware hitting path: "/login"
+[00:14:29.427] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:30.611] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:31.809] Server  LOG     Middleware hitting path: "/login"
+[00:14:32.224] Server  LOG     Middleware hitting path: "/login"
+[00:14:32.230] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:33.053] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:34.387] Server  LOG     Middleware hitting path: "/login"
+[00:14:34.662] Server  LOG     Middleware hitting path: "/login"
+[00:14:34.666] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:35.206] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:35.816] Server  LOG     Middleware hitting path: "/login"
+[00:14:36.098] Server  LOG     Middleware hitting path: "/login"
+[00:14:36.101] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:36.653] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:37.238] Server  LOG     Middleware hitting path: "/login"
+[00:14:37.508] Server  LOG     Middleware hitting path: "/login"
+[00:14:37.511] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:38.075] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:38.681] Server  LOG     Middleware hitting path: "/login"
+[00:14:38.959] Server  LOG     Middleware hitting path: "/login"
+[00:14:38.967] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:39.499] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:40.089] Server  LOG     Middleware hitting path: "/login"
+[00:14:40.374] Server  LOG     Middleware hitting path: "/login"
+[00:14:40.378] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:40.917] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:41.529] Server  LOG     Middleware hitting path: "/login"
+[00:14:41.813] Server  LOG     Middleware hitting path: "/login"
+[00:14:41.816] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:42.371] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:42.969] Server  LOG     Middleware hitting path: "/login"
+[00:14:43.255] Server  LOG     Middleware hitting path: "/login"
+[00:14:43.258] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:43.801] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:44.412] Server  LOG     Middleware hitting path: "/login"
+[00:14:44.693] Server  LOG     Middleware hitting path: "/login"
+[00:14:44.698] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:45.251] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:45.848] Server  LOG     Middleware hitting path: "/login"
+[00:14:46.121] Server  LOG     Middleware hitting path: "/login"
+[00:14:46.125] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:46.675] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:47.275] Server  LOG     Middleware hitting path: "/login"
+[00:14:47.563] Server  LOG     Middleware hitting path: "/login"
+[00:14:47.566] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:48.119] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:48.806] Server  LOG     Middleware hitting path: "/login"
+[00:14:49.086] Server  LOG     Middleware hitting path: "/login"
+[00:14:49.089] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:49.640] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:50.254] Server  LOG     Middleware hitting path: "/login"
+[00:14:50.537] Server  LOG     Middleware hitting path: "/login"
+[00:14:50.540] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:51.240] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:51.834] Server  LOG     Middleware hitting path: "/login"
+[00:14:52.115] Server  LOG     Middleware hitting path: "/login"
+[00:14:52.117] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:52.669] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:53.271] Server  LOG     Middleware hitting path: "/login"
+[00:14:53.548] Server  LOG     Middleware hitting path: "/login"
+[00:14:53.552] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:54.089] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:54.696] Server  LOG     Middleware hitting path: "/login"
+[00:14:54.979] Server  LOG     Middleware hitting path: "/login"
+[00:14:54.982] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:55.516] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:56.104] Server  LOG     Middleware hitting path: "/login"
+[00:14:56.378] Server  LOG     Middleware hitting path: "/login"
+[00:14:56.381] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:56.937] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:57.535] Server  LOG     Middleware hitting path: "/login"
+[00:14:58.013] Server  LOG     Middleware hitting path: "/login"
+[00:14:58.018] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:58.562] Server  LOG     Middleware hitting path: "/dashboard"
+[00:14:59.288] Server  LOG     Middleware hitting path: "/login"
+[00:14:59.560] Server  LOG     Middleware hitting path: "/login"
+[00:14:59.563] Server  LOG     Middleware hitting path: "/dashboard"
+[00:15:00.116] Server  LOG     Middleware hitting path: "/dashboard"
+[00:15:00.701] Server  LOG     Middleware hitting path: "/login"
+[00:15:00.978] Server  LOG     Middleware hitting path: "/login"
+[00:15:00.981] Server  LOG     Middleware hitting path: "/dashboard"
+[00:15:01.543] Server  LOG     Middleware hitting path: "/dashboard"
+[00:15:02.150] Server  LOG     Middleware hitting path: "/login"
+[00:15:03.323] Server  LOG     Middleware hitting path: "/login"
+[00:15:03.330] Server  LOG     Middleware hitting path: "/dashboard"
+[00:15:04.125] Server  LOG      ✓ Compiled in 735ms
+[00:15:04.302] Server  LOG     Middleware hitting path: "/dashboard"
+[00:15:05.363] Server  LOG     Middleware hitting path: "/login"
+[00:15:05.770] Server  LOG     Middleware hitting path: "/login"
+[00:15:05.774] Server  LOG     Middleware hitting path: "/dashboard"
+[00:15:14.117] Server  LOG      ✓ Compiled in 656ms
+[00:15:14.179] Server  LOG     Middleware hitting path: "/dashboard"
+[00:15:19.661] Server  LOG     Middleware hitting path: "/login"
+[00:15:20.848] Server  LOG     Middleware hitting path: "/login"
+[00:15:48.371] Server  LOG      ✓ Compiled in 862ms
+[00:15:56.426] Server  LOG      ✓ Compiled in 254ms
+[00:16:23.819] Server  LOG      ✓ Compiled in 402ms
+[00:16:43.287] Server  LOG      ✓ Compiled in 370ms
+[00:17:18.161] Server  LOG      ✓ Compiled in 276ms
+[00:18:42.207] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:18:42.207] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:18:42.209] Browser LOG     Browser Session Status: Logged in as 998901234567@gmail.com
+[00:18:42.209] Browser LOG     Browser Session Status: Logged in as 998901234567@gmail.com
+[00:20:22.779] Server  LOG     Middleware hitting path: "/dashboard"
+[00:20:28.743] Server  LOG     Middleware hitting path: "/"
+[00:20:31.817] Server  LOG     Middleware hitting path: "/dashboard"
+[00:20:32.902] Server  ERROR    ⨯ TypeError: controller[kState].transformAlgorithm is not a function
+[00:20:32.919] Server  LOG     Middleware hitting path: "/"
+[00:20:34.773] Server  LOG     Middleware hitting path: "/dashboard"
+[00:20:36.446] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:20:36.978] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:20:36.978] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:20:36.978] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771912595621} /_vercel/insights/view
+[00:20:37.018] Server  LOG     Middleware hitting path: "/login"
+[00:20:37.341] Server  LOG     Middleware hitting path: "/dashboard"
+[00:20:39.237] Server  LOG      ✓ Compiled in 2.3s
+[00:20:39.348] Server  LOG     Middleware hitting path: "/login"
+[00:20:39.359] Server  LOG     Middleware hitting path: "/admin"
+[00:21:05.784] Server  LOG      ✓ Compiled in 638ms
+[00:21:38.105] Server  LOG      ✓ Compiled in 461ms
+[00:23:32.819] Server  LOG      ✓ Compiled in 385ms
+[00:23:41.674] Server  LOG      ✓ Compiled in 635ms
+[00:23:48.020] Server  LOG      ✓ Compiled in 132ms
+[00:24:18.653] Server  LOG      ✓ Compiled in 308ms
+[00:24:53.131] Server  LOG      ✓ Compiled in 154ms
+[00:25:32.303] Server  LOG      ✓ Compiled in 269ms
+[00:26:02.781] Server  LOG      ✓ Compiled in 331ms
+[00:26:25.938] Server  LOG      ✓ Compiled in 240ms
+[00:26:26.988] Browser ERROR   ./components/admin/prices-management.tsx:165:6
 Parsing ecmascript source code failed
-  17 |
-  18 |   return (
-> 19 | export function AboutSection() {
-     | ^^^^^^
-  20 |     const { t } = useTranslation()
-  21 |     const [mounted, setMounted] = useState(false)
-  22 |
+  163 |       </div>
+  164 |     </div>
+> 165 |     </div >
+      |      ^^^^^^
+  166 |   )
+  167 | }
+  168 |
 
-Expression expected
+Unterminated regexp literal
 
 Import trace:
   Server Component:
-    ./components/AboutSection.tsx
-    ./app/page.tsx
-[00:10:10.334] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:10:10.335] Browser ERROR   ./components/AboutSection.tsx:19:1
-Parsing ecmascript source code failed
-  17 |
-  18 |   return (
-> 19 | export function AboutSection() {
-     | ^^^^^^
-  20 |     const { t } = useTranslation()
-  21 |     const [mounted, setMounted] = useState(false)
-  22 |
-
-Expression expected
-
-Import trace:
-  Server Component:
-    ./components/AboutSection.tsx
-    ./app/page.tsx
-[00:10:10.335] Browser ERROR   ./components/ContactSection.tsx:25:1
-Parsing ecmascript source code failed
-  23 |
-  24 |   return (
-> 25 | export function ContactSection({ contact }: ContactSectionProps) {
-     | ^^^^^^
-  26 |     const { t } = useTranslation()
-  27 |     const [mounted, setMounted] = useState(false)
-  28 |
-
-Expression expected
-
-Import trace:
-  Server Component:
-    ./components/ContactSection.tsx
-    ./app/page.tsx
-[00:10:40.330] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:10:40.330] Browser ERROR   ./components/ContactSection.tsx:25:1
-Parsing ecmascript source code failed
-  23 |
-  24 |   return (
-> 25 | export function ContactSection({ contact }: ContactSectionProps) {
-     | ^^^^^^
-  26 |     const { t } = useTranslation()
-  27 |     const [mounted, setMounted] = useState(false)
-  28 |
-
-Expression expected
-
-Import trace:
-  Server Component:
-    ./components/ContactSection.tsx
-    ./app/page.tsx
-[00:10:41.320] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:11:08.330] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:11:21.021] Server  LOG      ✓ Compiled in 604ms
-[00:11:21.340] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:11:21.340] Browser ERROR   ./components/navbar.tsx:68:3
-Parsing ecmascript source code failed
-  66 |
-  67 |   return (
-> 68 |   return (
-     |   ^^^^^^
-  69 |     <header className="sticky top-0 z-50 px-4 pt-4 transition-all duration-300">
-  70 |       <div className="container mx-auto flex h-16 items-center justify-between px-6 rounded-2xl glass-dark border-white/10 shadow-2xl backdrop-blur-xl">
-  71 |         <Link href="/dashboard" className="flex items-center gap-3 hover:scale-105 transition-all group">
-
-Expression expected
-
-Import trace:
-  Server Component:
-    ./components/navbar.tsx
-    ./app/dashboard/page.tsx
-[00:11:30.513] Server  LOG      ✓ Compiled in 206ms
-[00:11:31.331] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:11:31.331] Browser ERROR   ./components/navbar.tsx:68:3
-Parsing ecmascript source code failed
-  66 |
-  67 |   return (
-> 68 |   return (
-     |   ^^^^^^
-  69 |     <header className="sticky top-0 z-50 px-4 pt-4 transition-all duration-300">
-  70 |       <div className="container mx-auto flex h-16 items-center justify-between px-6 rounded-2xl glass-dark border-white/10 shadow-2xl backdrop-blur-xl">
-  71 |         <Link href="/dashboard" className="flex items-center gap-3 hover:scale-105 transition-all group">
-
-Expression expected
-
-Import trace:
-  Server Component:
-    ./components/navbar.tsx
-    ./app/dashboard/page.tsx
-[00:12:08.330] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:12:08.331] Browser ERROR   ./components/navbar.tsx:68:3
-Parsing ecmascript source code failed
-  66 |
-  67 |   return (
-> 68 |   return (
-     |   ^^^^^^
-  69 |     <header className="sticky top-0 z-50 px-4 pt-4 transition-all duration-300">
-  70 |       <div className="container mx-auto flex h-16 items-center justify-between px-6 rounded-2xl glass-dark border-white/10 shadow-2xl backdrop-blur-xl">
-  71 |         <Link href="/dashboard" className="flex items-center gap-3 hover:scale-105 transition-all group">
-
-Expression expected
-
-Import trace:
-  Server Component:
-    ./components/navbar.tsx
-    ./app/dashboard/page.tsx
-[00:12:31.030] Server  LOG      ✓ Compiled in 895ms
-[00:12:31.325] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:13:04.336] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:13:04.336] Browser ERROR   ./app/topics/page.tsx:49:5
-Parsing ecmascript source code failed
-  47 |
-  48 |     return (
-> 49 |     return (
-     |     ^^^^^^
-  50 |         <div className="min-h-screen bg-slate-950 relative overflow-hidden">
-  51 |             {/* Background Blobs */}
-  52 |             <div className="absolute top-0 -left-20 w-[40rem] h-[40rem] bg-primary/10 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 animate-blob" />
-
-Expression expected
-[00:13:05.326] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:13:05.327] Browser ERROR   ./app/topics/page.tsx:49:5
-Parsing ecmascript source code failed
-  47 |
-  48 |     return (
-> 49 |     return (
-     |     ^^^^^^
-  50 |         <div className="min-h-screen bg-slate-950 relative overflow-hidden">
-  51 |             {/* Background Blobs */}
-  52 |             <div className="absolute top-0 -left-20 w-[40rem] h-[40rem] bg-primary/10 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 animate-blob" />
-
-Expression expected
-[00:13:05.327] Browser ERROR   ./app/tickets/page.tsx:142:3
-Parsing ecmascript source code failed
-  140 |   )
-  141 | }
-> 142 |   )
-      |   ^
-  143 | }
-
-Expression expected
-[00:13:53.326] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:13:53.326] Browser ERROR   ./app/tickets/page.tsx:142:3
-Parsing ecmascript source code failed
-  140 |   )
-  141 | }
-> 142 |   )
-      |   ^
-  143 | }
-
-Expression expected
-[00:15:51.334] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:15:53.336] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:16:29.330] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:17:03.325] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:18:17.327] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:18:38.325] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:18:51.319] Browser ERROR   ./app/global.css
-Error evaluating Node.js code
-CssSyntaxError: tailwindcss: D:\imedteam\avtotest\app\global.css:1:1: Cannot apply unknown utility class `shadow-[0_8px_32px_0_rgba(31,`
-    [at Input.error (turbopack:///[project]/node_modules/postcss/lib/input.js:135:16)]
-    [at Root.error (turbopack:///[project]/node_modules/postcss/lib/node.js:146:32)]
-    [at Object.Once (D:\imedteam\avtotest\node_modules\@tailwindcss\postcss\dist\index.js:10:6911)]
-    [at async LazyResult.runAsync (turbopack:///[project]/node_modules/postcss/lib/lazy-result.js:293:11)]
-    [at async transform (turbopack:///[turbopack-node]/transforms/postcss.ts:70:34)]
-    [at async run (turbopack:///[turbopack-node]/ipc/evaluate.ts:92:23)]
-
-Import trace:
-  Client Component Browser:
-    ./app/global.css [Client Component Browser]
-    ./app/layout.tsx [Server Component]
-[00:19:08.156] Server  LOG      ✓ Compiled in 2.8s
-[00:19:08.442] Server  LOG     Middleware hitting path: "/dashboard"
-[00:19:12.331] Server  LOG     Middleware hitting path: "/dashboard"
-[00:19:13.439] Server  LOG     Middleware hitting path: "/dashboard"
-[00:19:14.152] Server  LOG     Middleware hitting path: "/dashboard"
-[00:19:14.865] Server  LOG     Middleware hitting path: "/dashboard"
-[00:19:15.847] Server  LOG     Middleware hitting path: "/dashboard"
+    ./components/admin/prices-management.tsx
+    ./app/admin/page.tsx
+[00:26:33.116] Server  LOG      ✓ Compiled in 67ms
+[00:26:33.296] Server  LOG     Middleware hitting path: "/admin"
+[00:26:54.733] Server  LOG      ✓ Compiled in 1445ms
+[00:27:57.382] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:27:57.382] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:27:57.383] Browser LOG     Browser Session Status: Logged in as 998901234567@gmail.com
+[00:27:57.383] Browser LOG     Browser Session Status: Logged in as 998901234567@gmail.com
+[00:28:18.555] Server  LOG      ✓ Compiled in 1633ms
+[00:28:22.889] Server  LOG      ✓ Compiled in 292ms
+[00:28:42.141] Server  LOG      ✓ Compiled in 269ms
+[00:28:42.291] Server  LOG     Middleware hitting path: "/admin"
+[00:29:41.494] Server  LOG     Middleware hitting path: "/admin"
+[00:30:04.641] Server  LOG     Middleware hitting path: "/settings"
+[00:30:09.169] Server  LOG      ○ Compiling /settings ...
+[00:30:22.588] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/settings color: rgb(120, 120, 120) color: inherit {"dp":"/settings","o":"http://localhost:3000/settings","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771913181225} /_vercel/insights/view
+[00:30:22.596] Server  LOG     Middleware hitting path: "/admin"
+[00:30:23.555] Server  LOG     Middleware hitting path: "/admin"
+[00:30:25.799] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771913184433} /_vercel/insights/view
+[00:31:21.239] Server  LOG      ✓ Compiled in 1436ms
+[00:31:31.099] Server  LOG      ✓ Compiled in 573ms

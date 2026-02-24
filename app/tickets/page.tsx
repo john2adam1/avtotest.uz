@@ -24,6 +24,11 @@ export default async function TicketsPage() {
 
   if (!userData) redirect("/login")
 
+  // Redirect admin to admin page instead of user tickets
+  if (userData.role === "admin") {
+    redirect("/admin")
+  }
+
   const hasAccess = hasActiveAccess(userData)
 
   // Fetch all tickets

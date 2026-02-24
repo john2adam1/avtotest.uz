@@ -42,6 +42,11 @@ async function TicketTestContent({ params }: { params: Promise<{ ticketId: strin
     console.log("Ticket Debug: Redirecting - No User Data")
     redirect("/dashboard")
   }
+
+  // Redirect admin to admin panel instead of user functions
+  if (userData.role === "admin") {
+    redirect("/admin")
+  }
   if (!ticket || !ticketTests || ticketTests.length === 0) {
     console.log("Ticket Debug: Redirecting - No Ticket Data")
     redirect("/dashboard")

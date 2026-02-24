@@ -21,6 +21,11 @@ export default async function AnswersPage() {
     const { data: userData } = await supabase.from("users").select("*").eq("id", user.id).single()
     if (!userData) redirect("/login")
 
+    // Redirect admin to admin page instead of user-side answers
+    if (userData.role === "admin") {
+        redirect("/admin")
+    }
+
     // Fetch all tests
     const { data: tests } = await supabase
         .from("tests")

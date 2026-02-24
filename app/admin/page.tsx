@@ -36,53 +36,66 @@ export default async function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#e9f6ff]">
+    <div className="min-h-screen bg-slate-950 relative overflow-hidden">
+      {/* Background Lighting Effects */}
+      <div className="absolute top-0 -left-20 w-[40rem] h-[40rem] bg-primary/10 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 animate-blob" />
+      <div className="absolute top-1/2 -right-20 w-[30rem] h-[30rem] bg-blue-500/10 rounded-full mix-blend-multiply filter blur-[100px] opacity-10 animate-blob animation-delay-2000" />
+
       <Navbar userEmail={user.email} isAdmin={true} />
 
-      <main className="container mx-auto px-4 py-12">
-        <div className="pb-6 border-b-2 border-gray-300 mb-10">
-          <h1 className="text-4xl font-bold uppercase tracking-widest text-[#0f172a]">Admin Panel</h1>
-        </div>
+      <main className="container mx-auto px-4 py-8 relative z-10">
+        <Tabs defaultValue="users" className="space-y-8">
+          <div className="glass-dark border border-white/5 p-1.5 rounded-2xl shadow-2xl overflow-x-auto no-scrollbar">
+            <TabsList className="flex w-max lg:w-full bg-transparent gap-1.5 h-auto p-0">
+              {[
+                { value: "users", label: "Foydalanuvchilar" },
+                { value: "topics", label: "Mavzular" },
+                { value: "tests", label: "Testlar" },
+                { value: "tickets", label: "Biletlar" },
+                { value: "carousel", label: "Karousel" },
+                { value: "prices", label: "Narxlar" },
+                { value: "contact", label: "Bog'lanish" },
+              ].map((tab) => (
+                <TabsTrigger
+                  key={tab.value}
+                  value={tab.value}
+                  className="px-4 py-2.5 font-bold text-xs tracking-wide rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 text-slate-400 hover:text-white transition-all duration-300"
+                >
+                  {tab.label}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
 
-        <Tabs defaultValue="users" className="space-y-10">
-          <TabsList className="grid w-full grid-cols-7 bg-gray-200 p-1 border-2 border-gray-300 h-auto">
-            <TabsTrigger value="users" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Foydalanuvchilar</TabsTrigger>
-            <TabsTrigger value="topics" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Mavzular</TabsTrigger>
-            <TabsTrigger value="tests" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Testlar</TabsTrigger>
-            <TabsTrigger value="tickets" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Biletlar</TabsTrigger>
-            <TabsTrigger value="carousel" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Karousel</TabsTrigger>
-            <TabsTrigger value="prices" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Narxlar</TabsTrigger>
-            <TabsTrigger value="contact" className="py-4 font-bold rounded-none data-[state=active]:bg-[#1976d2] data-[state=active]:text-white">Bog'lanish</TabsTrigger>
-          </TabsList>
-          {/* ... tabs content sits directly on background ... */}
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <TabsContent value="users">
+              <UsersManagement />
+            </TabsContent>
 
-          <TabsContent value="users">
-            <UsersManagement />
-          </TabsContent>
+            <TabsContent value="topics">
+              <TopicsManagement />
+            </TabsContent>
 
-          <TabsContent value="topics">
-            <TopicsManagement />
-          </TabsContent>
+            <TabsContent value="tests">
+              <TestsManagement />
+            </TabsContent>
 
-          <TabsContent value="tests">
-            <TestsManagement />
-          </TabsContent>
+            <TabsContent value="tickets">
+              <TicketsManagement />
+            </TabsContent>
 
-          <TabsContent value="tickets">
-            <TicketsManagement />
-          </TabsContent>
+            <TabsContent value="carousel">
+              <CarouselManagement />
+            </TabsContent>
 
-          <TabsContent value="carousel">
-            <CarouselManagement />
-          </TabsContent>
+            <TabsContent value="prices">
+              <PricesManagement />
+            </TabsContent>
 
-          <TabsContent value="prices">
-            <PricesManagement />
-          </TabsContent>
-
-          <TabsContent value="contact">
-            <ContactManager />
-          </TabsContent>
+            <TabsContent value="contact">
+              <ContactManager />
+            </TabsContent>
+          </div>
         </Tabs>
       </main>
     </div>

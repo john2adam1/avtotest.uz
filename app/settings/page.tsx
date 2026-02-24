@@ -15,6 +15,11 @@ export default async function SettingsPage() {
 
   if (!userData) redirect("/login")
 
+  // Redirect admin to admin page instead of user settings
+  if (userData.role === "admin") {
+    redirect("/admin")
+  }
+
   // Get or create user settings
   let { data: userSettings } = await supabase
     .from("user_settings")

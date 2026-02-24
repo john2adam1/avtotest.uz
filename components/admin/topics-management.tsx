@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useToast } from "@/hooks/use-toast"
-import { Trash2, Edit2 } from "lucide-react"
+import { Trash2, Edit2, Plus } from "lucide-react"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Badge } from "@/components/ui/badge"
 import type { Topic } from "@/lib/types"
@@ -132,85 +132,130 @@ export function TopicsManagement() {
   }
 
   return (
-    <div className="space-y-12">
-      <div className="space-y-6">
-        <div className="pb-4 border-b-2 border-gray-300">
-          <h2 className="text-2xl font-bold uppercase tracking-wide">{editingTopic ? "Mavzuni tahrirlash" : "Mavzu yaratish"}</h2>
-          <p className="text-gray-500">
-            {editingTopic ? "Mavzu haqida ma'lumotlarni yangilash" : "Yangi mavzu yaratish"}
-          </p>
+    <div className="space-y-8 animate-in fade-in duration-700">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/5">
+        <div>
+          <h2 className="text-xl font-black text-white tracking-tight uppercase italic">Mavzular</h2>
+          <p className="text-slate-400 text-xs font-medium mt-1">O'quv dasturi mavzularini boshqarish</p>
         </div>
-
-        <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
-          <div className="space-y-3">
-            <Label htmlFor="title" className="text-lg font-bold">Mavzu nomi</Label>
-            <Input
-              id="title"
-              className="h-14 border-2 border-gray-300 rounded-none bg-white text-lg font-bold"
-              placeholder="Mavzu nomini kiriting..."
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              required
-            />
-          </div>
-
-          <div className="flex items-center space-x-3 bg-white p-4 border-2 border-gray-300">
-            <Checkbox
-              id="is-public"
-              checked={isPublic}
-              className="h-6 w-6 rounded-none border-2 border-gray-400 data-[state=checked]:bg-[#1976d2] data-[state=checked]:border-[#1976d2]"
-              onCheckedChange={(v) => setIsPublic(Boolean(v))}
-            />
-            <Label htmlFor="is-public" className="text-lg font-bold cursor-pointer">Ommaviy (bepul)</Label>
-          </div>
-
-          <div className="flex gap-4 pt-4">
-            <Button type="submit" className="h-14 px-10 bg-[#1976d2] text-white font-bold text-xl uppercase flex-1">
-              {editingTopic ? "Mavzuni tahrirlash" : "Mavzu yaratish"}
-            </Button>
-            {editingTopic && (
-              <Button type="button" variant="outline" className="h-14 px-8 border-2 border-gray-400 font-bold" onClick={resetForm}>
-                Bekor qilish
-              </Button>
-            )}
-          </div>
-        </form>
+        <div className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-slate-400 text-[10px] font-bold uppercase">
+          Jami: {topics.length} mavzu
+        </div>
       </div>
 
-      <div className="space-y-6">
-        <div className="pb-4 border-b-2 border-gray-300">
-          <h2 className="text-2xl font-bold uppercase tracking-wide">Mavzular ro'yxati</h2>
-          <p className="text-gray-500 text-lg">Barcha mavzular</p>
+      <div className="grid gap-8 lg:grid-cols-12 items-start">
+        {/* Topic Creation / Editing Form */}
+        <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-32">
+          <div className="glass-dark border border-white/5 rounded-3xl p-6 shadow-2xl relative overflow-hidden group">
+            <div className="absolute -right-20 -top-20 w-48 h-48 bg-primary/5 rounded-full blur-3xl opacity-50 transition-opacity duration-500" />
+
+            <div className="relative z-10 space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/20">
+                  <Edit2 className="h-4 w-4 text-primary" />
+                </div>
+                <h3 className="text-lg font-black text-white tracking-tight uppercase">
+                  {editingTopic ? "Tahrirlash" : "Yaratish"}
+                </h3>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="title" className="text-slate-400 text-xs ml-1 font-bold uppercase tracking-widest">Mavzu nomi</Label>
+                  <Input
+                    id="title"
+                    className="h-11 bg-white/5 border-white/10 rounded-xl text-white text-sm font-bold placeholder:text-slate-600 focus:ring-primary/50 focus:border-primary transition-all px-4"
+                    placeholder="Mavzu nomini kiriting..."
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="flex items-center space-x-3 bg-white/5 p-3 rounded-xl border border-white/5 hover:bg-white/10 transition-colors cursor-pointer group/check" onClick={() => setIsPublic(!isPublic)}>
+                  <Checkbox
+                    id="is-public"
+                    checked={isPublic}
+                    className="h-5 w-5 rounded-md border-2 border-slate-600 data-[state=checked]:bg-success data-[state=checked]:border-success transition-all"
+                    onCheckedChange={(v) => setIsPublic(Boolean(v))}
+                  />
+                  <div className="flex-1">
+                    <Label htmlFor="is-public" className="text-sm font-bold text-slate-200 cursor-pointer select-none">Ommaviy (bepul)</Label>
+                    <p className="text-[10px] text-slate-500 font-medium">Bu mavzu barcha uchun ochiq</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-2 pt-2">
+                  <Button type="submit" className="h-11 flex-1 bg-primary hover:bg-primary/90 text-white font-black text-sm rounded-xl shadow-lg shadow-primary/20 transition-all border-none">
+                    {editingTopic ? "Saqlash" : "Yaratish"}
+                  </Button>
+                  {editingTopic && (
+                    <Button type="button" variant="ghost" className="h-11 px-4 rounded-xl bg-white/5 hover:bg-white/10 text-white font-bold border border-white/5 transition-all" onClick={resetForm}>
+                      X
+                    </Button>
+                  )}
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
 
-        {loading ? (
-          <div className="text-center py-12 text-xl font-bold">Mavzular yuklanmoqda...</div>
-        ) : topics.length === 0 ? (
-          <div className="py-12 border-2 border-dashed border-gray-300 bg-white text-center text-xl font-bold text-gray-500 italic">
-            Hozircha mavzular mavjud emas. Birinchi mavzuni yarating!
+        {/* Topics List */}
+        <div className="lg:col-span-8 space-y-6">
+          <div className="flex items-center justify-between px-2">
+            <h3 className="text-lg font-black text-white tracking-tight italic uppercase">Mavzular Ro'yxati</h3>
           </div>
-        ) : (
-          <div className="space-y-4">
-            {topics.map((topic) => (
-              <div key={topic.id} className="flex items-center justify-between border-2 border-gray-300 p-5 bg-white">
-                <div className="flex items-center gap-6">
-                  <span className="text-xl font-bold">{topic.title}</span>
-                  <Badge className={`h-10 px-5 rounded-none text-base font-bold uppercase border-none ${topic.is_public ? "bg-[#3ca64c] text-white" : "bg-red-600 text-white"}`}>
-                    {topic.is_public ? "Public" : "Premium"}
-                  </Badge>
-                </div>
-                <div className="flex gap-2">
-                  <Button className="h-12 w-12 bg-gray-100 text-gray-700 border-2 border-gray-300 flex items-center justify-center p-0" onClick={() => handleEdit(topic)}>
-                    <Edit2 className="h-5 w-5" />
-                  </Button>
-                  <Button className="h-12 w-12 bg-red-50 text-red-600 border-2 border-red-200 flex items-center justify-center p-0" onClick={() => handleDelete(topic.id)}>
-                    <Trash2 className="h-5 w-5" />
-                  </Button>
-                </div>
+
+          {loading ? (
+            <div className="flex flex-col items-center justify-center py-16 glass-dark border border-white/5 rounded-3xl">
+              <div className="w-8 h-8 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-3" />
+              <p className="text-slate-500 font-bold uppercase tracking-widest text-[10px]">Yuklanmoqda...</p>
+            </div>
+          ) : topics.length === 0 ? (
+            <div className="py-16 glass-dark border border-white/5 rounded-3xl text-center space-y-3">
+              <div className="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center mx-auto">
+                <Plus className="h-6 w-6 text-slate-700" />
               </div>
-            ))}
-          </div>
-        )}
+              <p className="text-slate-500 text-sm font-bold italic">Hozircha mavzular mavjud emas.</p>
+            </div>
+          ) : (
+            <div className="grid gap-3">
+              {topics.map((topic) => (
+                <div key={topic.id} className="group flex items-center justify-between glass-dark border border-white/5 hover:border-white/10 p-3 pl-4 rounded-2xl transition-all duration-300 hover:translate-x-1 shadow-md">
+                  <div className="flex items-center gap-4">
+                    <div className="h-10 w-10 rounded-xl bg-white/5 border border-white/5 flex items-center justify-center font-black text-sm text-primary transition-transform group-hover:scale-105">
+                      {topic.title.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-black text-white tracking-tight">{topic.title}</span>
+                      <Badge className={`h-5 w-fit px-2 rounded-md text-[8px] font-black uppercase tracking-widest border-none mt-1 ${topic.is_public ? "bg-success/20 text-success" : "bg-destructive/20 text-destructive"}`}>
+                        {topic.is_public ? "Bepul" : "Premium"}
+                      </Badge>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-9 w-9 bg-white/5 hover:bg-white/10 text-white border border-white/5 rounded-lg flex items-center justify-center p-0 transition-all"
+                      onClick={() => handleEdit(topic)}
+                    >
+                      <Edit2 className="h-3.5 w-3.5" />
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-9 w-9 bg-destructive/10 hover:bg-destructive/20 text-destructive border border-destructive/20 rounded-lg flex items-center justify-center p-0 transition-all"
+                      onClick={() => handleDelete(topic.id)}
+                    >
+                      <Trash2 className="h-3.5 w-3.5" />
+                    </Button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

@@ -176,111 +176,153 @@ export function UsersManagement() {
 
 
   return (
-    <div className="space-y-6">
-      <div className="pb-4 border-b-2 border-gray-300">
-        <h2 className="text-2xl font-bold">Foydalanuvchi boshqarish</h2>
-        <p className="text-gray-500">Foydalanuvchi abonemalarini va kirishlarini boshqarish</p>
+    <div className="space-y-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/5">
+        <div>
+          <h2 className="text-xl font-black text-white tracking-tight italic uppercase">Foydalanuvchilar</h2>
+          <p className="text-slate-400 text-xs font-medium mt-1">Platforma foydalanuvchilarini boshqarish va statistika</p>
+        </div>
+        <div className="px-3 py-1.5 rounded-xl bg-white/5 border border-white/5 text-slate-400 text-xs font-bold">
+          Jami: {users.length}
+        </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="grid gap-2">
         {users.map((user) => (
-          <div key={user.id} className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:items-center sm:justify-between border-2 border-gray-300 p-6 bg-white">
-            <div className="space-y-3 flex-1">
-              <div className="flex items-center gap-3">
-                <p className="text-xl font-bold">{user.email}</p>
-                {user.role === "admin" && <Badge variant="secondary" className="rounded-none bg-gray-200">Admin</Badge>}
+          <div key={user.id} className="glass-dark border border-white/5 rounded-2xl p-3 transition-all duration-300 hover:border-white/10 group relative overflow-hidden">
+            <div className="absolute -right-20 -top-20 w-32 h-32 bg-primary/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <div className="flex flex-col lg:flex-row lg:items-center gap-4 relative z-10">
+              <div className="flex-1 space-y-2">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <p className="text-sm font-black text-white tracking-tight">{user.email}</p>
+                  {user.role === "admin" && (
+                    <Badge className="rounded-md bg-primary/20 text-primary border border-primary/20 hover:bg-primary/30 px-1.5 py-0 text-[8px] font-black uppercase">
+                      Admin
+                    </Badge>
+                  )}
+                </div>
+
+                <div className="flex items-center gap-3 flex-wrap text-[10px]">
+                  <div className="flex items-center gap-1 text-slate-500 font-bold">
+                    <span className="w-1 h-1 rounded-full bg-slate-700" />
+                    ID: <span className="text-slate-400">{user.id.slice(0, 8)}</span>
+                  </div>
+                  {user.subscription_end && (
+                    <div className="flex items-center gap-1 text-slate-500 font-bold">
+                      <span className="w-1 h-1 rounded-full bg-success" />
+                      Abonemasi: <span className="text-success">{new Date(user.subscription_end).toLocaleDateString()}</span>
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex gap-1.5 flex-wrap">
+                  <div className="px-2 py-0.5 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[9px] font-black uppercase tracking-wider">
+                    {userStats[user.id]?.examAvg || 0}%
+                  </div>
+                  <div className="px-2 py-0.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[9px] font-black uppercase tracking-wider">
+                    {userStats[user.id]?.ticketAvg || 0}%
+                  </div>
+                  <div className="px-2 py-0.5 rounded-lg bg-purple-500/10 border border-purple-500/20 text-purple-400 text-[9px] font-black uppercase tracking-wider">
+                    {userStats[user.id]?.topicAvg || 0}%
+                  </div>
+                </div>
               </div>
-              <div className="text-lg text-gray-600">
-                {user.subscription_end && (
-                  <span>Abonemasi: {new Date(user.subscription_end).toLocaleDateString()}</span>
+
+              <div className="flex flex-wrap items-center gap-2 border-t lg:border-t-0 lg:border-l border-white/5 pt-3 lg:pt-0 lg:pl-4">
+                <Button
+                  variant="ghost"
+                  className="h-8 px-3 rounded-lg bg-white/5 hover:bg-white/10 text-white text-[10px] font-bold transition-all border border-white/5"
+                  onClick={() => {
+                    setSelectedUser(user)
+                    setResetPasswordOpen(true)
+                  }}
+                >
+                  <KeyRound className="mr-1.5 h-3 w-3 text-primary" />
+                  Parol
+                </Button>
+
+                {hasActiveSubscription(user) ? (
+                  <div className="flex items-center gap-2">
+                    <div className="h-8 px-3 rounded-lg bg-success/10 border border-success/20 text-success flex items-center shadow-lg shadow-success/5">
+                      <CheckCircle2 className="mr-1.5 h-3 w-3" />
+                      <span className="font-black uppercase tracking-widest text-[9px]">Aktiv</span>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      className="h-8 px-3 rounded-lg bg-destructive/10 hover:bg-destructive/20 text-destructive border border-destructive/20 text-[10px] font-bold transition-all"
+                      onClick={() => revokeSubscription(user.id)}
+                    >
+                      Bekor qilish
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <div className="h-8 px-3 rounded-lg bg-slate-900/50 border border-white/5 text-slate-500 flex items-center">
+                      <XCircle className="mr-1.5 h-3 w-3" />
+                      <span className="font-black uppercase tracking-widest text-[9px] text-slate-600">FAOL EMAS</span>
+                    </div>
+                    <Button
+                      size="sm"
+                      className="h-8 px-4 bg-primary hover:bg-primary/90 text-white font-black rounded-lg shadow-lg shadow-primary/20 transition-all border-none text-[10px]"
+                      onClick={() => grantSubscription(user.id)}
+                    >
+                      Grant 1 Oy
+                    </Button>
+                  </div>
                 )}
               </div>
-              <div className="flex gap-4 text-sm font-bold mt-2">
-                <span className="bg-blue-50 text-blue-700 px-3 py-1 border border-blue-200">
-                  Imtihon: {userStats[user.id]?.examAvg || 0}%
-                </span>
-                <span className="bg-green-50 text-green-700 px-3 py-1 border border-green-200">
-                  Bilet: {userStats[user.id]?.ticketAvg || 0}%
-                </span>
-                <span className="bg-purple-50 text-purple-700 px-3 py-1 border border-purple-200">
-                  Mavzu: {userStats[user.id]?.topicAvg || 0}%
-                </span>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 sm:ml-6">
-              <Button
-                variant="outline"
-                className="h-12 px-6 border-2 border-[#1976d2] text-[#1976d2] bg-white"
-                onClick={() => {
-                  setSelectedUser(user)
-                  setResetPasswordOpen(true)
-                }}
-              >
-                <KeyRound className="mr-2 h-5 w-5" />
-                Parol
-              </Button>
-
-              {hasActiveSubscription(user) ? (
-                <>
-                  <Badge variant="default" className="h-12 px-4 rounded-none bg-[#3ca64c] text-white border-none flex items-center">
-                    <CheckCircle2 className="mr-2 h-5 w-5" />
-                    Aktiv
-                  </Badge>
-                  <Button variant="outline" className="h-12 px-6 border-2 border-red-600 text-red-600 bg-white" onClick={() => revokeSubscription(user.id)}>
-                    Bekor qilish
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Badge variant="destructive" className="h-12 px-4 rounded-none bg-red-600 text-white border-none flex items-center">
-                    <XCircle className="mr-2 h-5 w-5" />
-                    Abonemasi yo'q
-                  </Badge>
-                  <Button className="h-12 px-6 bg-[#1976d2] text-white" onClick={() => grantSubscription(user.id)}>
-                    Abonemani taqdim etish (1 oy)
-                  </Button>
-                </>
-              )}
             </div>
           </div>
         ))}
       </div>
 
       <Dialog open={resetPasswordOpen} onOpenChange={setResetPasswordOpen}>
-        <DialogContent className="rounded-none border-4 border-[#1976d2]">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-bold">Parolni o'zgartirish</DialogTitle>
-            <DialogDescription className="text-lg">
-              Foydalanuvchi: {selectedUser?.email}
+        <DialogContent className="glass-dark border-white/10 rounded-[2.5rem] p-8 shadow-3xl text-white max-w-md">
+          <DialogHeader className="mb-6">
+            <DialogTitle className="text-3xl font-black tracking-tight">Parolni yangilash</DialogTitle>
+            <DialogDescription className="text-slate-400 font-medium">
+              Foydalanuvchi: <span className="text-white font-bold">{selectedUser?.email}</span>
             </DialogDescription>
           </DialogHeader>
           <form onSubmit={handlePasswordReset} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="new-password">Yangi parol</Label>
+              <Label htmlFor="new-password" className="text-slate-300 ml-1">Yangi parol</Label>
               <Input
                 id="new-password"
                 type="password"
-                className="h-12 rounded-none border-2 border-gray-300"
+                className="h-14 rounded-2xl bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:ring-primary/50 focus:border-primary transition-all"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
                 required
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="confirm-password">Parolni tasdiqlash</Label>
+              <Label htmlFor="confirm-password" className="text-slate-300 ml-1">Parolni tasdiqlash</Label>
               <Input
                 id="confirm-password"
                 type="password"
-                className="h-12 rounded-none border-2 border-gray-300"
+                className="h-14 rounded-2xl bg-white/5 border-white/10 text-white placeholder:text-slate-500 focus:ring-primary/50 focus:border-primary transition-all"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 required
               />
             </div>
-            <DialogFooter className="pt-4">
-              <Button type="button" variant="outline" className="h-12 px-8 border-2 border-gray-400" onClick={() => setResetPasswordOpen(false)}>Bekor qilish</Button>
-              <Button type="submit" className="h-12 px-8 bg-[#1976d2] text-white" disabled={updatingPassword}>
-                {updatingPassword ? "Yangilanmoqda..." : "Saqlash"}
+            <DialogFooter className="pt-6 flex gap-3">
+              <Button
+                type="button"
+                variant="ghost"
+                className="h-14 flex-1 rounded-2xl bg-white/5 hover:bg-white/10 text-white font-bold"
+                onClick={() => setResetPasswordOpen(false)}
+              >
+                Bekor qilish
+              </Button>
+              <Button
+                type="submit"
+                className="h-14 flex-1 bg-primary hover:bg-primary/90 text-white font-black rounded-2xl shadow-xl shadow-primary/20 disabled:opacity-50"
+                disabled={updatingPassword}
+              >
+                {updatingPassword ? "Saqlanmoqda..." : "Tasdiqlash"}
               </Button>
             </DialogFooter>
           </form>

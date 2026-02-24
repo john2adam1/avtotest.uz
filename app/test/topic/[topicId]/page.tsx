@@ -1,5 +1,6 @@
 // app/test/topic/[topicId]/page.tsx
 import { redirect } from "next/navigation"
+import { Metadata } from "next"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
 import { Navbar } from "@/components/navbar"
 import { hasActiveAccess } from "@/lib/access-control"
@@ -29,6 +30,12 @@ async function TopicTestContent({ params }: { params: Promise<{ topicId: string 
   ])
 
   if (!userData) redirect("/dashboard")
+
+  // Redirect admin to admin panel instead of user functions
+  if (userData.role === "admin") {
+    redirect("/admin")
+  }
+
   if (!topic) redirect("/dashboard")
 
   // Fetch tests where category matches topic title
@@ -67,7 +74,7 @@ async function TopicTestContent({ params }: { params: Promise<{ topicId: string 
   )
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ topicId: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ topicId: string }> }): Promise<Metadata> {
   const { topicId } = await params
   const supabase = await getSupabaseServerClient()
   const { data: topic } = await supabase.from("topics").select("title").eq("id", topicId).single()

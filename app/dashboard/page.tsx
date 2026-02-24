@@ -36,6 +36,11 @@ export default async function DashboardPage() {
 
   if (!userData) redirect("/login")
 
+  // Redirect admin to admin page instead of loading user dashboard
+  if (userData.role === "admin") {
+    redirect("/admin")
+  }
+
   // Create stats maps
   const examStatsMap = (examStats || []).reduce((acc: Record<number, number>, stat: any) => {
     acc[stat.exam_type] = stat.percentage

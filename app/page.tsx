@@ -1,4 +1,5 @@
 import { Suspense } from "react"
+import { redirect } from "next/navigation"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
 import { LandingHeader } from "@/components/landing-header"
 import { LandingHero } from "@/components/landing-hero"
@@ -16,6 +17,22 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const supabase = await getSupabaseServerClient()
+
+  // Auto-redirect logged-in users to their dashboard
+  const { data: { user } } = await supabase.auth.getUser()
+  if (user) {
+    const { data: userData } = await supabase
+      .from("users")
+      .select("role")
+      .eq("id", user.id)
+      .single()
+
+    if (userData?.role === "admin") {
+      redirect("/admin")
+    } else {
+      redirect("/dashboard")
+    }
+  }
 
   // Fetch Prices Data
   const { data: pricesData } = await supabase

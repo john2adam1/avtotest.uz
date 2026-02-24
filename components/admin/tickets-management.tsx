@@ -101,95 +101,144 @@ export function TicketsManagement() {
 
   return (
     <div className="space-y-8">
-      <div className="bg-[#1976d2]/5 border-2 border-[#1976d2]/30 p-6 text-[#1976d2] font-bold text-lg">
-        <p className="flex items-center gap-2 mb-2">
-          <BookOpen className="h-6 w-6" />
-          <span>Avtomatik biletlar tizimi faol.</span>
-        </p>
-        <p className="font-medium opacity-80">Biletlar har 20 ta testdan so'ng avtomatik ravishda yaratiladi va tartiblanadi. Faqat biletning "Public/Premium" holatini o'zgartirishingiz mumkin.</p>
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/5">
+        <div>
+          <h2 className="text-xl font-black text-white tracking-tight italic uppercase">Biletlar Boshqaruvi</h2>
+          <p className="text-slate-400 text-xs font-medium mt-1">Avtomatik yaratilgan biletlarni sozlash</p>
+        </div>
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 border border-primary/20 text-primary font-bold text-xs uppercase tracking-widest">
+          <BookOpen className="h-4 w-4" />
+          <span>Avtomatik rejim faol</span>
+        </div>
       </div>
 
-      <div className="grid gap-10 lg:grid-cols-2">
+      <div className="glass-dark border border-white/5 p-4 rounded-3xl bg-primary/5 mb-8 relative overflow-hidden">
+        <div className="absolute top-0 right-0 p-4 scale-150 opacity-5 rotate-12">
+          <BookOpen className="h-10 w-10 text-primary" />
+        </div>
+        <div className="relative z-10 flex flex-col md:flex-row gap-4 items-start md:items-center">
+          <div className="p-3 bg-primary/20 rounded-xl">
+            <BookOpen className="h-5 w-5 text-primary" />
+          </div>
+          <p className="text-slate-300 font-bold text-sm leading-relaxed max-w-2xl">
+            Biletlar har 20 ta testdan so'ng avtomatik ravishda yaratiladi.
+            Ma'mur faqat biletlarning <span className="text-white underline decoration-primary underline-offset-4">Public/Premium</span> holatini boshqarishi mumkin.
+          </p>
+        </div>
+      </div>
+
+      <div className="grid gap-8 lg:grid-cols-2">
         <div className="space-y-6">
-          <div className="pb-4 border-b-2 border-gray-300">
-            <h2 className="text-2xl font-bold uppercase tracking-wide">Biletlar ro'yxati</h2>
-            <p className="text-gray-500">Barcha avtomatik yaratilgan biletlar</p>
+          <div className="flex items-center justify-between px-2">
+            <h3 className="text-lg font-black text-white tracking-tight italic">Biletlar Ro'yxati</h3>
+            <Badge className="rounded-lg bg-white/5 text-slate-500 border border-white/10 px-3 py-1 font-black text-[10px] uppercase tracking-widest">
+              {tickets.length} TA BILET
+            </Badge>
           </div>
 
           {loading ? (
-            <div className="text-center py-12 text-xl font-bold">Biletlar yuklanmoqda...</div>
+            <div className="flex flex-col items-center justify-center py-20 glass-dark border border-white/5 rounded-3xl">
+              <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4" />
+              <p className="text-slate-400 font-black text-[10px] uppercase tracking-widest">Yuklanmoqda...</p>
+            </div>
           ) : tickets.length === 0 ? (
-            <div className="text-center py-12 border-2 border-dashed border-gray-300 bg-white text-xl font-bold text-gray-500">
-              Hozircha biletlar mavjud emas. Testlar qo'shilganda biletlar paydo bo'ladi.
+            <div className="text-center py-20 glass-dark border border-white/5 rounded-3xl space-y-4">
+              <Plus className="h-10 w-10 text-slate-800 mx-auto" />
+              <p className="text-slate-500 text-lg font-black italic tracking-tighter">Hozircha biletlar mavjud emas.</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="grid gap-3">
               {tickets.map((ticket) => (
                 <div
                   key={ticket.id}
-                  className={`flex items-center justify-between border-2 p-5 cursor-pointer transition-colors ${selectedTicket === ticket.id ? "border-[#1976d2] bg-[#1976d2]/5" : "border-gray-300 bg-white"
+                  className={`group relative flex items-center justify-between p-4 rounded-2xl transition-all duration-300 cursor-pointer border ${selectedTicket === ticket.id
+                    ? "bg-primary/20 border-primary shadow-lg shadow-primary/10"
+                    : "bg-white/5 border-white/5 hover:border-white/20 hover:bg-white/10"
                     }`}
                   onClick={() => setSelectedTicket(ticket.id === selectedTicket ? null : ticket.id)}
                 >
-                  <div className="flex items-center gap-6">
-                    <div className="flex flex-col">
-                      <span className="text-xl font-bold uppercase">{ticket.title}</span>
-                      <span className="text-lg font-medium text-gray-500">{ticket.test_count || 0}/20 testlar</span>
+                  <div className="flex items-center gap-4 relative z-10">
+                    <div className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center font-black text-sm text-primary border border-white/5 group-hover:scale-105 transition-transform">
+                      {ticket.title.match(/\d+/)?.[0] || ticket.title.charAt(0)}
                     </div>
+                    <div className="flex flex-col">
+                      <span className="text-sm font-black text-white block tracking-tight uppercase leading-tight">{ticket.title}</span>
+                      <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-0.5">{ticket.test_count || 0} / 20 TEST</span>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
                     <Badge
-                      className={`h-10 px-5 rounded-none text-base font-bold uppercase border-none ${ticket.is_public ? "bg-[#3ca64c] text-white" : "bg-red-600 text-white"}`}
+                      className={`h-7 px-2 rounded-lg text-[8px] font-black uppercase border-none tracking-widest ${ticket.is_public ? "bg-success/20 text-success" : "bg-destructive/20 text-destructive"}`}
+                    >
+                      {ticket.is_public ? "Bepul" : "Premium"}
+                    </Badge>
+                    <Button
+                      variant="ghost"
+                      className="h-9 w-9 p-0 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/5"
                       onClick={(e) => {
                         e.stopPropagation()
                         handleTogglePublic(ticket.id, !!ticket.is_public)
                       }}
                     >
-                      {ticket.is_public ? "Public" : "Premium"}
-                    </Badge>
+                      <Edit2 className="h-3.5 w-3.5" />
+                    </Button>
                   </div>
-                  <Button
-                    className="h-12 px-6 bg-[#1976d2] text-white font-bold uppercase"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      handleTogglePublic(ticket.id, !!ticket.is_public)
-                    }}
-                  >
-                    O'zgartirish
-                  </Button>
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        {selectedTicket && (
-          <div className="space-y-6">
-            <div className="pb-4 border-b-2 border-[#1976d2]/30 flex items-center justify-between">
-              <div className="space-y-1">
-                <h2 className="text-2xl font-bold uppercase tracking-wide">Bilet testlari ({ticketTests.length}/20)</h2>
-                <p className="text-[#1976d2] font-bold text-lg">{selectedTicketData?.title}</p>
+        <div className="lg:sticky lg:top-32 h-fit">
+          {selectedTicket ? (
+            <div className="space-y-6 animate-in fade-in slide-in-from-right-2 duration-500">
+              <div className="flex items-center justify-between px-2">
+                <div>
+                  <h3 className="text-lg font-black text-white tracking-tight italic">Bilet Testlari</h3>
+                  <p className="text-primary font-black uppercase tracking-widest text-[10px] mt-0.5 italic">{selectedTicketData?.title}</p>
+                </div>
+                <Badge className="rounded-lg bg-primary text-white px-3 py-1 font-black text-[10px] uppercase tracking-widest shadow-lg shadow-primary/20">
+                  {ticketTests.length} / 20
+                </Badge>
+              </div>
+
+              <div className="space-y-2 max-h-[600px] overflow-y-auto pr-1 custom-scrollbar lg:max-h-[calc(100vh-350px)]">
+                {ticketTests.map((tt: any, index: number) => (
+                  <div
+                    key={tt.id}
+                    className="p-3.5 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-all group"
+                  >
+                    <div className="flex gap-4">
+                      <span className="font-black text-primary/30 text-xl italic tracking-tighter group-hover:text-primary transition-colors">#{index + 1}</span>
+                      <p className="font-bold text-xs text-slate-300 leading-snug line-clamp-2">
+                        {tt.tests?.question}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+                {ticketTests.length === 0 && (
+                  <div className="text-center py-20 px-8 glass-dark border border-white/5 rounded-3xl space-y-4">
+                    <X className="h-10 w-10 text-slate-800 mx-auto" />
+                    <p className="text-slate-500 font-bold italic text-sm">Bu biletda hali testlar mavjud emas</p>
+                  </div>
+                )}
               </div>
             </div>
-
-            <div className="space-y-4 max-h-[700px] overflow-y-auto pr-4 custom-scrollbar">
-              {ticketTests.map((tt: any, index: number) => (
-                <div
-                  key={tt.id}
-                  className="p-5 border-2 border-gray-300 bg-white text-lg"
-                >
-                  <div className="flex gap-4">
-                    <span className="font-black text-[#1976d2]/40 text-2xl">#{index + 1}</span>
-                    <p className="font-bold leading-tight">
-                      {tt.tests?.question}
-                    </p>
-                  </div>
-                </div>
-              ))}
-              {ticketTests.length === 0 && (
-                <p className="text-center text-gray-400 py-10 font-bold italic">Biletda testlar mavjud emas</p>
-              )}
+          ) : (
+            <div className="hidden lg:flex flex-col items-center justify-center h-[400px] glass-dark border border-white/5 rounded-3xl text-center p-8 space-y-4">
+              <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center">
+                <Plus className="h-6 w-6 text-slate-800" />
+              </div>
+              <div className="space-y-1">
+                <h3 className="text-lg font-black text-white tracking-tight italic">Biletni tanlang</h3>
+                <p className="text-slate-500 font-medium text-xs leading-relaxed max-w-[200px]">
+                  Bilet ichidagi testlarni ko'rish va tartibini tekshirish uchun ro'yxatdan birini tanlang.
+                </p>
+              </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   )

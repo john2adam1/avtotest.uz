@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { LogOut, Settings } from "lucide-react"
-import { LanguageSwitcher } from "@/components/language-switcher"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import {
   DropdownMenu,
@@ -67,7 +66,7 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
   return (
     <header className="sticky top-0 z-50 px-4 pt-4 transition-all duration-300">
       <div className="container mx-auto flex h-16 items-center justify-between px-6 rounded-2xl glass-dark border-white/10 shadow-2xl backdrop-blur-xl">
-        <Link href="/dashboard" className="flex items-center gap-3 hover:scale-105 transition-all group">
+        <Link href={isAdmin ? "/admin" : "/dashboard"} className="flex items-center gap-3 hover:scale-105 transition-all group">
           <div className="p-1.5 bg-primary/20 rounded-lg group-hover:bg-primary/30">
             <span className="text-lg font-bold text-primary tracking-tighter">TA</span>
           </div>
@@ -75,16 +74,6 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
         </Link>
 
         <div className="flex items-center gap-4">
-          <LanguageSwitcher />
-
-          {isAdmin && (
-            <Button asChild variant="ghost" size="sm" className="hidden md:flex text-slate-400 hover:text-white hover:bg-white/5 rounded-xl font-bold">
-              <Link href="/admin">
-                <Settings className="h-4 w-4 mr-2" />
-                Admin
-              </Link>
-            </Button>
-          )}
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -105,25 +94,9 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
                 )}
               </div>
 
-              <DropdownMenuSeparator className="bg-white/5 mb-1" />
+              <DropdownMenuSeparator className="bg-white/5 my-1" />
 
               <div className="space-y-1">
-                {[
-                  { label: "Dashboard", href: "/dashboard", icon: null },
-                  { label: "Sozlamalar", href: "/settings", icon: Settings },
-                ].map((item) => (
-                  <DropdownMenuItem key={item.label} asChild className="p-0 border-none">
-                    <Link href={item.href} className="w-full">
-                      <Button variant="ghost" className="w-full justify-start gap-3 rounded-xl hover:bg-white/10 font-bold transition-all h-11 border-none bg-transparent">
-                        {item.icon && <item.icon className="h-4 w-4" />}
-                        {item.label}
-                      </Button>
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
-
-                <DropdownMenuSeparator className="bg-white/5 my-1" />
-
                 <DropdownMenuItem onClick={handleLogout} className="p-0 border-none focus:bg-destructive/10">
                   <Button variant="ghost" className="w-full justify-start gap-3 rounded-xl hover:bg-destructive/10 hover:text-destructive font-bold transition-all h-11 border-none bg-transparent">
                     <LogOut className="h-4 w-4" />

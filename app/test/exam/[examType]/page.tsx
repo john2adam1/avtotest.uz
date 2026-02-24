@@ -20,6 +20,12 @@ export default async function ExamTestPage({ params }: { params: Promise<{ examT
   if (!user) redirect("/login")
 
   const { data: userData } = await supabase.from("users").select("*").eq("id", user.id).single()
+  if (!userData) redirect("/login")
+
+  // Redirect admin to admin panel instead of user functions
+  if (userData.role === "admin") {
+    redirect("/admin")
+  }
 
   /*
     if (!userData || !hasActiveAccess(userData)) {

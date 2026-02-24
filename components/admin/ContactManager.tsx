@@ -81,68 +81,89 @@ export default function ContactManager() {
   }
 
   if (loading) {
-    return <div className="text-center py-8">Loading...</div>
+    return (
+      <div className="flex flex-col items-center justify-center py-40 glass-dark border border-white/5 rounded-[4rem]">
+        <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-6" />
+        <p className="text-slate-400 font-bold text-xl uppercase tracking-widest">Yuklanmoqda...</p>
+      </div>
+    )
   }
 
-
   return (
-    <div className="max-w-2xl mx-auto space-y-12">
-      <div className="pb-4 border-b-2 border-gray-300">
-        <h2 className="text-3xl font-bold uppercase tracking-wide">Bog'lanish ma'lumotlari</h2>
-        <p className="text-gray-500 text-lg">Bog'lanish ma'lumotlarini boshqarish</p>
+    <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in duration-700">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/5">
+        <div>
+          <h2 className="text-xl font-black text-white tracking-tight italic uppercase">Bog'lanish Sozlamalari</h2>
+          <p className="text-slate-400 text-xs font-medium mt-1">Platforma kontakt ma'lumotlarini boshqarish</p>
+        </div>
       </div>
 
-      <div className="space-y-8 bg-white border-2 border-gray-300 p-10">
-        <div className="space-y-3">
-          <Label htmlFor="phone" className="text-xl font-bold uppercase">Telefon raqami</Label>
-          <Input
-            id="phone"
-            className="h-14 rounded-none border-2 border-gray-300 text-xl font-bold focus:border-[#1976d2]"
-            placeholder="+998901234567"
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-          />
-        </div>
+      <div className="grid gap-8 lg:grid-cols-12 items-start">
+        <div className="lg:col-span-12">
+          <div className="glass-dark border border-white/5 rounded-3xl p-8 shadow-xl relative overflow-hidden group">
+            <div className="absolute -left-20 -top-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-1000" />
 
-        <div className="space-y-3">
-          <Label htmlFor="telegram" className="text-xl font-bold uppercase">Telegram foydalanuvchi nomi</Label>
-          <Input
-            id="telegram"
-            className="h-14 rounded-none border-2 border-gray-300 text-xl font-bold focus:border-[#1976d2]"
-            placeholder="e.g., @yourusername"
-            value={telegram}
-            onChange={(e) => setTelegram(e.target.value)}
-          />
-        </div>
+            <div className="relative z-10 grid gap-6 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Telefon Raqami</Label>
+                <Input
+                  id="phone"
+                  className="h-11 bg-white/5 border-white/10 rounded-xl text-sm font-bold text-white px-5 focus:ring-primary/50 transition-all font-mono"
+                  placeholder="+998 90 123 45 67"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                />
+              </div>
 
-        <div className="space-y-3">
-          <Label htmlFor="telegram-link" className="text-xl font-bold uppercase">Telegram Link</Label>
-          <Input
-            id="telegram-link"
-            className="h-14 rounded-none border-2 border-gray-300 text-xl font-bold focus:border-[#1976d2]"
-            placeholder="https://t.me/yourusername"
-            value={telegramLink}
-            onChange={(e) => setTelegramLink(e.target.value)}
-          />
-        </div>
+              <div className="space-y-2">
+                <Label htmlFor="telegram" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Telegram Username</Label>
+                <div className="relative">
+                  <Input
+                    id="telegram"
+                    className="h-11 bg-white/5 border-white/10 rounded-xl text-sm font-bold text-white pl-10 pr-5 focus:ring-primary/50 transition-all"
+                    placeholder="@username"
+                    value={telegram}
+                    onChange={(e) => setTelegram(e.target.value)}
+                  />
+                  <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none opacity-40">
+                    <span className="text-sm font-bold text-primary">@</span>
+                  </div>
+                </div>
+              </div>
 
-        <div className="space-y-3">
-          <Label htmlFor="address" className="text-xl font-bold uppercase">Manzil</Label>
-          <Input
-            id="address"
-            className="h-14 rounded-none border-2 border-gray-300 text-xl font-bold focus:border-[#1976d2]"
-            placeholder="Manzilni kiriting"
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
-          />
-        </div>
+              <div className="space-y-2 md:col-span-2">
+                <Label htmlFor="telegram-link" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">To'liq Telegram Havolasi</Label>
+                <Input
+                  id="telegram-link"
+                  className="h-11 bg-white/5 border-white/10 rounded-xl text-sm font-bold text-white px-5 focus:ring-primary/50 transition-all"
+                  placeholder="https://t.me/yourusername"
+                  value={telegramLink}
+                  onChange={(e) => setTelegramLink(e.target.value)}
+                />
+              </div>
 
-        <Button
-          onClick={handleSave}
-          className="w-full h-16 bg-[#1976d2] text-white text-2xl font-black uppercase tracking-widest mt-6"
-        >
-          Bog'lanish ma'lumotlarini saqlash
-        </Button>
+              <div className="space-y-2 md:col-span-2">
+                <Label htmlFor="address" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Ofis Manzili / Kontakt Matni</Label>
+                <Input
+                  id="address"
+                  className="h-11 bg-white/5 border-white/10 rounded-xl text-sm font-bold text-white px-5 focus:ring-primary/50 transition-all"
+                  placeholder="Toshkent sh., Yunusobod tumani..."
+                  value={address}
+                  onChange={(e) => setAddress(e.target.value)}
+                />
+              </div>
+            </div>
+
+            <div className="mt-8 flex justify-center border-t border-white/5 pt-6">
+              <Button
+                onClick={handleSave}
+                className="h-12 px-10 bg-primary hover:bg-primary/90 text-white text-xs font-black rounded-xl shadow-xl shadow-primary/20 transition-all border-none group uppercase tracking-widest"
+              >
+                Saqlash
+              </Button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

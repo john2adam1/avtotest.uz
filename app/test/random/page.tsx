@@ -13,6 +13,12 @@ export default async function RandomTestPage() {
   if (!user) redirect("/login")
 
   const { data: userData } = await supabase.from("users").select("*").eq("id", user.id).single()
+  if (!userData) redirect("/login")
+
+  // Redirect admin to admin panel instead of user functions
+  if (userData.role === "admin") {
+    redirect("/admin")
+  }
 
   if (!userData || !hasActiveAccess(userData)) {
     redirect("/dashboard")
@@ -36,7 +42,7 @@ export default async function RandomTestPage() {
   const shuffledTests = [...allTests]
   for (let i = shuffledTests.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffledTests[i], shuffledTests[j]] = [shuffledTests[j], shuffledTests[i]]
+      ;[shuffledTests[i], shuffledTests[j]] = [shuffledTests[j], shuffledTests[i]]
   }
 
   return (

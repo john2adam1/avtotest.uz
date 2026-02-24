@@ -22,6 +22,11 @@ export default async function ExamsPage() {
 
     if (!userData) redirect("/login")
 
+    // Redirect admin to admin page instead of user exams
+    if (userData.role === "admin") {
+        redirect("/admin")
+    }
+
     const hasAccess = hasActiveAccess(userData)
 
     // Fetch counts of total tickets? Or just check if tests exist

@@ -22,6 +22,11 @@ export default async function TopicsPage() {
 
     if (!userData) redirect("/login")
 
+    // Redirect admin to admin page instead of user topics
+    if (userData.role === "admin") {
+        redirect("/admin")
+    }
+
     const hasAccess = hasActiveAccess(userData)
 
     // Fetch all topics
