@@ -23,14 +23,66 @@ export function TicketsManagement() {
   const [isGenerating, setIsGenerating] = useState(false)
 
   useEffect(() => {
-    fetchTickets()
+    let isMounted = true;
+    const loadData = async () => {
+      setLoading(true)
+      const { data, error } = await supabase
+        .from("tickets")
+        .select("*")
+        .order("created_at", { ascending: false })
+
+      if (!isMounted) return
+
+      if (error) {
+        toast({
+          title: "Xatolik",
+          description: "Biletlarni yuklashda xatolik: " + error.message,
+          variant: "destructive"
+        })
+      }
+
+      if (data) {
+        const ticketsWithCounts = await Promise.all(
+          data.map(async (ticket) => {
+            const { count } = await supabase
+              .from("ticket_tests")
+              .select("*", { count: "exact", head: true })
+              .eq("ticket_id", ticket.id)
+            return { ...ticket, test_count: count || 0 }
+          })
+        )
+        if (isMounted) setTickets(ticketsWithCounts)
+      }
+      if (isMounted) setLoading(false)
+    }
+
+    loadData()
+    return () => { isMounted = false }
   }, [])
 
   useEffect(() => {
+    let isMounted = true;
     if (selectedTicket) {
-      fetchTicketTests()
+      const loadTests = async () => {
+        const tests = await fetchTicketTestsInternal(selectedTicket)
+        if (isMounted) setTicketTests(tests)
+      }
+      loadTests()
     }
+    return () => { isMounted = false }
   }, [selectedTicket])
+
+  const fetchTicketTestsInternal = async (ticketId: string) => {
+    const { data } = await supabase
+      .from("ticket_tests")
+      .select(`
+        *,
+        tests (*)
+      `)
+      .eq("ticket_id", ticketId)
+      .order("order_index")
+    return data || []
+  }
 
   const fetchTickets = async () => {
     setLoading(true)
@@ -104,22 +156,6 @@ export function TicketsManagement() {
     }
   }
 
-  const fetchTicketTests = async () => {
-    if (!selectedTicket) return
-
-    const { data } = await supabase
-      .from("ticket_tests")
-      .select(`
-        *,
-        tests (*)
-      `)
-      .eq("ticket_id", selectedTicket)
-      .order("order_index")
-
-    if (data) {
-      setTicketTests(data)
-    }
-  }
 
   const handleTogglePublic = async (ticketId: string, currentStatus: boolean) => {
     const { error } = await supabase
@@ -146,39 +182,39 @@ export function TicketsManagement() {
 
   return (
     <div className="space-y-8">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/5">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-slate-100">
         <div>
-          <h2 className="text-xl font-black text-white tracking-tight italic uppercase">Biletlar Boshqaruvi</h2>
-          <p className="text-slate-400 text-xs font-medium mt-1">Avtomatik yaratilgan biletlarni sozlash</p>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight italic uppercase">Biletlar Boshqaruvi</h2>
+          <p className="text-slate-500 text-xs font-medium mt-1">Avtomatik yaratilgan biletlarni sozlash</p>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <Button
             onClick={handleGenerateTickets}
             disabled={isGenerating}
-            className="h-10 px-4 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all"
+            className="h-10 px-4 bg-blue-50 hover:bg-blue-100 text-blue-600 border border-blue-200 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all"
           >
             {isGenerating ? <RefreshCw className="h-3.5 w-3.5 animate-spin mr-2" /> : <Sparkles className="h-3.5 w-3.5 mr-2" />}
             Testlarni Biletlarga Bo'lish
           </Button>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-primary/10 border border-primary/20 text-primary font-bold text-xs uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white font-black text-[10px] uppercase tracking-widest shadow-lg shadow-blue-500/20">
             <BookOpen className="h-4 w-4" />
             <span>Avtomatik rejim faol</span>
           </div>
         </div>
       </div>
 
-      <div className="glass-dark border border-white/5 p-4 rounded-3xl bg-primary/5 relative overflow-hidden">
+      <div className="bg-white border border-slate-100 p-6 rounded-3xl relative overflow-hidden shadow-sm">
         <div className="absolute top-0 right-0 p-4 scale-150 opacity-5 rotate-12">
-          <BookOpen className="h-10 w-10 text-primary" />
+          <BookOpen className="h-10 w-10 text-blue-600" />
         </div>
         <div className="relative z-10 flex flex-col md:flex-row gap-4 items-start md:items-center">
-          <div className="p-3 bg-primary/20 rounded-xl">
-            <BookOpen className="h-5 w-5 text-primary" />
+          <div className="p-3 bg-blue-50 rounded-xl border border-blue-100">
+            <BookOpen className="h-5 w-5 text-blue-600" />
           </div>
-          <p className="text-slate-300 font-bold text-sm leading-relaxed max-w-2xl">
+          <p className="text-slate-600 font-bold text-sm leading-relaxed max-w-2xl">
             Biletlar har 20 ta testdan so'ng avtomatik ravishda yaratiladi.
-            Siz biletlarning <span className="text-white underline decoration-primary underline-offset-4">Public/Premium</span> holatini boshqarishingiz mumkin.
+            Siz biletlarning <span className="text-blue-600 underline decoration-blue-600/30 underline-offset-4">Public/Premium</span> holatini boshqarishingiz mumkin.
           </p>
         </div>
       </div>
@@ -186,8 +222,8 @@ export function TicketsManagement() {
       <div className="grid gap-8 lg:grid-cols-2">
         <div className="space-y-6">
           <div className="flex items-center justify-between px-2">
-            <h3 className="text-lg font-black text-white tracking-tight italic">Biletlar Ro'yxati</h3>
-            <Badge className="rounded-lg bg-white/5 text-slate-500 border border-white/10 px-3 py-1 font-black text-[10px] uppercase tracking-widest">
+            <h3 className="text-lg font-black text-slate-900 tracking-tight italic">Biletlar Ro'yxati</h3>
+            <Badge className="rounded-lg bg-white text-slate-500 border border-slate-100 px-3 py-1 font-black text-[10px] uppercase tracking-widest shadow-sm">
               {tickets.length} TA BILET
             </Badge>
           </div>
@@ -213,18 +249,18 @@ export function TicketsManagement() {
                 <div
                   key={ticket.id}
                   className={`group relative flex items-center justify-between p-4 rounded-2xl transition-all duration-300 cursor-pointer border ${selectedTicket === ticket.id
-                      ? "bg-primary/20 border-primary shadow-lg shadow-primary/10"
-                      : "bg-white/5 border-white/5 hover:border-white/20 hover:bg-white/10"
+                    ? "bg-blue-50 border-blue-600 shadow-md"
+                    : "bg-white border-slate-100 hover:border-blue-200 hover:shadow-sm"
                     }`}
                   onClick={() => setSelectedTicket(ticket.id === selectedTicket ? null : ticket.id)}
                 >
                   <div className="flex items-center gap-4 relative z-10">
-                    <div className="h-10 w-10 rounded-xl bg-white/5 flex items-center justify-center font-black text-sm text-primary border border-white/5 group-hover:scale-105 transition-transform">
+                    <div className="h-10 w-10 rounded-xl bg-slate-50 flex items-center justify-center font-black text-sm text-blue-600 border border-slate-100 group-hover:scale-105 transition-transform">
                       {ticket.title.match(/\d+/)?.[0] || ticket.title.charAt(0)}
                     </div>
                     <div className="flex flex-col">
-                      <span className="text-sm font-black text-white block tracking-tight uppercase leading-tight">{ticket.title}</span>
-                      <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest mt-0.5">
+                      <span className="text-sm font-black text-slate-900 block tracking-tight uppercase leading-tight">{ticket.title}</span>
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-0.5">
                         {ticket.test_count || 0} / 20 TEST
                       </span>
                     </div>
@@ -232,14 +268,14 @@ export function TicketsManagement() {
 
                   <div className="flex items-center gap-2">
                     <Badge
-                      className={`h-7 px-2 rounded-lg text-[8px] font-black uppercase border-none tracking-widest ${ticket.is_public ? "bg-success/20 text-success" : "bg-destructive/20 text-destructive"
+                      className={`h-7 px-2 rounded-lg text-[8px] font-black uppercase border-none tracking-widest ${ticket.is_public ? "bg-emerald-50 text-emerald-600" : "bg-red-50 text-red-600"
                         }`}
                     >
                       {ticket.is_public ? "Bepul" : "Premium"}
                     </Badge>
                     <Button
                       variant="ghost"
-                      className="h-9 w-9 p-0 rounded-lg bg-white/5 hover:bg-white/10 text-white border border-white/5"
+                      className="h-9 w-9 p-0 rounded-lg bg-slate-50 hover:bg-blue-50 text-slate-900 border border-slate-100 hover:border-blue-200"
                       onClick={(e) => {
                         e.stopPropagation()
                         handleTogglePublic(ticket.id, !!ticket.is_public)
@@ -249,7 +285,7 @@ export function TicketsManagement() {
                     </Button>
                     <Button
                       variant="ghost"
-                      className="h-9 w-9 p-0 rounded-lg bg-destructive/10 hover:bg-destructive/20 text-destructive border border-destructive/20"
+                      className="h-9 w-9 p-0 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 border border-red-100"
                       onClick={(e) => handleDeleteTicket(ticket.id, e)}
                     >
                       <Trash2 className="h-3.5 w-3.5" />
@@ -266,10 +302,10 @@ export function TicketsManagement() {
             <div className="space-y-6 animate-in fade-in slide-in-from-right-2 duration-500">
               <div className="flex items-center justify-between px-2">
                 <div>
-                  <h3 className="text-lg font-black text-white tracking-tight italic">Bilet Testlari</h3>
-                  <p className="text-primary font-black uppercase tracking-widest text-[10px] mt-0.5 italic">{selectedTicketData?.title}</p>
+                  <h3 className="text-lg font-black text-slate-900 tracking-tight italic">Bilet Testlari</h3>
+                  <p className="text-blue-600 font-black uppercase tracking-widest text-[10px] mt-0.5 italic">{selectedTicketData?.title}</p>
                 </div>
-                <Badge className="rounded-lg bg-primary text-white px-3 py-1 font-black text-[10px] uppercase tracking-widest shadow-lg shadow-primary/20">
+                <Badge className="rounded-lg bg-blue-600 text-white px-3 py-1 font-black text-[10px] uppercase tracking-widest shadow-lg shadow-blue-500/20">
                   {ticketTests.length} / 20
                 </Badge>
               </div>
@@ -278,33 +314,33 @@ export function TicketsManagement() {
                 {ticketTests.map((tt: any, index: number) => (
                   <div
                     key={tt.id}
-                    className="p-3.5 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-all group"
+                    className="p-3.5 rounded-xl bg-white border border-slate-100 hover:border-blue-100 hover:bg-blue-50/30 transition-all group shadow-sm"
                   >
                     <div className="flex gap-4">
-                      <span className="font-black text-primary/30 text-xl italic tracking-tighter group-hover:text-primary transition-colors">
+                      <span className="font-black text-blue-600/20 text-xl italic tracking-tighter group-hover:text-blue-600 transition-colors">
                         #{index + 1}
                       </span>
-                      <p className="font-bold text-xs text-slate-300 leading-snug line-clamp-2">
+                      <p className="font-bold text-xs text-slate-600 leading-snug line-clamp-2">
                         {tt.tests?.question}
                       </p>
                     </div>
                   </div>
                 ))}
                 {ticketTests.length === 0 && (
-                  <div className="text-center py-20 px-8 glass-dark border border-white/5 rounded-3xl space-y-4">
-                    <X className="h-10 w-10 text-slate-800 mx-auto" />
-                    <p className="text-slate-500 font-bold italic text-sm">Bu biletda hali testlar mavjud emas</p>
+                  <div className="text-center py-20 px-8 bg-white border border-slate-100 rounded-3xl space-y-4 shadow-sm">
+                    <X className="h-10 w-10 text-slate-200 mx-auto" />
+                    <p className="text-slate-400 font-bold italic text-sm">Bu biletda hali testlar mavjud emas</p>
                   </div>
                 )}
               </div>
             </div>
           ) : (
-            <div className="hidden lg:flex flex-col items-center justify-center h-[400px] glass-dark border border-white/5 rounded-3xl text-center p-8 space-y-4">
-              <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center">
-                <Layers className="h-6 w-6 text-slate-800" />
+            <div className="hidden lg:flex flex-col items-center justify-center h-[400px] bg-white border border-slate-100 rounded-3xl text-center p-8 space-y-4 shadow-sm">
+              <div className="w-16 h-16 rounded-full bg-slate-50 flex items-center justify-center border border-slate-100">
+                <Layers className="h-6 w-6 text-slate-300" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-lg font-black text-white tracking-tight italic">Bilet tanlanmagan</h3>
+                <h3 className="text-lg font-black text-slate-900 tracking-tight italic">Bilet tanlanmagan</h3>
                 <p className="text-slate-500 font-medium text-xs leading-relaxed max-w-[200px]">
                   Bilet ichidagi testlarni ko'rish va tartibini tekshirish uchun ro'yxatdan birini tanlang.
                 </p>

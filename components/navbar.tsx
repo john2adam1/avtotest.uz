@@ -65,7 +65,7 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
       }
     }
     fetchData()
-  }, [supabase])
+  }, [])
 
   const handleLogout = async () => {
     await supabase.auth.signOut()

@@ -36,17 +36,17 @@ export default async function AdminPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 relative overflow-hidden">
+    <div className="min-h-screen bg-[#e9f6ff] relative overflow-hidden">
       {/* Background Lighting Effects */}
-      <div className="absolute top-0 -left-20 w-[40rem] h-[40rem] bg-primary/10 rounded-full mix-blend-multiply filter blur-[120px] opacity-10 animate-blob" />
-      <div className="absolute top-1/2 -right-20 w-[30rem] h-[30rem] bg-blue-500/10 rounded-full mix-blend-multiply filter blur-[100px] opacity-10 animate-blob animation-delay-2000" />
+      <div className="absolute top-0 -left-20 w-[40rem] h-[40rem] bg-blue-500/5 rounded-full mix-blend-multiply filter blur-[120px] opacity-50 animate-blob" />
+      <div className="absolute top-1/2 -right-20 w-[30rem] h-[30rem] bg-purple-500/5 rounded-full mix-blend-multiply filter blur-[100px] opacity-50 animate-blob animation-delay-2000" />
 
       <Navbar userEmail={user.email} isAdmin={true} />
 
       <main className="container mx-auto px-4 py-8 relative z-10">
         <Tabs defaultValue="users" className="space-y-8">
-          <div className="glass-dark border border-white/5 p-1.5 rounded-2xl shadow-2xl overflow-x-auto no-scrollbar">
-            <TabsList className="flex w-max lg:w-full bg-transparent gap-1.5 h-auto p-0">
+          <div className="bg-white border border-slate-100 p-1.5 rounded-2xl shadow-xl shadow-blue-500/5 overflow-x-auto no-scrollbar">
+            <TabsList className="flex w-max lg:w-full bg-transparent gap-1.5 h-auto p-0 border-none">
               {[
                 { value: "users", label: "Foydalanuvchilar" },
                 { value: "topics", label: "Mavzular" },
@@ -59,7 +59,7 @@ export default async function AdminPage() {
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}
-                  className="px-4 py-2.5 font-bold text-xs tracking-wide rounded-xl data-[state=active]:bg-primary data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-primary/20 text-slate-400 hover:text-white transition-all duration-300"
+                  className="px-4 py-2.5 font-bold text-xs tracking-wide rounded-xl data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg data-[state=active]:shadow-blue-500/20 text-slate-500 hover:text-blue-600 transition-all duration-300 border-none shadow-none"
                 >
                   {tab.label}
                 </TabsTrigger>
@@ -67,32 +67,32 @@ export default async function AdminPage() {
             </TabsList>
           </div>
 
-          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <TabsContent value="users">
+          <div className="relative">
+            <TabsContent value="users" className="m-0 border-none outline-none focus:ring-0">
               <UsersManagement />
             </TabsContent>
 
-            <TabsContent value="topics">
+            <TabsContent value="topics" className="m-0 border-none outline-none focus:ring-0">
               <TopicsManagement />
             </TabsContent>
 
-            <TabsContent value="tests">
+            <TabsContent value="tests" className="m-0 border-none outline-none focus:ring-0">
               <TestsManagement />
             </TabsContent>
 
-            <TabsContent value="tickets">
+            <TabsContent value="tickets" className="m-0 border-none outline-none focus:ring-0">
               <TicketsManagement />
             </TabsContent>
 
-            <TabsContent value="carousel">
+            <TabsContent value="carousel" className="m-0 border-none outline-none focus:ring-0">
               <CarouselManagement />
             </TabsContent>
 
-            <TabsContent value="prices">
+            <TabsContent value="prices" className="m-0 border-none outline-none focus:ring-0">
               <PricesManagement />
             </TabsContent>
 
-            <TabsContent value="contact">
+            <TabsContent value="contact" className="m-0 border-none outline-none focus:ring-0">
               <ContactManager />
             </TabsContent>
           </div>

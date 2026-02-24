@@ -42,8 +42,22 @@ export function TestsManagement() {
   const supabase = getSupabaseBrowserClient()
 
   useEffect(() => {
-    fetchTests()
-    fetchTopics()
+    let isMounted = true;
+    const loadAll = async () => {
+      setLoading(true)
+      const [testsRes, topicsRes] = await Promise.all([
+        supabase.from("tests").select("*").order("created_at", { ascending: false }),
+        supabase.from("topics").select("*").order("title")
+      ])
+
+      if (!isMounted) return
+
+      if (testsRes.data) setTests(testsRes.data)
+      if (topicsRes.data) setTopics(topicsRes.data)
+      setLoading(false)
+    }
+    loadAll()
+    return () => { isMounted = false }
   }, [])
 
   const fetchTopics = async () => {
@@ -283,17 +297,17 @@ export function TestsManagement() {
   }, {} as Record<string, TestWithRelation[]>)
 
   return (
-    <Tabs defaultValue="create" className="space-y-8 animate-in fade-in duration-700">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/5">
+    <Tabs defaultValue="create" className="space-y-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-slate-100">
         <div>
-          <h2 className="text-xl font-black text-white tracking-tight italic uppercase">Testlar Boshqaruvi</h2>
-          <p className="text-slate-400 text-xs font-medium mt-1">Savollar bankini kengaytirish va tahrirlash</p>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight italic uppercase">Testlar Boshqaruvi</h2>
+          <p className="text-slate-500 text-xs font-medium mt-1">Savollar bankini kengaytirish va tahrirlash</p>
         </div>
-        <TabsList className="bg-white/5 border border-white/5 p-1 rounded-xl h-auto">
-          <TabsTrigger value="create" className="px-4 py-2 text-xs font-bold rounded-lg data-[state=active]:bg-primary data-[state=active]:text-white text-slate-400 transition-all">
+        <TabsList className="bg-slate-100 border border-slate-200 p-1 rounded-xl h-auto shadow-inner">
+          <TabsTrigger value="create" className="px-4 py-2 text-xs font-bold rounded-lg data-[state=active]:bg-blue-600 data-[state=active]:text-white text-slate-500 transition-all">
             {editingTest ? "Tahrirlash" : "Yaratish"}
           </TabsTrigger>
-          <TabsTrigger value="view" className="px-4 py-2 text-xs font-bold rounded-lg data-[state=active]:bg-primary data-[state=active]:text-white text-slate-400 transition-all">
+          <TabsTrigger value="view" className="px-4 py-2 text-xs font-bold rounded-lg data-[state=active]:bg-blue-600 data-[state=active]:text-white text-slate-500 transition-all">
             Ko'rish
           </TabsTrigger>
         </TabsList>
@@ -302,31 +316,31 @@ export function TestsManagement() {
       <TabsContent value="create" className="space-y-8 m-0 border-none outline-none">
         <form onSubmit={handleSubmit} className="space-y-8">
           {!editingTest && (
-            <div className="glass-dark border border-primary/20 p-4 rounded-3xl bg-primary/5 flex items-center gap-4 relative overflow-hidden group">
+            <div className="bg-white border border-blue-100 p-4 rounded-3xl bg-blue-50/30 flex items-center gap-4 relative overflow-hidden group shadow-sm">
               <div className="absolute right-0 top-0 p-4 opacity-5 scale-150 group-hover:scale-[1.7] transition-transform duration-700">
-                <Plus className="h-12 w-12 text-primary" />
+                <Plus className="h-12 w-12 text-blue-600" />
               </div>
-              <div className="h-10 w-10 rounded-xl bg-primary/20 flex items-center justify-center border border-primary/20 relative z-10">
-                <Plus className="h-5 w-5 text-primary" />
+              <div className="h-10 w-10 rounded-xl bg-blue-100 flex items-center justify-center border border-blue-200 relative z-10">
+                <Plus className="h-5 w-5 text-blue-600" />
               </div>
-              <p className="text-sm font-bold text-slate-200 relative z-10">
-                Yangi test <span className="text-primary font-black ml-1 text-base">#{Math.floor(tests.length / 20) + 1}-biletga</span> qo'shiladi.
+              <p className="text-sm font-bold text-slate-700 relative z-10">
+                Yangi test <span className="text-blue-600 font-black ml-1 text-base">#{Math.floor(tests.length / 20) + 1}-biletga</span> qo'shiladi.
               </p>
             </div>
           )}
 
           <div className="grid gap-6 lg:grid-cols-2">
-            <div className="glass-dark border border-white/5 rounded-3xl p-6 space-y-6 relative overflow-hidden">
+            <div className="bg-white border border-slate-100 rounded-3xl p-6 space-y-6 relative overflow-hidden shadow-sm">
               <div className="flex items-center gap-2 mb-1">
-                <div className="h-8 w-8 rounded-lg bg-purple-500/10 flex items-center justify-center border border-purple-500/20">
+                <div className="h-8 w-8 rounded-lg bg-purple-50 flex items-center justify-center border border-purple-100">
                   <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
                 </div>
-                <h3 className="text-sm font-black text-white tracking-tight uppercase">Asosiy ma'lumotlar</h3>
+                <h3 className="text-sm font-black text-slate-900 tracking-tight uppercase">Asosiy ma'lumotlar</h3>
               </div>
 
               <div className="space-y-4">
                 <div className="space-y-1.5">
-                  <Label htmlFor="topic" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Mavzu (Topic)</Label>
+                  <Label htmlFor="topic" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Mavzu (Topic)</Label>
                   <Select
                     value={selectedTopicId}
                     onValueChange={(val) => {
@@ -335,12 +349,12 @@ export function TestsManagement() {
                       if (selectedTopic) setCategory(selectedTopic.title)
                     }}
                   >
-                    <SelectTrigger id="topic" className="h-11 bg-white/5 border-white/10 rounded-xl text-white font-bold text-sm px-4 focus:ring-primary/50">
+                    <SelectTrigger id="topic" className="h-11 bg-slate-50 border-slate-100 rounded-xl text-slate-900 font-bold text-sm px-4 focus:ring-blue-500/50">
                       <SelectValue placeholder="Mavzuni tanlang..." />
                     </SelectTrigger>
-                    <SelectContent className="glass-dark border-white/10 rounded-xl text-white">
+                    <SelectContent className="bg-white border-slate-100 rounded-xl text-slate-900 shadow-3xl">
                       {topics.map((t) => (
-                        <SelectItem key={t.id} value={t.id} className="hover:bg-white/5 focus:bg-white/10 rounded-lg py-2 text-sm font-bold">
+                        <SelectItem key={t.id} value={t.id} className="hover:bg-slate-50 focus:bg-slate-50 rounded-lg py-2 text-sm font-bold">
                           {t.title}
                         </SelectItem>
                       ))}
@@ -349,10 +363,10 @@ export function TestsManagement() {
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label htmlFor="category" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Kategoriya</Label>
+                  <Label htmlFor="category" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Kategoriya</Label>
                   <Input
                     id="category"
-                    className="h-11 bg-white/5 border-white/10 rounded-xl text-white text-sm font-bold placeholder:text-slate-600 focus:ring-primary/50 px-4"
+                    className="h-11 bg-slate-50 border-slate-100 rounded-xl text-slate-900 text-sm font-bold placeholder:text-slate-400 focus:ring-blue-500/50 px-4"
                     placeholder="Avtomatik to'ldiriladi..."
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
@@ -362,20 +376,20 @@ export function TestsManagement() {
               </div>
             </div>
 
-            <div className="glass-dark border border-white/5 rounded-3xl p-6 space-y-6">
+            <div className="bg-white border border-slate-100 rounded-3xl p-6 space-y-6 shadow-sm">
               <div className="flex items-center gap-2 mb-1">
-                <div className="h-8 w-8 rounded-lg bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                <div className="h-8 w-8 rounded-lg bg-blue-50 flex items-center justify-center border border-blue-100">
                   <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                 </div>
-                <h3 className="text-sm font-black text-white tracking-tight uppercase">Media va Vaqt</h3>
+                <h3 className="text-sm font-black text-slate-900 tracking-tight uppercase">Media va Vaqt</h3>
               </div>
 
-              <div className="space-y-4 text-white">
+              <div className="space-y-4 text-slate-900">
                 <div className="space-y-1.5">
-                  <Label htmlFor="image" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Rasm URL</Label>
+                  <Label htmlFor="image" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Rasm URL</Label>
                   <Input
                     id="image"
-                    className="h-11 bg-white/5 border-white/10 rounded-xl text-white text-sm font-bold placeholder:text-slate-600 focus:ring-primary/50 px-4"
+                    className="h-11 bg-slate-50 border-slate-100 rounded-xl text-slate-900 text-sm font-bold placeholder:text-slate-400 focus:ring-blue-500/50 px-4"
                     placeholder="https://..."
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
@@ -383,11 +397,11 @@ export function TestsManagement() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="time" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Vaqt (sekund)</Label>
+                  <Label htmlFor="time" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Vaqt (sekund)</Label>
                   <Input
                     id="time"
                     type="number"
-                    className="h-11 bg-white/5 border-white/10 rounded-xl text-white text-sm font-bold focus:ring-primary/50 px-4"
+                    className="h-11 bg-slate-50 border-slate-100 rounded-xl text-slate-900 text-sm font-bold focus:ring-blue-500/50 px-4"
                     value={timeLimit}
                     onChange={(e) => setTimeLimit(e.target.value)}
                     min="10"
@@ -399,28 +413,28 @@ export function TestsManagement() {
           </div>
 
           {imageUrl && (
-            <div className="flex justify-center animate-in zoom-in-95 duration-500">
-              <div className="p-4 glass-dark border border-white/10 rounded-[3rem] bg-white/5 shadow-3xl">
-                <img src={cleanUrl(imageUrl)} alt="Preview" className="max-w-xl max-h-[400px] rounded-[2.5rem] shadow-2xl object-contain border-4 border-white/10" />
+            <div className="flex justify-center">
+              <div className="p-4 bg-white border border-slate-100 rounded-[3rem] shadow-xl shadow-blue-500/5">
+                <img src={cleanUrl(imageUrl)} alt="Preview" className="max-w-xl max-h-[400px] rounded-[2.5rem] shadow-2xl object-contain border-4 border-slate-50" />
               </div>
             </div>
           )}
 
-          <div className="glass-dark border border-white/5 rounded-3xl p-6 overflow-hidden relative">
+          <div className="bg-white border border-slate-100 rounded-3xl p-6 overflow-hidden relative shadow-sm">
             <Tabs defaultValue="latin" className="w-full relative z-10">
-              <TabsList className="inline-flex h-auto p-0.5 bg-white/5 border border-white/5 rounded-xl mb-6">
-                <TabsTrigger value="latin" className="px-6 py-2 font-black tracking-tight rounded-lg data-[state=active]:bg-white/10 data-[state=active]:text-primary text-slate-500 transition-all uppercase text-[10px]">Lotincha</TabsTrigger>
-                <TabsTrigger value="cyrillic" className="px-6 py-2 font-black tracking-tight rounded-lg data-[state=active]:bg-white/10 data-[state=active]:text-primary text-slate-500 transition-all uppercase text-[10px]">Kirillcha</TabsTrigger>
+              <TabsList className="inline-flex h-auto p-0.5 bg-slate-100 border border-slate-200 rounded-xl mb-6 shadow-inner">
+                <TabsTrigger value="latin" className="px-6 py-2 font-black tracking-tight rounded-lg data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm text-slate-500 transition-all uppercase text-[10px]">Lotincha</TabsTrigger>
+                <TabsTrigger value="cyrillic" className="px-6 py-2 font-black tracking-tight rounded-lg data-[state=active]:bg-white data-[state=active]:text-blue-600 data-[state=active]:shadow-sm text-slate-500 transition-all uppercase text-[10px]">Kirillcha</TabsTrigger>
               </TabsList>
 
               <TabsContent value="latin" className="space-y-6 m-0 outline-none">
                 <div className="grid gap-8 lg:grid-cols-2">
                   <div className="space-y-6">
                     <div className="space-y-1.5">
-                      <Label htmlFor="question" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Savol (Lotin)</Label>
+                      <Label htmlFor="question" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Savol (Lotin)</Label>
                       <Textarea
                         id="question"
-                        className="min-h-[120px] bg-white/5 border-white/10 rounded-2xl text-white text-base font-bold p-5 focus:ring-primary/50 transition-all leading-relaxed"
+                        className="min-h-[120px] bg-slate-50 border-slate-100 rounded-2xl text-slate-900 text-base font-bold p-5 focus:ring-blue-500/50 transition-all leading-relaxed"
                         placeholder="Savol matnini bu yerga kiriting..."
                         value={question}
                         onChange={(e) => setQuestion(e.target.value)}
@@ -428,10 +442,10 @@ export function TestsManagement() {
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <Label htmlFor="audio" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Audio URL</Label>
+                      <Label htmlFor="audio" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Audio URL</Label>
                       <Input
                         id="audio"
-                        className="h-11 bg-white/5 border-white/10 rounded-xl text-white font-bold px-4 text-xs"
+                        className="h-11 bg-slate-50 border-slate-100 rounded-xl text-slate-900 font-bold px-4 text-xs"
                         placeholder="Audio manzilini kiriting..."
                         value={audioUrl}
                         onChange={(e) => setAudioUrl(e.target.value)}
@@ -441,10 +455,10 @@ export function TestsManagement() {
 
                   <div className="space-y-6">
                     <div className="space-y-1.5">
-                      <Label htmlFor="explanation-text" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Tushuntirish Matni</Label>
+                      <Label htmlFor="explanation-text" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Tushuntirish Matni</Label>
                       <Textarea
                         id="explanation-text"
-                        className="min-h-[178px] bg-white/5 border-white/10 rounded-2xl text-slate-300 font-medium p-5 focus:ring-primary/50 transition-all leading-relaxed text-sm"
+                        className="min-h-[178px] bg-slate-50 border-slate-100 rounded-2xl text-slate-600 font-medium p-5 focus:ring-blue-500/50 transition-all leading-relaxed text-sm"
                         placeholder="Qoida yoki sharh..."
                         value={explanationText}
                         onChange={(e) => setExplanationText(e.target.value)}
@@ -458,20 +472,20 @@ export function TestsManagement() {
                 <div className="grid gap-8 lg:grid-cols-2">
                   <div className="space-y-6">
                     <div className="space-y-1.5">
-                      <Label htmlFor="question-cyrl" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Savol (Kirill)</Label>
+                      <Label htmlFor="question-cyrl" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Savol (Kirill)</Label>
                       <Textarea
                         id="question-cyrl"
-                        className="min-h-[120px] bg-white/5 border-white/10 rounded-2xl text-white text-base font-bold p-5 focus:ring-primary/50 transition-all leading-relaxed"
+                        className="min-h-[120px] bg-slate-50 border-slate-100 rounded-2xl text-slate-900 text-base font-bold p-5 focus:ring-blue-500/50 transition-all leading-relaxed"
                         placeholder="Савол матнини киритинг..."
                         value={questionCyrl}
                         onChange={(e) => setQuestionCyrl(e.target.value)}
                       />
                     </div>
                     <div className="space-y-1.5">
-                      <Label htmlFor="audio-cyrl" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Audio URL (Kirill)</Label>
+                      <Label htmlFor="audio-cyrl" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Audio URL (Kirill)</Label>
                       <Input
                         id="audio-cyrl"
-                        className="h-11 bg-white/5 border-white/10 rounded-xl text-white font-bold px-4 text-xs"
+                        className="h-11 bg-slate-50 border-slate-100 rounded-xl text-slate-900 font-bold px-4 text-xs"
                         placeholder="Audio манзилини киритинг..."
                         value={audioUrlCyrl}
                         onChange={(e) => setAudioUrlCyrl(e.target.value)}
@@ -481,10 +495,10 @@ export function TestsManagement() {
 
                   <div className="space-y-6">
                     <div className="space-y-1.5">
-                      <Label htmlFor="explanation-text-cyrl" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Тушунтириш Матни</Label>
+                      <Label htmlFor="explanation-text-cyrl" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400 ml-1">Тушунтириш Матни</Label>
                       <Textarea
                         id="explanation-text-cyrl"
-                        className="min-h-[178px] bg-white/5 border-white/10 rounded-2xl text-slate-300 font-medium p-5 focus:ring-primary/50 transition-all leading-relaxed text-sm"
+                        className="min-h-[178px] bg-slate-50 border-slate-100 rounded-2xl text-slate-600 font-medium p-5 focus:ring-blue-500/50 transition-all leading-relaxed text-sm"
                         placeholder="Қоида ёki шарҳ..."
                         value={explanationTextCyrl}
                         onChange={(e) => setExplanationTextCyrl(e.target.value)}
@@ -499,12 +513,12 @@ export function TestsManagement() {
           <div className="space-y-6">
             <div className="flex items-center justify-between px-2">
               <div>
-                <h3 className="text-lg font-black text-white tracking-tight italic">Javob Variantlari</h3>
-                <p className="text-slate-500 font-black uppercase tracking-widest text-[10px] mt-1">Kamida 2 ta javob</p>
+                <h3 className="text-lg font-black text-slate-900 tracking-tight italic">Javob Variantlari</h3>
+                <p className="text-slate-400 font-black uppercase tracking-widest text-[10px] mt-1">Kamida 2 ta javob</p>
               </div>
               <Button
                 type="button"
-                className="h-10 px-6 bg-primary/10 hover:bg-primary/20 text-primary font-black rounded-xl border border-primary/20 transition-all uppercase text-[10px] tracking-widest"
+                className="h-10 px-6 bg-blue-50 hover:bg-blue-100 text-blue-600 font-black rounded-xl border border-blue-200 transition-all uppercase text-[10px] tracking-widest shadow-sm"
                 onClick={() => {
                   setAnswers([...answers, ""])
                   setAnswersCyrl([...answersCyrl, ""])
@@ -517,16 +531,16 @@ export function TestsManagement() {
 
             <div className="grid gap-3">
               {answers.map((_, index) => (
-                <div key={index} className="group relative glass-dark border border-white/5 p-4 rounded-2xl transition-all duration-300 hover:border-white/10">
+                <div key={index} className="group relative bg-white border border-slate-100 p-4 rounded-2xl transition-all duration-300 hover:border-blue-200 shadow-sm hover:shadow-md">
                   <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4">
-                    <div className="h-10 min-w-[2.5rem] rounded-lg bg-white/5 border border-white/10 flex items-center justify-center font-black text-lg text-primary/40 group-hover:text-primary transition-colors">
+                    <div className="h-10 min-w-[2.5rem] rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center font-black text-lg text-slate-300 group-hover:text-blue-600 transition-colors">
                       {index + 1}
                     </div>
 
                     <div className="flex-1 grid gap-4 sm:grid-cols-2 w-full">
                       <div className="space-y-1">
                         <Input
-                          className="h-10 bg-white/5 border-white/10 rounded-xl text-white font-medium px-4 focus:ring-primary/50 text-sm"
+                          className="h-10 bg-slate-50 border-slate-100 rounded-xl text-slate-900 font-bold px-4 focus:ring-blue-500/50 text-sm"
                           placeholder="Lotincha variant..."
                           value={answers[index]}
                           onChange={(e) => {
@@ -539,7 +553,7 @@ export function TestsManagement() {
                       </div>
                       <div className="space-y-1">
                         <Input
-                          className="h-10 bg-white/5 border-white/10 rounded-xl text-white font-medium px-4 focus:ring-primary/50 text-sm"
+                          className="h-10 bg-slate-50 border-slate-100 rounded-xl text-slate-900 font-bold px-4 focus:ring-blue-500/50 text-sm"
                           placeholder="Кириллcha variant..."
                           value={answersCyrl[index] || ""}
                           onChange={(e) => {
@@ -556,8 +570,8 @@ export function TestsManagement() {
                         type="button"
                         variant="ghost"
                         className={`h-10 px-4 rounded-xl font-black uppercase tracking-widest text-[10px] transition-all flex-1 lg:flex-none border ${correctAnswer === index.toString()
-                          ? "bg-success/20 text-success border-success"
-                          : "bg-white/5 text-slate-500 border-white/5 hover:text-white"
+                          ? "bg-emerald-500 text-white border-emerald-500 shadow-lg shadow-emerald-500/20"
+                          : "bg-slate-50 text-slate-400 border-slate-100 hover:text-slate-900"
                           }`}
                         onClick={() => setCorrectAnswer(index.toString())}
                       >
@@ -568,7 +582,7 @@ export function TestsManagement() {
                         <Button
                           type="button"
                           variant="ghost"
-                          className="h-10 w-10 shrink-0 rounded-xl bg-destructive/10 hover:bg-destructive/20 text-destructive border border-destructive/20 transition-all"
+                          className="h-10 w-10 shrink-0 rounded-xl bg-red-50 hover:bg-red-100 text-red-600 border border-red-100 transition-all"
                           onClick={() => {
                             setAnswers(answers.filter((_, i) => i !== index))
                             setAnswersCyrl(answersCyrl.filter((_, i) => i !== index))
@@ -587,15 +601,15 @@ export function TestsManagement() {
             </div>
           </div>
 
-          <div className="flex gap-4 pt-8 border-t border-white/5">
+          <div className="flex gap-4 pt-8 border-t border-slate-100">
             <Button
               type="submit"
-              className="flex-1 h-14 bg-primary hover:bg-primary/90 text-white font-black rounded-2xl shadow-xl shadow-primary/20 transition-all text-sm uppercase tracking-widest border-none"
+              className="flex-1 h-14 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-xl shadow-blue-500/20 transition-all text-sm uppercase tracking-widest border-none"
             >
               {editingTest ? "Saqlash" : "Tayyor"}
             </Button>
             {editingTest && (
-              <Button type="button" variant="ghost" className="h-14 px-8 text-sm bg-white/5 hover:bg-white/10 text-white font-bold rounded-2xl border border-white/10 transition-all" onClick={resetForm}>
+              <Button type="button" variant="ghost" className="h-14 px-8 text-sm bg-slate-100 hover:bg-slate-200 text-slate-900 font-bold rounded-2xl border border-slate-200 transition-all" onClick={resetForm}>
                 Bekor qilish
               </Button>
             )}
@@ -605,54 +619,54 @@ export function TestsManagement() {
 
       <TabsContent value="view" className="space-y-8 m-0 border-none outline-none">
         {loading ? (
-          <div className="flex flex-col items-center justify-center py-20 glass-dark border border-white/5 rounded-3xl">
-            <div className="w-10 h-10 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4" />
+          <div className="flex flex-col items-center justify-center py-20 bg-white border border-slate-100 rounded-3xl shadow-sm">
+            <div className="w-10 h-10 border-4 border-blue-50 border-t-blue-600 rounded-full animate-spin mb-4" />
             <p className="text-slate-400 font-bold text-xs uppercase tracking-widest">Yuklanmoqda...</p>
           </div>
         ) : Object.keys(testsByCategory).length === 0 ? (
-          <div className="py-20 glass-dark border border-white/5 bg-white/5 rounded-3xl text-center space-y-4 animate-in zoom-in-95 duration-700">
-            <X className="h-10 w-10 text-slate-800 mx-auto" />
-            <p className="text-slate-500 text-xl font-black italic tracking-tighter">Hozircha testlar mavjud emas</p>
+          <div className="py-20 bg-white border border-slate-100 rounded-3xl text-center space-y-4 shadow-sm">
+            <X className="h-10 w-10 text-slate-100 mx-auto" />
+            <p className="text-slate-300 text-xl font-black italic tracking-tighter">Hozircha testlar mavjud emas</p>
           </div>
         ) : (
           <div className="space-y-12">
             {Object.entries(testsByCategory).map(([catTitle, catTests]) => (
               <div key={catTitle} className="space-y-6">
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 px-4 pb-3 border-b border-white/5">
-                  <h3 className="text-lg font-black text-white tracking-tight uppercase"><span className="text-primary mr-2">#</span> {catTitle}</h3>
-                  <Badge className="rounded-lg bg-white/5 border border-white/10 text-slate-500 px-3 py-1 font-black tracking-widest text-[10px] uppercase">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 px-4 pb-3 border-b border-slate-100">
+                  <h3 className="text-lg font-black text-slate-900 tracking-tight uppercase"><span className="text-blue-600 mr-2">#</span> {catTitle}</h3>
+                  <Badge className="rounded-lg bg-white border border-slate-100 text-slate-400 px-3 py-1 font-black tracking-widest text-[10px] uppercase shadow-sm">
                     {catTests.length} TEST
                   </Badge>
                 </div>
                 <div className="grid gap-3">
                   {catTests.map((test) => (
-                    <div key={test.id} className="group glass-dark border border-white/5 bg-white/5 hover:bg-white/10 p-4 rounded-2xl transition-all duration-300 relative overflow-hidden">
+                    <div key={test.id} className="group bg-white border border-slate-100 hover:border-blue-200 p-4 rounded-2xl transition-all duration-300 relative overflow-hidden shadow-sm hover:shadow-md">
                       <div className="flex flex-col lg:flex-row gap-6 relative z-10">
                         {test.image_url && (
-                          <div className="w-full lg:w-40 h-28 shrink-0 rounded-xl overflow-hidden border border-white/10 bg-slate-900 group-hover:scale-[1.02] transition-transform duration-500">
-                            <img src={cleanUrl(test.image_url)} alt="Test" className="w-full h-full object-cover" />
+                          <div className="w-full lg:w-40 h-28 shrink-0 rounded-xl overflow-hidden border border-slate-100 bg-slate-50 group-hover:scale-[1.02] transition-transform duration-500 shadow-inner">
+                            <img src={cleanUrl(test.image_url)} alt="Test" className="w-full h-full object-contain" />
                           </div>
                         )}
 
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-black text-white leading-snug tracking-tight line-clamp-2 mb-3">{test.question}</p>
+                          <p className="text-sm font-black text-slate-900 leading-snug tracking-tight line-clamp-2 mb-3">{test.question}</p>
                           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
                             {test.answers.map((answer, idx) => (
-                              <div key={idx} className={`p-2 rounded-lg border flex items-start gap-2 transition-all h-full ${idx === test.correct_answer ? "bg-success/10 border-success/30" : "bg-white/5 border-white/5 opacity-40"}`}>
-                                <div className={`flex-shrink-0 h-4 w-4 rounded-md flex items-center justify-center font-black text-[8px] ${idx === test.correct_answer ? "bg-success text-white" : "bg-slate-700 text-slate-400"}`}>
+                              <div key={idx} className={`p-2 rounded-lg border flex items-start gap-2 transition-all h-full ${idx === test.correct_answer ? "bg-emerald-50 border-emerald-200" : "bg-slate-50 border-slate-50 opacity-60"}`}>
+                                <div className={`flex-shrink-0 h-4 w-4 rounded-md flex items-center justify-center font-black text-[8px] ${idx === test.correct_answer ? "bg-emerald-500 text-white" : "bg-slate-200 text-slate-400"}`}>
                                   {idx + 1}
                                 </div>
-                                <span className={`text-[10px] font-bold leading-tight line-clamp-2 ${idx === test.correct_answer ? "text-success" : "text-slate-400"}`}>{answer}</span>
+                                <span className={`text-[10px] font-bold leading-tight line-clamp-2 ${idx === test.correct_answer ? "text-emerald-700" : "text-slate-500"}`}>{answer}</span>
                               </div>
                             ))}
                           </div>
                         </div>
 
-                        <div className="flex flex-row lg:flex-col gap-2 min-w-fit justify-end lg:justify-start pt-2 lg:pt-0 border-t lg:border-t-0 border-white/5">
+                        <div className="flex flex-row lg:flex-col gap-2 min-w-fit justify-end lg:justify-start pt-2 lg:pt-0 border-t lg:border-t-0 border-slate-100">
                           <Button
                             size="sm"
                             variant="ghost"
-                            className="h-10 w-10 bg-white/5 hover:bg-white/10 text-white border border-white/5 rounded-xl flex items-center justify-center p-0 transition-all"
+                            className="h-10 w-10 bg-slate-50 hover:bg-blue-50 text-slate-900 border border-slate-100 hover:border-blue-200 rounded-xl flex items-center justify-center p-0 transition-all shadow-sm"
                             onClick={() => handleEdit(test)}
                           >
                             <Edit2 className="h-4 w-4" />
@@ -660,7 +674,7 @@ export function TestsManagement() {
                           <Button
                             size="sm"
                             variant="ghost"
-                            className="h-10 w-10 bg-destructive/10 hover:bg-destructive/20 text-destructive border border-destructive/20 rounded-xl flex items-center justify-center p-0 transition-all"
+                            className="h-10 w-10 bg-red-50 hover:bg-red-100 text-red-600 border border-red-100 rounded-xl flex items-center justify-center p-0 transition-all shadow-sm"
                             onClick={() => handleDelete(test.id)}
                           >
                             <Trash2 className="h-4 w-4" />

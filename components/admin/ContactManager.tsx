@@ -1,12 +1,12 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useState } from "react"
+import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { useToast } from "@/hooks/use-toast"
+import { Send, Phone, MapPin, Save, Info, Loader2 } from "lucide-react"
 
 export default function ContactManager() {
   const [phone, setPhone] = useState("")
@@ -14,22 +14,41 @@ export default function ContactManager() {
   const [telegramLink, setTelegramLink] = useState("")
   const [address, setAddress] = useState("")
   const [loading, setLoading] = useState(true)
+  const [saving, setSaving] = useState(false)
   const { toast } = useToast()
   const supabase = getSupabaseBrowserClient()
 
   useEffect(() => {
+    let isMounted = true;
+    const fetchContact = async () => {
+      setLoading(true)
+      const { data } = await supabase
+        .from("site_content")
+        .select("content")
+        .eq("type", "contact")
+        .maybeSingle()
+
+      if (data?.content && isMounted) {
+        setPhone(data.content.phone || "")
+        setTelegram(data.content.telegram || "")
+        setTelegramLink(data.content.telegram_link || "")
+        setAddress(data.content.address || "")
+      }
+      if (isMounted) setLoading(false)
+    }
     fetchContact()
+    return () => { isMounted = false }
   }, [])
 
   const fetchContact = async () => {
     setLoading(true)
-    const { data, error } = await supabase
+    const { data } = await supabase
       .from("site_content")
       .select("content")
       .eq("type", "contact")
       .maybeSingle()
 
-    if (!error && data?.content) {
+    if (data?.content) {
       setPhone(data.content.phone || "")
       setTelegram(data.content.telegram || "")
       setTelegramLink(data.content.telegram_link || "")
@@ -39,7 +58,8 @@ export default function ContactManager() {
   }
 
   const handleSave = async () => {
-    const newContent = {
+    setSaving(true)
+    const content = {
       phone,
       telegram,
       telegram_link: telegramLink,
@@ -56,114 +76,155 @@ export default function ContactManager() {
     if (existing) {
       const { error: updateError } = await supabase
         .from("site_content")
-        .update({ content: newContent })
+        .update({ content })
         .eq("type", "contact")
       error = updateError
     } else {
       const { error: insertError } = await supabase
         .from("site_content")
-        .insert({ type: "contact", content: newContent })
+        .insert({ type: "contact", content })
       error = insertError
     }
 
-    if (!error) {
+    if (error) {
       toast({
-        title: "Success",
-        description: "Bog'lanish ma'lumotlari muvaffaqiyatli yangilandi",
-      })
-    } else {
-      toast({
-        title: "Error",
+        title: "Xatolik",
         description: error.message || "Bog'lanish ma'lumotlarini yangilashda xatolik yuz berdi",
         variant: "destructive",
       })
+    } else {
+      toast({
+        title: "Muvaffaqiyatli",
+        description: "Bog'lanish ma'lumotlari muvaffaqiyatli yangilandi",
+      })
     }
+    setSaving(false)
   }
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-40 glass-dark border border-white/5 rounded-[4rem]">
-        <div className="w-16 h-16 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-6" />
+      <div className="flex flex-col items-center justify-center py-40 bg-white border border-slate-100 rounded-[4rem] shadow-sm">
+        <Loader2 className="w-16 h-16 text-blue-600 animate-spin mb-6" />
         <p className="text-slate-400 font-bold text-xl uppercase tracking-widest">Yuklanmoqda...</p>
       </div>
     )
   }
 
   return (
-    <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in duration-700">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-white/5">
+    <div className="space-y-8">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 border-b border-slate-100">
         <div>
-          <h2 className="text-xl font-black text-white tracking-tight italic uppercase">Bog'lanish Sozlamalari</h2>
-          <p className="text-slate-400 text-xs font-medium mt-1">Platforma kontakt ma'lumotlarini boshqarish</p>
+          <h2 className="text-xl font-black text-slate-900 tracking-tight italic uppercase">Aloqa Sozlamalari</h2>
+          <p className="text-slate-500 text-xs font-medium mt-1">Platformadagi bog'lanish ma'lumotlarini tahrirlash</p>
+        </div>
+        <div className="px-3 py-1.5 rounded-xl bg-white border border-slate-100 text-slate-400 text-[10px] font-bold uppercase shadow-sm">
+          Aktiv: Telegram
         </div>
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-12 items-start">
-        <div className="lg:col-span-12">
-          <div className="glass-dark border border-white/5 rounded-3xl p-8 shadow-xl relative overflow-hidden group">
-            <div className="absolute -left-20 -top-20 w-48 h-48 bg-primary/10 rounded-full blur-3xl opacity-50 group-hover:opacity-70 transition-opacity duration-1000" />
+      <div className="max-w-2xl mx-auto">
+        <div className="bg-white border border-slate-100 rounded-3xl p-8 shadow-xl relative overflow-hidden group">
+          <div className="absolute -right-20 -top-20 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl opacity-50" />
+          <div className="absolute -left-20 -bottom-20 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl opacity-50" />
 
-            <div className="relative z-10 grid gap-6 md:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Telefon Raqami</Label>
-                <Input
-                  id="phone"
-                  className="h-11 bg-white/5 border-white/10 rounded-xl text-sm font-bold text-white px-5 focus:ring-primary/50 transition-all font-mono"
-                  placeholder="+998 90 123 45 67"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                />
+          <div className="relative z-10 space-y-8">
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 rounded-2xl bg-blue-50 flex items-center justify-center border border-blue-100 shadow-sm">
+                <Send className="h-6 w-6 text-blue-600" />
               </div>
+              <div>
+                <h3 className="text-xl font-black text-slate-900 tracking-tight uppercase">Bog'lanish</h3>
+                <p className="text-slate-500 text-xs font-medium italic">Foydalanuvchilar siz bilan qanday bog'lanadi?</p>
+              </div>
+            </div>
 
+            <div className="grid gap-6">
               <div className="space-y-2">
-                <Label htmlFor="telegram" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Telegram Username</Label>
+                <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Telefon raqami</Label>
                 <div className="relative">
                   <Input
-                    id="telegram"
-                    className="h-11 bg-white/5 border-white/10 rounded-xl text-sm font-bold text-white pl-10 pr-5 focus:ring-primary/50 transition-all"
-                    placeholder="@username"
-                    value={telegram}
-                    onChange={(e) => setTelegram(e.target.value)}
+                    id="phone"
+                    className="h-12 bg-slate-50 border-slate-100 rounded-2xl text-slate-900 font-bold px-5 focus:ring-blue-500/50 focus:border-blue-600 transition-all shadow-inner"
+                    placeholder="+998 90 123 45 67"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
                   />
-                  <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none opacity-40">
-                    <span className="text-sm font-bold text-primary">@</span>
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <Phone className="h-4 w-4 text-slate-300" />
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="telegram-link" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">To'liq Telegram Havolasi</Label>
-                <Input
-                  id="telegram-link"
-                  className="h-11 bg-white/5 border-white/10 rounded-xl text-sm font-bold text-white px-5 focus:ring-primary/50 transition-all"
-                  placeholder="https://t.me/yourusername"
-                  value={telegramLink}
-                  onChange={(e) => setTelegramLink(e.target.value)}
-                />
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="telegram" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Telegram Username</Label>
+                  <Input
+                    id="telegram"
+                    className="h-12 bg-slate-50 border-slate-100 rounded-2xl text-blue-600 font-bold px-5 focus:ring-blue-500/50 focus:border-blue-600 transition-all shadow-inner"
+                    placeholder="@admin_user"
+                    value={telegram}
+                    onChange={(e) => setTelegram(e.target.value)}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="telegram_link" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Telegram Link</Label>
+                  <Input
+                    id="telegram_link"
+                    className="h-12 bg-slate-50 border-slate-100 rounded-2xl text-blue-600 font-bold px-5 focus:ring-blue-500/50 focus:border-blue-600 transition-all shadow-inner"
+                    placeholder="https://t.me/admin"
+                    value={telegramLink}
+                    onChange={(e) => setTelegramLink(e.target.value)}
+                  />
+                </div>
               </div>
 
-              <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="address" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 ml-1">Ofis Manzili / Kontakt Matni</Label>
-                <Input
-                  id="address"
-                  className="h-11 bg-white/5 border-white/10 rounded-xl text-sm font-bold text-white px-5 focus:ring-primary/50 transition-all"
-                  placeholder="Toshkent sh., Yunusobod tumani..."
-                  value={address}
-                  onChange={(e) => setAddress(e.target.value)}
-                />
+              <div className="space-y-2">
+                <Label htmlFor="address" className="text-[10px] font-black uppercase tracking-widest text-slate-400 ml-1">Manzil (Matn)</Label>
+                <div className="relative">
+                  <Input
+                    id="address"
+                    className="h-12 bg-slate-50 border-slate-100 rounded-2xl text-slate-900 font-bold px-5 focus:ring-blue-500/50 focus:border-blue-600 transition-all shadow-inner"
+                    placeholder="Toshkent shahri, Yunusobod..."
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+                    <MapPin className="h-4 w-4 text-slate-300" />
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div className="mt-8 flex justify-center border-t border-white/5 pt-6">
+            <div className="mt-10 flex justify-center">
               <Button
                 onClick={handleSave}
-                className="h-12 px-10 bg-primary hover:bg-primary/90 text-white text-xs font-black rounded-xl shadow-xl shadow-primary/20 transition-all border-none group uppercase tracking-widest"
+                disabled={saving}
+                className="h-14 px-12 bg-blue-600 hover:bg-blue-700 text-white text-base font-black rounded-2xl shadow-xl shadow-blue-500/20 transition-all border-none group uppercase tracking-widest disabled:opacity-50"
               >
-                Saqlash
+                {saving ? (
+                  <div className="flex items-center gap-2">
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                    Saqlanmoqda...
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <Save className="h-5 w-5" />
+                    Saqlash
+                  </div>
+                )}
               </Button>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="bg-blue-50 border border-blue-100 p-5 rounded-2xl flex flex-col md:flex-row gap-4 items-center">
+        <div className="h-10 w-10 rounded-xl bg-blue-100 border border-blue-200 flex items-center justify-center shrink-0">
+          <Info className="h-5 w-5 text-blue-600" />
+        </div>
+        <p className="text-slate-600 font-bold text-center md:text-left leading-relaxed text-xs">
+          Bu ma'lumotlar foydalanuvchilar obuna bo'lish sahifasida va footer qismida ko'rinadi.
+        </p>
       </div>
     </div>
   )

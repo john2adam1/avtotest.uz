@@ -36,10 +36,11 @@ export function DashboardClient({
     const supabase = getSupabaseBrowserClient()
 
     useEffect(() => {
-        setIsMounted(true)
+        let isMounted = true;
+        if (isMounted) setIsMounted(true)
 
         const channel = supabase
-            .channel('user-subscription-changes')
+            .channel(`user-sub-${initialUser.id}`)
             .on(
                 'postgres_changes',
                 {
@@ -49,15 +50,16 @@ export function DashboardClient({
                     filter: `id=eq.${initialUser.id}`,
                 },
                 (payload) => {
-                    setUser(payload.new as User)
+                    if (isMounted) setUser(payload.new as User)
                 }
             )
             .subscribe()
 
         return () => {
+            isMounted = false
             supabase.removeChannel(channel)
         }
-    }, [initialUser.id, supabase])
+    }, [initialUser.id]) // Supabase is a stable singleton
 
     if (!isMounted) {
         return <div className="min-h-screen bg-[#e9f6ff]" />
