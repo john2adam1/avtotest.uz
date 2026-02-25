@@ -3,7 +3,7 @@
     "hero_subtitle": "Video darslar, testlar va real imtihon tajriba - barchasi bir joyda!",
     "activate_premium": "Premium obunani faollashtiring",
     "common": {
-        "appName": "Tezkor Avtotest",
+        "appName": "SarvarAvtoTest",
         "loading": "Yuklanmoqda...",
         "save": "Saqlash",
         "cancel": "Bekor qilish",
@@ -36,7 +36,7 @@
     },
     "landing_about": {
         "badge": "BIZ HAQIMIZDA",
-        "title": "Tezkor Avtotest platformasi",
+        "title": "SarvarAvtoTest platformasi",
         "desc1": "bu foydalanuvchilarning bilimlarini oshirishga yordam beradigan zamonaviy onlayn test platformasi. Platformamiz orqali bilimlarni mustahkamlash, imtihonlarga puxta tayyorgarlik ko‘rish mumkin.",
         "desc2": "Intuitiv interfeys, keng test kutubxonasi va real vaqtli",
         "progress": "progress kuzatuvi",

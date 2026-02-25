@@ -46,7 +46,7 @@ export function Statistics() {
             {t("stats.title")}
           </h2>
           <p className="text-slate-500 text-lg font-bold">
-            Platformamiz orqali haydovchilik guvohnomasini olish imtihoniga tayyorgarlik ko&apos;ring
+            {t("landing.subtitle")}
           </p>
         </div>
 

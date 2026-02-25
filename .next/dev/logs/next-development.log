@@ -1,115 +1,139 @@
-[00:00:02.496] Server  LOG      ✓ Ready in 1956ms
-[00:00:05.646] Server  LOG     Middleware hitting path: "/"
-[00:00:10.809] Server  LOG      ○ Compiling / ...
-[00:00:16.095] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:19.051] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:19.183] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:19.183] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:00:19.183] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932943506} /_vercel/insights/view
-[00:00:20.306] Server  LOG     Middleware hitting path: "/login"
-[00:00:20.689] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:21.932] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:22.066] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:22.066] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:00:22.066] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932946412} /_vercel/insights/view
-[00:00:22.812] Server  LOG     Middleware hitting path: "/login"
-[00:00:23.095] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:23.981] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:24.140] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:24.140] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:00:24.140] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932948474} /_vercel/insights/view
-[00:00:24.666] Server  LOG     Middleware hitting path: "/login"
-[00:00:24.946] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:25.921] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:26.087] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:26.087] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:00:26.088] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932950430} /_vercel/insights/view
-[00:00:26.789] Server  LOG     Middleware hitting path: "/login"
-[00:00:27.066] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:27.916] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:28.079] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:28.079] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:00:28.079] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932952396} /_vercel/insights/view
-[00:00:28.619] Server  LOG     Middleware hitting path: "/login"
-[00:00:28.894] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:29.763] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:29.901] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:29.901] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:00:29.901] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932954244} /_vercel/insights/view
-[00:00:30.703] Server  LOG     Middleware hitting path: "/login"
-[00:00:30.973] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:32.102] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:32.270] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:32.270] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:00:32.270] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932956590} /_vercel/insights/view
-[00:00:33.885] Server  LOG     Middleware hitting path: "/login"
-[00:00:34.458] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:35.425] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:36.336] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:36.336] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
-[00:00:36.336] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932959909} /_vercel/insights/view
-[00:00:36.555] Server  LOG     Middleware hitting path: "/login"
-[00:00:36.826] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:36.850] Server  LOG     Middleware hitting path: "/login"
-[00:00:38.432] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:38.602] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:38.602] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
-[00:00:38.602] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932962952} /_vercel/insights/view
-[00:00:46.714] Server  LOG     Middleware hitting path: "/dashboard"
-[00:00:47.734] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932972080} /_vercel/insights/view
-[00:00:48.737] Server  LOG     Middleware hitting path: "/admin"
-[00:00:51.029] Server  LOG     Middleware hitting path: "/admin"
-[00:00:52.596] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771932976920} /_vercel/insights/view
-[00:01:05.820] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
-[00:18:02.796] Server  LOG     Middleware hitting path: "/admin"
-[00:18:07.977] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:18:08.521] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:18:08.521] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
-[00:18:08.521] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771934012867} /_vercel/insights/view
-[00:18:10.167] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:18:10.167] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
-[00:18:10.167] Browser LOG     Browser Session Status: Logged in as 998901002030@gmail.com
-[00:18:10.167] Browser LOG     Browser Session Status: Logged in as 998901002030@gmail.com
-[00:18:16.245] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
-[00:20:39.672] Server  LOG      ✓ Compiled in 3.4s
-[00:20:39.727] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:20:40.592] Server  LOG     Middleware hitting path: "/admin"
-[00:20:47.034] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:20:48.343] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:20:48.343] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
-[00:20:48.343] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771934172251} /_vercel/insights/view
-[00:26:51.572] Server  LOG      ✓ Compiled in 2.2s
-[00:27:02.818] Server  LOG      ✓ Compiled in 604ms
-[00:27:33.499] Server  LOG      ✓ Compiled in 236ms
-[00:27:45.424] Server  LOG      ✓ Compiled in 248ms
-[00:27:51.956] Server  LOG      ✓ Compiled in 271ms
-[00:28:06.690] Server  LOG      ✓ Compiled in 462ms
-[00:28:17.045] Server  LOG      ✓ Compiled in 384ms
-[00:28:23.777] Server  LOG      ✓ Compiled in 235ms
-[00:29:11.812] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
-[00:29:14.178] Server  LOG     Middleware hitting path: "/login"
-[00:29:18.862] Server  LOG     Middleware hitting path: "/admin"
-[00:29:19.145] Server  LOG     Middleware hitting path: "/admin"
-[00:29:19.888] Server  LOG     Middleware hitting path: "/dashboard"
-[00:29:25.927] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:29:26.205] Server  LOG     Middleware hitting path: "/admin"
-[00:29:28.684] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:29:29.073] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:29:29.074] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
-[00:29:29.074] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771934693410} /_vercel/insights/view
-[00:29:34.326] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
-[00:33:19.284] Server  LOG     Middleware hitting path: "/admin"
-[00:33:19.607] Server  LOG      ✓ Compiled in 2.6s
-[00:33:19.626] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
-[00:33:24.125] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:33:25.343] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:33:25.343] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
-[00:33:25.344] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1771934929062} /_vercel/insights/view
-[00:33:49.823] Server  LOG      ✓ Compiled in 360ms
-[00:33:56.490] Server  LOG      ✓ Compiled in 269ms
-[00:34:03.853] Server  LOG      ✓ Compiled in 271ms
-[00:34:10.961] Server  LOG      ✓ Compiled in 229ms
-[00:34:26.241] Server  LOG      ✓ Compiled in 217ms
-[00:34:45.375] Server  LOG      ✓ Compiled in 231ms
-[00:35:19.844] Server  LOG      ✓ Compiled in 296ms
-[00:49:51.120] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+[00:00:03.797] Server  LOG      ✓ Ready in 3.2s
+[00:00:04.458] Server  LOG     Middleware hitting path: "/"
+[00:00:09.488] Server  LOG      ○ Compiling / ...
+[00:00:15.056] Server  LOG     Middleware hitting path: "/admin"
+[00:00:20.006] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:20.623] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:20.623] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[00:00:20.623] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772045417976} /_vercel/insights/view
+[00:04:21.181] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:04:25.200] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+[00:05:51.253] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:51.293] Server  LOG     Middleware hitting path: "/admin"
+[00:05:51.907] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:05:51.933] Server  LOG      ✓ Compiled in 1246ms
+[00:05:56.684] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:05:57.019] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:58.622] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:05:58.623] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[00:05:58.623] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772045755148} /_vercel/insights/view
+[00:07:07.040] Server  LOG      ✓ Compiled in 403ms
+[00:08:06.294] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+[00:15:49.366] Server  LOG      ✓ Compiled in 1663ms
+[00:15:49.397] Server  WARN     ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[00:15:50.368] Server  LOG     Middleware hitting path: "/admin"
+[00:15:50.781] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772046347191} /_vercel/insights/view
+[00:15:54.320] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:15:54.947] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:55.613] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:15:55.613] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[00:15:55.613] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772046353043} /_vercel/insights/view
+[00:17:53.747] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:17:53.748] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:17:53.748] Browser LOG     Browser Session Status: Logged in as 998901002030@gmail.com
+[00:17:53.748] Browser LOG     Browser Session Status: Logged in as 998901002030@gmail.com
+[00:26:39.832] Server  LOG     Middleware hitting path: "/admin"
+[00:26:46.451] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:26:46.764] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:47.615] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:26:47.615] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/admin","route":"/admin"}
+[00:26:47.616] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/admin color: rgb(120, 120, 120) color: inherit {"dp":"/admin","o":"http://localhost:3000/admin","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047004871} /_vercel/insights/view
+[00:26:52.922] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:26:52.923] Browser LOG     Supabase Config Check: {"key":"eyJhb...0FLKc","url":"https://lgacbbe..."}
+[00:26:52.923] Browser LOG     Browser Session Status: Logged in as 998901002030@gmail.com
+[00:26:52.923] Browser LOG     Browser Session Status: Logged in as 998901002030@gmail.com
+[00:27:12.664] Server  LOG     Middleware hitting path: "/login"
+[00:27:15.675] Server  LOG      ○ Compiling /login ...
+[00:27:16.802] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:27:16.802] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047034286} /_vercel/insights/view
+[00:27:33.528] Server  LOG     Middleware hitting path: "/register"
+[00:27:35.071] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/register color: rgb(120, 120, 120) color: inherit {"dp":"/register","o":"http://localhost:3000/register","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047052558} /_vercel/insights/view
+[00:27:44.148] Server  LOG     Middleware hitting path: "/register"
+[00:27:48.656] Server  LOG     Middleware hitting path: "/dashboard"
+[00:27:50.786] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047068271} /_vercel/insights/view
+[00:27:57.065] Server  LOG     Middleware hitting path: "/tickets"
+[00:28:02.049] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047079539} /_vercel/insights/view
+[00:28:03.561] Server  LOG     Middleware hitting path: "/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683"
+[00:28:06.809] Server  LOG     Ticket page hit with ID: "0e875648-3887-43c7-8ece-5e7e3740f683"
+[00:28:07.023] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047084515} /_vercel/insights/view
+[00:28:08.679] Server  LOG     Ticket Debug: User: true
+[00:28:08.680] Server  LOG     Ticket Debug: Ticket: true
+[00:28:08.681] Server  LOG     Ticket Debug: TicketTests: 20
+[00:28:08.682] Server  LOG     Ticket Debug: Tests count: 20
+[00:28:37.392] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:33:11.318] Server  LOG      ✓ Compiled in 885ms
+[00:33:11.620] Browser ERROR   ./components/enhanced-test-interface.tsx:365:5
+Parsing ecmascript source code failed
+  363 |       </div>
+  364 |     </div>
+> 365 |     </main >
+      |     ^
+  366 |   )
+  367 | }
+  368 |
+
+Expression expected
+
+Import trace:
+  Server Component:
+    ./components/enhanced-test-interface.tsx
+    ./app/test/ticket/[ticketId]/page.tsx
+[00:33:11.620] Browser ERROR   ./components/enhanced-test-interface.tsx:365:6
+Parsing ecmascript source code failed
+  363 |       </div>
+  364 |     </div>
+> 365 |     </main >
+      |      ^^^^^^^
+  366 |   )
+  367 | }
+  368 |
+
+Unterminated regexp literal
+
+Import trace:
+  Server Component:
+    ./components/enhanced-test-interface.tsx
+    ./app/test/ticket/[ticketId]/page.tsx
+[00:33:34.760] Server  LOG      ✓ Compiled in 282ms
+[00:33:34.778] Server  LOG     Middleware hitting path: "/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683"
+[00:33:38.511] Server  LOG     Ticket page hit with ID: "0e875648-3887-43c7-8ece-5e7e3740f683"
+[00:33:38.934] Server  LOG     Ticket Debug: User: true
+[00:33:38.934] Server  LOG     Ticket Debug: Ticket: true
+[00:33:38.934] Server  LOG     Ticket Debug: TicketTests: 20
+[00:33:38.935] Server  LOG     Ticket Debug: Tests count: 20
+[00:34:17.171] Server  LOG      ✓ Compiled in 249ms
+[00:35:21.501] Server  LOG      ✓ Compiled in 218ms
+[00:35:48.909] Server  LOG     Middleware hitting path: "/dashboard"
+[00:35:51.052] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047548558} /_vercel/insights/view
+[00:35:58.719] Server  LOG     Middleware hitting path: "/tickets"
+[00:36:05.435] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047562946} /_vercel/insights/view
+[00:36:16.741] Server  LOG     Middleware hitting path: "/dashboard"
+[00:36:18.747] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772047576259} /_vercel/insights/view
+[00:38:08.307] Server  LOG      ✓ Compiled in 876ms
+[00:38:14.915] Server  LOG      ✓ Compiled in 228ms
+[00:38:22.730] Server  LOG      ✓ Compiled in 210ms
+[00:38:33.554] Server  LOG     Middleware hitting path: "/dashboard"
+[00:38:34.077] Server  LOG      ✓ Compiled in 2.2s
+[00:38:37.150] Server  LOG     Middleware hitting path: "/dashboard"
+[00:38:38.043] Server  LOG     Middleware hitting path: "/dashboard"
+[00:38:38.994] Server  LOG     Middleware hitting path: "/dashboard"
+[00:38:39.278] Server  LOG      ✓ Compiled in 286ms
+[00:38:39.884] Server  LOG     Middleware hitting path: "/dashboard"
+[00:38:40.659] Server  LOG     Middleware hitting path: "/dashboard"
+[00:38:41.364] Server  LOG     Middleware hitting path: "/dashboard"
+[00:38:42.190] Server  LOG     Middleware hitting path: "/dashboard"
+[00:38:47.597] Server  LOG      ✓ Compiled in 406ms
+[00:39:03.394] Server  LOG      ✓ Compiled in 61ms
+[00:39:38.326] Server  LOG      ✓ Compiled in 97ms
+[00:39:46.324] Server  LOG      ✓ Compiled in 233ms
+[00:39:52.691] Server  LOG      ✓ Compiled in 250ms
+[00:39:53.011] Server  LOG     Middleware hitting path: "/dashboard"
+[00:42:56.103] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:42:56.104] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+[00:45:22.389] Server  LOG      ✓ Compiled in 2.2s
+[00:45:35.026] Server  LOG      ✓ Compiled in 256ms
+[00:46:04.878] Server  LOG      ✓ Compiled in 282ms
+[00:47:08.642] Server  LOG      ✓ Compiled in 976ms
+[00:47:45.319] Server  LOG      ✓ Compiled in 692ms
+[00:47:45.462] Server  LOG     Middleware hitting path: "/dashboard"
+[00:48:07.793] Server  LOG      ✓ Compiled in 261ms

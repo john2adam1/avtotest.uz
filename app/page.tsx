@@ -11,7 +11,7 @@ import { PricesSection } from "@/components/PricesSection"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Bosh Sahifa | Tezkor Avtotest",
+  title: "Bosh Sahifa | SarvarAvtoTest",
   description: "O'zbekistondagi eng zamonaviy avtotest platformasi. Bepul testlar va imtihon simulyatori.",
 }
 
@@ -62,7 +62,7 @@ export default async function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#e9f6ff] relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden">
 
       <LandingHeader />
 

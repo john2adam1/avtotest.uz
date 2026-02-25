@@ -74,33 +74,33 @@ function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-[#e9f6ff]">
+    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
       <div className="w-full max-w-md space-y-8 relative z-10">
         <div className="text-center space-y-4">
           <Link href="/" className="inline-flex items-center gap-2 hover:scale-105 transition-all group">
-            <div className="text-blue-700 font-black">
+            <div className="text-primary font-black">
               <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M5 10V15H15V35H25V15H35V10H5Z" fill="currentColor" />
               </svg>
             </div>
             <div className="flex flex-col -space-y-1 text-left">
-              <span className="text-2xl font-black text-slate-800 tracking-tighter uppercase italic">Tezkor</span>
-              <span className="text-lg font-bold text-slate-800 tracking-tight uppercase">Avtotest</span>
+              <span className="text-2xl font-black text-foreground tracking-tighter uppercase italic">Sarvar</span>
+              <span className="text-lg font-bold text-foreground tracking-tight uppercase">AvtoTest</span>
             </div>
           </Link>
 
-          <h1 className="text-3xl font-black text-slate-900 mt-6 italic uppercase tracking-tight">
+          <h1 className="text-3xl font-black text-foreground mt-6 italic uppercase tracking-tight drop-shadow-sm">
             {t("auth.login")}
           </h1>
-          <p className="text-slate-500 font-medium">
+          <p className="text-muted-foreground font-medium">
             Ilovaga kirish uchun ma'lumotlaringizni kiriting
           </p>
         </div>
 
-        <div className="bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-xl shadow-blue-500/5">
+        <div className="glass-card rounded-[2.5rem] overflow-hidden hover-lift">
           <CardContent className="p-8">
             {sessionConflict && (
-              <Alert variant="destructive" className="mb-6 bg-red-50 border-red-100 text-red-600 rounded-2xl">
+              <Alert variant="destructive" className="mb-6 bg-destructive/10 border-destructive/20 text-destructive rounded-2xl">
                 <AlertDescription className="font-bold">
                   {t("auth.sessionConflict")}
                 </AlertDescription>
@@ -109,11 +109,11 @@ function LoginForm() {
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="phone" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
+                <Label htmlFor="phone" className="text-muted-foreground font-black uppercase text-[10px] tracking-widest ml-1">
                   {t("auth.phone")}
                 </Label>
                 <div className="flex gap-2">
-                  <div className="flex items-center gap-2 px-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 min-w-[100px]">
+                  <div className="flex items-center gap-2 px-4 rounded-2xl bg-muted border border-border text-foreground min-w-[100px]">
                     <img src="https://flagcdn.com/uz.svg" className="w-5 h-3 rounded-sm shadow-sm" alt="UZ" />
                     <span className="text-sm font-black">+998</span>
                   </div>
@@ -125,14 +125,14 @@ function LoginForm() {
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                       required
-                      className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all font-bold"
+                      className="rounded-2xl bg-muted border-border text-foreground placeholder:text-muted-foreground/40 h-12 focus:ring-primary focus:border-primary transition-all font-bold"
                     />
                   </div>
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" title="" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
+                <Label htmlFor="password" title="" className="text-muted-foreground font-black uppercase text-[10px] tracking-widest ml-1">
                   {t("auth.password")}
                 </Label>
                 <div className="relative group">
@@ -143,12 +143,12 @@ function LoginForm() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
-                    className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all pr-12 font-bold"
+                    className="rounded-2xl bg-muted border-border text-foreground placeholder:text-muted-foreground/40 h-12 focus:ring-primary focus:border-primary transition-all pr-12 font-bold"
                   />
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-blue-500 transition-colors"
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/40 hover:text-primary transition-colors"
                   >
                     {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
                   </button>
@@ -158,12 +158,12 @@ function LoginForm() {
               <div className="space-y-4 pt-4">
                 <Button
                   type="submit"
-                  className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-lg shadow-blue-500/20 transition-all active:scale-95 disabled:opacity-50 text-lg uppercase italic tracking-widest"
+                  className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground font-black rounded-2xl shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-50 text-lg uppercase italic tracking-widest"
                   disabled={loading}
                 >
                   {loading ? (
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
                       {t("auth.loggingIn")}
                     </div>
                   ) : (
@@ -175,17 +175,17 @@ function LoginForm() {
 
                 <div className="relative py-2">
                   <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-slate-100"></span>
+                    <span className="w-full border-t border-border"></span>
                   </div>
                   <div className="relative flex justify-center text-[10px] uppercase font-black tracking-widest">
-                    <span className="bg-white px-4 text-slate-300">Yoki</span>
+                    <span className="bg-white/80 backdrop-blur-sm px-4 text-muted-foreground/40">Yoki</span>
                   </div>
                 </div>
 
                 <Button
                   variant="outline"
                   asChild
-                  className="w-full h-14 rounded-2xl border-slate-100 bg-slate-50 text-slate-600 hover:bg-slate-100 hover:border-slate-200 transition-all font-black uppercase italic tracking-widest"
+                  className="w-full h-14 rounded-2xl border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:border-border transition-all font-black uppercase italic tracking-widest"
                 >
                   <Link href="/register">
                     {t("auth.registerButton")}
@@ -196,8 +196,8 @@ function LoginForm() {
           </CardContent>
         </div>
 
-        <p className="text-center text-slate-400 text-[10px] font-black uppercase tracking-widest">
-          &copy; {new Date().getFullYear()} Tezkor Avtotest
+        <p className="text-center text-muted-foreground/40 text-[10px] font-black uppercase tracking-widest">
+          &copy; {new Date().getFullYear()} SarvarAvtoTest
         </p>
       </div>
     </div>
@@ -207,9 +207,9 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-[#e9f6ff]">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="relative">
-          <div className="w-12 h-12 border-4 border-blue-100 border-t-blue-600 rounded-full animate-spin" />
+          <div className="w-12 h-12 border-4 border-primary/10 border-t-primary rounded-full animate-spin" />
         </div>
       </div>
     }>

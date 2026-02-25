@@ -41,8 +41,8 @@ export function LandingHeader() {
                             </svg>
                         </div>
                         <div className="flex flex-col -space-y-1">
-                            <span className="text-xl font-black text-slate-800 tracking-tighter uppercase italic">Tezkor</span>
-                            <span className="text-base font-bold text-slate-800 tracking-tight uppercase">Avtotest</span>
+                            <span className="text-xl font-black text-slate-800 tracking-tighter uppercase italic">Sarvar</span>
+                            <span className="text-base font-bold text-slate-800 tracking-tight uppercase">AvtoTest</span>
                         </div>
                     </Link>
 

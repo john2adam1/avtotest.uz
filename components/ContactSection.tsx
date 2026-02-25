@@ -82,7 +82,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
 
           <div className="mt-24 pt-12 border-t border-slate-100 text-center">
             <p className="text-slate-400 text-xs font-black tracking-widest uppercase italic">
-              &copy; {new Date().getFullYear()} Tezkor Avtotest
+              &copy; {new Date().getFullYear()} SarvarAvtoTest
             </p>
           </div>
         </div>

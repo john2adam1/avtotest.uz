@@ -49,12 +49,12 @@ export function PricesSection({ prices }: PricesSectionProps) {
             <div className="relative z-10 flex flex-col items-center text-center space-y-8">
               <div className="space-y-2">
                 <h3 className="text-3xl font-black text-slate-900 uppercase italic tracking-tight">{t("prices_section.premium")}</h3>
-                <p className="text-slate-500 font-bold">To&apos;liq imkoniyatlardan foydalaning</p>
+                <p className="text-slate-500 font-bold">{t("dashboard.randomQuestions")}</p>
               </div>
 
               <div className="space-y-1">
                 <span className="text-slate-300 line-through text-xl block font-black uppercase italic" suppressHydrationWarning>
-                  {formatPrice(prices.original_price)} so&apos;m
+                  {formatPrice(prices.original_price)} {t("common.currency", "so'm")}
                 </span>
                 <div className="flex items-baseline justify-center gap-2">
                   <span className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter italic" suppressHydrationWarning>

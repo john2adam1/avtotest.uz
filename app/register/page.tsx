@@ -93,8 +93,8 @@ export default function RegisterPage() {
               </svg>
             </div>
             <div className="flex flex-col -space-y-1 text-left">
-              <span className="text-2xl font-black text-slate-800 tracking-tighter uppercase italic">Tezkor</span>
-              <span className="text-lg font-bold text-slate-800 tracking-tight uppercase">Avtotest</span>
+              <span className="text-2xl font-black text-slate-800 tracking-tighter uppercase italic">Sarvar</span>
+              <span className="text-lg font-bold text-slate-800 tracking-tight uppercase">AvtoTest</span>
             </div>
           </Link>
 
@@ -228,7 +228,7 @@ export default function RegisterPage() {
         </div>
 
         <p className="text-center text-slate-400 text-[10px] font-black uppercase tracking-widest">
-          &copy; {new Date().getFullYear()} Tezkor Avtotest
+          &copy; {new Date().getFullYear()} SarvarAvtoTest
         </p>
       </div>
     </div>

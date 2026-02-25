@@ -1,58 +1,88 @@
-import { redirect } from "next/navigation"
-import { getSupabaseServerClient } from "@/lib/supabase/server"
+"use client"
+
+import { redirect, useRouter } from "next/navigation"
+import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { Navbar } from "@/components/navbar"
 import { hasActiveAccess } from "@/lib/access-control"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
 import { Lock, GraduationCap, ArrowLeft } from "lucide-react"
+import { useState, useEffect } from "react"
+import { useTranslation } from "react-i18next"
+import type { User } from "@/lib/types"
 
-export const dynamic = 'force-dynamic'
+export default function ExamsPage() {
+    const { t } = useTranslation()
+    const router = useRouter()
+    const supabase = getSupabaseBrowserClient()
 
-export default async function ExamsPage() {
-    const supabase = await getSupabaseServerClient()
+    const [user, setUser] = useState<User | null>(null)
+    const [examStatsMap, setExamStatsMap] = useState<Record<number, number>>({})
+    const [loading, setLoading] = useState(true)
 
-    const {
-        data: { user },
-    } = await supabase.auth.getUser()
-    if (!user) redirect("/login")
+    useEffect(() => {
+        const fetchData = async () => {
+            const { data: { user: authUser } } = await supabase.auth.getUser()
+            if (!authUser) {
+                router.push("/login")
+                return
+            }
 
-    const { data: userData } = await supabase.from("users").select("*").eq("id", user.id).single()
+            const { data: userData } = await supabase.from("users").select("*").eq("id", authUser.id).single()
+            if (!userData) {
+                router.push("/login")
+                return
+            }
 
-    if (!userData) redirect("/login")
+            if (userData.role === "admin") {
+                router.push("/admin")
+                return
+            }
 
-    // Redirect admin to admin page instead of user exams
-    if (userData.role === "admin") {
-        redirect("/admin")
+            setUser(userData)
+
+            const { data: examStats } = await supabase
+                .from("exam_statistics")
+                .select("exam_type, percentage")
+                .eq("user_id", authUser.id)
+
+            const statsMap = (examStats || []).reduce((acc, stat) => {
+                acc[stat.exam_type] = stat.percentage
+                return acc
+            }, {} as Record<number, number>)
+
+            setExamStatsMap(statsMap)
+            setLoading(false)
+        }
+
+        fetchData()
+    }, [supabase, router])
+
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-[#e9f6ff]">
+                <Navbar isAdmin={false} />
+                <div className="flex items-center justify-center h-[calc(100vh-80px)]">
+                    <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin" />
+                </div>
+            </div>
+        )
     }
 
-    const hasAccess = hasActiveAccess(userData)
+    if (!user) return null
 
-    // Fetch counts of total tickets? Or just check if tests exist
-    const { count } = await supabase.from("tests").select("*", { count: "exact", head: true })
-
-    // Fetch exam stats
-    const { data: examStats } = await supabase
-        .from("exam_statistics")
-        .select("exam_type, percentage")
-        .eq("user_id", user.id)
-
-    const examStatsMap = (examStats || []).reduce((acc, stat) => {
-        acc[stat.exam_type] = stat.percentage
-        return acc
-    }, {} as Record<number, number>)
+    const hasAccess = hasActiveAccess(user)
 
     return (
         <div className="min-h-screen bg-[#e9f6ff] relative overflow-hidden">
-            <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
+            <Navbar userEmail={user.email} isAdmin={user.role === "admin"} />
 
             <main className="container mx-auto px-6 py-12 max-w-4xl relative z-10">
                 <div className="mb-10">
                     <Button variant="ghost" asChild className="group text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-xl px-4">
                         <Link href="/dashboard" className="inline-flex items-center gap-2">
                             <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                            Orqaga
+                            {t("common.back", "Orqaga")}
                         </Link>
                     </Button>
                 </div>
@@ -61,8 +91,8 @@ export default async function ExamsPage() {
                     <div className="inline-flex items-center justify-center p-5 bg-white rounded-3xl border border-slate-100 shadow-xl shadow-blue-500/5 mb-2">
                         <GraduationCap className="h-10 w-10 text-red-600" />
                     </div>
-                    <h1 className="text-4xl font-black text-slate-900 tracking-tight italic uppercase">Imtihon topshirish</h1>
-                    <p className="text-slate-500 text-lg font-medium max-w-lg mx-auto">O&apos;zingizga qulay rejimni tanlang</p>
+                    <h1 className="text-4xl font-black text-slate-900 tracking-tight italic uppercase">{t("dashboard.exams", "Imtihon topshirish")}</h1>
+                    <p className="text-slate-500 text-lg font-medium max-w-lg mx-auto">{t("dashboard.randomQuestions")}</p>
                 </div>
 
                 <div className="bg-white border border-slate-100 rounded-[3rem] p-6 sm:p-10 shadow-xl shadow-blue-500/5 overflow-hidden relative">
@@ -76,21 +106,21 @@ export default async function ExamsPage() {
                                     <Button
                                         asChild={!isLocked}
                                         className={`
-                      w-full overflow-hidden relative justify-between px-8 h-28 rounded-[2rem] 
-                      transition-all duration-300 border-2
-                      ${isLocked
+                                            w-full overflow-hidden relative justify-between px-8 h-28 rounded-[2rem] 
+                                            transition-all duration-300 border-2
+                                            ${isLocked
                                                 ? "bg-slate-50 border-slate-100 opacity-60 cursor-not-allowed"
                                                 : "bg-[#E32626] border-[#E32626] text-white shadow-lg shadow-red-100 hover:scale-[1.02] active:scale-[0.98]"
                                             }
-                    `}
+                                        `}
                                         variant="ghost"
                                         disabled={isLocked}
                                     >
                                         {!isLocked ? (
                                             <Link href={`/test/exam/${count}`} className="w-full flex items-center justify-between">
                                                 <div className="flex flex-col items-start gap-1">
-                                                    <span className="font-black text-3xl italic tracking-tight uppercase">{count} ta savol</span>
-                                                    <span className="text-[10px] text-white/70 font-black uppercase tracking-[0.2em]">Tasodifiy savollar asosida</span>
+                                                    <span className="font-black text-3xl italic tracking-tight uppercase">{count} {t("test.of", "ta")} {t("test.question", "savol")}</span>
+                                                    <span className="text-[10px] text-white/70 font-black uppercase tracking-[0.2em]">{t("dashboard.randomDescription")}</span>
                                                 </div>
 
                                                 {percentage !== undefined ? (
@@ -110,12 +140,12 @@ export default async function ExamsPage() {
                                                         <Lock className="h-6 w-6" />
                                                     </div>
                                                     <div className="flex flex-col items-start gap-1">
-                                                        <span className="font-black text-2xl text-slate-300 italic tracking-tight uppercase">{count} ta savol</span>
-                                                        <span className="text-[10px] text-slate-300 font-black uppercase tracking-widest">Premium obuna uchun</span>
+                                                        <span className="font-black text-2xl text-slate-300 italic tracking-tight uppercase">{count} {t("test.of", "ta")} {t("test.question", "savol")}</span>
+                                                        <span className="text-[10px] text-slate-300 font-black uppercase tracking-widest">{t("dashboard.premiumRequired", "Premium obuna uchun")}</span>
                                                     </div>
                                                 </div>
                                                 <div className="px-5 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-[10px] font-black uppercase tracking-widest">
-                                                    Premium
+                                                    {t("subscription.premium", "Premium")}
                                                 </div>
                                             </div>
                                         )}

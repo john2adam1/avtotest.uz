@@ -68,7 +68,7 @@ export function DashboardClient({
     const menuItems = [
         {
             icon: GraduationCap,
-            title: "Imtihon topshirish",
+            title: t("dashboard.exams", "Imtihon topshirish"),
             label: t("dashboard.exams"),
             href: "/exams",
             color: "bg-[#E32626]", // Red
@@ -76,24 +76,24 @@ export function DashboardClient({
         },
         {
             icon: BookOpen,
-            title: "Mavzular bo'yicha",
-            label: "Mavzular",
+            title: t("dashboard.topicsDescription", "Mavzular bo'yicha"),
+            label: t("dashboard.topics"),
             href: "/topics",
             color: "bg-[#2DA44E]", // Green
             shadowColor: "shadow-green-200",
         },
         {
             icon: Ticket,
-            title: "Imtihon biletlari",
-            label: "Biletlar",
+            title: t("dashboard.ticketsDescription", "Imtihon biletlari"),
+            label: t("dashboard.tickets"),
             href: "/tickets",
             color: "bg-[#F9C333]", // Yellow
             shadowColor: "shadow-yellow-200",
         },
         {
             icon: Shuffle,
-            title: "Tasodifiy testlar",
-            label: "Tasodifiy",
+            title: t("dashboard.randomTests", "Tasodifiy testlar"),
+            label: t("dashboard.randomDescription", "Tasodifiy"),
             href: hasAccess ? "/test/random" : "#",
             color: "bg-[#0969DA]", // Blue
             shadowColor: "shadow-blue-200",
@@ -101,8 +101,8 @@ export function DashboardClient({
         },
         {
             icon: FileText,
-            title: "Barcha javoblar",
-            label: "Sarlavhalar",
+            title: t("dashboard.viewTickets", "Barcha javoblar"),
+            label: t("dashboard.viewTickets"),
             href: "/answers",
             color: "bg-[#8250DF]", // Purple
             shadowColor: "shadow-purple-200",
@@ -116,10 +116,10 @@ export function DashboardClient({
                 {/* Welcome Section */}
                 <div className="mb-10 text-center space-y-2">
                     <h1 className="text-3xl font-black text-slate-900 flex items-center justify-center gap-2">
-                        <span className="text-4xl">🎉</span> Xush kelibsiz!
+                        <span className="text-4xl">🎉</span> {t("dashboard.welcome")}
                     </h1>
                     <p className="text-slate-500 font-medium text-base">
-                        Tezroq o'rganing va bilimlaringizni sinab ko'ring
+                        {t("dashboard.chooseMode")}
                     </p>
                 </div>
 

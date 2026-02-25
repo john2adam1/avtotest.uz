@@ -186,7 +186,10 @@ export function TopicsManagement() {
                   />
                 </div>
 
-                <div className="flex items-center space-x-3 bg-slate-50 p-3 rounded-xl border border-slate-100 hover:bg-slate-100 transition-colors cursor-pointer group/check" onClick={() => setIsPublic(!isPublic)}>
+                <Label
+                  htmlFor="is-public"
+                  className="flex items-center space-x-3 bg-slate-50 p-3 rounded-xl border border-slate-100 hover:bg-slate-100 transition-colors cursor-pointer group/check"
+                >
                   <Checkbox
                     id="is-public"
                     checked={isPublic}
@@ -194,10 +197,14 @@ export function TopicsManagement() {
                     onCheckedChange={(v) => setIsPublic(Boolean(v))}
                   />
                   <div className="flex-1">
-                    <Label htmlFor="is-public" className="text-sm font-bold text-slate-700 cursor-pointer select-none">Ommaviy (bepul)</Label>
-                    <p className="text-[10px] text-slate-500 font-medium">Bu mavzu barcha uchun ochiq</p>
+                    <span className="text-sm font-bold text-slate-700 select-none">
+                      Ommaviy (bepul)
+                    </span>
+                    <p className="text-[10px] text-slate-500 font-medium">
+                      Bu mavzu barcha uchun ochiq
+                    </p>
                   </div>
-                </div>
+                </Label>
 
                 <div className="flex gap-2 pt-2">
                   <Button type="submit" className="h-11 flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black text-sm rounded-xl shadow-lg shadow-blue-500/20 transition-all border-none">

@@ -17,27 +17,27 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "Tezkor Avtotest - O'zbekiston Yo'l Harakati Qoidalari Testlari",
-    template: "%s | Tezkor Avtotest",
+    default: "SarvarAvtoTest - O'zbekiston Yo'l Harakati Qoidalari Testlari",
+    template: "%s | SarvarAvtoTest",
   },
   description: "Avtotestlar orqali bilimingizni oshiring. YHQ (PDD) testlari, imtihon biletlari va mavzulashtirilgan testlar.",
   keywords: ["avtotest", "yhq", "pdd", "uzbekistan", "prava", "imtihon", "test", "yo'l harakati qoidalari"],
-  authors: [{ name: "Tezkor Avtotest Team" }],
-  creator: "Tezkor Avtotest",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://tezkoravtotest.uz"),
+  authors: [{ name: "SarvarAvtoTest Team" }],
+  creator: "SarvarAvtoTest",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://sarvaravtotest.uz"),
   openGraph: {
     type: "website",
     locale: "uz_UZ",
-    url: "https://tezkoravtotest.uz",
-    siteName: "Tezkor Avtotest",
-    title: "Tezkor Avtotest - O'zbekiston YHQ Testlari",
+    url: "https://sarvaravtotest.uz",
+    siteName: "SarvarAvtoTest",
+    title: "SarvarAvtoTest - O'zbekiston YHQ Testlari",
     description: "Avtotestlar orqali bilimingizni oshiring. YHQ (PDD) testlari va imtihonga tayyorgarlik.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Tezkor Avtotest Preview",
+        alt: "SarvarAvtoTest Preview",
       },
     ],
   },
@@ -77,8 +77,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} font-sans antialiased bg-[#e9f6ff] text-slate-900`}>
+    <html lang="uz">
+      <body className={`${poppins.variable} font-sans antialiased bg-background text-foreground bg-premium-mesh min-h-screen`}>
         <I18nProvider>
           {children}
           <Toaster />

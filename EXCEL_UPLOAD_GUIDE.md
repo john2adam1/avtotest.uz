@@ -14,7 +14,7 @@ Excel yoki Google Sheets-da quyidagi ustunlardan iborat jadval yarating:
 | **answers_cyrl** | Javoblar (Kirill massiv) | `{"Жавоб 1", "Жавоб 2", "Жавоб 3"}` |
 | **correct_answer** | To'g'ri javob indeksi | 0 |
 | **image_url** | Rasm URL (Majburiy) | https://.../image.jpg |
-| **category** | Mavzu (Kategoriya) | Yo'l belgilari |
+| **category** | Mavzu nomi (Avtomatik bog'lanadi) | Yo'l belgilari |
 | **time_limit** | Vaqt (sekundlarda) | 300 |
 | **audio_url** | Audio (Lotin, Ixtiyoriy) | https://.../lo.mp3 |
 | **audio_url_cyrl** | Audio (Kirill, Ixtiyoriy) | https://.../cy.mp3 |
@@ -26,6 +26,9 @@ Excel yoki Google Sheets-da quyidagi ustunlardan iborat jadval yarating:
 > [!IMPORTANT]
 > - **answers** va **answers_cyrl** massivlari bir xil sondagi elementlarga ega bo'lishi shart.
 > - **explanation** (izoh) va **audio** ustunlari ixtiyoriy. Agar ma'lumot bo'lmasa, ustunni bo'sh qoldiring.
+
+> [!TIP]
+> **Mavzular haqida:** Siz CSV faylida `topic_id` yozishingiz shart emas. Shunchaki `category` ustuniga mavzu nomini yozing. Tizim avtomatik ravishda ushbu nomli mavzuni topadi va testni unga bog'laydi. Agar bunday mavzu hali mavjud bo'lmasa, u avtomatik yaratiladi.
 
 ## 2. Faylni CSV formatida saqlash
 
