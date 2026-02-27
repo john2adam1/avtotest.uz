@@ -9,9 +9,10 @@ import { Card } from "@/components/ui/card"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { Timer } from "@/components/timer"
-import { BookOpen, CheckCircle2, XCircle, ArrowLeft } from "lucide-react"
+import { BookOpen, CheckCircle2, XCircle, ArrowLeft, Maximize2 } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { Test, UserSettings } from "@/lib/types"
+import { ImageModal } from "@/components/image-modal"
 
 interface EnhancedTestInterfaceProps {
   title: string
@@ -36,8 +37,21 @@ export function EnhancedTestInterface({
   const [answeredQuestions, setAnsweredQuestions] = useState<Record<number, boolean>>({})
   const [isFinished, setIsFinished] = useState(false)
   const [results, setResults] = useState<{ correct: number; wrong: number; unanswered: number; score: number } | null>(null)
+  const [isImageModalOpen, setIsImageModalOpen] = useState(false)
   const router = useRouter()
   const supabase = getSupabaseBrowserClient()
+
+  // Helper to fix PostImage viewer links to direct links
+  const getFixedImageUrl = (url: string) => {
+    if (!url) return url
+    // If it's a postimg.cc viewer link (not starting with i.), try to convert it
+    if (url.includes("postimg.cc") && !url.includes("i.postimg.cc")) {
+      // https://postimg.cc/Dmfk0bYv -> https://i.postimg.cc/Dmfk0bYv/image.png
+      // This is a common pattern, though not 100% guaranteed, it's better than a broken page
+      return url.replace("postimg.cc/", "i.postimg.cc/") + "/image.png"
+    }
+    return url
+  }
 
   const currentTest = tests[currentIndex]
   const isCyrillic = i18n.language === 'uz_cyrl'
@@ -199,8 +213,8 @@ export function EnhancedTestInterface({
 
   return (
     <main className="min-h-screen bg-[#e9f6ff] relative overflow-hidden flex flex-col font-sans pt-10">
-      {/* Row 1: Logo only */}
-      <div className="w-full px-8 py-4 z-20">
+      {/* Row 1: Logo + Finish Button */}
+      <div className="w-full px-8 py-4 z-20 flex items-center justify-between">
         <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-all shrink-0">
           <div className="text-blue-700 font-black">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -212,44 +226,68 @@ export function EnhancedTestInterface({
             <span className="text-sm font-bold text-slate-800 tracking-tight uppercase leading-none">AvtoTest</span>
           </div>
         </Link>
+
+        {/* Language Switcher */}
+        {!isFinished && (
+          <div className="flex bg-white/50 backdrop-blur-sm border border-white/40 p-1 rounded-2xl shadow-xl shadow-blue-500/5">
+            <button
+              onClick={() => i18n.changeLanguage('uz')}
+              className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i18n.language === 'uz'
+                ? 'bg-[#0969DA] text-white shadow-lg shadow-blue-500/20'
+                : 'text-slate-500 hover:text-[#0969DA] hover:bg-white/80'
+                }`}
+            >
+              Uzbek-latin
+            </button>
+            <button
+              onClick={() => i18n.changeLanguage('uz_cyrl')}
+              className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i18n.language === 'uz_cyrl'
+                ? 'bg-[#0969DA] text-white shadow-lg shadow-blue-500/20'
+                : 'text-slate-500 hover:text-[#0969DA] hover:bg-white/80'
+                }`}
+            >
+              Uzbek-cyrillic
+            </button>
+          </div>
+        )}
+
+        {!isFinished && (
+          <Button
+            onClick={handleFinish}
+            className="h-12 px-8 bg-[#0969DA] hover:bg-[#085dc2] text-white rounded-2xl font-black text-sm transition-all shadow-xl shadow-blue-500/20 active:scale-95 uppercase tracking-widest italic"
+          >
+            {t("test.finish", "Testni yakunlash")}
+          </Button>
+        )}
       </div>
 
-      {/* Row 2: Navigation (Numbers + Finish button) */}
-      <div className="w-full px-8 flex items-center justify-center relative z-20 mb-8">
-        <div className="flex flex-wrap gap-2 p-3 bg-white/50 backdrop-blur-sm border border-slate-200 rounded-2xl shadow-inner max-w-fit mx-auto">
+      {/* Row 2: Navigation (Numbers) */}
+      <div className="w-full px-8 flex items-center justify-center relative z-20 mb-12">
+        <div className="flex flex-wrap items-center justify-center gap-2.5 p-4 bg-white/40 backdrop-blur-sm border border-white/20 rounded-[2.5rem] shadow-xl shadow-blue-500/5 max-w-5xl mx-auto">
           {tests.map((_, idx) => {
             const isActive = currentIndex === idx
             const isAns = answeredQuestions[idx]
             const correct = selectedAnswers[idx] === tests[idx].correct_answer
 
-            let stateClass = "bg-white text-slate-600 border-slate-200 hover:bg-slate-50 shadow-sm"
+            let stateClass = "bg-white text-slate-500 border-slate-200 hover:bg-white hover:border-blue-400 shadow-sm"
             if (isActive) {
-              stateClass = "bg-[#0969DA] text-white border-[#0969DA] shadow-md scale-105"
+              stateClass = "bg-[#0969DA] text-white border-[#0969DA] shadow-lg shadow-blue-500/20 scale-110 z-10"
             } else if (isAns) {
               stateClass = correct
-                ? "bg-green-500 text-white border-green-500 shadow-sm"
-                : "bg-red-500 text-white border-red-500 shadow-sm"
+                ? "bg-green-500 text-white border-green-500 shadow-md shadow-green-500/10"
+                : "bg-red-500 text-white border-red-500 shadow-md shadow-red-500/10"
             }
 
             return (
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-9 h-9 flex items-center justify-center rounded-md border text-sm font-bold transition-all ${stateClass}`}
+                className={`w-10 h-10 flex items-center justify-center rounded-xl border-2 text-sm font-black transition-all duration-200 ${stateClass}`}
               >
                 {idx + 1}
               </button>
             )
           })}
-        </div>
-
-        <div className="absolute right-8 shrink-0">
-          <Button
-            onClick={handleFinish}
-            className="h-12 px-8 bg-[#0969DA] hover:bg-[#085dc2] text-white rounded-xl font-black text-sm transition-all shadow-lg shadow-blue-500/10 active:scale-95"
-          >
-            {t("test.finish", "Testni yakunlash")}
-          </Button>
         </div>
       </div>
 
@@ -267,19 +305,27 @@ export function EnhancedTestInterface({
           <div className="w-full flex flex-col lg:flex-row gap-12 items-start justify-center py-4">
             {/* Left: Image Container */}
             <div className="w-full lg:w-5/12 flex justify-center">
-              <div className="relative w-full aspect-[4/3] rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-blue-500/5 p-8 flex items-center justify-center overflow-hidden">
+              <button
+                onClick={() => currentTest.image_url && setIsImageModalOpen(true)}
+                className="relative w-full aspect-[4/3] rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-blue-500/5 p-8 flex items-center justify-center overflow-hidden group/img cursor-zoom-in transition-transform hover:scale-[1.02] active:scale-[0.98]"
+              >
                 {currentTest.image_url ? (
-                  <img
-                    src={currentTest.image_url}
-                    alt="Question"
-                    className="max-w-full max-h-full object-contain"
-                  />
+                  <>
+                    <img
+                      src={getFixedImageUrl(currentTest.image_url)}
+                      alt="Question"
+                      className="max-w-full max-h-full object-contain"
+                    />
+                    <div className="absolute top-6 right-6 p-2 bg-white/80 backdrop-blur-sm rounded-xl opacity-0 group-hover/img:opacity-100 transition-opacity">
+                      <Maximize2 className="w-5 h-5 text-blue-600" />
+                    </div>
+                  </>
                 ) : (
                   <div className="w-full h-full flex items-center justify-center text-slate-50">
                     <BookOpen className="w-40 h-40" />
                   </div>
                 )}
-              </div>
+              </button>
             </div>
 
             {/* Right: Options */}
@@ -358,6 +404,13 @@ export function EnhancedTestInterface({
           )}
         </div>
       </div>
+
+      <ImageModal
+        isOpen={isImageModalOpen}
+        onClose={() => setIsImageModalOpen(false)}
+        imageUrl={getFixedImageUrl(currentTest.image_url || "")}
+        altText={displayQuestion}
+      />
     </main>
   )
 }

@@ -18,8 +18,6 @@ Excel yoki Google Sheets-da quyidagi ustunlardan iborat jadval yarating:
 | **time_limit** | Vaqt (sekundlarda) | 300 |
 | **audio_url** | Audio (Lotin, Ixtiyoriy) | https://.../lo.mp3 |
 | **audio_url_cyrl** | Audio (Kirill, Ixtiyoriy) | https://.../cy.mp3 |
-| **explanation_title** | Tushuntirish sarlavhasi (Lotin, Ixtiyoriy) | 1.1 belgisi |
-| **explanation_title_cyrl** | Tushuntirish sarlavhasi (Kirill, Ixtiyoriy) | 1.1 белгиси |
 | **explanation_text** | Tushuntirish matni (Lotin, Ixtiyoriy) | Bu belgi... |
 | **explanation_text_cyrl** | Tushuntirish matni (Kirill, Ixtiyoriy) | Бу белги... |
 

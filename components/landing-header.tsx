@@ -51,6 +51,7 @@ export function LandingHeader() {
                             <Link
                                 key={item}
                                 href={item === "home" ? "/" : `#${item}`}
+                                suppressHydrationWarning
                                 className="text-sm font-black text-slate-400 transition-colors hover:text-blue-600 relative group"
                             >
                                 {t(`nav.${item}`)}
@@ -66,7 +67,7 @@ export function LandingHeader() {
                         asChild
                         className="rounded-[1rem] font-black uppercase italic tracking-widest bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/20 px-6"
                     >
-                        <Link href="/login">{t("nav.login")}</Link>
+                        <Link suppressHydrationWarning href="/login">{t("nav.login")}</Link>
                     </Button>
                 </div>
             </div>

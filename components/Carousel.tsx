@@ -19,6 +19,15 @@ export function Carousel() {
   const [mounted, setMounted] = useState(false)
   const supabase = getSupabaseBrowserClient()
 
+  // Helper to fix PostImage viewer links to direct links
+  const getFixedImageUrl = (url: string) => {
+    if (!url) return url
+    if (url.includes("postimg.cc") && !url.includes("i.postimg.cc")) {
+      return url.replace("postimg.cc/", "i.postimg.cc/") + "/image.png"
+    }
+    return url
+  }
+
   const fetchImages = async () => {
     const { data } = await supabase
       .from("carousel_images")
@@ -63,9 +72,10 @@ export function Carousel() {
               <div key={img.id} className="relative w-full h-full flex-shrink-0 p-6">
                 <div className="relative w-full h-full overflow-hidden rounded-[2.5rem]">
                   <Image
-                    src={img.image_url}
+                    src={getFixedImageUrl(img.image_url)}
                     alt={`Carousel image ${index + 1}`}
                     fill
+                    unoptimized
                     className="object-cover transition-transform duration-700 hover:scale-105"
                     priority={index === 0}
                   />

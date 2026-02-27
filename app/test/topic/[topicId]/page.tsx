@@ -38,14 +38,17 @@ async function TopicTestContent({ params }: { params: Promise<{ topicId: string 
 
   if (!topic) redirect("/dashboard")
 
-  // Fetch tests where category matches topic title
+  // Fetch tests where category matches topic title OR topic_id matches
   const { data: tests } = await supabase
     .from("tests")
     .select("*")
-    .eq("category", topic.title)
+    .or(`topic_id.eq.${topicId},category.eq."${topic.title}"`)
     .order("created_at")
 
-  if (!tests?.length) redirect("/dashboard")
+  if (!tests?.length) {
+    console.log(`No tests found for topic ${topicId} (${topic.title})`)
+    redirect("/dashboard")
+  }
 
   const isPremiumRequired = !topic.is_public
   const hasPremium = hasActiveAccess(userData)

@@ -89,11 +89,11 @@ function LoginForm() {
             </div>
           </Link>
 
-          <h1 className="text-3xl font-black text-foreground mt-6 italic uppercase tracking-tight drop-shadow-sm">
+          <h1 suppressHydrationWarning className="text-3xl font-black text-foreground mt-6 italic uppercase tracking-tight drop-shadow-sm">
             {t("auth.login")}
           </h1>
-          <p className="text-muted-foreground font-medium">
-            Ilovaga kirish uchun ma'lumotlaringizni kiriting
+          <p suppressHydrationWarning className="text-muted-foreground font-medium">
+            {t("auth.loginDescription")}
           </p>
         </div>
 
@@ -109,7 +109,7 @@ function LoginForm() {
 
             <form onSubmit={handleLogin} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="phone" className="text-muted-foreground font-black uppercase text-[10px] tracking-widest ml-1">
+                <Label suppressHydrationWarning htmlFor="phone" className="text-muted-foreground font-black uppercase text-[10px] tracking-widest ml-1">
                   {t("auth.phone")}
                 </Label>
                 <div className="flex gap-2">
@@ -132,7 +132,7 @@ function LoginForm() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" title="" className="text-muted-foreground font-black uppercase text-[10px] tracking-widest ml-1">
+                <Label suppressHydrationWarning htmlFor="password" title="" className="text-muted-foreground font-black uppercase text-[10px] tracking-widest ml-1">
                   {t("auth.password")}
                 </Label>
                 <div className="relative group">
@@ -162,12 +162,12 @@ function LoginForm() {
                   disabled={loading}
                 >
                   {loading ? (
-                    <div className="flex items-center gap-2">
+                    <div suppressHydrationWarning className="flex items-center gap-2">
                       <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
                       {t("auth.loggingIn")}
                     </div>
                   ) : (
-                    <span className="flex items-center justify-center gap-2">
+                    <span suppressHydrationWarning className="flex items-center justify-center gap-2">
                       {t("auth.loginButton")}
                     </span>
                   )}
@@ -187,7 +187,7 @@ function LoginForm() {
                   asChild
                   className="w-full h-14 rounded-2xl border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:border-border transition-all font-black uppercase italic tracking-widest"
                 >
-                  <Link href="/register">
+                  <Link suppressHydrationWarning href="/register">
                     {t("auth.registerButton")}
                   </Link>
                 </Button>

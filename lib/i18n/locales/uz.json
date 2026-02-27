@@ -21,7 +21,8 @@
         "search": "Qidirish",
         "filter": "Filtrlash",
         "yes": "Ha",
-        "no": "Yo'q"
+        "no": "Yo'q",
+        "no_data": "Ma'lumot yo'q"
     },
     "stats": {
         "title": "Nega aynan bizdan o'rganishingiz kerak?",
@@ -72,12 +73,13 @@
         "start": "Boshlash",
         "register": "Ro'yxatdan o'tish",
         "login": "KIRISH",
-        "badge": "O'ZBEKISTONDAGI №1 TAYYORLOV MARKAZI",
+        "badge": "Eng zamonaviy avtotest platformasi",
         "statistics": "Statistika",
         "prices": "Tariflar",
         "about": "Biz haqimizda",
         "contact": "Aloqa",
-        "results": "Natijalar"
+        "results": "Natijalar",
+        "more": "Batafsil"
     },
     "nav": {
         "home": "Bosh sahifa",

@@ -98,11 +98,11 @@ export default function RegisterPage() {
             </div>
           </Link>
 
-          <h1 className="text-3xl font-black text-slate-900 mt-6 italic uppercase tracking-tight">
+          <h1 suppressHydrationWarning className="text-3xl font-black text-slate-900 mt-6 italic uppercase tracking-tight">
             {t("auth.register")}
           </h1>
-          <p className="text-slate-500 font-medium">
-            Ro&apos;yxatdan o&apos;tish uchun quyidagi ma&apos;lumotlarni to&apos;ldiring
+          <p suppressHydrationWarning className="text-slate-500 font-medium">
+            {t("auth.registerDescription")}
           </p>
         </div>
 
@@ -111,7 +111,7 @@ export default function RegisterPage() {
             <form onSubmit={handleRegister} className="space-y-5">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="first-name" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
+                  <Label suppressHydrationWarning htmlFor="first-name" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
                     {t("auth.firstName")}
                   </Label>
                   <Input
@@ -125,7 +125,7 @@ export default function RegisterPage() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="last-name" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
+                  <Label suppressHydrationWarning htmlFor="last-name" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
                     {t("auth.lastName")}
                   </Label>
                   <Input
@@ -140,7 +140,7 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
+                <Label suppressHydrationWarning htmlFor="phone" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
                   {t("auth.phone")}
                 </Label>
                 <div className="flex gap-2">
@@ -163,7 +163,7 @@ export default function RegisterPage() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="password" title="" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
+                <Label suppressHydrationWarning htmlFor="password" title="" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
                   {t("auth.password")}
                 </Label>
                 <div className="relative group">
@@ -193,12 +193,12 @@ export default function RegisterPage() {
                   disabled={loading}
                 >
                   {loading ? (
-                    <div className="flex items-center gap-2">
+                    <div suppressHydrationWarning className="flex items-center gap-2">
                       <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                       {t("auth.registering")}
                     </div>
                   ) : (
-                    <span className="flex items-center justify-center gap-2">
+                    <span suppressHydrationWarning className="flex items-center justify-center gap-2">
                       {t("auth.registerButton")}
                     </span>
                   )}
@@ -208,8 +208,8 @@ export default function RegisterPage() {
                   <div className="absolute inset-0 flex items-center">
                     <span className="w-full border-t border-slate-100"></span>
                   </div>
-                  <div className="relative flex justify-center text-[10px] uppercase font-black tracking-widest text-center">
-                    <span className="bg-white px-4 text-slate-300">Hisobingiz bormi?</span>
+                  <div suppressHydrationWarning className="relative flex justify-center text-[10px] uppercase font-black tracking-widest text-center">
+                    <span className="bg-white px-4 text-slate-300">{t("auth.alreadyHaveAccount")}</span>
                   </div>
                 </div>
 
@@ -218,7 +218,7 @@ export default function RegisterPage() {
                   asChild
                   className="w-full h-14 rounded-2xl border-slate-100 bg-slate-50 text-slate-600 hover:bg-slate-100 hover:border-slate-200 transition-all font-black uppercase italic tracking-widest"
                 >
-                  <Link href="/login">
+                  <Link suppressHydrationWarning href="/login">
                     {t("auth.loginButton")}
                   </Link>
                 </Button>

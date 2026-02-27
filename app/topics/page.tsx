@@ -19,6 +19,7 @@ export default function TopicsPage() {
     const [user, setUser] = useState<User | null>(null)
     const [topics, setTopics] = useState<any[]>([])
     const [topicStatsMap, setTopicStatsMap] = useState<Record<string, any>>({})
+    const [topicTestsCountMap, setTopicTestsCountMap] = useState<Record<string, number>>({})
     const [loading, setLoading] = useState(true)
 
     useEffect(() => {
@@ -49,6 +50,31 @@ export default function TopicsPage() {
             ])
 
             setTopics(topicsRes.data || [])
+
+            // Fetch test counts per topic
+            const { data: testsData } = await supabase.from("tests").select("topic_id, category")
+            const countsMap: Record<string, number> = {}
+
+            if (testsData) {
+                // Count by topic_id
+                testsData.forEach(t => {
+                    if (t.topic_id) {
+                        countsMap[t.topic_id] = (countsMap[t.topic_id] || 0) + 1
+                    }
+                })
+
+                // Also handle cases where topic_id might be missing but category matches title
+                // (though our check showed all have topic_id, this is safer)
+                if (topicsRes.data) {
+                    topicsRes.data.forEach(topic => {
+                        const countByTitle = testsData.filter(t => t.category === topic.title).length
+                        if (countByTitle > (countsMap[topic.id] || 0)) {
+                            countsMap[topic.id] = countByTitle
+                        }
+                    })
+                }
+            }
+            setTopicTestsCountMap(countsMap)
 
             const statsMap = (statsRes.data || []).reduce((acc, stat) => {
                 acc[stat.topic_id] = {
@@ -121,11 +147,16 @@ export default function TopicsPage() {
                                                     <h3 className={`font-black text-xl transition-colors ${canAccess ? 'text-foreground' : 'text-muted-foreground/60'}`}>
                                                         {topic.title}
                                                     </h3>
-                                                    {!isPublic && (
-                                                        <div className="px-3 py-1 rounded-full bg-premium-gold/10 border border-premium-gold/20 text-premium-gold text-[10px] font-black uppercase tracking-widest shadow-sm">
-                                                            {t("subscription.premium", "Premium")}
+                                                    <div className="flex items-center gap-2">
+                                                        <div className="px-2 py-0.5 rounded-lg bg-slate-100 text-slate-500 text-[10px] font-black uppercase tracking-wider">
+                                                            {(topicTestsCountMap[topic.id] || 0)} {t("admin.tests", "Testlar")}
                                                         </div>
-                                                    )}
+                                                        {!isPublic && (
+                                                            <div className="px-3 py-1 rounded-full bg-premium-gold/10 border border-premium-gold/20 text-premium-gold text-[10px] font-black uppercase tracking-widest shadow-sm">
+                                                                {t("subscription.premium", "Premium")}
+                                                            </div>
+                                                        )}
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -147,20 +178,22 @@ export default function TopicsPage() {
                                                 )}
 
                                                 <Button
-                                                    asChild
-                                                    className={`h-12 px-8 rounded-2xl font-black text-base transition-all ${canAccess
+                                                    asChild={canAccess && (topicTestsCountMap[topic.id] || 0) > 0}
+                                                    className={`h-12 px-8 rounded-2xl font-black text-base transition-all ${canAccess && (topicTestsCountMap[topic.id] || 0) > 0
                                                         ? "bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 hover:scale-105 active:scale-95"
                                                         : "bg-muted text-muted-foreground/40 cursor-not-allowed border-none shadow-none"
                                                         }`}
-                                                    disabled={!canAccess}
+                                                    disabled={!canAccess || (topicTestsCountMap[topic.id] || 0) === 0}
                                                 >
-                                                    {canAccess ? (
-                                                        <Link href={`/test/topic/${topic.id}`}>{t("dashboard.startTest", "Boshlash")}</Link>
-                                                    ) : (
+                                                    {!canAccess ? (
                                                         <div className="flex items-center gap-2">
                                                             <Lock className="h-4 w-4" />
                                                             <span>{t("subscription.premium", "Premium")}</span>
                                                         </div>
+                                                    ) : (topicTestsCountMap[topic.id] || 0) > 0 ? (
+                                                        <Link href={`/test/topic/${topic.id}`}>{t("dashboard.startTest", "Boshlash")}</Link>
+                                                    ) : (
+                                                        <span>{t("common.no_data", "Bo'sh")}</span>
                                                     )}
                                                 </Button>
                                             </div>
