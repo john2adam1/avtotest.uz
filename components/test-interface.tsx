@@ -136,7 +136,7 @@ export function TestInterface({ categoryTitle, tests, userId }: TestInterfacePro
             </div>
 
             <Button onClick={() => router.push("/dashboard")} className="w-full">
-              Dashboardga qaytish
+              Qaytish
             </Button>
           </CardContent>
         </Card>
@@ -228,7 +228,7 @@ export function TestInterface({ categoryTitle, tests, userId }: TestInterfacePro
                   className="flex-1"
                   disabled={selectedAnswers[currentIndex] === undefined}
                 >
-                  Testni yakunlash
+                  Yakunlash
                 </Button>
               )}
             </div>

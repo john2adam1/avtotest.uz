@@ -22,11 +22,11 @@ export function ContactSection({ contact }: ContactSectionProps) {
   if (!mounted) return null
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-[#e9f6ff]">
+    <section id="contact" className="py-16 sm:py-24 relative overflow-hidden bg-[#e9f6ff]">
       <div className="container mx-auto px-6 max-w-7xl relative z-10">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase italic">{t("contact_section.title")}</h2>
+            <h2 className="text-2xl sm:text-4xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase italic">{t("contact_section.title")}</h2>
             <p className="text-xl text-slate-500 font-bold max-w-2xl mx-auto">
               {t("contact_section.subtitle")}
             </p>
@@ -73,7 +73,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           </div>
 
           {!contact.phone && !contact.telegram_link && !contact.address && (
-            <div className="bg-white rounded-[2.5rem] p-16 text-center border border-slate-100 shadow-xl shadow-blue-500/5 mt-8">
+            <div className="bg-white rounded-[2.5rem] p-8 sm:p-16 text-center border border-slate-100 shadow-xl shadow-blue-500/5 mt-8">
               <p className="text-xl text-slate-400 font-black uppercase italic tracking-widest">
                 {t("contact_section.no_data")}
               </p>

@@ -39,7 +39,7 @@ export function Statistics() {
   ]
 
   return (
-    <section id="features" className="py-24 relative overflow-hidden bg-[#e9f6ff]">
+    <section id="features" className="py-16 sm:py-24 relative overflow-hidden bg-[#e9f6ff]">
       <div className="mx-auto max-w-7xl px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
           <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase italic">
@@ -57,7 +57,7 @@ export function Statistics() {
             return (
               <div
                 key={idx}
-                className="group relative bg-white border border-slate-100 p-8 rounded-[2.5rem] text-center hover:border-blue-100 transition-all duration-300 hover:scale-105 shadow-xl shadow-blue-500/5"
+                className="group relative bg-white border border-slate-100 p-6 sm:p-8 rounded-[2.5rem] text-center hover:border-blue-100 transition-all duration-300 hover:scale-105 shadow-xl shadow-blue-500/5"
               >
                 <div className="relative z-10 space-y-6">
                   <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-50 border border-slate-100 mx-auto group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">

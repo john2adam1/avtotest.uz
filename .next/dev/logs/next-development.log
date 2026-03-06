@@ -1,82 +1,98 @@
-[00:00:07.098] Server  LOG      ✓ Ready in 5.5s
-[00:00:08.026] Server  LOG     Middleware hitting path: "/answers"
-[00:00:12.262] Server  LOG      ○ Compiling /answers ...
-[00:00:28.396] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:33.316] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
-[00:00:33.317] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/answers","route":"/answers"}
-[00:00:33.317] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/answers color: rgb(120, 120, 120) color: inherit {"dp":"/answers","o":"http://localhost:3000/answers","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772216702383} /_vercel/insights/view
-[00:01:49.792] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
-[00:02:11.439] Server  LOG     Middleware hitting path: "/dashboard"
-[00:02:16.205] Server  LOG      ○ Compiling /dashboard ...
-[00:02:20.476] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
-[00:02:20.476] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772216810360} /_vercel/insights/view
-[00:02:25.015] Server  LOG     Middleware hitting path: "/topics"
-[00:02:27.628] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772216817509} /_vercel/insights/view
-[00:02:34.245] Server  LOG     Middleware hitting path: "/test/topic/4699e5a1-6347-418b-9fa3-d79e8cd7a250"
-[00:02:39.013] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/test/topic/4699e5a1-6347-418b-9fa3-d79e8cd7a250 color: rgb(120, 120, 120) color: inherit {"dp":"/test/topic/[topicId]","o":"http://localhost:3000/test/topic/4699e5a1-6347-418b-9fa3-d79e8cd7a250","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772216828907} /_vercel/insights/view
-[00:04:09.302] Server  LOG      ✓ Compiled in 728ms
-[00:05:16.004] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
-[00:06:27.744] Server  LOG     Middleware hitting path: "/test/topic/4699e5a1-6347-418b-9fa3-d79e8cd7a250"
-[00:06:28.116] Server  LOG      ✓ Compiled in 3.7s
-[00:07:43.586] Browser WARN    Image with src "https://ptest.uz/images/f6225ebe-b269-479e-8794-6be89b0d17e1.webp" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:07:43.586] Browser ERROR   `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
+[00:00:05.700] Server  LOG      ✓ Ready in 4.2s
+[00:00:06.406] Server  LOG     Middleware hitting path: "/"
+[00:00:12.104] Server  LOG      ○ Compiling / ...
+[00:00:20.088] Server  LOG     Middleware hitting path: "/dashboard"
+[00:00:23.085] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:23.975] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:23.975] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard","route":"/dashboard"}
+[00:00:23.975] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809149481} /_vercel/insights/view
+[00:03:20.157] Server  LOG      ✓ Compiled in 1420ms
+[00:03:20.801] Server  LOG      ✓ Compiled in 263ms
+[00:04:03.414] Server  LOG      ✓ Compiled in 200ms
+[00:04:05.347] Server  LOG      ✓ Compiled in 140ms
+[00:04:27.270] Server  LOG      ✓ Compiled in 533ms
+[00:04:29.324] Server  LOG      ✓ Compiled in 521ms
+[00:05:10.148] Server  LOG      ✓ Compiled in 440ms
+[00:05:50.822] Server  LOG     Middleware hitting path: "/"
+[00:05:55.902] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:05:56.794] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
 
-If you want to hide the `DialogTitle`, you can wrap it with our VisuallyHidden component.
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
 
-For more information, see https://radix-ui.com/primitives/docs/components/dialog
-[00:07:43.586] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-[00:07:43.586] Browser ERROR   `DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
 
-If you want to hide the `DialogTitle`, you can wrap it with our VisuallyHidden component.
+%s%s https://react.dev/link/hydration-mismatch 
 
-For more information, see https://radix-ui.com/primitives/docs/components/dialog
-[00:07:43.586] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-[00:08:10.708] Server  LOG      ✓ Compiled in 179ms
-[00:08:33.819] Server  LOG     Middleware hitting path: "/dashboard"
-[00:08:35.523] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217185415} /_vercel/insights/view
-[00:08:40.877] Server  LOG     Middleware hitting path: "/topics"
-[00:08:41.854] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/topics color: rgb(120, 120, 120) color: inherit {"dp":"/topics","o":"http://localhost:3000/topics","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217191749} /_vercel/insights/view
-[00:08:49.654] Server  LOG     Middleware hitting path: "/dashboard"
-[00:08:51.004] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217200907} /_vercel/insights/view
-[00:08:54.034] Server  LOG     Middleware hitting path: "/tickets"
-[00:08:57.009] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217206895} /_vercel/insights/view
-[00:09:06.788] Server  LOG     Middleware hitting path: "/dashboard"
-[00:09:08.238] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217218140} /_vercel/insights/view
-[00:09:16.283] Server  LOG     Middleware hitting path: "/tickets"
-[00:09:17.552] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217227447} /_vercel/insights/view
-[00:09:20.973] Server  LOG     Middleware hitting path: "/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683"
-[00:09:25.416] Server  LOG     Ticket page hit with ID: "0e875648-3887-43c7-8ece-5e7e3740f683"
-[00:09:25.694] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217235589} /_vercel/insights/view
-[00:09:26.997] Server  LOG     Ticket Debug: User: true
-[00:09:26.999] Server  LOG     Ticket Debug: Ticket: true
-[00:09:27.001] Server  LOG     Ticket Debug: TicketTests: 0
-[00:09:27.004] Server  LOG     Ticket Debug: Redirecting - No Ticket Data
-[00:09:27.079] Server  LOG     Middleware hitting path: "/dashboard"
-[00:09:27.892] Server  LOG     Middleware hitting path: "/dashboard"
-[00:09:28.894] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217238795} /_vercel/insights/view
-[00:09:32.043] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
-[00:18:36.366] Server  LOG     Middleware hitting path: "/tickets"
-[00:18:38.361] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217788269} /_vercel/insights/view
-[00:18:43.068] Server  LOG     Middleware hitting path: "/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683"
-[00:18:44.300] Server  LOG     Ticket page hit with ID: "0e875648-3887-43c7-8ece-5e7e3740f683"
-[00:18:44.600] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772217794500} /_vercel/insights/view
-[00:18:46.365] Server  LOG     Ticket Debug: User: true
-[00:18:46.366] Server  LOG     Ticket Debug: Ticket: true
-[00:18:46.367] Server  LOG     Ticket Debug: TicketTests: 20
-[00:18:46.368] Server  LOG     Ticket Debug: Tests count: 20
-[00:18:48.569] Browser WARN    Image with src "https://ptest.uz/images/842cbeae-9f28-4115-a918-70c63c1cab48.webp" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:20:36.000] Server  LOG      ✓ Compiled in 1017ms
-[00:22:58.598] Browser WARN    Image with src "https://ptest.uz/images/ccff763f-0a97-4958-8ac7-72f5e3649d57.webp" is using quality "100" which is not configured in images.qualities [75]. Please update your config to [100, 75].
-Read more: https://nextjs.org/docs/messages/next-image-unconfigured-qualities
-[00:25:04.912] Server  LOG      ✓ Compiled in 756ms
-[00:25:11.950] Server  LOG      ✓ Compiled in 135ms
-[00:25:20.949] Server  LOG      ✓ Compiled in 279ms
-[00:27:16.771] Server  LOG      ✓ Compiled in 502ms
-[00:27:24.614] Server  LOG      ✓ Compiled in 89ms
-[00:29:45.042] Server  LOG      ✓ Compiled in 315ms
-[00:30:12.143] Server  LOG     Middleware hitting path: "/dashboard"
-[00:30:16.322] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772218486016} /_vercel/insights/view
-[00:30:26.590] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
-[00:30:26.590] Browser WARN    Warning: Missing `Description` or `aria-describedby={undefined}` for {DialogContent}.
+  ...
+    <HotReload globalError={[...]} webSocket={WebSocket} staticIndicatorState={{pathname:null, ...}}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <__next_root_layout_boundary__>
+                    <SegmentViewNode type="layout" pagePath="layout.tsx">
+                      <SegmentTrieNode>
+                      <link>
+                      <script>
+                      <script>
+                      <script>
+                      <RootLayout>
+                        <html lang="uz">
+                          <body
++                           className="poppins_200c5dfa-module__JOwRzG__variable font-sans antialiased bg-background t..."
+-                           className="poppins_200c5dfa-module__JOwRzG__variable font-sans antialiased bg-background t..."
+                          >
+                  ...
+
+[00:05:59.724] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:05:59.724] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:05:59.724] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809485816} /_vercel/insights/view
+[00:07:08.288] Server  LOG     Middleware hitting path: "/login"
+[00:07:11.334] Server  LOG      ○ Compiling /login ...
+[00:07:15.109] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:07:15.504] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:07:15.504] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/login","route":"/login"}
+[00:07:15.504] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/login color: rgb(120, 120, 120) color: inherit {"dp":"/login","o":"http://localhost:3000/login","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809561580} /_vercel/insights/view
+[00:08:12.544] Server  LOG     Middleware hitting path: "/"
+[00:08:15.531] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:08:16.059] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:08:16.059] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:08:16.059] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809622156} /_vercel/insights/view
+[00:10:02.304] Server  LOG     Middleware hitting path: "/.well-known/appspecific/com.chrome.devtools.json"
+[00:10:13.959] Server  LOG     Middleware hitting path: "/tickets"
+[00:10:19.369] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:10:19.369] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809745452} /_vercel/insights/view
+[00:10:30.904] Server  LOG     Middleware hitting path: "/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683"
+[00:10:35.428] Server  LOG     Ticket page hit with ID: "0e875648-3887-43c7-8ece-5e7e3740f683"
+[00:10:35.739] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809761832} /_vercel/insights/view
+[00:10:36.942] Server  LOG     Ticket Debug: User: true
+[00:10:36.943] Server  LOG     Ticket Debug: Ticket: true
+[00:10:36.945] Server  LOG     Ticket Debug: TicketTests: 20
+[00:10:36.946] Server  LOG     Ticket Debug: Tests count: 20
+[00:11:25.123] Server  LOG     Middleware hitting path: "/dashboard"
+[00:11:26.981] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809813072} /_vercel/insights/view
+[00:11:30.463] Server  LOG     Middleware hitting path: "/tickets"
+[00:11:31.387] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/tickets color: rgb(120, 120, 120) color: inherit {"dp":"/tickets","o":"http://localhost:3000/tickets","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809817478} /_vercel/insights/view
+[00:11:37.640] Server  LOG     Middleware hitting path: "/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683"
+[00:11:38.714] Server  LOG     Ticket page hit with ID: "0e875648-3887-43c7-8ece-5e7e3740f683"
+[00:11:38.922] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683 color: rgb(120, 120, 120) color: inherit {"dp":"/test/ticket/[ticketId]","o":"http://localhost:3000/test/ticket/0e875648-3887-43c7-8ece-5e7e3740f683","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772809825021} /_vercel/insights/view
+[00:11:40.028] Server  LOG     Ticket Debug: User: true
+[00:11:40.029] Server  LOG     Ticket Debug: Ticket: true
+[00:11:40.030] Server  LOG     Ticket Debug: TicketTests: 20
+[00:11:40.031] Server  LOG     Ticket Debug: Tests count: 20
+[00:13:03.614] Server  LOG      ✓ Compiled in 478ms
+[00:14:17.815] Server  LOG      ✓ Compiled in 206ms
+[00:16:23.012] Server  LOG      ✓ Compiled in 109ms
+[00:20:01.789] Server  LOG      ✓ Compiled in 113ms
+[00:20:04.659] Server  LOG      ✓ Compiled in 99ms
+[00:20:26.848] Server  LOG      ✓ Compiled in 102ms
+[00:20:37.112] Server  LOG     Middleware hitting path: "/dashboard"
+[00:20:39.963] Browser LOG     %c[Vercel Web Analytics]%c [view] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.3.1","sv":"0.1.3","ts":1772810365925} /_vercel/insights/view

@@ -37,9 +37,9 @@ export function PricesSection({ prices }: PricesSectionProps) {
         </div>
 
         <div className="max-w-xl mx-auto">
-          <div className="group relative bg-white border border-slate-100 rounded-[3rem] p-10 md:p-14 overflow-hidden shadow-2xl shadow-blue-500/5 transition-all duration-300 hover:scale-105">
+          <div className="group relative bg-white border border-slate-100 rounded-[3rem] p-6 sm:p-10 md:p-14 overflow-hidden shadow-2xl shadow-blue-500/5 transition-all duration-300 hover:scale-105">
             {/* Discount Badge */}
-            <div className="absolute top-8 right-8">
+            <div className="absolute top-4 right-4 sm:top-8 sm:right-8">
               <div className="bg-green-500 text-white px-5 py-2 rounded-2xl font-black text-xs flex items-center gap-2 shadow-lg shadow-green-500/20 uppercase tracking-widest animate-pulse">
                 <Crown className="w-4 h-4" />
                 {prices.discount_percent}% {t("prices_section.discount")}
@@ -57,7 +57,7 @@ export function PricesSection({ prices }: PricesSectionProps) {
                   {formatPrice(prices.original_price)} {t("common.currency", "so'm")}
                 </span>
                 <div className="flex items-baseline justify-center gap-2">
-                  <span className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter italic" suppressHydrationWarning>
+                  <span className="text-5xl md:text-8xl font-black text-slate-900 tracking-tighter italic" suppressHydrationWarning>
                     {formatPrice(prices.discounted_price)}
                   </span>
                   <span className="text-xl font-black text-slate-400 uppercase italic">{t("prices_section.month")}</span>

@@ -24,14 +24,14 @@ export function LandingHero() {
                     {t("hero_subtitle")}
                 </p>
 
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-6 pt-10">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 pt-8 sm:pt-10 w-full px-2 sm:px-0">
                     <Button
                         asChild
                         size="lg"
-                        className="h-20 px-12 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-[2rem] shadow-2xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95 group uppercase italic tracking-widest text-xl"
+                        className="w-full sm:w-auto h-14 sm:h-20 px-6 sm:px-12 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-[2rem] shadow-2xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95 group uppercase italic tracking-widest text-base sm:text-xl"
                     >
                         <Link suppressHydrationWarning href="/login" className="flex items-center gap-3">
-                            <Crown className="h-7 w-7 group-hover:rotate-12 transition-transform" />
+                            <Crown className="h-5 w-5 sm:h-7 sm:w-7 group-hover:rotate-12 transition-transform" />
                             {t("activate_premium")}
                         </Link>
                     </Button>
@@ -40,7 +40,7 @@ export function LandingHero() {
                         asChild
                         variant="ghost"
                         size="lg"
-                        className="h-20 px-12 rounded-[2rem] border-2 border-slate-100 bg-white text-slate-600 hover:bg-slate-50 hover:border-slate-200 transition-all text-xl font-black uppercase italic tracking-widest"
+                        className="w-full sm:w-auto h-14 sm:h-20 px-6 sm:px-12 rounded-[2rem] border-2 border-slate-100 bg-white text-slate-600 hover:bg-slate-50 hover:border-slate-200 transition-all text-base sm:text-xl font-black uppercase italic tracking-widest"
                     >
                         <Link suppressHydrationWarning href="#features">
                             {t("landing.more")}

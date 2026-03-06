@@ -151,7 +151,7 @@
     "test": {
         "question": "Savol",
         "of": "dan",
-        "finish": "Testni yakunlash",
+        "finish": "Yakunlash",
         "finishAnytime": "Har qanday vaqtda tugatish mumkin",
         "finished": "Test yakunlandi!",
         "finalScore": "Yakuniy natija",

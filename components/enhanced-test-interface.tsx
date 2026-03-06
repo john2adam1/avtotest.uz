@@ -174,7 +174,7 @@ export function EnhancedTestInterface({
             </div>
 
             <div className="relative group">
-              <div className="text-8xl md:text-9xl font-black text-blue-600 tracking-tighter mb-2 italic">{results.score}%</div>
+              <div className="text-6xl md:text-9xl font-black text-blue-600 tracking-tighter mb-2 italic">{results.score}%</div>
               <div className="text-slate-400 font-black uppercase tracking-widest text-sm">{t("test.finalScore")}</div>
             </div>
 
@@ -200,7 +200,7 @@ export function EnhancedTestInterface({
             <div className="pt-8">
               <Button
                 onClick={() => router.push("/dashboard")}
-                className="w-full h-16 bg-blue-600 hover:bg-blue-700 text-white font-black text-lg rounded-2xl shadow-lg shadow-blue-500/20 transition-all uppercase tracking-widest italic"
+                className="w-full h-16 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs sm:text-lg rounded-2xl shadow-lg shadow-blue-500/20 transition-all uppercase tracking-wide sm:tracking-widest italic"
               >
                 {t("test.backToDashboard")}
               </Button>
@@ -214,7 +214,7 @@ export function EnhancedTestInterface({
   return (
     <main className="min-h-screen bg-[#e9f6ff] relative overflow-hidden flex flex-col font-sans pt-10">
       {/* Row 1: Logo + Finish Button */}
-      <div className="w-full px-8 py-4 z-20 flex items-center justify-between">
+      <div className="w-full px-3 sm:px-8 py-3 sm:py-4 z-20 flex items-center justify-between gap-2">
         <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-all shrink-0">
           <div className="text-blue-700 font-black">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -232,21 +232,23 @@ export function EnhancedTestInterface({
           <div className="flex bg-white/50 backdrop-blur-sm border border-white/40 p-1 rounded-2xl shadow-xl shadow-blue-500/5">
             <button
               onClick={() => i18n.changeLanguage('uz')}
-              className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i18n.language === 'uz'
+              className={`px-2 sm:px-6 py-1.5 sm:py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i18n.language === 'uz'
                 ? 'bg-[#0969DA] text-white shadow-lg shadow-blue-500/20'
                 : 'text-slate-500 hover:text-[#0969DA] hover:bg-white/80'
                 }`}
             >
-              Uzbek-latin
+              <span className="hidden sm:inline">Uzbek-latin</span>
+              <span className="sm:hidden">Lotin</span>
             </button>
             <button
               onClick={() => i18n.changeLanguage('uz_cyrl')}
-              className={`px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i18n.language === 'uz_cyrl'
+              className={`px-2 sm:px-6 py-1.5 sm:py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i18n.language === 'uz_cyrl'
                 ? 'bg-[#0969DA] text-white shadow-lg shadow-blue-500/20'
                 : 'text-slate-500 hover:text-[#0969DA] hover:bg-white/80'
                 }`}
             >
-              Uzbek-cyrillic
+              <span className="hidden sm:inline">Uzbek-cyrillic</span>
+              <span className="sm:hidden">Кирил</span>
             </button>
           </div>
         )}
@@ -254,15 +256,16 @@ export function EnhancedTestInterface({
         {!isFinished && (
           <Button
             onClick={handleFinish}
-            className="h-12 px-8 bg-[#0969DA] hover:bg-[#085dc2] text-white rounded-2xl font-black text-sm transition-all shadow-xl shadow-blue-500/20 active:scale-95 uppercase tracking-widest italic"
+            className="h-10 sm:h-12 px-3 sm:px-8 bg-[#0969DA] hover:bg-[#085dc2] text-white rounded-2xl font-black text-xs sm:text-sm transition-all shadow-xl shadow-blue-500/20 active:scale-95 uppercase tracking-normal sm:tracking-widest italic shrink-0"
           >
-            {t("test.finish", "Testni yakunlash")}
+            <span className="hidden sm:inline">{t("test.finish", "Yakunlash")}</span>
+            <span className="sm:hidden">✓ {t("test.finish", "Yakunlash")}</span>
           </Button>
         )}
       </div>
 
       {/* Row 2: Navigation (Numbers) */}
-      <div className="w-full px-8 flex items-center justify-center relative z-20 mb-12">
+      <div className="w-full px-2 sm:px-8 flex items-center justify-center relative z-20 mb-6 sm:mb-12">
         <div className="flex flex-wrap items-center justify-center gap-2.5 p-4 bg-white/40 backdrop-blur-sm border border-white/20 rounded-[2.5rem] shadow-xl shadow-blue-500/5 max-w-5xl mx-auto">
           {tests.map((_, idx) => {
             const isActive = currentIndex === idx
@@ -390,14 +393,14 @@ export function EnhancedTestInterface({
           {currentIndex < tests.length - 1 ? (
             <Button
               onClick={() => setCurrentIndex(currentIndex + 1)}
-              className="h-14 px-20 bg-[#0969DA] hover:bg-[#085dc2] text-white font-black text-xl rounded-2xl shadow-xl shadow-blue-500/20 transition-all uppercase tracking-widest active:scale-95"
+              className="h-12 sm:h-14 px-10 sm:px-20 bg-[#0969DA] hover:bg-[#085dc2] text-white font-black text-base sm:text-xl rounded-2xl shadow-xl shadow-blue-500/20 transition-all uppercase tracking-widest active:scale-95"
             >
               {t("common.next", "Keyingisi")}
             </Button>
           ) : (
             <Button
               onClick={handleFinish}
-              className="h-14 px-20 bg-green-500 hover:bg-green-600 text-white font-black text-xl rounded-2xl shadow-xl shadow-green-500/20 transition-all uppercase tracking-widest active:scale-95"
+              className="h-12 sm:h-14 px-10 sm:px-20 bg-green-500 hover:bg-green-600 text-white font-black text-base sm:text-xl rounded-2xl shadow-xl shadow-green-500/20 transition-all uppercase tracking-widest active:scale-95"
             >
               {t("nav.results", "Natijalarni ko'rish")}
             </Button>

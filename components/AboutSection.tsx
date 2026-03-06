@@ -27,17 +27,17 @@ export function AboutSection() {
                 {t("landing_about.badge")}
               </span>
 
-              <h2 className="text-5xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase italic">
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-slate-900 tracking-tighter uppercase italic">
                 {t("common.appName")}
               </h2>
             </div>
 
-            <div className="space-y-6 text-xl text-slate-500 leading-relaxed max-w-xl font-bold">
+            <div className="space-y-6 text-base sm:text-xl text-slate-500 leading-relaxed max-w-xl font-bold">
               <p>
                 <span className="font-black text-slate-900 uppercase italic">{t("common.appName")}</span> — {t("landing_about.desc1")}
               </p>
 
-              <p className="p-8 rounded-[2rem] bg-white border-l-[6px] border-blue-600 italic shadow-xl shadow-blue-500/5">
+              <p className="p-4 sm:p-8 rounded-[2rem] bg-white border-l-[6px] border-blue-600 italic shadow-xl shadow-blue-500/5">
                 {t("landing_about.desc2")}
                 <span className="text-blue-600 font-black"> {t("landing_about.progress")} </span>
                 {t("landing_about.desc3")}
