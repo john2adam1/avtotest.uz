@@ -109,7 +109,7 @@ export default function ExamsPage() {
                                             w-full overflow-hidden relative justify-between px-8 h-28 rounded-[2rem] 
                                             transition-all duration-300 border-2
                                             ${isLocked
-                                                ? "bg-slate-50 border-slate-100 opacity-60 cursor-not-allowed"
+                                                ? "bg-slate-50 border-slate-200 cursor-not-allowed"
                                                 : "bg-[#E32626] border-[#E32626] text-white shadow-lg shadow-red-100 hover:scale-[1.02] active:scale-[0.98]"
                                             }
                                         `}
@@ -136,12 +136,12 @@ export default function ExamsPage() {
                                         ) : (
                                             <div className="flex items-center justify-between w-full">
                                                 <div className="flex items-center gap-4">
-                                                    <div className="p-4 bg-slate-200/50 rounded-2xl text-slate-400">
+                                                    <div className="p-4 bg-slate-200/80 rounded-2xl text-slate-500">
                                                         <Lock className="h-6 w-6" />
                                                     </div>
                                                     <div className="flex flex-col items-start gap-1">
-                                                        <span className="font-black text-2xl text-slate-300 italic tracking-tight uppercase">{count} {t("test.of", "ta")} {t("test.question", "savol")}</span>
-                                                        <span className="text-[10px] text-slate-300 font-black uppercase tracking-widest">{t("dashboard.premiumRequired", "Premium obuna uchun")}</span>
+                                                        <span className="font-black text-2xl text-slate-500 italic tracking-tight uppercase">{count} {t("test.of", "ta")} {t("test.question", "savol")}</span>
+                                                        <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">{t("dashboard.premiumRequired", "Premium obuna uchun")}</span>
                                                     </div>
                                                 </div>
                                                 <div className="px-5 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 text-[10px] font-black uppercase tracking-widest">

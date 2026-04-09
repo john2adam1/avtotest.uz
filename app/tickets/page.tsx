@@ -44,11 +44,15 @@ export default function TicketsPage() {
 
       // Parallel fetching
       const [ticketsRes, statsRes] = await Promise.all([
-        supabase.from("tickets").select("*").order("title"),
+        supabase.from("tickets").select("*"),
         supabase.from("ticket_statistics").select("ticket_id, percentage, correct_count, wrong_count").eq("user_id", authUser.id)
       ])
 
-      setTickets(ticketsRes.data || [])
+      setTickets((ticketsRes.data || []).sort((a, b) => {
+        const numA = parseInt(a.title.match(/\d+/)?.[0] || "0", 10)
+        const numB = parseInt(b.title.match(/\d+/)?.[0] || "0", 10)
+        return numA - numB
+      }))
 
       const stats = (statsRes.data || []).reduce((acc, stat) => {
         acc[stat.ticket_id] = {
@@ -109,7 +113,7 @@ export default function TicketsPage() {
               tickets.map((ticket, index) => {
                 const isPublic = ticket.is_public ?? false
                 const canAccess = isPublic || hasAccess
-                const ticketNumber = index + 1
+                const ticketNumber = parseInt(ticket.title.match(/\d+/)?.[0] || String(index + 1), 10)
                 const stats = statsMap[ticket.id]
 
                 return (

@@ -304,6 +304,9 @@ DECLARE
     current_count INT;
     next_ticket_num INT;
 BEGIN
+    -- Serialize all concurrent calls to prevent race conditions during bulk CSV imports
+    PERFORM pg_advisory_xact_lock(42);
+
     SELECT t.id, 
            (SELECT count(*) FROM ticket_tests tt WHERE tt.ticket_id = t.id) as test_count
     INTO latest_ticket_id, current_count
@@ -406,7 +409,7 @@ CREATE POLICY "Admin manage topics" ON topics FOR ALL USING (is_admin());
 -- TICKETS
 ALTER TABLE tickets ENABLE ROW LEVEL SECURITY;
 DROP POLICY IF EXISTS "Read tickets" ON tickets;
-CREATE POLICY "Read tickets" ON tickets FOR SELECT USING (is_public OR has_premium_access());
+CREATE POLICY "Read tickets" ON tickets FOR SELECT USING (true);
 
 DROP POLICY IF EXISTS "Admin manage tickets" ON tickets;
 CREATE POLICY "Admin manage tickets" ON tickets FOR ALL USING (is_admin());

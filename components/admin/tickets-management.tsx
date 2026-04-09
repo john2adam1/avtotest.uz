@@ -51,6 +51,11 @@ export function TicketsManagement() {
             return { ...ticket, test_count: count || 0 }
           })
         )
+        ticketsWithCounts.sort((a, b) => {
+          const numA = parseInt(a.title.match(/\d+/)?.[0] || "0", 10)
+          const numB = parseInt(b.title.match(/\d+/)?.[0] || "0", 10)
+          return numA - numB
+        })
         if (isMounted) setTickets(ticketsWithCounts)
       }
       if (isMounted) setLoading(false)
@@ -109,6 +114,11 @@ export function TicketsManagement() {
           return { ...ticket, test_count: count || 0 }
         })
       )
+      ticketsWithCounts.sort((a, b) => {
+        const numA = parseInt(a.title.match(/\d+/)?.[0] || "0", 10)
+        const numB = parseInt(b.title.match(/\d+/)?.[0] || "0", 10)
+        return numA - numB
+      })
       setTickets(ticketsWithCounts)
     }
     setLoading(false)
