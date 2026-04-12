@@ -80,7 +80,7 @@ export async function generateMetadata({ params }: { params: Promise<{ topicId: 
   const { data: topic } = await supabase.from("topics").select("title").eq("id", topicId).single()
 
   return {
-    title: topic ? `${topic.title} | Tezkor Avtotest` : "Mavzu Testi",
+    title: topic ? `${topic.title} | Sarvar Avtotest` : "Mavzu Testi",
     description: topic ? `${topic.title} bo'yicha testlarni yeching va bilimingizni mustahkamlang.` : "Mavzu bo'yicha testlar",
   }
 }

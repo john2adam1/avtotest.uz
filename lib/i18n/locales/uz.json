@@ -3,7 +3,7 @@
     "hero_subtitle": "Video darslar, testlar va real imtihon tajriba - barchasi bir joyda!",
     "activate_premium": "Premium obunani faollashtiring",
     "common": {
-        "appName": "SarvarAvtoTest",
+        "appName": "Sarvar Avto Test",
         "loading": "Yuklanmoqda...",
         "save": "Saqlash",
         "cancel": "Bekor qilish",
@@ -53,7 +53,10 @@
         "feature3": "Reklamasiz interfeys",
         "cta": "Hoziroq obuna bo'lish",
         "secure": "To'lov xavfsizligi kafolatlangan.",
-        "discount": "CHEGIRMA"
+        "discount": "CHEGIRMA",
+        "discount_lower": "chegirma",
+        "promo_title": "Premium obunaga bugun ulgur!",
+        "promo_subtitle": "To'liq test rejimlaridan foydalanish, test statistikasi va boshqa qulayliklarga ega bo'ling."
     },
     "contact_section": {
         "title": "Bog'lanish",
@@ -62,7 +65,40 @@
         "telegram": "Telegram",
         "telegram_link": "Telegram orqali yozish",
         "address": "Manzil",
-        "no_data": "Bog'lanish ma'lumotlari hozirda mavjud emas."
+        "no_data": "Bog'lanish ma'lumotlari hozirda mavjud emas.",
+        "biz_bilan_boglanish": "Biz bilan bog'lanish",
+        "telegram_orqali": "Telegram orqali bog'lanish",
+        "telefon_raqamimiz": "Telefon raqamimiz:",
+        "footer_text": "Sarvar Avtotest — avtomaktab bitiruvchilari va mustaqil tayyorlanmoqchi bo'lganlar uchun O'zbekistonda eng samarali platforma.",
+        "qoshimcha_malumotlar": "Qo'shimcha ma'lumotlar",
+        "email": "Elektron pochta"
+    },
+    "target_audience": {
+        "badge": "KURSOMIZ KIMLARGA 100% YORDAM BERADI?",
+        "item1": "Avtomaktabni tugatib lekin avtotest imtihoniga topshirishga ikkilanyotgan va qat'iy qaror qilmayotgan bo'lsangiz.",
+        "item2": "Vaqtingiz kam, shuning uchun online o'zingiz o'qib, qulay vaqtda tayyorlanmoqchi bo'lsangiz.",
+        "item3": "Avval imtihondan yiqilgan bo'lsangiz va bu safar xato qilmay, to'liq tayyorlanmoqchi bo'lsangiz."
+    },
+    "features_section": {
+        "badge": "IMKONIYATLAR",
+        "feature1_title": "Test Formatlari",
+        "feature1_desc1": "55 ta rasmiy bilet asosida mukammal tayyorlanish imkoniyati.",
+        "feature1_desc2": "O'z bilimingizni har xil yo'llar bilan sinang.",
+        "feature2_title": "Mavzulashtirilgan Testlar",
+        "feature2_desc1": "Mavzular ketma-ketligi bo'yicha qulay test yechish imkoniyati.",
+        "feature2_desc2": "O'z bilimingizni har xil yo'llar bilan sinang.",
+        "feature3_title": "Imtihon Formati",
+        "feature3_desc1": "Standart 25 daqiqa, 20 ta savol – xuddi real imtihon kabi.",
+        "feature3_desc2": "Natijani darhol bilasiz.",
+        "feature4_title": "Til Tanlash",
+        "feature4_desc1": "O'zbek, Rus va boshqa tillarda test yechish imkoniyati.",
+        "feature4_desc2": "Sizga qulay bo'lgan tilni tanlang.",
+        "feature5_title": "Yangi savollar",
+        "feature5_desc1": "100 tadan ortiq yangi savollarga tayyorlanish imkoniyati.",
+        "feature5_desc2": "O'z bilimingizni har xil yo'llar bilan sinang.",
+        "feature6_title": "Oson boshlash",
+        "feature6_desc1": "Ism va telefon raqam orqali tez ro'yxatdan o'tish.",
+        "feature6_desc2": "Login qilish juda oson."
     },
     "landing": {
         "title1": "HAYDOVCHILIK",
@@ -165,7 +201,8 @@
         "showExplanation": "Tushuntirishni ko'rish",
         "hideExplanation": "Tushuntirishni yashirish",
         "answerRequired": "Javob tanlang",
-        "timeRemaining": "Qolgan vaqt"
+        "timeRemaining": "Qolgan vaqt",
+        "currency": "so'm"
     },
     "subscription": {
         "premium": "Premium",

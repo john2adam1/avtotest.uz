@@ -4,7 +4,7 @@ import { Navbar } from "@/components/navbar"
 import { AnswersClient } from "@/components/answers-client"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowLeft } from "lucide-react"
+import { ArrowLeft, ChevronLeft } from "lucide-react"
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -37,10 +37,10 @@ export default async function AnswersPage() {
             <Navbar userEmail={user.email} isAdmin={userData.role === "admin"} />
             <main className="container mx-auto px-6 py-12 max-w-5xl">
                 <div className="mb-10">
-                    <Button variant="ghost" asChild className="group text-slate-500 hover:text-blue-600 hover:bg-blue-50 rounded-xl px-4">
-                        <Link href="/dashboard" className="inline-flex items-center gap-2">
-                            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                            Orqaga
+                    <Button asChild className="px-5 h-9 bg-[#1875d1] hover:bg-[#1565c0] text-white rounded font-normal text-sm gap-1.5 shadow-sm transition-all active:scale-95">
+                        <Link href="/dashboard" className="inline-flex items-center gap-1.5">
+                            <ChevronLeft className="h-4 w-4" />
+                            Ortga
                         </Link>
                     </Button>
                 </div>

@@ -4,6 +4,7 @@ import { useState, Suspense, useEffect } from "react"
 import type { FormEvent } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -74,131 +75,120 @@ function LoginForm() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden">
-      <div className="w-full max-w-md space-y-8 relative z-10">
-        <div className="text-center space-y-4">
-          <Link href="/" className="inline-flex items-center gap-2 hover:scale-105 transition-all group">
-            <div className="text-primary font-black">
-              <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 10V15H15V35H25V15H35V10H5Z" fill="currentColor" />
-              </svg>
-            </div>
-            <div className="flex flex-col -space-y-1 text-left">
-              <span className="text-2xl font-black text-foreground tracking-tighter uppercase italic">Sarvar</span>
-              <span className="text-lg font-bold text-foreground tracking-tight uppercase">AvtoTest</span>
-            </div>
-          </Link>
+    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-[#eef6fc]">
+      <div className="w-full max-w-[400px] space-y-10 relative z-10 flex flex-col items-center">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-all">
+          <div className="relative w-40 h-10">
+            <Image
+              src="/images/logo.jpg"
+              alt="Sarvar AvtoTest"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </Link>
 
-          <h1 suppressHydrationWarning className="text-3xl font-black text-foreground mt-6 italic uppercase tracking-tight drop-shadow-sm">
-            {t("auth.login")}
+        {/* Title */}
+        <div className="text-center w-full px-2">
+          <h1 suppressHydrationWarning className="text-[28px] font-medium text-black">
+            {t("auth.login", "Tizimga kirish")}
           </h1>
-          <p suppressHydrationWarning className="text-muted-foreground font-medium">
-            {t("auth.loginDescription")}
-          </p>
         </div>
 
-        <div className="glass-card rounded-[2.5rem] overflow-hidden hover-lift">
-          <CardContent className="p-8">
-            {sessionConflict && (
-              <Alert variant="destructive" className="mb-6 bg-destructive/10 border-destructive/20 text-destructive rounded-2xl">
-                <AlertDescription className="font-bold">
-                  {t("auth.sessionConflict")}
-                </AlertDescription>
-              </Alert>
-            )}
+        {/* Form elements directly on background */}
+        <div className="w-full">
+          {sessionConflict && (
+            <Alert variant="destructive" className="mb-6 bg-red-100 border-red-200 text-red-600 rounded-lg">
+              <AlertDescription className="font-medium">
+                {t("auth.sessionConflict")}
+              </AlertDescription>
+            </Alert>
+          )}
 
-            <form onSubmit={handleLogin} className="space-y-6">
-              <div className="space-y-2">
-                <Label suppressHydrationWarning htmlFor="phone" className="text-muted-foreground font-black uppercase text-[10px] tracking-widest ml-1">
-                  {t("auth.phone")}
-                </Label>
-                <div className="flex gap-2">
-                  <div className="flex items-center gap-2 px-4 rounded-2xl bg-muted border border-border text-foreground min-w-[100px]">
-                    <img src="https://flagcdn.com/uz.svg" className="w-5 h-3 rounded-sm shadow-sm" alt="UZ" />
-                    <span className="text-sm font-black">+998</span>
-                  </div>
-                  <div className="relative flex-1">
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="90 123 45 67"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      required
-                      className="rounded-2xl bg-muted border-border text-foreground placeholder:text-muted-foreground/40 h-12 focus:ring-primary focus:border-primary transition-all font-bold"
-                    />
-                  </div>
+          <form onSubmit={handleLogin} className="space-y-6">
+            <div className="space-y-2">
+              <Label suppressHydrationWarning htmlFor="phone" className="text-black text-[15px] font-normal tracking-normal ml-0">
+                {t("auth.phone", "Telefon raqam")}
+              </Label>
+              <div className="flex bg-white rounded-[4px] border border-slate-300 overflow-hidden shadow-sm h-[46px]">
+                <div className="flex items-center gap-1.5 pl-3 pr-2 bg-white pointer-events-none border-r border-slate-200">
+                  <img src="https://flagcdn.com/uz.svg" className="w-[20px] h-[14px] rounded-sm" alt="UZ" />
+                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label suppressHydrationWarning htmlFor="password" title="" className="text-muted-foreground font-black uppercase text-[10px] tracking-widest ml-1">
-                  {t("auth.password")}
-                </Label>
-                <div className="relative group">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder={t("auth.passwordPlaceholder")}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    className="rounded-2xl bg-muted border-border text-foreground placeholder:text-muted-foreground/40 h-12 focus:ring-primary focus:border-primary transition-all pr-12 font-bold"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground/40 hover:text-primary transition-colors"
-                  >
-                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                  </button>
+                <div className="flex items-center pl-3 pr-1 text-black">
+                  <span className="text-[15px]">+998</span>
                 </div>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder=""
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  required
+                  className="flex-1 border-0 rounded-none h-full shadow-none focus-visible:ring-0 text-[16px] text-black px-1"
+                />
               </div>
+            </div>
 
-              <div className="space-y-4 pt-4">
-                <Button
-                  type="submit"
-                  className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground font-black rounded-2xl shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-50 text-lg uppercase italic tracking-widest"
-                  disabled={loading}
+            <div className="space-y-2">
+              <Label suppressHydrationWarning htmlFor="password" title="" className="text-black text-[15px] font-normal tracking-normal ml-0">
+                {t("auth.password", "Parol")}
+              </Label>
+              <div className="relative group flex bg-white rounded-[4px] border border-slate-300 overflow-hidden shadow-sm h-[46px]">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder={t("auth.passwordPlaceholder", "Parol kiriting")}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="flex-1 border-0 rounded-none h-full shadow-none focus-visible:ring-0 text-[15px] text-[#9ca3af] pl-3 pr-12 placeholder:text-[#9ca3af]"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9ca3af] hover:text-slate-700 transition-colors"
                 >
-                  {loading ? (
-                    <div suppressHydrationWarning className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                      {t("auth.loggingIn")}
-                    </div>
-                  ) : (
-                    <span suppressHydrationWarning className="flex items-center justify-center gap-2">
-                      {t("auth.loginButton")}
-                    </span>
-                  )}
-                </Button>
-
-                <div className="relative py-2">
-                  <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-border"></span>
-                  </div>
-                  <div className="relative flex justify-center text-[10px] uppercase font-black tracking-widest">
-                    <span className="bg-white/80 backdrop-blur-sm px-4 text-muted-foreground/40">Yoki</span>
-                  </div>
-                </div>
-
-                <Button
-                  variant="outline"
-                  asChild
-                  className="w-full h-14 rounded-2xl border-border bg-muted/50 text-muted-foreground hover:bg-muted hover:border-border transition-all font-black uppercase italic tracking-widest"
-                >
-                  <Link suppressHydrationWarning href="/register">
-                    {t("auth.registerButton")}
-                  </Link>
-                </Button>
+                  {showPassword ? <EyeOff className="h-5 w-5 stroke-[2.5]" /> : <Eye className="h-5 w-5 stroke-[2.5]" />}
+                </button>
               </div>
-            </form>
-          </CardContent>
+            </div>
+
+            <div className="space-y-4 pt-6">
+              <Button
+                type="submit"
+                className="w-full h-12 bg-[#5e53eb] hover:bg-[#5046c8] text-white font-medium rounded-[6px] shadow-sm transition-all focus-visible:ring-offset-0 focus-visible:ring-0 text-[16px]"
+                disabled={loading}
+              >
+                {loading ? (
+                  <div suppressHydrationWarning className="flex items-center gap-2">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Kutib turing...
+                  </div>
+                ) : (
+                  <span suppressHydrationWarning>
+                    {t("auth.loginButton", "Tizimga kirish")}
+                  </span>
+                )}
+              </Button>
+
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => router.push("/register")}
+                className="w-full h-12 bg-[#5e53eb] hover:bg-[#5046c8] text-white font-medium rounded-[6px] shadow-sm transition-all border-0 focus-visible:ring-offset-0 focus-visible:ring-0 text-[16px] hover:text-white"
+              >
+                <span suppressHydrationWarning>
+                  {t("auth.registerButton", "Ro'yxatdan o'tish")}
+                </span>
+              </Button>
+            </div>
+          </form>
         </div>
-
-        <p className="text-center text-muted-foreground/40 text-[10px] font-black uppercase tracking-widest">
-          &copy; {new Date().getFullYear()} SarvarAvtoTest
-        </p>
       </div>
     </div>
   )

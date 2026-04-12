@@ -8,8 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { LanguageSwitcher } from "@/components/language-switcher"
-import { Timer } from "@/components/timer"
-import { BookOpen, CheckCircle2, XCircle, ArrowLeft, Maximize2 } from "lucide-react"
+import { ArrowLeft, BookOpen, Clock, Menu, PenTool, X, Check, FileQuestion, Home, CornerUpLeft, XCircle, Maximize2 } from "lucide-react"
 import { useTranslation } from "react-i18next"
 import type { Test, UserSettings } from "@/lib/types"
 import { ImageModal } from "@/components/image-modal"
@@ -38,6 +37,7 @@ export function EnhancedTestInterface({
   const [isFinished, setIsFinished] = useState(false)
   const [results, setResults] = useState<{ correct: number; wrong: number; unanswered: number; score: number } | null>(null)
   const [isImageModalOpen, setIsImageModalOpen] = useState(false)
+  const [timeLeft, setTimeLeft] = useState(testType === "exam" && tests.length === 20 ? 25 * 60 : 0)
   const router = useRouter()
   const supabase = getSupabaseBrowserClient()
 
@@ -62,7 +62,30 @@ export function EnhancedTestInterface({
   const selectedAnswer = selectedAnswers[currentIndex]
   const isAnswered = answeredQuestions[currentIndex]
 
-  const hasTimer = tests.length === 20
+  const hasTimer = testType === "exam" && tests.length === 20
+
+  useEffect(() => {
+    if (!hasTimer || isFinished) return
+
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(timer)
+          handleFinish()
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(timer)
+  }, [hasTimer, isFinished])
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${String(secs).padStart(2, "0")}`
+  }
 
   const handleAnswerSelect = (answerIndex: number) => {
     if (answeredQuestions[currentIndex]) return
@@ -164,203 +187,209 @@ export function EnhancedTestInterface({
   }
 
   if (isFinished && results) {
+    const isPassed = results.unanswered === 0 && results.wrong <= Math.floor(tests.length * 0.1) // 90% pass logic
+
     return (
-      <main className="min-h-screen bg-[#e9f6ff] px-4 py-8 relative overflow-hidden flex items-center justify-center">
-        <div className="max-w-xl w-full mx-auto p-12 bg-white border border-slate-100 rounded-[3rem] shadow-xl shadow-blue-500/5 relative z-10">
-          <div className="text-center space-y-10">
-            <div className="space-y-2">
-              <h2 className="text-4xl font-black text-slate-900 tracking-tight italic uppercase">{t("test.finished")}</h2>
-              <p className="text-slate-500 font-bold text-lg">{t("test.finalScore")}</p>
-            </div>
+      <main className="min-h-screen bg-[#eef6fc] p-8 flex flex-col items-center pt-24 font-sans">
 
-            <div className="relative group">
-              <div className="text-6xl md:text-9xl font-black text-blue-600 tracking-tighter mb-2 italic">{results.score}%</div>
-              <div className="text-slate-400 font-black uppercase tracking-widest text-sm">{t("test.finalScore")}</div>
-            </div>
+        {/* Title */}
+        <h1 className="text-3xl font-medium text-black mb-4">TEST NATIJASI</h1>
 
-            <div className="grid gap-4 grid-cols-2 pt-6">
-              <div className="rounded-3xl border border-slate-100 bg-slate-50 p-6 text-center">
-                <div className="text-3xl font-black text-slate-900 italic">{tests.length}</div>
-                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">{t("test.totalQuestions")}</div>
-              </div>
-              <div className="rounded-3xl border border-green-100 bg-green-50 p-6 text-center">
-                <div className="text-3xl font-black text-green-600 italic">{results.correct}</div>
-                <div className="text-[10px] font-black text-green-600/50 uppercase tracking-widest mt-1">{t("test.correct")}</div>
-              </div>
-              <div className="rounded-3xl border border-red-100 bg-red-50 p-6 text-center">
-                <div className="text-3xl font-black text-red-600 italic">{results.wrong}</div>
-                <div className="text-[10px] font-black text-red-600/50 uppercase tracking-widest mt-1">{t("test.wrong")}</div>
-              </div>
-              <div className="rounded-3xl border border-slate-100 bg-slate-50 p-6 text-center">
-                <div className="text-3xl font-black text-slate-400 italic">{results.unanswered}</div>
-                <div className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">{t("test.unanswered")}</div>
-              </div>
-            </div>
+        {/* Subtitle */}
+        <p className="text-xl text-slate-500 mb-8">Testlar soni: {tests.length}</p>
 
-            <div className="pt-8">
-              <Button
-                onClick={() => router.push("/dashboard")}
-                className="w-full h-16 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs sm:text-lg rounded-2xl shadow-lg shadow-blue-500/20 transition-all uppercase tracking-wide sm:tracking-widest italic"
-              >
-                {t("test.backToDashboard")}
-              </Button>
+        {/* Stats */}
+        <div className="flex flex-col gap-3 mb-8">
+          <div className="flex items-center gap-3">
+            <div className="bg-[#008000] w-6 h-6 flex items-center justify-center rounded-[3px]">
+              <Check className="w-4 h-4 text-white stroke-[4]" />
             </div>
+            <span className="text-[22px] text-black w-6">{results.correct}</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="w-6 h-6 flex items-center justify-center">
+              <XCircle className="w-6 h-6 text-red-600" />
+            </div>
+            <span className="text-[22px] text-black w-6">{results.wrong}</span>
           </div>
         </div>
+
+        {/* Passed/Failed Text */}
+        <div className="min-h-[60px] flex items-center justify-center mb-6">
+          {!isPassed && (
+            <p className="text-red-600 text-[19px] text-center max-w-sm">
+              Siz barcha savollarga javob bermadingiz va testdan o'tmadingiz
+            </p>
+          )}
+        </div>
+
+        {/* Buttons */}
+        <div className="flex flex-col gap-3 w-full max-w-[340px]">
+          <Button
+            variant="outline"
+            onClick={() => router.push("/dashboard")}
+            className="w-full h-11 bg-transparent border-[#a3c9f1] hover:bg-blue-50 text-[#1875d1] rounded-[3px] flex items-center justify-center gap-3 text-[15px] font-normal"
+          >
+            <Home className="w-[18px] h-[18px]" />
+            Bosh sahifaga
+          </Button>
+
+          <Button
+            variant="outline"
+            onClick={() => window.location.reload()}
+            className="w-full h-11 bg-transparent border-[#a3c9f1] hover:bg-blue-50 text-[#1875d1] rounded-[3px] flex items-center justify-center gap-3 text-[15px] font-normal"
+          >
+            <CornerUpLeft className="w-[18px] h-[18px]" />
+            Boshqa test yechish
+          </Button>
+        </div>
+
       </main>
     )
   }
 
   return (
-    <main className="min-h-screen bg-[#e9f6ff] relative overflow-hidden flex flex-col font-sans pt-10">
-      {/* Row 1: Logo + Finish Button */}
-      <div className="w-full px-3 sm:px-8 py-3 sm:py-4 z-20 flex items-center justify-between gap-2">
-        <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-all shrink-0">
-          <div className="text-blue-700 font-black">
-            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M5 10V15H15V35H25V15H35V10H5Z" fill="currentColor" />
-            </svg>
+    <main className="min-h-screen bg-[#f0f7f9] relative overflow-hidden flex flex-col font-sans">
+      {/* Header Container */}
+      <div className="w-full px-4 sm:px-8 pt-8 pb-4 bg-[#f0f7f9] flex flex-col gap-6 z-20">
+
+        {/* Row 1: Logo */}
+        <div className="flex w-full items-start">
+          <Link href="/dashboard" className="flex items-center gap-2 hover:opacity-80 transition-all shrink-0">
+            <div className="relative w-32 h-8">
+              <Image
+                src="/images/logo.jpg"
+                alt="Sarvar AvtoTest"
+                fill
+                className="object-contain"
+              />
+            </div>
+          </Link>
+        </div>
+
+        {/* Row 2: Numbers & Finish Button */}
+        <div className="w-full flex flex-col lg:flex-row items-center justify-between relative max-w-[1400px] mx-auto lg:px-4">
+
+          {/* Spacer to keep numbers true center if needed on large screens, or just let them sit naturally */}
+          <div className="hidden lg:block w-[140px]" />
+
+          {/* Center: Numbers and Timer */}
+          <div className="flex items-center justify-center gap-1 flex-wrap">
+            {hasTimer && (
+              <div className="mr-4 font-bold text-lg tabular-nums text-slate-800">
+                {formatTime(timeLeft)}
+              </div>
+            )}
+            {tests.map((_, idx) => {
+              const isActive = currentIndex === idx
+              const isAns = answeredQuestions[idx]
+              const correct = selectedAnswers[idx] === tests[idx].correct_answer
+
+              let stateClass = "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
+              if (isActive) {
+                stateClass = "bg-[#1875d1] text-white border-[#1875d1]"
+              } else if (isAns) {
+                stateClass = correct
+                  ? "bg-green-500 text-white border-green-500"
+                  : "bg-red-500 text-white border-red-500"
+              }
+
+              return (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentIndex(idx)}
+                  className={`w-[30px] h-[30px] flex items-center justify-center border text-[13px] font-normal transition-colors rounded-[2px] ${stateClass}`}
+                >
+                  {idx + 1}
+                </button>
+              )
+            })}
           </div>
-          <div className="flex flex-col -space-y-1">
-            <span className="text-xl font-black text-slate-800 tracking-tighter uppercase italic leading-none">Sarvar</span>
-            <span className="text-sm font-bold text-slate-800 tracking-tight uppercase leading-none">AvtoTest</span>
-          </div>
-        </Link>
 
-        {/* Language Switcher */}
-        {!isFinished && (
-          <div className="flex bg-white/50 backdrop-blur-sm border border-white/40 p-1 rounded-2xl shadow-xl shadow-blue-500/5">
-            <button
-              onClick={() => i18n.changeLanguage('uz')}
-              className={`px-2 sm:px-6 py-1.5 sm:py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i18n.language === 'uz'
-                ? 'bg-[#0969DA] text-white shadow-lg shadow-blue-500/20'
-                : 'text-slate-500 hover:text-[#0969DA] hover:bg-white/80'
-                }`}
-            >
-              <span className="hidden sm:inline">Uzbek-latin</span>
-              <span className="sm:hidden">Lotin</span>
-            </button>
-            <button
-              onClick={() => i18n.changeLanguage('uz_cyrl')}
-              className={`px-2 sm:px-6 py-1.5 sm:py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all ${i18n.language === 'uz_cyrl'
-                ? 'bg-[#0969DA] text-white shadow-lg shadow-blue-500/20'
-                : 'text-slate-500 hover:text-[#0969DA] hover:bg-white/80'
-                }`}
-            >
-              <span className="hidden sm:inline">Uzbek-cyrillic</span>
-              <span className="sm:hidden">Кирил</span>
-            </button>
-          </div>
-        )}
-
-        {!isFinished && (
-          <Button
-            onClick={handleFinish}
-            className="h-10 sm:h-12 px-3 sm:px-8 bg-[#0969DA] hover:bg-[#085dc2] text-white rounded-2xl font-black text-xs sm:text-sm transition-all shadow-xl shadow-blue-500/20 active:scale-95 uppercase tracking-normal sm:tracking-widest italic shrink-0"
-          >
-            <span className="hidden sm:inline">{t("test.finish", "Yakunlash")}</span>
-            <span className="sm:hidden">✓ {t("test.finish", "Yakunlash")}</span>
-          </Button>
-        )}
-      </div>
-
-      {/* Row 2: Navigation (Numbers) */}
-      <div className="w-full px-2 sm:px-8 flex items-center justify-center relative z-20 mb-6 sm:mb-12">
-        <div className="flex flex-wrap items-center justify-center gap-2.5 p-4 bg-white/40 backdrop-blur-sm border border-white/20 rounded-[2.5rem] shadow-xl shadow-blue-500/5 max-w-5xl mx-auto">
-          {tests.map((_, idx) => {
-            const isActive = currentIndex === idx
-            const isAns = answeredQuestions[idx]
-            const correct = selectedAnswers[idx] === tests[idx].correct_answer
-
-            let stateClass = "bg-white text-slate-500 border-slate-200 hover:bg-white hover:border-blue-400 shadow-sm"
-            if (isActive) {
-              stateClass = "bg-[#0969DA] text-white border-[#0969DA] shadow-lg shadow-blue-500/20 scale-110 z-10"
-            } else if (isAns) {
-              stateClass = correct
-                ? "bg-green-500 text-white border-green-500 shadow-md shadow-green-500/10"
-                : "bg-red-500 text-white border-red-500 shadow-md shadow-red-500/10"
-            }
-
-            return (
-              <button
-                key={idx}
-                onClick={() => setCurrentIndex(idx)}
-                className={`w-10 h-10 flex items-center justify-center rounded-xl border-2 text-sm font-black transition-all duration-200 ${stateClass}`}
+          {/* Right: Finish Button */}
+          <div className="mt-4 lg:mt-0 shrink-0 flex items-center justify-end w-[140px]">
+            {!isFinished ? (
+              <Button
+                onClick={handleFinish}
+                className="px-4 h-9 bg-[#1875d1] hover:bg-[#1565c0] text-white rounded-[4px] font-normal text-sm"
               >
-                {idx + 1}
-              </button>
-            )
-          })}
+                {t("test.finish", "Testni yakunlash")}
+              </Button>
+            ) : (
+              <div className="w-[140px]" />
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-6 max-w-7xl flex-1 flex flex-col items-center">
+      <div className="container mx-auto px-4 lg:px-8 flex-1 flex flex-col items-center pt-8">
         {/* Question Title */}
-        <div className="w-full text-center space-y-4 mb-2">
-          <h2 className="text-2xl font-bold text-slate-800 tracking-tight max-w-4xl mx-auto leading-relaxed">
+        <div className="w-full text-center space-y-4 mb-4">
+          <h2 className="text-[22px] font-normal text-slate-800 tracking-wide max-w-5xl mx-auto">
             {displayQuestion}
           </h2>
-          <div className="w-full h-px bg-slate-300 mt-6 mb-10 max-w-6xl mx-auto opacity-40" />
+          <div className="w-full h-px bg-slate-300 mt-6 mb-8 max-w-[1200px] mx-auto opacity-70" />
         </div>
 
         {/* Main Content: Side by Side */}
-        <div className="w-full max-w-6xl flex flex-col items-center">
-          <div className="w-full flex flex-col lg:flex-row gap-12 items-start justify-center py-4">
+        <div className="w-full max-w-[1200px] flex flex-col items-center">
+          <div className="w-full flex flex-col lg:flex-row gap-8 items-start justify-center">
             {/* Left: Image Container */}
-            <div className="w-full lg:w-5/12 flex justify-center">
+            <div className="w-full lg:w-5/12 flex justify-center lg:justify-end">
               <button
                 onClick={() => currentTest.image_url && setIsImageModalOpen(true)}
-                className="relative w-full aspect-[4/3] rounded-[2.5rem] bg-white border border-slate-100 shadow-xl shadow-blue-500/5 p-8 flex items-center justify-center overflow-hidden group/img cursor-zoom-in transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                className="relative w-full max-w-[450px] bg-white border border-slate-200 rounded-lg p-3 flex items-center justify-center overflow-hidden cursor-zoom-in hover:shadow-md transition-shadow"
               >
                 {currentTest.image_url ? (
-                  <>
-                    <img
-                      src={getFixedImageUrl(currentTest.image_url)}
-                      alt="Question"
-                      className="max-w-full max-h-full object-contain"
-                    />
-                    <div className="absolute top-6 right-6 p-2 bg-white/80 backdrop-blur-sm rounded-xl opacity-0 group-hover/img:opacity-100 transition-opacity">
-                      <Maximize2 className="w-5 h-5 text-blue-600" />
-                    </div>
-                  </>
+                  <img
+                    src={getFixedImageUrl(currentTest.image_url)}
+                    alt="Question"
+                    className="w-full h-auto object-contain"
+                  />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-slate-50">
-                    <BookOpen className="w-40 h-40" />
+                  <div className="w-full aspect-[4/3] flex items-center justify-center text-slate-100">
+                    <BookOpen className="w-24 h-24" />
                   </div>
                 )}
               </button>
             </div>
 
             {/* Right: Options */}
-            <div className="w-full lg:w-6/12 flex flex-col gap-4">
+            <div className="w-full lg:w-7/12 flex flex-col gap-3">
               {displayAnswers.map((answer, index) => {
                 const isSelected = selectedAnswer === index
                 const isCorrect = index === currentTest.correct_answer
                 const showFeedback = isAnswered
 
-                // Matching mockup's green borders and F1 badges
-                let stateClass = "bg-white border-[#27ae60]/30 text-slate-700 hover:border-[#27ae60]"
-                let keyBadgeClass = "bg-white border-[#27ae60] text-[#27ae60]"
+                // Default radio styling (matches screenshot)
+                let containerClass = "bg-[#f8fdfb] border-[#27ae60]"
+                let textClass = "text-slate-800"
+                let radioBorder = "border-[#27ae60]"
+                let radioInner = "bg-[#27ae60] opacity-0 scale-50"
 
                 if (isSelected) {
-                  stateClass = "bg-[#27ae60]/5 border-[#27ae60] text-[#1e8449] shadow-sm"
-                  keyBadgeClass = "bg-[#27ae60] border-[#27ae60] text-white"
+                  radioInner = "bg-[#27ae60] opacity-100 scale-100"
                 }
 
                 if (showFeedback) {
                   if (isSelected) {
-                    stateClass = isCorrect
-                      ? "bg-green-100 border-green-600 text-green-900"
-                      : "bg-red-50 border-red-500 text-red-800"
-                    keyBadgeClass = isCorrect
-                      ? "bg-green-600 border-green-600 text-white"
-                      : "bg-red-600 border-red-600 text-white"
+                    if (isCorrect) {
+                      containerClass = "bg-green-50 border-green-500"
+                      radioBorder = "border-green-600"
+                      radioInner = "bg-green-600 opacity-100 scale-100"
+                    } else {
+                      containerClass = "bg-red-50 border-red-500"
+                      radioBorder = "border-red-500"
+                      radioInner = "bg-red-500 opacity-100 scale-100"
+                    }
                   } else if (isCorrect) {
-                    stateClass = "bg-green-50 border-green-500 text-green-800"
-                    keyBadgeClass = "bg-green-600 border-green-600 text-white"
+                    containerClass = "bg-green-50 border-green-500"
+                    radioBorder = "border-green-600"
+                    radioInner = "bg-green-600 opacity-100 scale-100"
                   } else {
-                    stateClass = "opacity-50 border-slate-100 text-slate-300 pointer-events-none"
-                    keyBadgeClass = "bg-white border-slate-200 text-slate-200"
+                    containerClass = "bg-white border-slate-200 opacity-60"
+                    radioBorder = "border-slate-300"
                   }
                 }
 
@@ -369,15 +398,15 @@ export function EnhancedTestInterface({
                     key={index}
                     onClick={() => !isAnswered && handleAnswerSelect(index)}
                     disabled={isAnswered}
-                    className={`group flex items-center gap-4 w-full text-left transition-all ${!isAnswered ? "hover:translate-x-1" : ""}`}
+                    className={`flex items-center gap-4 w-full max-w-[600px] text-left rounded-[4px] border p-3.5 transition-all outline-none ${containerClass}`}
                   >
-                    {/* F1, F2, F3 Badge - Mockup style: Roundish or badge */}
-                    <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center shrink-0 font-bold text-sm transition-all shadow-sm ${keyBadgeClass}`}>
-                      F{index + 1}
+                    {/* Radio Button Circle */}
+                    <div className={`w-5 h-5 rounded-full border-[1.5px] flex items-center justify-center shrink-0 ${radioBorder}`}>
+                      <div className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${radioInner}`} />
                     </div>
 
-                    {/* Answer Box */}
-                    <div className={`flex-1 p-4 rounded-xl border-2 transition-all font-bold text-lg leading-snug shadow-sm ${stateClass}`}>
+                    {/* Answer Text */}
+                    <div className={`flex-1 text-[15px] font-normal leading-snug ${textClass}`}>
                       {answer}
                     </div>
                   </button>
@@ -388,19 +417,19 @@ export function EnhancedTestInterface({
 
         </div>
 
-        {/* Navigation Actions - Centered below, always visible like in mockup */}
-        <div className="pt-10 flex justify-center w-full pb-20">
+        {/* Navigation Actions */}
+        <div className="pt-12 flex justify-center w-full pb-20">
           {currentIndex < tests.length - 1 ? (
             <Button
               onClick={() => setCurrentIndex(currentIndex + 1)}
-              className="h-12 sm:h-14 px-10 sm:px-20 bg-[#0969DA] hover:bg-[#085dc2] text-white font-black text-base sm:text-xl rounded-2xl shadow-xl shadow-blue-500/20 transition-all uppercase tracking-widest active:scale-95"
+              className="px-8 h-10 bg-[#1875d1] hover:bg-[#1565c0] text-white rounded-[4px] font-normal text-sm"
             >
               {t("common.next", "Keyingisi")}
             </Button>
           ) : (
             <Button
               onClick={handleFinish}
-              className="h-12 sm:h-14 px-10 sm:px-20 bg-green-500 hover:bg-green-600 text-white font-black text-base sm:text-xl rounded-2xl shadow-xl shadow-green-500/20 transition-all uppercase tracking-widest active:scale-95"
+              className="px-8 h-10 bg-green-600 hover:bg-green-700 text-white rounded-[4px] font-normal text-sm"
             >
               {t("nav.results", "Natijalarni ko'rish")}
             </Button>
@@ -414,6 +443,6 @@ export function EnhancedTestInterface({
         imageUrl={getFixedImageUrl(currentTest.image_url || "")}
         altText={displayQuestion}
       />
-    </main>
+    </main >
   )
 }

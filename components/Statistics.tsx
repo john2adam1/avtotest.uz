@@ -39,37 +39,37 @@ export function Statistics() {
   ]
 
   return (
-    <section id="features" className="py-16 sm:py-24 relative overflow-hidden bg-[#e9f6ff]">
+    <section id="features" className="py-16 sm:py-24 relative overflow-hidden bg-[#eef8fd]">
       <div className="mx-auto max-w-7xl px-6 relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase italic">
+        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+          <h2 className="text-3xl md:text-[42px] font-black text-slate-900 tracking-tight uppercase italic leading-tight">
             {t("stats.title")}
           </h2>
-          <p className="text-slate-500 text-lg font-bold">
+          <p className="text-slate-500 text-[15px] max-w-2xl mx-auto font-bold leading-relaxed">
             {t("landing.subtitle")}
           </p>
         </div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {stats.map((item, idx) => {
             const Icon = item.icon
 
             return (
               <div
                 key={idx}
-                className="group relative bg-white border border-slate-100 p-6 sm:p-8 rounded-[2.5rem] text-center hover:border-blue-100 transition-all duration-300 hover:scale-105 shadow-xl shadow-blue-500/5"
+                className="group relative bg-white border border-transparent p-6 sm:px-4 sm:py-10 rounded-[2.5rem] text-center transition-all duration-300 hover:-translate-y-1 shadow-lg shadow-blue-500/5 hover:shadow-xl hover:shadow-blue-500/10"
               >
-                <div className="relative z-10 space-y-6">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-slate-50 border border-slate-100 mx-auto group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                    <Icon className="h-10 w-10 text-blue-600 group-hover:text-white transition-colors" />
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="mb-5 h-10 w-10 flex items-center justify-center mx-auto">
+                    <Icon className="h-full w-full text-blue-600" strokeWidth={1.5} />
                   </div>
 
-                  <div className="space-y-3">
-                    <h3 className="text-xl font-black text-slate-900 uppercase italic">
+                  <div className="space-y-4 px-2">
+                    <h3 className="text-[15px] font-black text-slate-900 uppercase italic leading-tight">
                       {item.title}
                     </h3>
 
-                    <p className="text-sm text-slate-500 leading-relaxed font-bold">
+                    <p className="text-[13px] text-slate-500 leading-relaxed font-bold">
                       {item.description}
                     </p>
                   </div>

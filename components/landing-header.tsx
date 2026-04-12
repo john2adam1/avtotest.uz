@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { LanguageSwitcher } from "@/components/language-switcher"
 import { useTranslation } from "react-i18next"
@@ -39,25 +40,25 @@ export function LandingHeader() {
                 {/* Logo */}
                 <div className="flex items-center gap-6 sm:gap-10">
                     <Link href="/" className="flex items-center gap-2 hover:scale-105 transition-all group">
-                        <div className="text-blue-700 font-black">
-                            <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5 10V15H15V35H25V15H35V10H5Z" fill="currentColor" />
-                            </svg>
-                        </div>
-                        <div className="flex flex-col -space-y-1">
-                            <span className="text-lg sm:text-xl font-black text-slate-800 tracking-tighter uppercase italic">Sarvar</span>
-                            <span className="text-sm font-bold text-slate-800 tracking-tight uppercase">AvtoTest</span>
+                        <div className="relative w-40 h-10 sm:w-48 sm:h-12">
+                            <Image
+                                src="/images/logo.jpg"
+                                alt="Sarvar AvtoTest"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
                         </div>
                     </Link>
 
                     {/* Desktop Nav */}
-                    <nav className="hidden lg:flex items-center gap-8 font-black uppercase tracking-tighter italic">
+                    <nav className="hidden lg:flex items-center gap-8 capitalize">
                         {navItems.map((item) => (
                             <Link
                                 key={item}
                                 href={item === "home" ? "/" : `#${item}`}
                                 suppressHydrationWarning
-                                className="text-sm font-black text-slate-400 transition-colors hover:text-blue-600 relative group"
+                                className="text-[15px] font-bold text-slate-800 transition-colors hover:text-blue-600 relative group"
                             >
                                 {t(`nav.${item}`)}
                                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full" />
@@ -71,9 +72,9 @@ export function LandingHeader() {
                     <LanguageSwitcher />
                     <Button
                         asChild
-                        className="hidden sm:flex rounded-[1rem] font-black uppercase italic tracking-widest bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/20 px-4 sm:px-6 text-sm"
+                        className="hidden sm:flex bg-white text-blue-500 border border-blue-100 font-medium px-6 hover:bg-blue-50 shadow-sm transition-colors rounded-xl h-10"
                     >
-                        <Link suppressHydrationWarning href="/login">{t("nav.login")}</Link>
+                        <Link suppressHydrationWarning href="/login">Kirish</Link>
                     </Button>
 
                     {/* Mobile hamburger */}
@@ -97,7 +98,7 @@ export function LandingHeader() {
                                 href={item === "home" ? "/" : `#${item}`}
                                 suppressHydrationWarning
                                 onClick={() => setMobileOpen(false)}
-                                className="block px-4 py-3 rounded-xl text-sm font-black text-slate-600 uppercase tracking-wider hover:bg-blue-50 hover:text-blue-600 transition-colors italic"
+                                className="block px-4 py-3 rounded-xl text-sm font-bold text-slate-600 capitalize hover:bg-blue-50 hover:text-blue-600 transition-colors"
                             >
                                 {t(`nav.${item}`)}
                             </Link>
@@ -105,10 +106,10 @@ export function LandingHeader() {
                         <div className="pt-2 border-t border-slate-100">
                             <Button
                                 asChild
-                                className="w-full rounded-xl font-black uppercase italic tracking-widest bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/20"
+                                className="w-full bg-white text-blue-500 border border-blue-100 font-medium hover:bg-blue-50 rounded-xl shadow-sm transition-colors h-10"
                             >
                                 <Link suppressHydrationWarning href="/login" onClick={() => setMobileOpen(false)}>
-                                    {t("nav.login")}
+                                    Kirish
                                 </Link>
                             </Button>
                         </div>

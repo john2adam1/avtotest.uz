@@ -4,6 +4,7 @@ import { useState } from "react"
 import type { FormEvent } from "react"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -83,153 +84,146 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-[#e9f6ff]">
-      <div className="w-full max-w-md space-y-8 relative z-10 py-8">
-        <div className="text-center space-y-4">
-          <Link href="/" className="inline-flex items-center gap-2 hover:scale-105 transition-all group">
-            <div className="text-blue-700 font-black">
-              <svg width="48" height="48" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 10V15H15V35H25V15H35V10H5Z" fill="currentColor" />
-              </svg>
-            </div>
-            <div className="flex flex-col -space-y-1 text-left">
-              <span className="text-2xl font-black text-slate-800 tracking-tighter uppercase italic">Sarvar</span>
-              <span className="text-lg font-bold text-slate-800 tracking-tight uppercase">AvtoTest</span>
-            </div>
-          </Link>
+    <div className="min-h-screen flex items-center justify-center p-4 relative overflow-hidden bg-[#eef6fc]">
+      <div className="w-full max-w-[400px] space-y-10 relative z-10 flex flex-col items-center">
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-all">
+          <div className="relative w-40 h-10">
+            <Image
+              src="/images/logo.jpg"
+              alt="Sarvar AvtoTest"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+        </Link>
 
-          <h1 suppressHydrationWarning className="text-3xl font-black text-slate-900 mt-6 italic uppercase tracking-tight">
-            {t("auth.register")}
+        {/* Title */}
+        <div className="text-center w-full px-2">
+          <h1 suppressHydrationWarning className="text-[28px] font-medium text-black">
+            {t("auth.register", "Ro'yxatdan o'tish")}
           </h1>
-          <p suppressHydrationWarning className="text-slate-500 font-medium">
-            {t("auth.registerDescription")}
-          </p>
         </div>
 
-        <div className="bg-white border border-slate-100 rounded-[2.5rem] overflow-hidden shadow-xl shadow-blue-500/5">
-          <CardContent className="p-8">
-            <form onSubmit={handleRegister} className="space-y-5">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label suppressHydrationWarning htmlFor="first-name" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
-                    {t("auth.firstName")}
-                  </Label>
+        {/* Form elements directly on background */}
+        <div className="w-full">
+          <form onSubmit={handleRegister} className="space-y-6">
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label suppressHydrationWarning htmlFor="first-name" className="text-black text-[15px] font-normal tracking-normal ml-0">
+                  {t("auth.firstName", "Ism")}
+                </Label>
+                <div className="flex bg-white rounded-[4px] border border-slate-300 overflow-hidden shadow-sm h-[46px]">
                   <Input
                     id="first-name"
-                    placeholder={t("auth.firstNamePlaceholder")}
+                    placeholder={t("auth.firstNamePlaceholder", "Ismingiz")}
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                     required
-                    className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all font-bold"
+                    className="flex-1 border-0 rounded-none h-full shadow-none focus-visible:ring-0 text-[15px] text-black px-3"
                   />
                 </div>
+              </div>
 
-                <div className="space-y-2">
-                  <Label suppressHydrationWarning htmlFor="last-name" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
-                    {t("auth.lastName")}
-                  </Label>
+              <div className="space-y-2">
+                <Label suppressHydrationWarning htmlFor="last-name" className="text-black text-[15px] font-normal tracking-normal ml-0">
+                  {t("auth.lastName", "Familiya")}
+                </Label>
+                <div className="flex bg-white rounded-[4px] border border-slate-300 overflow-hidden shadow-sm h-[46px]">
                   <Input
                     id="last-name"
-                    placeholder={t("auth.lastNamePlaceholder")}
+                    placeholder={t("auth.lastNamePlaceholder", "Familiyangiz")}
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                     required
-                    className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all font-bold"
+                    className="flex-1 border-0 rounded-none h-full shadow-none focus-visible:ring-0 text-[15px] text-black px-3"
                   />
                 </div>
               </div>
+            </div>
 
-              <div className="space-y-2">
-                <Label suppressHydrationWarning htmlFor="phone" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
-                  {t("auth.phone")}
-                </Label>
-                <div className="flex gap-2">
-                  <div className="flex items-center gap-2 px-4 rounded-2xl bg-slate-50 border border-slate-100 text-slate-900 min-w-[100px]">
-                    <img src="https://flagcdn.com/uz.svg" className="w-5 h-3 rounded-sm shadow-sm" alt="UZ" />
-                    <span className="text-sm font-black">+998</span>
-                  </div>
-                  <div className="relative flex-1">
-                    <Input
-                      id="phone"
-                      type="tel"
-                      placeholder="90 123 45 67"
-                      value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
-                      required
-                      className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all font-bold"
-                    />
-                  </div>
+            <div className="space-y-2">
+              <Label suppressHydrationWarning htmlFor="phone" className="text-black text-[15px] font-normal tracking-normal ml-0">
+                {t("auth.phone", "Telefon raqam")}
+              </Label>
+              <div className="flex bg-white rounded-[4px] border border-slate-300 overflow-hidden shadow-sm h-[46px]">
+                <div className="flex items-center gap-1.5 pl-3 pr-2 bg-white pointer-events-none border-r border-slate-200">
+                  <img src="https://flagcdn.com/uz.svg" className="w-[20px] h-[14px] rounded-sm" alt="UZ" />
+                  <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L5 5L9 1" stroke="#94A3B8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
                 </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label suppressHydrationWarning htmlFor="password" title="" className="text-slate-500 font-black uppercase text-[10px] tracking-widest ml-1">
-                  {t("auth.password")}
-                </Label>
-                <div className="relative group">
-                  <Input
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    placeholder={t("auth.passwordPlaceholder")}
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                    className="rounded-2xl bg-slate-50 border-slate-100 text-slate-900 placeholder:text-slate-300 h-12 focus:ring-blue-500 focus:border-blue-500 transition-all pr-12 font-bold"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 hover:text-blue-500 transition-colors"
-                  >
-                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
-                  </button>
+                <div className="flex items-center pl-3 pr-1 text-black">
+                  <span className="text-[15px]">+998</span>
                 </div>
+                <Input
+                  id="phone"
+                  type="tel"
+                  placeholder=""
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  required
+                  className="flex-1 border-0 rounded-none h-full shadow-none focus-visible:ring-0 text-[16px] text-black px-1"
+                />
               </div>
+            </div>
 
-              <div className="space-y-4 pt-4">
-                <Button
-                  type="submit"
-                  className="w-full h-14 bg-blue-600 hover:bg-blue-700 text-white font-black rounded-2xl shadow-lg shadow-blue-500/20 transition-all active:scale-95 disabled:opacity-50 text-lg uppercase italic tracking-widest"
-                  disabled={loading}
+            <div className="space-y-2">
+              <Label suppressHydrationWarning htmlFor="password" title="" className="text-black text-[15px] font-normal tracking-normal ml-0">
+                {t("auth.password", "Parol")}
+              </Label>
+              <div className="relative group flex bg-white rounded-[4px] border border-slate-300 overflow-hidden shadow-sm h-[46px]">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  placeholder={t("auth.passwordPlaceholder", "Parol kiriting")}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="flex-1 border-0 rounded-none h-full shadow-none focus-visible:ring-0 text-[15px] text-[#9ca3af] pl-3 pr-12 placeholder:text-[#9ca3af]"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-[#9ca3af] hover:text-slate-700 transition-colors"
                 >
-                  {loading ? (
-                    <div suppressHydrationWarning className="flex items-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                      {t("auth.registering")}
-                    </div>
-                  ) : (
-                    <span suppressHydrationWarning className="flex items-center justify-center gap-2">
-                      {t("auth.registerButton")}
-                    </span>
-                  )}
-                </Button>
-
-                <div className="relative py-2">
-                  <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-slate-100"></span>
-                  </div>
-                  <div suppressHydrationWarning className="relative flex justify-center text-[10px] uppercase font-black tracking-widest text-center">
-                    <span className="bg-white px-4 text-slate-300">{t("auth.alreadyHaveAccount")}</span>
-                  </div>
-                </div>
-
-                <Button
-                  variant="outline"
-                  asChild
-                  className="w-full h-14 rounded-2xl border-slate-100 bg-slate-50 text-slate-600 hover:bg-slate-100 hover:border-slate-200 transition-all font-black uppercase italic tracking-widest"
-                >
-                  <Link suppressHydrationWarning href="/login">
-                    {t("auth.loginButton")}
-                  </Link>
-                </Button>
+                  {showPassword ? <EyeOff className="h-5 w-5 stroke-[2.5]" /> : <Eye className="h-5 w-5 stroke-[2.5]" />}
+                </button>
               </div>
-            </form>
-          </CardContent>
+            </div>
+
+            <div className="space-y-4 pt-6">
+              <Button
+                type="submit"
+                className="w-full h-12 bg-[#5e53eb] hover:bg-[#5046c8] text-white font-medium rounded-[6px] shadow-sm transition-all focus-visible:ring-offset-0 focus-visible:ring-0 text-[16px]"
+                disabled={loading}
+              >
+                {loading ? (
+                  <div suppressHydrationWarning className="flex items-center gap-2">
+                    <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                    Kutib turing...
+                  </div>
+                ) : (
+                  <span suppressHydrationWarning>
+                    {t("auth.registerButton", "Ro'yxatdan o'tish")}
+                  </span>
+                )}
+              </Button>
+
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => router.push("/login")}
+                className="w-full h-12 bg-[#5e53eb] hover:bg-[#5046c8] text-white font-medium rounded-[6px] shadow-sm transition-all border-0 focus-visible:ring-offset-0 focus-visible:ring-0 text-[16px] hover:text-white"
+              >
+                <span suppressHydrationWarning>
+                  {t("auth.loginButton", "Tizimga kirish")}
+                </span>
+              </Button>
+            </div>
+          </form>
         </div>
-
-        <p className="text-center text-slate-400 text-[10px] font-black uppercase tracking-widest">
-          &copy; {new Date().getFullYear()} SarvarAvtoTest
-        </p>
       </div>
     </div>
   )

@@ -8,6 +8,7 @@ import { hasActiveAccess } from "@/lib/access-control"
 import { useTranslation } from "react-i18next"
 import type { User } from "@/lib/types"
 import { useState, useEffect } from "react"
+import { PremiumAccessGuard } from "@/components/premium-access-guard"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 
 interface DashboardClientProps {
@@ -101,7 +102,7 @@ export function DashboardClient({
         },
         {
             icon: FileText,
-            title: t("dashboard.viewTickets", "Barcha javoblar"),
+            title: t("dashboard.viewTickets", "Barcha testlarni ko'rish"),
             label: t("dashboard.viewTickets"),
             href: "/answers",
             color: "bg-[#8250DF]", // Purple
@@ -111,6 +112,7 @@ export function DashboardClient({
 
     return (
         <div className="min-h-screen bg-[#e9f6ff] pb-20 overflow-x-hidden">
+            <PremiumAccessGuard telegramLink={telegramLink} />
             <div className="max-w-xl mx-auto px-4 relative z-10 pt-10">
 
                 {/* Welcome Section */}
@@ -132,7 +134,7 @@ export function DashboardClient({
                         return (
                             <Link
                                 key={index}
-                                href={isLocked ? "/dashboard?openPremium=true" : item.href}
+                                href={isLocked ? "?premium=required" : item.href}
                                 className="group block"
                             >
                                 <div className={`

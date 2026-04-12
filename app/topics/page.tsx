@@ -6,7 +6,7 @@ import { Navbar } from "@/components/navbar"
 import { hasActiveAccess } from "@/lib/access-control"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Lock, BookOpen, ArrowLeft } from "lucide-react"
+import { Lock, BookOpen, ArrowLeft, ChevronLeft } from "lucide-react"
 import { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
 import type { User } from "@/lib/types"
@@ -113,10 +113,10 @@ export default function TopicsPage() {
 
             <main className="container mx-auto px-6 py-12 max-w-4xl relative z-10">
                 <div className="mb-10">
-                    <Button variant="ghost" asChild className="group text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-xl px-4 transition-all">
-                        <Link href="/dashboard" className="inline-flex items-center gap-2">
-                            <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                            {t("common.back", "Orqaga")}
+                    <Button asChild className="px-5 h-9 bg-[#1875d1] hover:bg-[#1565c0] text-white rounded font-normal text-sm gap-1.5 shadow-sm transition-all active:scale-95">
+                        <Link href="/dashboard" className="inline-flex items-center gap-1.5">
+                            <ChevronLeft className="h-4 w-4" />
+                            Ortga
                         </Link>
                     </Button>
                 </div>

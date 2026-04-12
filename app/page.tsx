@@ -3,16 +3,17 @@ import { redirect } from "next/navigation"
 import { getSupabaseServerClient } from "@/lib/supabase/server"
 import { LandingHeader } from "@/components/landing-header"
 import { LandingHero } from "@/components/landing-hero"
+import { TargetAudience } from "@/components/TargetAudience"
+import { FeaturesGrid } from "@/components/FeaturesGrid"
 import { AboutSection } from "@/components/AboutSection"
-import { Statistics } from "@/components/Statistics"
 import { ContactSection } from "@/components/ContactSection"
 import { Carousel } from "@/components/Carousel"
 import { PricesSection } from "@/components/PricesSection"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Bosh Sahifa | SarvarAvtoTest",
-  description: "O'zbekistondagi eng zamonaviy avtotest platformasi. Bepul testlar va imtihon simulyatori.",
+  title: "Sarvar Avto Test - Imtihonlar va Testlar",
+  description: "O'zbekistondagi eng zamonaviy Sarvar Avto Test platformasi. Bepul testlar, 2024-2025 biletlari va imtihon simulyatori.",
 }
 
 export default async function Home() {
@@ -62,7 +63,7 @@ export default async function Home() {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-[#eff8fc]">
 
       <LandingHeader />
 
@@ -70,8 +71,11 @@ export default async function Home() {
         {/* Hero Section */}
         <LandingHero />
 
-        {/* Statistics Section */}
-        <Statistics />
+        {/* Target Audience Section */}
+        <TargetAudience />
+
+        {/* Features Grid Section */}
+        <FeaturesGrid />
 
         {/* Prices Section */}
         <PricesSection prices={prices} />

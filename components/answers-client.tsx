@@ -40,8 +40,11 @@ export function AnswersClient({ tests }: AnswersClientProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredTests.map((test) => (
-                    <Card key={test.id} className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow bg-background rounded-xl">
+                {filteredTests.map((test, index) => (
+                    <Card key={test.id} className="overflow-hidden border-none shadow-md hover:shadow-lg transition-shadow bg-background rounded-xl relative">
+                        <div className="absolute top-2 left-2 z-20 bg-white/90 backdrop-blur-sm border border-slate-200 text-slate-900 font-bold text-xs px-2 py-1 rounded-md shadow-sm">
+                            {index + 1}
+                        </div>
                         <CardContent className="p-0">
                             <div className="aspect-video relative bg-gray-50 flex items-center justify-center">
                                 {test.image_url ? (

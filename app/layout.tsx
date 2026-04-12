@@ -17,13 +17,13 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: "SarvarAvtoTest - O'zbekiston Yo'l Harakati Qoidalari Testlari",
-    template: "%s | SarvarAvtoTest",
+    default: "Sarvar Avto Test - O'zbekiston Yo'l Harakati Qoidalari Testlari",
+    template: "%s | Sarvar Avto Test",
   },
-  description: "Avtotestlar orqali bilimingizni oshiring. YHQ (PDD) testlari, imtihon biletlari va mavzulashtirilgan testlar.",
-  keywords: ["avtotest", "yhq", "pdd", "uzbekistan", "prava", "imtihon", "test", "yo'l harakati qoidalari"],
-  authors: [{ name: "SarvarAvtoTest Team" }],
-  creator: "SarvarAvtoTest",
+  description: "Sarvar Avto Test orqali haydovchilik imtihonlariga tayyorlaning. YHQ (PDD) testlari, 2024-2025 biletlari va mavzulashtirilgan testlar to'plami.",
+  keywords: ["sarvar auto test", "sarvar avtotest", "preparation for auto test", "avtotestga tayyorgarlik", "yhq testlari", "pdd testlari", "haydovchilik imtihoni", "avtomaktab testlari"],
+  authors: [{ name: "Sarvar Avto Test" }],
+  creator: "Sarvar Avto Test",
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://sarvaravtotest.uz"),
   openGraph: {
     type: "website",
