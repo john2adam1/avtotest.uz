@@ -81,6 +81,33 @@ export function EnhancedTestInterface({
     return () => clearInterval(timer)
   }, [hasTimer, isFinished])
 
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (isFinished) return
+
+      // Navigation
+      if (e.key === "ArrowRight") {
+        if (currentIndex < tests.length - 1) {
+          setCurrentIndex(prev => prev + 1)
+        }
+      } else if (e.key === "ArrowLeft") {
+        if (currentIndex > 0) {
+          setCurrentIndex(prev => prev - 1)
+        }
+      }
+      // Answer selection (1-5)
+      else if (/^[1-5]$/.test(e.key)) {
+        const optionIdx = parseInt(e.key) - 1
+        if (optionIdx < displayAnswers.length && !isAnswered) {
+          handleAnswerSelect(optionIdx)
+        }
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [currentIndex, tests.length, isFinished, isAnswered, displayAnswers.length])
+
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60)
     const secs = seconds % 60
