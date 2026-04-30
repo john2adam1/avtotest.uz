@@ -6,8 +6,11 @@ import { Button } from "@/components/ui/button"
 import { useTranslation } from "react-i18next"
 import { Crown } from "lucide-react"
 
+
+
 export function LandingHero() {
     const { t } = useTranslation()
+
     return (
         <div className="container mx-auto px-6 py-12 md:py-20 relative">
             <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center relative z-10">
@@ -101,25 +104,25 @@ export function LandingHero() {
                         <div className="flex-1 px-4 mt-2 flex flex-col gap-5 overflow-hidden">
                             <div className="text-center bg-[#f8fafc] py-4 rounded-2xl border border-slate-50">
                                 <div className="text-2xl mb-1">🎉</div>
-                                <h3 className="text-lg font-bold text-slate-800">{t("dashboard.welcome", "Xush kelibsiz!")}</h3>
-                                <p className="text-[13px] text-slate-500 leading-tight mt-1 max-w-[200px] mx-auto">{t("dashboard.chooseMode", "Tezroq o'rganing va bilimlaringizni sinab ko'ring")}</p>
+                                <h3 suppressHydrationWarning className="text-lg font-bold text-slate-800">{t("dashboard.welcome", "Xush kelibsiz!")}</h3>
+                                <p suppressHydrationWarning className="text-[13px] text-slate-500 leading-tight mt-1 max-w-[200px] mx-auto">{t("dashboard.chooseMode", "Tezroq o'rganing va bilimlaringizni sinab ko'ring")}</p>
                             </div>
 
                             {/* Buttons */}
                             <div className="space-y-3">
                                 <div className="w-full bg-[#34a853] text-white p-4 py-4.5 rounded-2xl flex items-center gap-3 shadow-md">
                                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z" /><path d="M6 12v5c3 3 9 3 12 0v-5" /></svg>
-                                    <span className="font-semibold text-base tracking-wide">{t("nav.features", "Video darslar")}</span>
+                                    <span suppressHydrationWarning className="font-semibold text-base tracking-wide">{t("nav.features", "Video darslar")}</span>
                                 </div>
 
                                 <div className="w-full bg-[#fbbf24] text-white p-4 py-4.5 rounded-2xl flex items-center gap-3 shadow-md">
                                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="9 11 12 14 22 4" /><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" /></svg>
-                                    <span className="font-semibold text-base tracking-wide">{t("dashboard.tickets", "Testlar")}</span>
+                                    <span suppressHydrationWarning className="font-semibold text-base tracking-wide">{t("dashboard.tickets", "Testlar")}</span>
                                 </div>
 
                                 <div className="w-full bg-[#ef4444] text-white p-4 py-4.5 rounded-2xl flex items-center gap-3 shadow-md">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
-                                    <span className="font-semibold text-base tracking-wide">{t("dashboard.exams", "Imtihon")}</span>
+                                    <span suppressHydrationWarning className="font-semibold text-base tracking-wide">{t("dashboard.exams", "Imtihon")}</span>
                                 </div>
                             </div>
                         </div>

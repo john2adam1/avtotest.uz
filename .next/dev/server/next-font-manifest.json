@@ -6,19 +6,7 @@
       "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
       "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2"
     ],
-    "[project]/app/answers/page": [
-      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
-      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
-      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
-      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2"
-    ],
     "[project]/app/dashboard/page": [
-      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
-      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
-      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
-      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2"
-    ],
-    "[project]/app/exams/page": [
       "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
       "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
       "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
@@ -43,12 +31,6 @@
       "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2"
     ],
     "[project]/app/tickets/page": [
-      "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
-      "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
-      "static/media/e2334d715941921e-s.p.d82a9aff.woff2",
-      "static/media/47fe1b7cd6e6ed85-s.p.855a563b.woff2"
-    ],
-    "[project]/app/topics/page": [
       "static/media/a218039a3287bcfd-s.p.4a23d71b.woff2",
       "static/media/8e6fa89aa22d24ec-s.p.3aec397d.woff2",
       "static/media/e2334d715941921e-s.p.d82a9aff.woff2",

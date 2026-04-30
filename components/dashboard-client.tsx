@@ -75,13 +75,22 @@ export function DashboardClient({
             color: "bg-[#E32626]", // Red
             shadowColor: "shadow-red-200",
         },
-        {
+        /* {
             icon: BookOpen,
             title: t("dashboard.topicsDescription", "Mavzular bo'yicha"),
             label: t("dashboard.topics"),
             href: "/topics",
             color: "bg-[#2DA44E]", // Green
             shadowColor: "shadow-green-200",
+        }, */
+        {
+            icon: BookOpen,
+            title: "Mavzu boyicha testlar ishlab chiqilmoqda...",
+            label: "Mavzu boyicha testlar",
+            href: "#",
+            color: "bg-[#2DA44E]/60", // Semi-transparent Green
+            shadowColor: "shadow-green-100",
+            isPlaceholder: true
         },
         {
             icon: Ticket,
@@ -134,14 +143,14 @@ export function DashboardClient({
                         return (
                             <Link
                                 key={index}
-                                href={isLocked ? "?premium=required" : item.href}
-                                className="group block"
+                                href={(item as any).isPlaceholder ? "#" : (isLocked ? "?premium=required" : item.href)}
+                                className={`group block ${(item as any).isPlaceholder ? "pointer-events-none opacity-80" : ""}`}
                             >
                                 <div className={`
                                     relative flex items-center gap-6 p-6 rounded-[2rem] 
                                     ${item.color} shadow-lg ${item.shadowColor}
-                                    transition-all duration-300 active:scale-95 group-hover:scale-[1.02]
-                                    group-hover:brightness-105
+                                    transition-all duration-300 active:scale-95 
+                                    ${!(item as any).isPlaceholder ? "group-hover:scale-[1.02] group-hover:brightness-105" : ""}
                                 `}>
                                     {/* Icon Box */}
                                     <div className="flex items-center justify-center">
@@ -150,7 +159,7 @@ export function DashboardClient({
 
                                     {/* Content */}
                                     <div className="flex-1">
-                                        <h3 className="text-2xl font-black text-white italic tracking-tight uppercase">
+                                        <h3 className="text-2xl font-black text-white italic tracking-tight uppercase leading-tight">
                                             {item.title}
                                         </h3>
                                     </div>
@@ -160,7 +169,7 @@ export function DashboardClient({
                                         <div className="h-10 w-10 rounded-full bg-white/20 flex items-center justify-center">
                                             <span className="text-white text-lg">🔒</span>
                                         </div>
-                                    ) : (
+                                    ) : (item as any).isPlaceholder ? null : (
                                         <div className="h-10 w-10 text-white flex items-center justify-center opacity-70 group-hover:opacity-100 transition-opacity">
                                             <ChevronRight className="h-8 w-8 stroke-[3]" />
                                         </div>

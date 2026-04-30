@@ -1,11 +1,8 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/answers/page": "app/answers/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/exams/page": "app/exams/page.js",
   "/login/page": "app/login/page.js",
   "/page": "app/page.js",
   "/test/ticket/[ticketId]/page": "app/test/ticket/[ticketId]/page.js",
-  "/tickets/page": "app/tickets/page.js",
-  "/topics/page": "app/topics/page.js"
+  "/tickets/page": "app/tickets/page.js"
 }

@@ -338,10 +338,11 @@ export function EnhancedTestInterface({
           <div className="mt-4 lg:mt-0 shrink-0 flex items-center justify-end w-[140px]">
             {!isFinished ? (
               <Button
+                suppressHydrationWarning
                 onClick={handleFinish}
                 className="px-4 h-9 bg-[#1875d1] hover:bg-[#1565c0] text-white rounded-[4px] font-normal text-sm"
               >
-                {t("test.finish", "Testni yakunlash")}
+                <span suppressHydrationWarning>{t("test.finish", "Testni yakunlash")}</span>
               </Button>
             ) : (
               <div className="w-[140px]" />
@@ -451,14 +452,14 @@ export function EnhancedTestInterface({
               onClick={() => setCurrentIndex(currentIndex + 1)}
               className="px-8 h-10 bg-[#1875d1] hover:bg-[#1565c0] text-white rounded-[4px] font-normal text-sm"
             >
-              {t("common.next", "Keyingisi")}
+              <span suppressHydrationWarning>{t("common.next", "Keyingisi")}</span>
             </Button>
           ) : (
             <Button
               onClick={handleFinish}
               className="px-8 h-10 bg-green-600 hover:bg-green-700 text-white rounded-[4px] font-normal text-sm"
             >
-              {t("nav.results", "Natijalarni ko'rish")}
+              <span suppressHydrationWarning>{t("nav.results", "Natijalarni ko'rish")}</span>
             </Button>
           )}
         </div>
