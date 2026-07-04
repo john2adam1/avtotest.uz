@@ -39,7 +39,7 @@ export function FeaturesGrid() {
     ]
 
     return (
-        <section className="py-12 md:py-16 relative z-10 w-full max-w-[1150px] mx-auto px-6">
+        <section id="features" className="py-12 md:py-16 relative z-10 w-full max-w-[1150px] mx-auto px-6">
             <div className="text-center mb-14">
                 <span className="inline-block text-[#38bdf8] font-medium tracking-wide text-sm border-b-2 border-[#2dd4bf] pb-1 uppercase">
                     {t("features_section.badge", "IMKONIYATLAR")}

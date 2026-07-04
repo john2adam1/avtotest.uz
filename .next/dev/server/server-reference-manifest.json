@@ -1,5 +1,21 @@
 {
-  "node": {},
+  "node": {
+    "60f38a597b8bbd712503d00e4d281aa8a91f91f0e8": {
+      "workers": {
+        "app/register/page": {
+          "moduleId": "[project]/.next-internal/server/app/register/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/auth/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "registerUserWithPhone",
+          "filename": "app/auth/actions.ts"
+        }
+      },
+      "layer": {
+        "app/register/page": "action-browser"
+      },
+      "filename": "app/auth/actions.ts",
+      "exportedName": "registerUserWithPhone"
+    }
+  },
   "edge": {},
   "encryptionKey": "JI3qjU/UkqB8mkriVJfwAGhe3ixVOiK/RjUpDfmErGU="
 }

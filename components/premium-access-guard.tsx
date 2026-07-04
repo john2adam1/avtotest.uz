@@ -24,7 +24,7 @@ export function PremiumAccessGuard({ telegramLink }: { telegramLink?: string }) 
   }, [searchParams])
 
   const handleBuySubscription = () => {
-    window.open(telegramLink || "https://t.me/yourusername", "_blank")
+    window.open("https://t.me/sarvaravtotest_admin", "_blank")
     setOpen(false)
     router.push("/dashboard")
   }

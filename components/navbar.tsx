@@ -36,8 +36,10 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
   const supabase = getSupabaseBrowserClient()
   const [mounted, setMounted] = useState(false)
   const [userProfile, setUserProfile] = useState<{ id?: string, firstName?: string, lastName?: string, phone?: string } | null>(null)
-  const [telegramLink, setTelegramLink] = useState("https://t.me/yourusername")
-  const [contactPhone, setContactPhone] = useState("+998 78 555 31 90")
+  const [telegramLink, setTelegramLink] = useState("https://t.me/sarvar_avtotest")
+  const [contactPhone, setContactPhone] = useState("+998 88 002 13 13")
+  const instagramLink = "https://instagram.com/sarvar_avtotest"
+  const address = "Farg'ona viloyati, Oltiariq tumani, Poloson qishlog'i"
 
   useEffect(() => {
     const fetchData = async () => {
@@ -72,7 +74,7 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
         link = contactData.content.telegram_link
       }
 
-      if (contactData?.content?.phone) {
+      if (contactData?.content?.phone && contactData.content.phone !== "+998 90 123 45 67") {
         setContactPhone(contactData.content.phone)
       }
 
@@ -97,7 +99,7 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
     : t("nav.account", "Foydalanuvchi")
 
   return (
-    <header className="sticky top-0 z-50 w-full px-4 py-3 backdrop-blur-md bg-white/50 border-b border-white/20">
+    <header id="navbar" className="sticky top-0 z-50 w-full px-4 py-3 backdrop-blur-md bg-white/50 border-b border-white/20">
       <div className="container mx-auto flex h-16 items-center justify-between">
         {/* Logo */}
         <Link href={isAdmin ? "/admin" : "/dashboard"} className="flex items-center gap-2 hover:scale-105 transition-all group">
@@ -110,6 +112,12 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
               priority
             />
           </div>
+        </Link>
+        <Link href="/#prices" className="ml-4 text-primary-foreground hover:text-primary transition-colors">
+          {t("nav.pricing", "NARXLAR")}
+        </Link>
+        <Link href="/#features" className="ml-4 text-primary-foreground hover:text-primary transition-colors">
+          {t("features_section.badge", "IMKONIYATLAR")}
         </Link>
 
         {mounted && (
@@ -135,7 +143,7 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
                 </DialogHeader>
                 <div className="mt-10 space-y-4">
                   <Button asChild className="w-full h-20 bg-premium-gold hover:bg-premium-gold/90 text-white font-black rounded-3xl shadow-2xl shadow-premium-gold/20 uppercase tracking-widest text-xl italic transition-all active:scale-95 border-none">
-                    <a href={telegramLink} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+                    <a href="https://t.me/sarvaravtotest_admin" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
                       {t("subscription.buySubscription", "Obunani sotib olish")}
                     </a>
                   </Button>
@@ -211,27 +219,34 @@ export function Navbar({ userEmail, isAdmin }: NavbarProps) {
                       <a href={`tel:${contactPhone.replace(/\s+/g, "")}`} className="text-sm text-slate-500 mt-1 font-medium hover:text-primary transition-colors">
                         {contactPhone}
                       </a>
+                      <a href={telegramLink} target="_blank" rel="noopener noreferrer" className="text-sm text-slate-500 mt-1 font-medium hover:text-primary transition-colors">
+                        Telegram
+                      </a>
+                      <a href={instagramLink} target="_blank" rel="noopener noreferrer" className="text-sm text-slate-500 mt-1 font-medium hover:text-primary transition-colors">
+                        Instagram
+                      </a>
+                      <p className="text-sm text-slate-500 mt-1 font-medium">{address}</p>
                     </div>
                   </div>
-
-                  <div className="h-px bg-slate-100 -mx-4" />
-
-                  {/* Logout */}
-                  <button
-                    onClick={handleLogout}
-                    className="w-full flex items-center px-2 py-1 text-red-500 hover:bg-red-50 rounded-xl transition-all group"
-                  >
-                    <div className="flex items-center gap-3 p-2">
-                      <LogOut className="h-5 w-5" />
-                      <span className="text-xl font-bold">Log out</span>
-                    </div>
-                  </button>
                 </div>
+
+                <div className="h-px bg-slate-100 -mx-4" />
+
+                {/* Logout */}
+                <button
+                  onClick={handleLogout}
+                  className="w-full flex items-center px-2 py-1 text-red-500 hover:bg-red-50 rounded-xl transition-all group"
+                >
+                  <div className="flex items-center gap-3 p-2">
+                    <LogOut className="h-5 w-5" />
+                    <span className="text-xl font-bold">Log out</span>
+                  </div>
+                </button>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
         )}
       </div>
-    </header>
+    </header >
   )
 }

@@ -97,7 +97,7 @@ export function SubscriptionBanner({ user, telegramLink = "https://t.me/youruser
           </div>
         </div>
         <Button asChild className="h-16 px-10 bg-[#0969DA] hover:bg-blue-600 text-white font-black rounded-2xl shadow-xl shadow-blue-500/20 uppercase tracking-widest italic transition-all active:scale-95 shrink-0">
-          <a href={telegramLink} target="_blank" rel="noopener noreferrer">
+          <a href="https://t.me/sarvaravtotest_admin" target="_blank" rel="noopener noreferrer">
             {t("subscription.buySubscription")}
           </a>
         </Button>

@@ -497,7 +497,7 @@ INSERT INTO site_content (type, content)
 VALUES (
   'contact', 
   '{
-    "phone": "+998 90 123 45 67",
+    "phone": "+998 88 002 13 13",
     "telegram": "@sarvar_avtotest",
     "telegram_link": "https://t.me/sarvar_avtotest",
     "address": "Toshkent"

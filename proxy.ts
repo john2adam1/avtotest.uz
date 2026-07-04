@@ -30,6 +30,10 @@ export default async function proxy(request: NextRequest) {
       process.env.NEXT_PUBLIC_SUPABASE_URL,
       process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
       {
+        auth: {
+          // Disable automatic token refresh to avoid race conditions in SSR middleware
+          autoRefreshToken: false,
+        },
         cookies: {
           getAll() {
             return request.cookies.getAll()
@@ -91,6 +95,9 @@ export default async function proxy(request: NextRequest) {
           // Session conflict or old session
           // 1. Sign out from Supabase to clear server-side session
           await supabase.auth.signOut()
+          // Clear Supabase auth cookies to prevent stale refresh tokens
+          response.cookies.delete('sb-access-token')
+          response.cookies.delete('sb-refresh-token')
 
           // 2. Create redirect response
           const redirectResponse = NextResponse.redirect(new URL("/login?session=conflict", request.url))

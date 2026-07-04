@@ -20,6 +20,12 @@ export function ContactSection({ contact }: ContactSectionProps) {
 
   if (!mounted) return null
 
+  const phoneVal = (contact?.phone && contact.phone !== "+998 90 123 45 67") ? contact.phone : "+998 88 002 13 13"
+  const channelLink = (contact?.telegram_link && contact.telegram_link !== "https://t.me/yourusername" && contact.telegram_link !== "") ? contact.telegram_link : "https://t.me/sarvar_avtotest"
+  const adminLink = "https://t.me/sarvaravtotest_admin"
+  const addressVal = (contact?.address && contact.address !== "Toshkent" && contact.address !== "") ? contact.address : "Farg'ona viloyati, Oltiariq tumani, Poloson qishlog'i"
+  const instagramVal = "https://instagram.com/sarvar_avtotest"
+
   return (
     <section id="contact" className="pt-10 pb-16 relative overflow-hidden bg-[#eef8fd]">
       <div className="container mx-auto px-6 max-w-6xl relative z-10 w-full">
@@ -36,7 +42,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
           {/* Middle part - No Form */}
           <div className="w-full max-w-md mx-auto flex flex-col space-y-4 md:mt-2">
             <a
-              href={contact.telegram_link || "#"}
+              href={adminLink}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-3 bg-[#0088cc] hover:bg-[#0077b5] text-white p-4 rounded-xl shadow-sm transition-all focus:ring-4 focus:ring-blue-100"
@@ -46,12 +52,12 @@ export function ContactSection({ contact }: ContactSectionProps) {
             </a>
 
             <a
-              href={`tel:${contact.phone || "+998785553190"}`}
+              href={`tel:${phoneVal.replace(/\s+/g, "")}`}
               className="flex text-center flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 bg-white hover:bg-slate-50 border border-slate-200 text-slate-800 p-4 rounded-xl shadow-sm transition-all focus:ring-4 focus:ring-slate-100"
             >
               <Phone className="w-5 h-5 text-blue-500 shrink-0 hidden sm:block" />
               <span className="font-semibold text-base">
-                {t("contact_section.telefon_raqamimiz", "Telefon raqamimiz:")} <span className="text-blue-600 font-bold ml-1">{contact.phone || "+998 78 555 31 90"}</span>
+                {t("contact_section.telefon_raqamimiz", "Telefon raqamimiz:")} <span className="text-blue-600 font-bold ml-1">{phoneVal}</span>
               </span>
             </a>
           </div>
@@ -80,13 +86,10 @@ export function ContactSection({ contact }: ContactSectionProps) {
 
             {/* Social Icons */}
             <div className="flex gap-3">
-              <a href="#" className="w-[34px] h-[34px] rounded-full border-[1.5px] border-[#93c5fd] flex items-center justify-center text-[#3b82f6] hover:bg-blue-50 transition-colors bg-white">
-                <Facebook className="w-4 h-4 fill-current stroke-[0.5]" />
-              </a>
-              <a href={contact.telegram_link || "#"} className="w-[34px] h-[34px] rounded-full border-[1.5px] border-[#93c5fd] flex items-center justify-center text-[#3b82f6] hover:bg-blue-50 transition-colors bg-white">
+              <a href={channelLink} target="_blank" rel="noopener noreferrer" className="w-[34px] h-[34px] rounded-full border-[1.5px] border-[#93c5fd] flex items-center justify-center text-[#3b82f6] hover:bg-blue-50 transition-colors bg-white">
                 <Send className="w-4 h-4 -ml-0.5 fill-current stroke-[0.5]" />
               </a>
-              <a href="#" className="w-[34px] h-[34px] rounded-full border-[1.5px] border-[#93c5fd] flex items-center justify-center text-[#3b82f6] hover:bg-blue-50 transition-colors bg-white">
+              <a href={instagramVal} target="_blank" rel="noopener noreferrer" className="w-[34px] h-[34px] rounded-full border-[1.5px] border-[#93c5fd] flex items-center justify-center text-[#3b82f6] hover:bg-blue-50 transition-colors bg-white">
                 <Instagram className="w-4 h-4 stroke-[2]" />
               </a>
             </div>
@@ -103,7 +106,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
                 <div className="w-[28px] h-[28px] bg-[#0ea5e9] rounded-full flex items-center justify-center shrink-0 shadow-sm">
                   <Phone className="w-3.5 h-3.5 text-white fill-current" />
                 </div>
-                <span className="text-[#1a202c] text-[13px] font-medium">{t("contact_section.phone", "Telefon raqam")}: {contact.phone || "+998 78 555 31 90"}</span>
+                <span className="text-[#1a202c] text-[13px] font-medium">{t("contact_section.phone", "Telefon raqam")}: {phoneVal}</span>
               </li>
               <li className="flex items-center gap-3">
                 <div className="w-[28px] h-[28px] bg-[#0ea5e9] rounded-full flex items-center justify-center shrink-0 shadow-sm">
@@ -115,7 +118,7 @@ export function ContactSection({ contact }: ContactSectionProps) {
                 <div className="w-[28px] h-[28px] bg-[#0ea5e9] rounded-full flex items-center justify-center shrink-0 shadow-sm mt-[1px]">
                   <MapPin className="w-3.5 h-3.5 text-white fill-current" />
                 </div>
-                <span className="text-[#1a202c] text-[13px] font-medium leading-relaxed">{t("contact_section.address", "Manzil")}: Toshkent, Yashnobod tumani, Aviasozlar 1, 125A</span>
+                <span className="text-[#1a202c] text-[13px] font-medium leading-relaxed">{t("contact_section.address", "Manzil")}: {addressVal}</span>
               </li>
             </ul>
           </div>
