@@ -20,37 +20,28 @@ export function PricesManagement() {
   useEffect(() => {
     let isMounted = true;
     const fetchPrices = async () => {
-      const { data } = await supabase
-        .from("site_content")
-        .select("content")
-        .eq("type", "prices")
-        .maybeSingle()
+      setLoading(true)
+      try {
+        const { data } = await supabase
+          .from("site_content")
+          .select("content")
+          .eq("type", "prices")
+          .maybeSingle()
 
-      if (data?.content && isMounted) {
-        setOriginalPrice(data.content.original_price || "")
-        setDiscountedPrice(data.content.discounted_price || "")
-        setDiscountPercent(data.content.discount_percent || "")
+        if (data?.content && isMounted) {
+          setOriginalPrice(data.content.original_price || "")
+          setDiscountedPrice(data.content.discounted_price || "")
+          setDiscountPercent(data.content.discount_percent || "")
+        }
+      } catch (e) {
+        // silently handle
+      } finally {
+        if (isMounted) setLoading(false)
       }
     }
     fetchPrices()
     return () => { isMounted = false }
   }, [])
-
-  const fetchPrices = async () => {
-    setLoading(true)
-    const { data } = await supabase
-      .from("site_content")
-      .select("content")
-      .eq("type", "prices")
-      .maybeSingle()
-
-    if (data?.content) {
-      setOriginalPrice(data.content.original_price || "")
-      setDiscountedPrice(data.content.discounted_price || "")
-      setDiscountPercent(data.content.discount_percent || "")
-    }
-    setLoading(false)
-  }
 
   const handleSave = async () => {
     setSaving(true)

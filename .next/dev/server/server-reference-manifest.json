@@ -1,19 +1,49 @@
 {
   "node": {
-    "60f38a597b8bbd712503d00e4d281aa8a91f91f0e8": {
+    "609fe4c30b229ee7cf3efd937fc55fff7bebd57db0": {
       "workers": {
-        "app/register/page": {
-          "moduleId": "[project]/.next-internal/server/app/register/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/auth/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
           "async": false,
-          "exportedName": "registerUserWithPhone",
-          "filename": "app/auth/actions.ts"
+          "exportedName": "adminUpdateUserPassword",
+          "filename": "app/admin/actions.ts"
         }
       },
       "layer": {
-        "app/register/page": "action-browser"
+        "app/admin/page": "action-browser"
       },
-      "filename": "app/auth/actions.ts",
-      "exportedName": "registerUserWithPhone"
+      "filename": "app/admin/actions.ts",
+      "exportedName": "adminUpdateUserPassword"
+    },
+    "60d8ff220a086be5dcae928433a2cf38ac3fc14df2": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "adminGrantSubscription",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/page": "action-browser"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "adminGrantSubscription"
+    },
+    "40450cb5f60c26f35c40cc2034dc7b74da35900eff": {
+      "workers": {
+        "app/admin/page": {
+          "moduleId": "[project]/.next-internal/server/app/admin/page/actions.js { ACTIONS_MODULE0 => \"[project]/app/admin/actions.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "adminRevokeSubscription",
+          "filename": "app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/page": "action-browser"
+      },
+      "filename": "app/admin/actions.ts",
+      "exportedName": "adminRevokeSubscription"
     }
   },
   "edge": {},
