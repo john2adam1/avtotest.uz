@@ -12,8 +12,22 @@ import { PricesSection } from "@/components/PricesSection"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
-  title: "Sarvar Avto Test - Imtihonlar va Testlar",
-  description: "O'zbekistondagi eng zamonaviy Sarvar Avto Test platformasi. Bepul testlar, 2024-2025 biletlari va imtihon simulyatori.",
+  title: "Sarvar Avto Test — Bepul YHQ Testlari va Haydovchilik Imtihoni",
+  description:
+    "Sarvar Avto Test — O'zbekistonda haydovchilik imtihoniga tayyorlanish uchun №1 platforma. sarvaravtotest.uz: bepul YHQ testlari, 2024-2025 biletlar, mavzular bo'yicha testlar va imtihon simulyatori.",
+  keywords: [
+    "sarvar avtotest",
+    "sarvar avto test",
+    "bepul avtotest",
+    "yhq testlari",
+    "haydovchilik imtihoni 2024",
+    "haydovchilik imtihoni 2025",
+    "pdd testlari o'zbek",
+    "avtomaktab testi",
+  ],
+  alternates: {
+    canonical: "https://sarvaravtotest.uz",
+  },
 }
 
 export default async function Home() {
