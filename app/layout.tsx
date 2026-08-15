@@ -5,6 +5,8 @@ import { Toaster } from "@/components/ui/toaster"
 import "./global.css"
 import { I18nProvider } from "@/components/providers/i18n-provider"
 import { Poppins } from "next/font/google"
+import { PwaInstallPrompt } from "@/components/pwa-install-prompt"
+import { ServiceWorkerRegistrar } from "@/components/service-worker-registrar"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -185,6 +187,13 @@ export default function RootLayout({
   return (
     <html lang="uz">
       <head>
+        <meta name="application-name" content="Sarvar Avto Test" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="AvtoTest" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="theme-color" content="#6366f1" />
+        <link rel="manifest" href="/manifest.json" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -195,6 +204,8 @@ export default function RootLayout({
           {children}
           <Toaster />
           <Analytics />
+          <PwaInstallPrompt />
+          <ServiceWorkerRegistrar />
         </I18nProvider>
       </body>
     </html>

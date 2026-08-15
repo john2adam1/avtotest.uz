@@ -1,0 +1,64 @@
+{
+    "name": "Sarvar Avto Test",
+    "short_name": "AvtoTest",
+    "description": "O'zbekistonda haydovchilik imtihoniga tayyorlanish uchun №1 platforma. YHQ testlari, bepul biletlar va imtihon simulyatori.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "uz",
+    "categories": [
+        "education",
+        "lifestyle"
+    ],
+    "icons": [
+        {
+            "src": "/images/logo.jpg",
+            "sizes": "192x192",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/images/logo.jpg",
+            "sizes": "512x512",
+            "type": "image/jpeg",
+            "purpose": "any maskable"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/images/logo.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpeg",
+            "form_factor": "wide"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Bilet Testlari",
+            "short_name": "Biletlar",
+            "description": "YHQ bilet testlarini boshlash",
+            "url": "/tickets",
+            "icons": [
+                {
+                    "src": "/images/logo.jpg",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Mavzular",
+            "short_name": "Mavzular",
+            "description": "Mavzular bo'yicha testlar",
+            "url": "/topics",
+            "icons": [
+                {
+                    "src": "/images/logo.jpg",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
+}
