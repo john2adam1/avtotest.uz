@@ -12,6 +12,7 @@ import { ArrowLeft, BookOpen, Clock, Menu, PenTool, X, Check, FileQuestion, Home
 import { useTranslation } from "react-i18next"
 import type { Test, UserSettings } from "@/lib/types"
 import { ImageModal } from "@/components/image-modal"
+import { getDisplayImageUrl } from "@/lib/image-url"
 
 interface EnhancedTestInterfaceProps {
   title: string
@@ -40,18 +41,6 @@ export function EnhancedTestInterface({
   const [timeLeft, setTimeLeft] = useState(testType === "exam" && tests.length === 20 ? 25 * 60 : 0)
   const router = useRouter()
   const supabase = getSupabaseBrowserClient()
-
-  // Helper to fix PostImage viewer links to direct links
-  const getFixedImageUrl = (url: string) => {
-    if (!url) return url
-    // If it's a postimg.cc viewer link (not starting with i.), try to convert it
-    if (url.includes("postimg.cc") && !url.includes("i.postimg.cc")) {
-      // https://postimg.cc/Dmfk0bYv -> https://i.postimg.cc/Dmfk0bYv/image.png
-      // This is a common pattern, though not 100% guaranteed, it's better than a broken page
-      return url.replace("postimg.cc/", "i.postimg.cc/") + "/image.png"
-    }
-    return url
-  }
 
   const currentTest = tests[currentIndex]
   const isCyrillic = i18n.language === 'uz_cyrl'
@@ -371,7 +360,7 @@ export function EnhancedTestInterface({
               >
                 {currentTest.image_url ? (
                   <img
-                    src={getFixedImageUrl(currentTest.image_url)}
+                    src={getDisplayImageUrl(currentTest.image_url)}
                     alt="Question"
                     className="w-full h-auto object-contain"
                   />
@@ -468,7 +457,7 @@ export function EnhancedTestInterface({
       <ImageModal
         isOpen={isImageModalOpen}
         onClose={() => setIsImageModalOpen(false)}
-        imageUrl={getFixedImageUrl(currentTest.image_url || "")}
+        imageUrl={getDisplayImageUrl(currentTest.image_url || "")}
         altText={displayQuestion}
       />
     </main >

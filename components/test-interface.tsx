@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { Clock, CheckCircle2, XCircle, Volume2 } from "lucide-react"
 import Image from "next/image"
+import { getDisplayImageUrl } from "@/lib/image-url"
 
 interface Test {
   id: string
@@ -30,15 +31,6 @@ interface TestInterfaceProps {
 export function TestInterface({ categoryTitle, tests, userId }: TestInterfaceProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedAnswers, setSelectedAnswers] = useState<Record<number, number>>({})
-
-  // Helper to fix PostImage viewer links to direct links
-  const getFixedImageUrl = (url: string) => {
-    if (!url) return url
-    if (url.includes("postimg.cc") && !url.includes("i.postimg.cc")) {
-      return url.replace("postimg.cc/", "i.postimg.cc/") + "/image.png"
-    }
-    return url
-  }
 
   const [timeLeft, setTimeLeft] = useState(tests[0]?.time_limit || 300)
   const [isFinished, setIsFinished] = useState(false)
@@ -166,7 +158,7 @@ export function TestInterface({ categoryTitle, tests, userId }: TestInterfacePro
           <CardHeader className="space-y-4">
             <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-muted">
               <Image
-                src={getFixedImageUrl(currentTest.image_url || "/placeholder.svg")}
+                src={getDisplayImageUrl(currentTest.image_url || "/placeholder.svg")}
                 alt="Question image"
                 fill
                 unoptimized

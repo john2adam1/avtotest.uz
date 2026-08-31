@@ -5,6 +5,7 @@ import Image from "next/image"
 import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useTranslation } from "react-i18next"
+import { getDisplayImageUrl } from "@/lib/image-url"
 
 interface CarouselImage {
   id: string
@@ -18,14 +19,6 @@ export function Carousel() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [mounted, setMounted] = useState(false)
   const supabase = getSupabaseBrowserClient()
-
-  const getFixedImageUrl = (url: string) => {
-    if (!url) return url
-    if (url.includes("postimg.cc") && !url.includes("i.postimg.cc")) {
-      return url.replace("postimg.cc/", "i.postimg.cc/") + "/image.png"
-    }
-    return url
-  }
 
   const fetchImages = async () => {
     const { data } = await supabase
@@ -92,7 +85,7 @@ export function Carousel() {
                 className="relative bg-white rounded-2xl overflow-hidden shadow-md border border-slate-100 aspect-[4/3]"
               >
                 <Image
-                  src={getFixedImageUrl(img.image_url)}
+                  src={getDisplayImageUrl(img.image_url)}
                   alt={`Natija ${currentIndex + idx + 1}`}
                   fill
                   unoptimized

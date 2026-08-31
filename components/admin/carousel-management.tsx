@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/hooks/use-toast"
 import { Trash2, ChevronUp, ChevronDown, Plus, Image as ImageIcon, ImagePlus, Loader2 } from "lucide-react"
+import { getDisplayImageUrl } from "@/lib/image-url"
 
 interface CarouselImage {
   id: string
@@ -278,7 +279,7 @@ export function CarouselManagement() {
                 >
                   <div className="relative w-full sm:w-48 aspect-[16/9] sm:aspect-square rounded-2xl overflow-hidden border border-slate-100 shadow-inner shrink-0">
                     <img
-                      src={cleanUrl(image.image_url)}
+                      src={getDisplayImageUrl(cleanUrl(image.image_url))}
                       alt={`Carousel ${index + 1}`}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />

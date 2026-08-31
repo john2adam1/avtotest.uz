@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
 import Image from "next/image"
 import type { Test } from "@/lib/types"
+import { getDisplayImageUrl } from "@/lib/image-url"
 
 interface AnswersClientProps {
     tests: Test[]
@@ -13,15 +14,6 @@ interface AnswersClientProps {
 
 export function AnswersClient({ tests }: AnswersClientProps) {
     const [searchQuery, setSearchQuery] = useState("")
-
-    // Helper to fix PostImage viewer links to direct links
-    const getFixedImageUrl = (url: string) => {
-        if (!url) return url
-        if (url.includes("postimg.cc") && !url.includes("i.postimg.cc")) {
-            return url.replace("postimg.cc/", "i.postimg.cc/") + "/image.png"
-        }
-        return url
-    }
 
     const filteredTests = tests.filter((test) =>
         test.question.toLowerCase().includes(searchQuery.toLowerCase())
@@ -49,7 +41,7 @@ export function AnswersClient({ tests }: AnswersClientProps) {
                             <div className="aspect-video relative bg-gray-50 flex items-center justify-center">
                                 {test.image_url ? (
                                     <Image
-                                        src={getFixedImageUrl(test.image_url)}
+                                        src={getDisplayImageUrl(test.image_url)}
                                         alt="Test"
                                         fill
                                         unoptimized

@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast"
 import { Badge } from "@/components/ui/badge"
 import { Trash2, Edit2, Plus, X, BookOpen } from "lucide-react"
 import type { Test, Ticket, Topic } from "@/lib/types"
+import { getDisplayImageUrl } from "@/lib/image-url"
 
 interface TestWithRelation extends Test {
   ticket_title?: string
@@ -415,7 +416,7 @@ export function TestsManagement() {
           {imageUrl && (
             <div className="flex justify-center">
               <div className="p-4 bg-white border border-slate-100 rounded-[3rem] shadow-xl shadow-blue-500/5">
-                <img src={cleanUrl(imageUrl)} alt="Preview" className="max-w-xl max-h-[400px] rounded-[2.5rem] shadow-2xl object-contain border-4 border-slate-50" />
+                <img src={getDisplayImageUrl(cleanUrl(imageUrl))} alt="Preview" className="max-w-xl max-h-[400px] rounded-[2.5rem] shadow-2xl object-contain border-4 border-slate-50" />
               </div>
             </div>
           )}
@@ -644,7 +645,7 @@ export function TestsManagement() {
                       <div className="flex flex-col lg:flex-row gap-6 relative z-10">
                         {test.image_url && (
                           <div className="w-full lg:w-40 h-28 shrink-0 rounded-xl overflow-hidden border border-slate-100 bg-slate-50 group-hover:scale-[1.02] transition-transform duration-500 shadow-inner">
-                            <img src={cleanUrl(test.image_url)} alt="Test" className="w-full h-full object-contain" />
+                            <img src={getDisplayImageUrl(cleanUrl(test.image_url))} alt="Test" className="w-full h-full object-contain" />
                           </div>
                         )}
 
