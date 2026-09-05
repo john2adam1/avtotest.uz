@@ -14,12 +14,12 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { Eye, EyeOff, BookOpen, Plus } from "lucide-react"
 import { registerUserWithPhone } from "@/app/auth/actions"
 import { useTranslation } from "react-i18next"
+import { normalizeUzbekPhone, formatUzbekPhoneDisplay } from "@/lib/phone"
 
 export default function RegisterPage() {
   const { t } = useTranslation()
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
-  const [phonePrefix, setPhonePrefix] = useState("+998")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -28,13 +28,31 @@ export default function RegisterPage() {
   const { toast } = useToast()
   const supabase = getSupabaseBrowserClient()
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = e.target.value.replace(/\D/g, "")
+    if (val.startsWith("998") && val.length > 3) {
+      val = val.slice(3)
+    }
+    setPhoneNumber(formatUzbekPhoneDisplay(val))
+  }
+
   const handleRegister = async (e: FormEvent) => {
     e.preventDefault()
 
     if (password.length < 6) {
       toast({
-        title: t("errors.general"),
-        description: t("auth.passwordMinLength"),
+        title: t("errors.general", "Xatolik"),
+        description: t("auth.passwordMinLength", "Parol kamida 6 ta belgidan iborat bo'lishi kerak"),
+        variant: "destructive",
+      })
+      return
+    }
+
+    const { cleanPhone, authEmail, isValid } = normalizeUzbekPhone(phoneNumber)
+    if (!isValid) {
+      toast({
+        title: t("errors.general", "Xatolik"),
+        description: "Telefon raqami noto'g'ri kiritildi (Masalan: 90 123 45 67)",
         variant: "destructive",
       })
       return
@@ -42,14 +60,9 @@ export default function RegisterPage() {
 
     setLoading(true)
 
-    const cleanPhone = (phonePrefix + phoneNumber.replace(/[^\d+]/g, "")).replace(/[^\d+]/g, "")
-    // Ensure prefix
-    const fullPhone = cleanPhone.startsWith("+") ? cleanPhone : "+" + cleanPhone
-    const authEmail = `${fullPhone.replace("+", "")}@gmail.com`
-
     try {
       const formData = new FormData()
-      formData.append("phone", fullPhone)
+      formData.append("phone", cleanPhone)
       formData.append("password", password)
       formData.append("firstName", firstName)
       formData.append("lastName", lastName)
@@ -60,22 +73,38 @@ export default function RegisterPage() {
         throw new Error(result.error)
       }
 
-      const { error: signInError } = await supabase.auth.signInWithPassword({
+      const { data, error: signInError } = await supabase.auth.signInWithPassword({
         email: authEmail,
         password,
       })
 
       if (signInError) throw signInError
 
+      const deviceId = crypto.randomUUID()
+      if (typeof window !== "undefined") {
+        window.localStorage.setItem("deviceId", deviceId)
+        document.cookie = `device_id=${deviceId}; path=/; max-age=31536000; SameSite=Lax`
+      }
+
+      if (data?.user) {
+        await supabase
+          .from("users")
+          .update({
+            active_device_id: deviceId,
+            last_login_at: new Date().toISOString(),
+          })
+          .eq("id", data.user.id)
+      }
+
       toast({
-        title: t("auth.accountCreated"),
+        title: t("auth.accountCreated", "Ro'yxatdan muvaffaqiyatli o'tdingiz"),
       })
 
       router.push("/dashboard")
     } catch (error: any) {
       toast({
-        title: t("errors.general"),
-        description: error.message || t("errors.somethingWentWrong"),
+        title: t("errors.general", "Xatolik"),
+        description: error.message || t("errors.somethingWentWrong", "Xatolik yuz berdi"),
         variant: "destructive",
       })
     } finally {
@@ -160,9 +189,9 @@ export default function RegisterPage() {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder=""
+                  placeholder="90 123 45 67"
                   value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  onChange={handlePhoneChange}
                   required
                   className="flex-1 border-0 rounded-none h-full shadow-none focus-visible:ring-0 text-[16px] text-black px-1"
                 />

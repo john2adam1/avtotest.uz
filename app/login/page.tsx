@@ -14,10 +14,10 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client"
 import { Eye, EyeOff, BookOpen, Plus } from "lucide-react"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { useTranslation } from "react-i18next"
+import { normalizeUzbekPhone, formatUzbekPhoneDisplay } from "@/lib/phone"
 
 function LoginForm() {
   const { t } = useTranslation()
-  const [phonePrefix, setPhonePrefix] = useState("+998")
   const [phoneNumber, setPhoneNumber] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -29,14 +29,28 @@ function LoginForm() {
 
   const sessionConflict = searchParams.get("session") === "conflict"
 
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let val = e.target.value.replace(/\D/g, "")
+    if (val.startsWith("998") && val.length > 3) {
+      val = val.slice(3)
+    }
+    setPhoneNumber(formatUzbekPhoneDisplay(val))
+  }
+
   const handleLogin = async (e: FormEvent) => {
     e.preventDefault()
     setLoading(true)
 
-    const cleanPhone = (phonePrefix + phoneNumber.replace(/[^\d+]/g, "")).replace(/[^\d+]/g, "")
-    // Ensure prefix
-    const fullPhone = cleanPhone.startsWith("+") ? cleanPhone : "+" + cleanPhone
-    const authEmail = `${fullPhone.replace("+", "")}@gmail.com`
+    const { cleanPhone, authEmail, isValid } = normalizeUzbekPhone(phoneNumber)
+    if (!isValid) {
+      toast({
+        title: t("errors.general", "Xatolik"),
+        description: "Telefon raqami noto'g'ri kiritildi (Masalan: 90 123 45 67)",
+        variant: "destructive",
+      })
+      setLoading(false)
+      return
+    }
 
     try {
       const { data, error } = await supabase.auth.signInWithPassword({
@@ -53,20 +67,44 @@ function LoginForm() {
       }
 
       if (data.user) {
-        await supabase
+        // Check if user has a profile in public.users, if not create one (self-heal)
+        const { data: profile } = await supabase
           .from("users")
-          .update({
+          .select("id")
+          .eq("id", data.user.id)
+          .maybeSingle()
+
+        if (!profile) {
+          const now = new Date()
+          const trialEnd = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString()
+          await supabase.from("users").upsert({
+            id: data.user.id,
+            email: authEmail,
+            phone: cleanPhone,
+            role: "user",
+            trial_end: trialEnd,
+            subscription_end: null,
+            first_name: data.user.user_metadata?.first_name || null,
+            last_name: data.user.user_metadata?.last_name || null,
             active_device_id: deviceId,
             last_login_at: new Date().toISOString(),
-          })
-          .eq("id", data.user.id)
+          }, { onConflict: "id" })
+        } else {
+          await supabase
+            .from("users")
+            .update({
+              active_device_id: deviceId,
+              last_login_at: new Date().toISOString(),
+            })
+            .eq("id", data.user.id)
+        }
       }
 
       router.push("/dashboard")
     } catch (error: any) {
       toast({
-        title: t("errors.general"),
-        description: error.message || t("auth.invalidCredentials"),
+        title: t("errors.general", "Xatolik"),
+        description: error.message || t("auth.invalidCredentials", "Telefon raqam yoki parol noto'g'ri"),
         variant: "destructive",
       })
     } finally {
@@ -125,9 +163,9 @@ function LoginForm() {
                 <Input
                   id="phone"
                   type="tel"
-                  placeholder=""
+                  placeholder="90 123 45 67"
                   value={phoneNumber}
-                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  onChange={handlePhoneChange}
                   required
                   className="flex-1 border-0 rounded-none h-full shadow-none focus-visible:ring-0 text-[16px] text-black px-1"
                 />

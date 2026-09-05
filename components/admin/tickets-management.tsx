@@ -28,7 +28,7 @@ export function TicketsManagement() {
       setLoading(true)
       const { data, error } = await supabase
         .from("tickets")
-        .select("*")
+        .select("*, ticket_tests(count)")
         .order("created_at", { ascending: false })
 
       if (!isMounted) return
@@ -42,15 +42,9 @@ export function TicketsManagement() {
       }
 
       if (data) {
-        const ticketsWithCounts = await Promise.all(
-          data.map(async (ticket) => {
-            const { count } = await supabase
-              .from("ticket_tests")
-              .select("*", { count: "exact", head: true })
-              .eq("ticket_id", ticket.id)
-            return { ...ticket, test_count: count || 0 }
-          })
-        )
+        const ticketsWithCounts = data.map(ticket => ({
+          ...ticket, test_count: ticket.ticket_tests?.[0]?.count || 0
+        }))
         ticketsWithCounts.sort((a, b) => {
           const numA = parseInt(a.title.match(/\d+/)?.[0] || "0", 10)
           const numB = parseInt(b.title.match(/\d+/)?.[0] || "0", 10)
@@ -93,7 +87,7 @@ export function TicketsManagement() {
     setLoading(true)
     const { data, error } = await supabase
       .from("tickets")
-      .select("*")
+      .select("*, ticket_tests(count)")
       .order("created_at", { ascending: false })
 
     if (error) {
@@ -105,15 +99,9 @@ export function TicketsManagement() {
     }
 
     if (data) {
-      const ticketsWithCounts = await Promise.all(
-        data.map(async (ticket) => {
-          const { count } = await supabase
-            .from("ticket_tests")
-            .select("*", { count: "exact", head: true })
-            .eq("ticket_id", ticket.id)
-          return { ...ticket, test_count: count || 0 }
-        })
-      )
+      const ticketsWithCounts = data.map(ticket => ({
+        ...ticket, test_count: ticket.ticket_tests?.[0]?.count || 0
+      }))
       ticketsWithCounts.sort((a, b) => {
         const numA = parseInt(a.title.match(/\d+/)?.[0] || "0", 10)
         const numB = parseInt(b.title.match(/\d+/)?.[0] || "0", 10)
@@ -168,6 +156,9 @@ export function TicketsManagement() {
 
 
   const handleTogglePublic = async (ticketId: string, currentStatus: boolean) => {
+    // Optimistic update
+    setTickets(prev => prev.map(t => t.id === ticketId ? { ...t, is_public: !currentStatus } : t))
+    
     const { error } = await supabase
       .from("tickets")
       .update({ is_public: !currentStatus })
@@ -179,12 +170,13 @@ export function TicketsManagement() {
         description: "Bilet holatini o'zgartirishda xatolik yuz berdi",
         variant: "destructive",
       })
+      // Revert optimistic update on error
+      setTickets(prev => prev.map(t => t.id === ticketId ? { ...t, is_public: currentStatus } : t))
     } else {
       toast({
         title: "Success",
         description: `Bilet ${!currentStatus ? "Public" : "Premium"} holatiga o'tkazildi`,
       })
-      fetchTickets()
     }
   }
 

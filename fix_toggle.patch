@@ -1,0 +1,27 @@
+--- components/admin/tickets-management.tsx
++++ components/admin/tickets-management.tsx
+@@ -95,6 +95,9 @@
+   }
+ 
+   const handleTogglePublic = async (ticketId: string, currentStatus: boolean) => {
++    // Optimistic update
++    setTickets(prev => prev.map(t => t.id === ticketId ? { ...t, is_public: !currentStatus } : t))
++    
+     const { error } = await supabase
+       .from("tickets")
+       .update({ is_public: !currentStatus })
+@@ -106,12 +109,13 @@
+         description: "Bilet holatini o'zgartirishda xatolik yuz berdi",
+         variant: "destructive",
+       })
++      // Revert optimistic update on error
++      setTickets(prev => prev.map(t => t.id === ticketId ? { ...t, is_public: currentStatus } : t))
+     } else {
+       toast({
+         title: "Success",
+         description: `Bilet ${!currentStatus ? "Public" : "Premium"} holatiga o'tkazildi`,
+       })
+-      fetchTickets()
+     }
+   }
+ 

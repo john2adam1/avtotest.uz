@@ -1,6 +1,7 @@
 "use server"
 
 import { getSupabaseAdminClient } from "@/lib/supabase/admin"
+import { normalizeUzbekPhone } from "@/lib/phone"
 
 type RegistrationResult = {
     success?: boolean
@@ -10,39 +11,25 @@ type RegistrationResult = {
 export async function registerUserWithPhone(prevState: any, formData: FormData): Promise<RegistrationResult> {
     const phone = formData.get("phone") as string
     const password = formData.get("password") as string
-    const firstName = formData.get("firstName") as string
-    const lastName = formData.get("lastName") as string
+    const firstName = ((formData.get("firstName") as string) || "").trim()
+    const lastName = ((formData.get("lastName") as string) || "").trim()
 
     // Basic validation
-    if (!phone || password.length < 6) {
-        return { error: "Telefon raqam yoki parol noto'g'ri (parol min 6 belgi)" }
+    if (!password || password.length < 6) {
+        return { error: "Parol kamida 6 ta belgidan iborat bo'lishi kerak" }
     }
 
-    // Format phone: remove all non-digits except +
-    // This ensures E.164-ish compliance and consistent email generation
-    let cleanPhone = phone.replace(/[^\d+]/g, "")
-
-    // Ensure it starts with +998 if it's a local number without prefix
-    if (!cleanPhone.startsWith("+")) {
-        if (cleanPhone.startsWith("998")) {
-            cleanPhone = "+" + cleanPhone
-        } else if (cleanPhone.length === 9) {
-            // Assume Uzbekistan 90...
-            cleanPhone = "+998" + cleanPhone
-        }
+    const { cleanPhone, authEmail, isValid } = normalizeUzbekPhone(phone)
+    if (!isValid) {
+        return { error: "Telefon raqami noto'g'ri kiritildi (Masalan: +998 90 123 45 67)" }
     }
-
-    // Constructed email for Supabase Auth
-    const authEmail = `${cleanPhone.replace("+", "")}@gmail.com`
 
     const supabaseAdmin = getSupabaseAdminClient()
 
     try {
-        // 1. Check if user exists (to give clear error)
-        // Since we turned off phone verification, 'createUser' might throw if exists?
-        // Admin API 'createUser': if user exists, it throws error usually.
+        let userId: string | null = null
 
-        // 2. Create User in Auth (verified)
+        // 1. Try creating user in Auth (verified)
         const { data: linkData, error: linkError } = await supabaseAdmin.auth.admin.createUser({
             email: authEmail,
             password: password,
@@ -50,26 +37,64 @@ export async function registerUserWithPhone(prevState: any, formData: FormData):
             user_metadata: {
                 first_name: firstName,
                 last_name: lastName,
-                phone: cleanPhone, // Keep original phone in metadata too
+                phone: cleanPhone,
             }
         })
 
         if (linkError) {
-            console.error("Auth create error:", linkError)
-            return { error: linkError.message === "User already registered" ? "Bu raqam allaqachon ro'yxatdan o'tgan" : linkError.message }
+            const isAlreadyRegistered =
+                linkError.message?.toLowerCase().includes("already") ||
+                linkError.message?.toLowerCase().includes("exists")
+
+            if (isAlreadyRegistered) {
+                // Check if user already exists in public.users
+                const { data: existingProfile } = await supabaseAdmin
+                    .from("users")
+                    .select("id")
+                    .eq("phone", cleanPhone)
+                    .maybeSingle()
+
+                if (existingProfile) {
+                    return { error: "Bu raqam allaqachon ro'yxatdan o'tgan" }
+                }
+
+                // If user was in auth.users without a public.users profile, find and repair them
+                const { data: listData } = await supabaseAdmin.auth.admin.listUsers()
+                const foundUser = (listData?.users as any[])?.find((u: any) => u.email === authEmail)
+
+                if (foundUser) {
+                    userId = foundUser.id
+                    await supabaseAdmin.auth.admin.updateUserById(userId, {
+                        password: password,
+                        email_confirm: true,
+                        user_metadata: {
+                            first_name: firstName,
+                            last_name: lastName,
+                            phone: cleanPhone,
+                        }
+                    })
+                } else {
+                    return { error: "Bu raqam allaqachon ro'yxatdan o'tgan" }
+                }
+            } else {
+                console.error("Auth create error:", linkError)
+                return { error: linkError.message }
+            }
+        } else if (linkData?.user) {
+            userId = linkData.user.id
         }
 
-        if (!linkData.user) {
+        if (!userId) {
             return { error: "Foydalanuvchi yaratilmadi" }
         }
 
-        // 3. Create Profile in public.users
+        // 2. Create Profile in public.users
         // 7 days trial
         const now = new Date()
         const trialEnd = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString()
 
-        const { error: profileError } = await supabaseAdmin.from("users").insert({
-            id: linkData.user.id,
+        const { error: profileError } = await supabaseAdmin.from("users").upsert({
+            id: userId,
             email: authEmail,
             phone: cleanPhone,
             role: "user",
@@ -77,14 +102,12 @@ export async function registerUserWithPhone(prevState: any, formData: FormData):
             subscription_end: null,
             first_name: firstName || null,
             last_name: lastName || null,
-            // active_device_id and last_login_at will be set on login
+        }, {
+            onConflict: "id"
         })
 
         if (profileError) {
             console.error("Profile create error:", profileError)
-            // Rollback auth user creation if profile fails? 
-            // Ideally yes, but Supabase Admin doesn't have transactions across Auth & Public easily.
-            // We'll return error for now.
             return { error: "Profil yaratishda xatolik: " + profileError.message }
         }
 

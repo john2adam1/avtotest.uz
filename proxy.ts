@@ -88,7 +88,7 @@ export default async function proxy(request: NextRequest) {
         .from("users")
         .select("active_device_id")
         .eq("id", user.id)
-        .single()
+        .maybeSingle()
 
       if (userData?.active_device_id) {
         if (!deviceId || deviceId !== userData.active_device_id) {

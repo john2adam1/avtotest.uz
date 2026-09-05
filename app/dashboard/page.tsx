@@ -16,7 +16,7 @@ export default async function DashboardPage() {
 
   if (!user) redirect("/login")
 
-  const [
+  let [
     { data: userData },
     { data: topics },
     { data: tickets },
@@ -25,7 +25,7 @@ export default async function DashboardPage() {
     { data: examStats },
     { data: topicStats }
   ] = await Promise.all([
-    supabase.from("users").select("*").eq("id", user.id).single(),
+    supabase.from("users").select("*").eq("id", user.id).maybeSingle(),
     supabase.from("topics").select("*").order("title"),
     supabase.from("tickets").select("*").order("title"),
     supabase.from("tests").select("*", { count: "exact", head: true }),
@@ -34,7 +34,28 @@ export default async function DashboardPage() {
     supabase.from("topic_statistics").select("topic_id, percentage").eq("user_id", user.id)
   ])
 
-  if (!userData) redirect("/login")
+  if (!userData) {
+    const rawPhone = user.user_metadata?.phone || (user.email ? user.email.replace("@gmail.com", "") : "")
+    const cleanPhone = rawPhone.startsWith("+") ? rawPhone : (rawPhone ? `+${rawPhone}` : "+998000000000")
+    const now = new Date()
+    const trialEnd = new Date(now.getTime() + 7 * 24 * 60 * 60 * 1000).toISOString()
+
+    const { data: createdUser, error: healError } = await supabase.from("users").upsert({
+      id: user.id,
+      email: user.email,
+      phone: cleanPhone,
+      role: "user",
+      trial_end: trialEnd,
+      subscription_end: null,
+      first_name: user.user_metadata?.first_name || null,
+      last_name: user.user_metadata?.last_name || null,
+    }, { onConflict: "id" }).select().single()
+
+    if (healError || !createdUser) {
+      redirect("/login")
+    }
+    userData = createdUser
+  }
 
   // Redirect admin to admin page instead of loading user dashboard
   if (userData.role === "admin") {

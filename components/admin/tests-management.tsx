@@ -39,6 +39,7 @@ export function TestsManagement() {
   const [explanationTextCyrl, setExplanationTextCyrl] = useState("")
   const [editingTest, setEditingTest] = useState<Test | null>(null)
   const [loading, setLoading] = useState(true)
+  const [totalTestsCount, setTotalTestsCount] = useState(0)
   const { toast } = useToast()
   const supabase = getSupabaseBrowserClient()
 
@@ -47,13 +48,15 @@ export function TestsManagement() {
     const loadAll = async () => {
       setLoading(true)
       const [testsRes, topicsRes] = await Promise.all([
-        supabase.from("tests").select("*").order("created_at", { ascending: false }),
+        supabase.from("tests").select("*", { count: "exact" }).order("created_at", { ascending: false }),
         supabase.from("topics").select("*").order("title")
       ])
 
       if (!isMounted) return
 
       if (testsRes.data) setTests(testsRes.data)
+      if (testsRes.count !== null) setTotalTestsCount(testsRes.count)
+      if (testsRes.count !== null) setTotalTestsCount(testsRes.count)
       if (topicsRes.data) setTopics(topicsRes.data)
       setLoading(false)
     }
@@ -70,7 +73,7 @@ export function TestsManagement() {
     setLoading(true)
     const { data, error } = await supabase
       .from("tests")
-      .select(`*`)
+      .select("*", { count: "exact" })
       .order("created_at", { ascending: false })
 
     if (error) {
@@ -83,6 +86,9 @@ export function TestsManagement() {
 
     if (data) {
       setTests(data)
+      if (error === null && data.length > 0) {
+        // the count is part of the response
+      }
     }
     setLoading(false)
   }
@@ -325,7 +331,7 @@ export function TestsManagement() {
                 <Plus className="h-5 w-5 text-blue-600" />
               </div>
               <p className="text-sm font-bold text-slate-700 relative z-10">
-                Yangi test <span className="text-blue-600 font-black ml-1 text-base">#{Math.floor(tests.length / 20) + 1}-biletga</span> qo'shiladi.
+                Yangi test <span className="text-blue-600 font-black ml-1 text-base">#{Math.floor(totalTestsCount / 20) + 1}-biletga</span> qo'shiladi.
               </p>
             </div>
           )}
